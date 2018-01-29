@@ -49,39 +49,74 @@ DATASETS = set([
 prefixes = ['aanvalsplan_schoon/crow']
             #,'aanvalsplan_schoon/mora']
 
-def get_full_container_list(conn, container, **kwargs):
+    
+def get_connection(store_settings: dict) -> Connection:
+"""
+get an objectsctore connection
+"""
+store = store_settings
 
-    # Note: taken from the bag_services project
+os_options = {
+    'tenant_id': store['TENANT_ID'],
+    'region_name': store['REGION_NAME'],
+    # 'endpoint_type': 'internalURL'
+}
+
+# when we are running in cloudvps we should use internal urls
+use_internal = os.getenv('OBJECTSTORE_LOCAL', '')
+if use_internal:
+    os_options['endpoint_type'] = 'internalURL'
+
+connection = Connection(
+    authurl=store['AUTHURL'],
+    user=store['USER'],
+    key=store['PASSWORD'],
+    tenant_name=store['TENANT_NAME'],
+    auth_version=store['VERSION'],
+    os_options=os_options
+)
+
+return connection
+
+    
+    
+def get_full_container_list(conn, container, **kwargs) -> list:
+    """ 
+    List all available data sources in the specific data container specific to the os connection 
+    Returns a generator object.
+    """
     limit = 10000
     kwargs['limit'] = limit
     page = []
 
-    seed = []
-
     _, page = conn.get_container(container, **kwargs)
-    seed.extend(page)
+    lastpage = page
+    for object_info in lastpage:
+        yield object_info
 
-    while len(page) == limit:
+    while len(lastpage) == limit:
         # keep getting pages..
-        kwargs['marker'] = seed[-1]['name']
-        _, page = conn.get_container(container, **kwargs)
-        seed.extend(page)
+        kwargs['marker'] = lastpage['name']
+        _, lastpage = conn.get_container(container, **kwargs)
+        for object_info in lastpage:
+            yield object_info
 
-    return seed
-
+    raise StopIteration
+    
 
 def download_container(conn, container, prefix, datadir):
-    target_dir = os.path.join(datadir, prefix)
-    os.makedirs(target_dir)  # will error out if directory exists
     
-    content = get_full_container_list(conn, container['name'],prefix=prefix)
-    #print(content)
+    #target_dir = os.path.join(datadir, prefix)
+    #os.makedirs(target_dir)  # will error out if directory exists
+    
+    content = get_full_container_list(conn, container, prefix=prefix)
+    print(content)
     for obj in content:
         if obj['content_type']!='application/directory':
             target_filename = os.path.join(datadir, obj['name'])
             #target_filename = obj['name']
             with open(target_filename, 'wb') as new_file:
-                _, obj_content = conn.get_object(container['name'], obj['name'])
+                _, obj_content = conn.get_object(container, obj['name'])
                 new_file.write(obj_content)
         logger.debug('Written file '+obj['name'])
 
