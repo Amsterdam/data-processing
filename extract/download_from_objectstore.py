@@ -51,32 +51,32 @@ prefixes = ['aanvalsplan_schoon/crow']
 
     
 def get_connection(store_settings: dict) -> Connection:
-"""
-get an objectsctore connection
-"""
-store = store_settings
+    """
+    get an objectsctore connection
+    """
+    store = store_settings
 
-os_options = {
-    'tenant_id': store['TENANT_ID'],
-    'region_name': store['REGION_NAME'],
-    # 'endpoint_type': 'internalURL'
-}
+    os_options = {
+        'tenant_id': store['TENANT_ID'],
+        'region_name': store['REGION_NAME'],
+        # 'endpoint_type': 'internalURL'
+    }
 
-# when we are running in cloudvps we should use internal urls
-use_internal = os.getenv('OBJECTSTORE_LOCAL', '')
-if use_internal:
-    os_options['endpoint_type'] = 'internalURL'
+    # when we are running in cloudvps we should use internal urls
+    use_internal = os.getenv('OBJECTSTORE_LOCAL', '')
+    if use_internal:
+        os_options['endpoint_type'] = 'internalURL'
 
-connection = Connection(
-    authurl=store['AUTHURL'],
-    user=store['USER'],
-    key=store['PASSWORD'],
-    tenant_name=store['TENANT_NAME'],
-    auth_version=store['VERSION'],
-    os_options=os_options
-)
+    connection = Connection(
+        authurl=store['AUTHURL'],
+        user=store['USER'],
+        key=store['PASSWORD'],
+        tenant_name=store['TENANT_NAME'],
+        auth_version=store['VERSION'],
+        os_options=os_options
+    )
 
-return connection
+    return connection
 
     
     
