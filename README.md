@@ -1,5 +1,6 @@
 # data-processing
-Data preparation scripts for analysis projects.
+Data preparation scripts for analysis projects in python 3 and docker.
+For more information about the complete workflow, read the [data-pipeline guide](https://amsterdam.github.io/guides/data-pipeline/).
 
 This repo is a WIP so the scripts do not work properly yet.
 
