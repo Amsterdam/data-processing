@@ -4,7 +4,9 @@ Data preparation scripts for analysis projects.
 This repo is a WIP so the scripts do not work properly yet.
 
 ## Structure
-The basic template uses these 4 types of scripts
+This repo uses 4 collections: auth, extract, transform and load.
+Each collection contains specific scripts with an example and output file which can be run using the the bash command, for example for transformations: 
+```bash transform.sh```
 
 ### Auth
 Fill in the config.ini.example with the proper user credentials for the project and rename this file to config.ini.
