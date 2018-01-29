@@ -1,0 +1,4 @@
+export AUTHORIZATION_CODE="$(curl --include --data 'type=employee' "https://api.data.amsterdam.nl/auth/idp/login?callback=https%3A%2F%2Fatlas.amsterdam.nl%2F%23" | grep ^Location: | egrep -o 'eyJ0[-a-zA-Z0-9_.]+')"
+export REFRESH_TOKEN=$(curl "https://api.data.amsterdam.nl/auth/idp/token?a-select-server=0&aselect_credentials=${AUTHORIZATION_CODE}&rid=0")
+export ACCESS_TOKEN=$(curl --header "Authorization: Bearer ${REFRESH_TOKEN}" "https://api.data.amsterdam.nl/auth/accesstoken")
+curl --header "Authorization: Bearer ${ACCESS_TOKEN}" "https://api.data.amsterdam.nl/tellus/tellusdata/"```
