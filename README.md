@@ -24,14 +24,13 @@ Do not store passwords in this file and use .gitignore to ignore .ini files to p
 
 ### Transform
 * Cleaning
-        - Get BAG adress
+        - Get BAG address
 * Merging files with Pandas
 * Geo enrichment
         - X, Y columns to WKT
-* Add area codes to geo points
-        - Postgres
-        - Pandas
-
+        - Add area codes to geo points
+        - Get Geojson from WFS services
+        - Get nearest BAG address
     
 ### Load
   * Load XLS to Postgres
