@@ -24,15 +24,9 @@ def get_geojson_from_wfs(url_wfs, layer_name):
                   "OUTPUTFORMAT": "geojson"
                   }
     print("Requesting data from {}, layer: {}".format(url_wfs, layer_name))
-    geojson = requests.get(url, params=parameters)
+    geojson = requests.get(url_wfs, params=parameters)
     geojson = geojson.json()
     print("{} features returned.".format(str(len(geojson["features"]))))
 
     return geojson
 
-
-url = "http://map.data.amsterdam.nl/maps/parkeervakken"
-layer_name = "alle_parkeervakken"
-
-get_layers_from_wfs(url)
-get_geojson_from_wfs(url, layer_name)
