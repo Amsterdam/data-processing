@@ -4,7 +4,7 @@
 """
 
 import pytest
-from geospatial import get_geojson_from_wfs
+from transform.geospatial import get_geojson_from_wfs
 
 
 def test_get_layers_from_wfs():
