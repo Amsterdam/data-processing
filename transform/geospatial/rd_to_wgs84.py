@@ -1,4 +1,4 @@
-def RD2WGS84(X, Y):
+def rd_to_wgs84(X, Y):
 	"""
 		Quick reprojection method, does result in 1m max offset difference.
 		Use Postgres ST_Transform method if you want a better reprojection.

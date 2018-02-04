@@ -7,9 +7,15 @@ import pandas as pd
 import numpy as np
 
 def read_crowfile(file, datecol):
-    """parses the CROW afvaldata
-    datecol = format %Y-m-%d %H:%M:%S
     """
+    parses the CROW afvaldata
+    Args:
+        file (xls/xlsx): containing at least a date column
+        datecol: informat %Y-m-%d %H:%M:%S
+    Returns:
+        * pd.DataFrame: cleaned data frame with datum and time column added
+    """
+    
     df = (pd.read_excel(file)
           .pipe(strip_cols)
           .assign(

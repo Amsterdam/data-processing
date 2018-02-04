@@ -1,0 +1,34 @@
+# Git
+.git
+.gitignore
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# Jenkins
+.jenkins
+
+# IDEs
+.idea
+.project
+.pydevproject
+.settings
+
+# Virtualenvs
+.venv
+
+# Python
+*.pyc
+*.pyo
+__pycache__
+
+# Setuptools
+.eggs
+*.egg-info
+
+# Documentation
+docs
+
+# Config, secrets, etc
+siam.env

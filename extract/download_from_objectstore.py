@@ -7,6 +7,7 @@ the layout there matches the layout expected by our data loading scripts.
 (We may have to complicate this in the future if we get to automatic
 delivery of new data for this project.)
 """
+
 import os
 import argparse
 import logging
@@ -26,19 +27,19 @@ logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 config = configparser.RawConfigParser()
 config.read('auth.conf')
 
-OBJECTSTORE_PASSWORD = os.environ['EXTERN_DATASERVICES_PASSWORD']
-
+#OBJECTSTORE_PASSWORD = os.environ['EXTERN_DATASERVICES_PASSWORD']
+OBJECTSTORE_PASSWORD = config.get('objectstore', 'OS_PASSWORD')
 
 OS_CONNECT = {
-    'auth_version': config.get('extern_dataservices','ST_AUTH_VERSION'),
-    'authurl': config.get('extern_dataservices','OS_AUTH_URL'),
-    'tenant_name': config.get('extern_dataservices','OS_TENANT_NAME'),
-    'user': config.get('extern_dataservices','OS_USERNAME'),
+    'VERSION': config.get('objectstore','ST_AUTH_VERSION'),
+    'AUTHURL': config.get('objectstore','OS_AUTH_URL'),
+    'TENANT_NAME': config.get('objectstore','OS_TENANT_NAME'),
+    'USER': config.get('objectstore','OS_USERNAME'),
     'os_options': {
-        'tenant_id': config.get('extern_dataservices','OS_PROJECT_ID'),  # Project ID
-        'region_name': config.get('extern_dataservices','OS_REGION_NAME')
+        'TENANT_ID': config.get('objectstore','OS_PROJECT_ID'),  # Project ID
+        'REGION_NAME': config.get('objectstore','OS_REGION_NAME')
     },
-    'key': OBJECTSTORE_PASSWORD
+    'PASSWORD': OBJECTSTORE_PASSWORD
 }
 
 
@@ -46,7 +47,7 @@ DATASETS = set([
     'Dataservices'
 ])
 
-prefixes = ['aanvalsplan_schoon/crow']
+prefixes = ['aanvalsplan_schoon/mora']
             #,'aanvalsplan_schoon/mora']
 
     
