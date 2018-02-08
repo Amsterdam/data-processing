@@ -1,4 +1,0 @@
-{
-  "tests/extract/test_extract.py": true,
-  "tests/transform/test_geospatial.py": true
-}
