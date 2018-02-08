@@ -45,22 +45,24 @@ setup(
 
     # Requirements:
     install_requires=[
-        'docutils',
-        'jsonschema',
-        'mimeparse',
-        'PyYaml',
-        'PyJWT',
-        'SQLAlchemy==1.1',
-        'swagger-parser',
+        # 'docutils',
+        'requests==2.18.4',
+        'requests_cache==0.4.13',
+        'pandas==0.22.0',
+        'sqlalchemy==1.2.2',
+        'psycopg2==2.7.3.2',
+        'pyproj==1.9.5.1',
+        'xlrd==1.1.0',
+        'pprint>=0.1',
     ],
     extras_require={
-        'docs': [
-            'MacFSEvents',
-            'Sphinx',
-            'sphinx-autobuild',
-            'sphinx-autodoc-typehints',
-            'sphinx_rtd_theme',
-        ],
+        #'docs': [
+            #'MacFSEvents',
+            #'Sphinx',
+            #'sphinx-autobuild',
+            #'sphinx-autodoc-typehints',
+            # 'sphinx_rtd_theme',
+        #],
         'test': [
             'pytest',
             'pytest-cov',
