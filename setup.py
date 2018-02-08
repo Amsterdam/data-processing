@@ -1,16 +1,21 @@
 #!/usr/bin/env python
 """See <https://setuptools.readthedocs.io/en/latest/>.
 """
+import os
 from setuptools import setup, find_packages
+
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
 setup(
     # Publication Metadata:
-    version='0.1.4',
-    name='datapunt_authz_admin',
-    description="User Role Management Service",
-    # long_description="",
-    url='https://github.com/DatapuntAmsterdam/authz_admin',
+    version='0.0.1',
+    name='datapunt_amsterdam_processing',
+    description="Data processing Functions",
+    long_description=read('README.rst'),
+    url='https://github.com/Amsterdam/data-processing',
     author='Amsterdam Datapunt',
     author_email='datapunt@amsterdam.nl',
     license='Mozilla Public License Version 2.0',
@@ -24,7 +29,9 @@ setup(
     # Entry points:
     entry_points={
         'console_scripts': [
-            'authz_admin = authz_admin.main:main'
+            'extract = extract.main:main',
+            'transform = transform.main:main',
+            'load = load.main:main'
         ],
     },
 
@@ -33,24 +40,11 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages('src'),
     package_data={
-        'authz_admin': ['config_schema*.json', 'openapi*.json', 'openapi.yml']
+        # Not yet needed 'extract': ['config_schema*.json', 'openapi*.json', 'openapi.yml']
     },
 
-
     # Requirements:
-    # setup_requires=[
-    #     'setuptools_git',
-    #     # Nice if you like setuptools integration for PyTest:
-    #     #'pytest-runner',
-    # ],
     install_requires=[
-        'aiodns', # Recommended by aiohttp docs
-        'aiohttp',
-        'aiohttp-jinja2',
-        'aiopg',
-        'datapunt-authorization-django==0.2.18', # Only for jwks module in this package
-        'cchardet', # Recommended by aiohttp docs
-        'datapunt-config-loader',
         'docutils',
         'jsonschema',
         'mimeparse',
@@ -58,7 +52,6 @@ setup(
         'PyJWT',
         'SQLAlchemy==1.1',
         'swagger-parser',
-        'uvloop', # Recommended by aiohttp docs
     ],
     extras_require={
         'docs': [
@@ -69,14 +62,10 @@ setup(
             'sphinx_rtd_theme',
         ],
         'test': [
-            'alembic',
             'pytest',
             'pytest-cov',
-            'pytest-aiohttp'
         ],
         'dev': [
-            'aiohttp-devtools',
-            'alembic',
             'jupyter',
         ]
     },
