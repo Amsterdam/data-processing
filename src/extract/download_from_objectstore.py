@@ -15,10 +15,15 @@ logger = logging.getLogger(__name__)
 
 FORMAT = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=FORMAT, level=logging.DEBUG)
-config = configparser.RawConfigParser()
-config.read('auth.conf')
 
-# get config from auth.conf 
+def readConfig(configfile):config = configparser.RawConfigParser()
+config.read(configfile)
+    print(config.sections())
+    return(config)
+
+
+config = readConfig('config.ini')
+# get config from auth.conf
 OBJECTSTORE = dict(
     VERSION = config.get('objectstore', 'VERSION'),
     AUTHURL = config.get('objectstore', 'AUTHURL'),
@@ -80,7 +85,7 @@ def download_files(file_list):
         # save output to file!
         with open('data/{}'.format(sql_gz_name), 'wb') as outputzip:
             outputzip.write(new_data)
-            
+
 
 def get_full_container_list(conn, container, **kwargs) -> list:
     limit = 10000
@@ -89,7 +94,7 @@ def get_full_container_list(conn, container, **kwargs) -> list:
 
     _, page = conn.get_container(container, **kwargs)
     lastpage = page
-    
+
     for object_info in lastpage:
         yield object_info
 
@@ -129,7 +134,7 @@ def get_latest_mora_files():
 
     download_files(file_list)
 
-    
+
 def main(datadir):
     conn = Connection(**OS_CONNECT)
     download_containers(conn, DATASETS, datadir)
