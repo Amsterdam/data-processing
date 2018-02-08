@@ -8,3 +8,4 @@ reports
 venv/
 .ini
 .conf
+.ipynb_checkpoints
