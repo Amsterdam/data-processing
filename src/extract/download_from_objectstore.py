@@ -24,9 +24,15 @@ logger = logging.getLogger(__name__)
 FORMAT = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 
-config = configparser.RawConfigParser()
-config.read('auth.conf')
 
+def readConfig(configfile):
+    config = configparser.RawConfigParser()
+    config.read(configfile)
+    print(config.sections())
+    return(config)
+
+
+config = readConfig('config.ini')
 #OBJECTSTORE_PASSWORD = os.environ['EXTERN_DATASERVICES_PASSWORD']
 OBJECTSTORE_PASSWORD = config.get('objectstore', 'OS_PASSWORD')
 
