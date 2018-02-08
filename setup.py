@@ -20,9 +20,14 @@ setup(
     author_email='datapunt@amsterdam.nl',
     license='Mozilla Public License Version 2.0',
     classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
         'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'Natural Language :: English',
+        'Topic :: Scientific/Engineering :: Information Analysis',
     ],
 
 
@@ -54,6 +59,7 @@ setup(
         'pyproj==1.9.5.1',
         'xlrd==1.1.0',
         'pprint>=0.1',
+        'configparser==3.5.0',
     ],
     extras_require={
         #'docs': [
