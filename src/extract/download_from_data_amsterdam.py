@@ -54,7 +54,7 @@ def unzip(path, filename_as_folder=False):
                             raise  # re-raise exception if a different error occured                
 
 
-def download(url, download_directory):
+def download_metadata(url, download_directory):
     """Download files from data catalog response id."""
     package_id = get_catalog_package_id(url)
     METADATA_URL = 'https://api.data.amsterdam.nl/{}&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945'.format(package_id)
@@ -65,7 +65,11 @@ def download(url, download_directory):
     metadata = metadata_res.json()
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(metadata)
+    return metadata
 
+
+def download_all_files(metadata):
+    """Download all files from metadata resources list."""
     for result in metadata['result']['resources']:
         if result['url_type'] is not None or result['url_type'] == 'upload':
             filename = result['url'].split('/')[-1]
@@ -107,7 +111,8 @@ for example: https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpack
 
 def main():
     args = parser().parse_args()
-    download(args.url, args.data_path)
+    metadata = download_metadata(args.url, args.data_path)
+    download_all_files(metadata)
     unzip(args.data_path)
 
 
