@@ -65,10 +65,17 @@ def download_file(file_location, target):
     print("Downloaded as", target)
 
 
-def main():
-    parser = argparse.ArgumentParser(description='Get data from data catalog')
+def parser():
+    parser = argparse.ArgumentParser(description="""
+Get data from data.amsterdam.nl.
+""")
     parser.add_argument('metadata_id', help='Insert Metadata id from data catalog, for example: 5d84c216-b826-4406-8297-292678dee13c')
     parser.add_argument('data_path', help='Insert folder path, for example: app/data')
+    return parser
+
+
+def main():
+    parser = parser()
     args = parser.parse_args()
     download(args.metadata_id, args.data_path)
     unzip(args.data_path)
