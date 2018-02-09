@@ -75,13 +75,13 @@ setup(
 
     ],
     extras_require={
-        #'docs': [
+        'docs': [
             #'MacFSEvents',
-            #'Sphinx',
-            #'sphinx-autobuild',
-            #'sphinx-autodoc-typehints',
-            # 'sphinx_rtd_theme',
-        #],
+            'Sphinx',
+            'sphinx-autobuild',
+            'sphinx-autodoc-typehints',
+            'sphinx_rtd_theme',
+        ],
         'test': [
             'pytest',
             'pytest-runner',

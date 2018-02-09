@@ -9,12 +9,11 @@ Data-processing
 
 Data preparation scripts for analysis projects in python 3 and docker.
 For more information about the complete workflow, read the
-`data-pipeline
-guide <https://amsterdam.github.io/guides/data-pipeline/>`.
+`data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
 
 This repo is a WIP so the scripts do not work properly yet.
 
-This package is build by using `setuptools <http://setuptools.readthedocs.io>` to be able to deploy this later on PyPi with version control.
+This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control.
 
 Getting Started
 ===============
@@ -30,6 +29,8 @@ Getting Started
     source ./.venv/bin/activate
 
     pip install -e .[docs,test,dev]
+    or when using zsh
+    pip install -e ./[docs,test,dev/]
 
     # Start a database server (required for all sub-services):
     docker-compose up -d database
