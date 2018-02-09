@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data-processing &mdash; Datapunt processing 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="#"/>
+        <link rel="next" title="Extract" href="components.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Datapunt processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Extract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx_101.html">Sphinx 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Datapunt processing</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Data-processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-processing">
+<span id="index"></span><h1>Data-processing<a class="headerlink" href="#data-processing" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://www.python.org/"><img alt="https://img.shields.io/badge/python-3.6-blue.svg" src="https://img.shields.io/badge/python-3.6-blue.svg" /></a>
+<a class="reference external image-reference" href="https://www.mozilla.org/en-US/MPL/2.0/"><img alt="https://img.shields.io/badge/license-MPLv2.0-blue.svg" src="https://img.shields.io/badge/license-MPLv2.0-blue.svg" /></a>
+<p>Data preparation scripts for analysis projects in python 3 and docker.
+For more information about the complete workflow, read the
+<a class="reference external" href="https://amsterdam.github.io/guides/data-pipeline/">data-pipeline guide</a>.</p>
+<p>This repo is a WIP so the scripts do not work properly yet.</p>
+<p>This package is build by using <a class="reference external" href="http://setuptools.readthedocs.io">setuptools</a> to be able to deploy this later on PyPi with version control.</p>
+</div>
+<div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Clone the repository:</span>
+git clone git@github.com:Amsterdam/data-processing.git
+<span class="nb">cd</span> data-processing
+
+<span class="c1"># Create and activate a virtual environment, for example with:</span>
+python3.6 -m venv --copies --prompt data-processing .venv
+<span class="nb">source</span> ./.venv/bin/activate
+
+pip install -e .<span class="o">[</span>docs,test,dev<span class="o">]</span>
+or when using zsh
+pip install -e ./<span class="o">[</span>docs,test,dev/<span class="o">]</span>
+
+<span class="c1"># Start a database server (required for all sub-services):</span>
+docker-compose up -d database
+
+<span class="c1"># To test the service:</span>
+<span class="o">(</span>not ready yet<span class="o">)</span>
+</pre></div>
+</div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>This repo uses 4 collections: auth, extract, transform and load. Each
+collection contains specific scripts with an example and output file
+which can be run using the the bash command, for example for
+transformations: <code class="docutils literal"><span class="pre">bash</span> <span class="pre">transform.sh</span></code></p>
+<div class="section" id="auth">
+<h3>Auth<a class="headerlink" href="#auth" title="Permalink to this headline">¶</a></h3>
+<p>Fill in the config.ini.example with the proper user credentials for the
+project and rename this file to config.ini. Do not store passwords in
+this file and use .gitignore to ignore .ini files to prevent uploading
+them to github.</p>
+<ul class="simple">
+<li>Login to objectstore</li>
+<li>Login to dev/docker databases</li>
+<li>Access token to retrieve authenticated data from data.amsterdam.nl
+api’s.</li>
+</ul>
+</div>
+<div class="section" id="extract">
+<h3>Extract<a class="headerlink" href="#extract" title="Permalink to this headline">¶</a></h3>
+<p><strong>functions to extract data from the Objectstore where raw files are
+stored, from API’s or from the data catalog</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">csv_dataframe</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">download_bbga_by_variable__area_year</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">download_from_api</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">download_from_data_catalog</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">download_from_objectstore</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform">
+<h3>Transform<a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h3>
+<p><strong>functions to transform, preprocess and enrich datasets. Divided into
+the following subsections:</strong></p>
+<ul>
+<li><p class="first">data - common small datasets that can be used for the enrichment
+processes</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">amsterdam_hotspots</span><span class="o">.</span><span class="n">csv</span>
+<span class="o">-</span> <span class="n">centroid_streets</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">data_visualization - common data visualization functions</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">.......</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Enrichment - enrich files with other data sets</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="n">add_public_events</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">geo_spatial - common geo functions</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">add_area_codes_from_centroid</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">clean_BAG_address_NED</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">divide_bbox_amsterdam_in_quadrants</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">get_centroid_street_NED</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">get_nearest_address</span><span class="o">-</span><span class="n">areacodes_from_latlon</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">rd_to_wgs84</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">helper_functions - templates for commonly used data operations</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">flatten_nested_json</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">preprocessing - common data preprocessing steps also for ML purposes</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">data_selection</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">ml_helperfunctions</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">ml_preprocessing</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">sql - common sql queries and operations</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">add_areacodes</span><span class="o">.</span><span class="n">sql</span>
+<span class="o">-</span> <span class="n">add_geom_column</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="load">
+<h3>Load<a class="headerlink" href="#load" title="Permalink to this headline">¶</a></h3>
+<p><strong>Common functions to load data to the PostgreSQL dbs</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">load_json_to_postgres</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">load_xls_to_postgres</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Extract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extract/download_from_objectstore.html">Download from objectstore</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx_101.html">Sphinx 101</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sphinx_101.html#rest-formatting">ReST formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx_101.html#roles-added-by-sphinx">Roles added by Sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx_101.html#directives">Directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx_101.html#autodoc">Autodoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx_101.html#intersphinx">Intersphinx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#definitions">1. Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#license-grants-and-conditions">2. License Grants and Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#responsibilities">3. Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#inability-to-comply-due-to-statute-or-regulation">4. Inability to Comply Due to Statute or Regulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#termination">5. Termination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#disclaimer-of-warranty">6. Disclaimer of Warranty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#limitation-of-liability">7. Limitation of Liability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#litigation">8. Litigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#miscellaneous">9. Miscellaneous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#versions-of-the-license">10. Versions of the License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#exhibit-a-source-code-form-license-notice">Exhibit A - Source Code Form License Notice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#exhibit-b-incompatible-with-secondary-licenses-notice">Exhibit B - “Incompatible With Secondary Licenses” Notice</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="components.html" class="btn btn-neutral float-right" title="Extract" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gemeente Amsterdam.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
