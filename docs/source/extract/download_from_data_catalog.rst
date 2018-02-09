@@ -1,5 +1,5 @@
 
-.. _download_from_data_  catalog:
+.. _download_from_data_catalog:
 
 Download from data.amsterdam.nl
 ===============================
@@ -11,5 +11,6 @@ main
 ----
 
 .. argparse::
-   :ref: extract.download_from_data_catalog.main
-   :prog: download_from_data_catalog
+    :filename: ../src/extract/download_from_data_catalog.py
+    :func: parser
+    :prog: download_from_data_catalog
