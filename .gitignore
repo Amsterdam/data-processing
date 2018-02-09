@@ -1,5 +1,4 @@
 .idea
-.pytest_cache
 __pycache__
 *.pyc
 reports
@@ -10,4 +9,3 @@ venv/
 .ini
 .conf
 .ipynb_checkpoints
-*.egg-info

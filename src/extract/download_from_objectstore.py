@@ -16,13 +16,16 @@ logger = logging.getLogger(__name__)
 FORMAT = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 
-def readConfig(configfile):config = configparser.RawConfigParser()
-config.read(configfile)
+def readConfig(configfile):
+    config = configparser.RawConfigParser()
+    config.read(configfile)
     print(config.sections())
     return(config)
 
 
-config = readConfig('config.ini')
+print(os.getcwd())
+config = readConfig('../../config.ini')
+
 # get config from auth.conf
 OBJECTSTORE = dict(
     VERSION = config.get('objectstore', 'VERSION'),
