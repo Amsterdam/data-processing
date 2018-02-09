@@ -62,12 +62,15 @@ def load_gebieden(pg_str):
 
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx."""
-    desc = "Upload gebieden into PostgreSQL for datapunt WFS with use of ogr2ogr."
+    desc = """
+Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
+Example to run in development: load_wfs_to_postgres config.ini dev
+    """
     parser = argparse.ArgumentParser(desc)
     parser.add_argument(
-        'config_path', type=str, help="Insert the relative path + name of your config.ini file, for example auth/config.ini")
+        'config_path', type=str, help="Type the relative path + name of the config file, for example: auth/config.ini")
     parser.add_argument(
-        'db_config', type=str, help="Choose database config setup name used in config.ini to set the correct port number, etc. Type: 'dev' or 'docker'", nargs=1)
+        'db_config', type=str, help="Type 'dev' or 'docker' to setup the proper port and ip settings", nargs=1)
     return parser
 
 
