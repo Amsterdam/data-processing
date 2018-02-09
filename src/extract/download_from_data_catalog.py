@@ -7,11 +7,12 @@ import shutil
 import argparse
 import pprint
 import requests
-import zipfile
 
 
 def unzip(path, filename_as_folder=False):
-    """Find all .zip files and unzip in root, use filename_as_folder=True to unzip to subfolders with name of zipfile."""
+    """
+    Find all .zip files and unzip in root
+    use filename_as_folder=True to unzip to subfolders with name of zipfile."""
     for filename in os.listdir(path):
         if filename.endswith(".zip"):
             name = os.path.splitext(os.path.basename(filename))[0]
@@ -64,10 +65,14 @@ def download_file(file_location, target):
     print("Downloaded as", target)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description='Get data from data catalog')
     parser.add_argument('metadata_id', help='Insert Metadata id from data catalog, for example: 5d84c216-b826-4406-8297-292678dee13c')
     parser.add_argument('data_path', help='Insert folder path, for example: app/data')
     args = parser.parse_args()
     download(args.metadata_id, args.data_path)
     unzip(args.data_path)
+
+
+if __name__ == "__main__":
+    main()

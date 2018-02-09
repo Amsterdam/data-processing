@@ -79,7 +79,8 @@ setup(
             #'MacFSEvents',
             'Sphinx',
             'sphinx-autobuild',
-            'sphinx-autodoc-typehints',
+            #'sphinx-autodoc-typehints',
+            'sphinx-argparse',
             'sphinx_rtd_theme',
         ],
         'test': [

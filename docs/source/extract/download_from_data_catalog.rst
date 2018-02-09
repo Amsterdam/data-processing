@@ -10,4 +10,6 @@ Download from data.amsterdam.nl
 main
 ----
 
-.. autofunction:: extract.download_from_data_catalog.main
+.. argparse::
+   :ref: extract.download_from_data_catalog.main
+   :prog: download_from_data_catalog
