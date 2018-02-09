@@ -16,7 +16,7 @@ Dockerfile
 .settings
 
 # Virtualenvs
-.venv
+venv
 
 # Python
 *.pyc
