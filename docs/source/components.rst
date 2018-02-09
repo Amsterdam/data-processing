@@ -7,4 +7,4 @@ Extract
     :maxdepth: 1
 
     extract/download_from_objectstore
-    extract/download_from_data_catalog
+    extract/download_from_data_amsterdam
