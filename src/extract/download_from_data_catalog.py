@@ -2,11 +2,19 @@
 """
 Download the latest shapefiles.
 """
-import os
+import os, errno
 import shutil
 import argparse
 import pprint
 import requests
+import zipfile
+
+def create_dir_if_not_exists(directory):
+    try:
+        os.makedirs(directory)
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
 
 
 def unzip(path, filename_as_folder=False):
@@ -52,6 +60,9 @@ def download(metadata_id, download_directory):
         if result['url_type'] is not None or result['url_type'] == 'upload':
             filename = result['url'].split('/')[-1]
             print('Downloading ' + filename)
+
+            create_dir_if_not_exists(download_directory)
+
             download_file(result['url'], os.path.join(download_directory,filename))
 
 
@@ -59,6 +70,7 @@ def download_file(file_location, target):
     print("Downloading File from", file_location)
     file = requests.get(file_location, stream=True)
     file.raise_for_status()
+
     with open(target, 'wb') as f:
         file.raw.decode_content = True
         shutil.copyfileobj(file.raw, f)
@@ -70,7 +82,7 @@ def parser():
 Get data from data.amsterdam.nl.
 Example:::
 
-  download_from_data_catalog 5d84c216-b826-4406-8297-292678dee13c app/data
+  python src/extract/download_from_data_catalog 5d84c216-b826-4406-8297-292678dee13c app/data
   
 """)
     parser.add_argument('metadata_id', help="""
