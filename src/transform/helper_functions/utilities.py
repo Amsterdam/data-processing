@@ -19,3 +19,12 @@ def flatten_json(jsonObject):
 
     flatten(jsonObject)
     return out
+
+
+def clean_dict(d):
+    """
+    remove a filed from a dict based in key name
+    """
+    if not isinstance(d, dict):
+        return d
+    return dict((cleandict(k), v) for k,v in d.items() if k is not 'dates')
