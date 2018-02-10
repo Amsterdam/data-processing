@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import subprocess
 import logging
@@ -48,9 +49,9 @@ def get_pg_str(host, port, user, dbname, password):
     )
 
 
-def load_gebieden(pg_str):
-    """Load all area types of Amsterdam into Postgres."""
-    areaNames = ['stadsdeel', 'buurt', 'buurtcombinatie', 'gebiedsgerichtwerken']
+def load_layers(pg_str):
+    """Load layers into Postgres using a list of titles of each layer within the WFS service."""
+    layerNames = ['stadsdeel', 'buurt', 'buurtcombinatie', 'gebiedsgerichtwerken']
 
     srsName = 'EPSG:28992'
 
@@ -85,14 +86,14 @@ def get_config(full_path):
 
 
 def main():
+    FORMAT = '%(asctime)-15s %(message)s'
+    logging.basicConfig(format=FORMAT, level=logging.DEBUG)
     args = parser().parse_args()
     config = get_config(args.config_path)
     db_config = args.db_config[0]
     pg_str = get_pg_str(config.get(db_config,'host'),config.get(db_config,'port'),config.get(db_config,'dbname'), config.get(db_config,'user'), config.get(db_config,'password'))
-    load_gebieden(pg_str)
+    load_layers(pg_str)
 
 
 if __name__ == '__main__':
-    FORMAT = '%(asctime)-15s %(message)s'
-    logging.basicConfig(format=FORMAT, level=logging.DEBUG)
     main()

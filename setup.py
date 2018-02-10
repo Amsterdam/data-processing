@@ -36,6 +36,7 @@ setup(
         'console_scripts': [
             'download_from_data_amsterdam = extract.download_from_data_amsterdam:main',
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
+            'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
         ],
     },
 
