@@ -9,3 +9,6 @@ venv/
 .ini
 .conf
 .ipynb_checkpoints
+*.egg-info
+build/
+gh-pages/

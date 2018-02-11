@@ -1,0 +1,15 @@
+version: '3.0'
+services:
+  database:
+    image: amsterdam/postgres
+    ports:
+      - "5501:5432"
+    environment:
+      POSTGRES_HOST: localhost
+      POSTGRES_PASSWORD: insecure
+      POSTGRES_DB: projectname
+      POSTGRES_USER: projectname
+  data-processing:
+    build: .
+    links:
+      - database

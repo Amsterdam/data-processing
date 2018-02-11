@@ -32,13 +32,13 @@ setup(
 
 
     # Entry points:
-    #entry_points={
-     #   'console_scripts': [
-     #       'extract = extract.main:main',
-     #       'transform = transform.main:main',
-     #       'load = load.main:main'
-     #   ],
-    #},
+    entry_points={
+        'console_scripts': [
+            'download_from_data_amsterdam = extract.download_from_data_amsterdam:main',
+            'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
+            'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
+        ],
+    },
 
     # Packages and Package Data:
     package_dir={'': 'src'},
@@ -49,7 +49,6 @@ setup(
 
     # Requirements:
     install_requires=[
-        # 'docutils',
 
         # Getters
         'requests==2.18.4',
@@ -69,6 +68,7 @@ setup(
         'pandas==0.22.0',
 
         # Utilities
+        'docutils',
         'pprint>=0.1',
         'pyproj==1.9.5.1',
         'requests_cache==0.4.13',
@@ -79,7 +79,8 @@ setup(
             #'MacFSEvents',
             'Sphinx',
             'sphinx-autobuild',
-            'sphinx-autodoc-typehints',
+            #'sphinx-autodoc-typehints',
+            'sphinx-argparse',
             'sphinx_rtd_theme',
         ],
         'test': [
