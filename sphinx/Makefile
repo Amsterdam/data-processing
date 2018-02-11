@@ -6,8 +6,8 @@ SPHINXBUILD   := sphinx-build
 AUTOBUILD     := sphinx-autobuild
 SOURCEDIR     := source
 BUILDDIR      := ../docs
-GITORIGIN     = "$$(git remote show -n origin | grep 'Fetch URL:' | grep -o 'git@.*')"
-GITBRANCH     = "$$(git branch | grep '^\* ' | sed 's/^\* //')"
+GITORIGIN     = "$$(git config --get remote.origin.url)"
+GITBRANCH     = "$$(git symbolic-ref HEAD | sed -e "s/^refs\/heads\///")"
 
 
 docs:
