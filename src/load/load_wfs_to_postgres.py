@@ -37,7 +37,7 @@ def run_command_sync(cmd, allow_fail=False):
 
 
 def wfs2psql(url, pg_str, layer_name, **kwargs):
-    """Command line string to load a WGS into PostGres."""
+    """Command line ogr2ogr string to load a WFS into PostGres."""
     cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name ,'-F' ,'PostgreSQL' ,pg_str ,url]
     run_command_sync(cmd)
 
@@ -67,7 +67,7 @@ def parser():
 Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
 Example to run in development: load_wfs_to_postgres config.ini dev
     """
-    parser = argparse.ArgumentParser(desc)
+    parser = argparse.ArgumentParser(description=desc)
     parser.add_argument(
         'config_path', type=str, help="Type the relative path + name of the config file, for example: auth/config.ini")
     parser.add_argument(

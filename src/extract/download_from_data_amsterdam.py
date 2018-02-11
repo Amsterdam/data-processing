@@ -5,17 +5,9 @@ import shutil
 import argparse
 import pprint
 import requests
-from zipfile import BadZipfile, ZipFile
 import urllib.parse as urlparse
+from helper_functions import create_dir_if_not_exists, unzip
 
-
-def create_dir_if_not_exists(directory):
-    """Create directory if it does not yet exists. directory can be set as: dir/anotherdir."""
-    try:
-        os.makedirs(directory)
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise
 
 
 def get_catalog_package_id(url):
@@ -24,34 +16,6 @@ def get_catalog_package_id(url):
     parsed_url = urlparse.urlparse(decoded_url)
     meta_id = urlparse.parse_qs(parsed_url.fragment)['?dte'][0]
     return meta_id
-
-
-def unzip(path, filename_as_folder=False):
-    """
-    Find all .zip files and unzip in root.
-    Use filename_as_folder=True to unzip to subfolders with name of zipfile."""
-    for filename in os.listdir(path):
-        if filename.endswith(".zip"):
-            name = os.path.splitext(os.path.basename(filename))[0]
-            if not os.path.isdir(name):
-                try:
-                    file = os.path.join(path, filename)
-                    zip = ZipFile(file)
-                    if filename_as_folder:
-                        directory = os.path.join(path, name)
-                        os.mkdir(directory)
-                        print("Unzipping {} to {}".format(filename, directory))
-                        zip.extractall(directory)
-                    else:
-                        print("Unzipping {} to {}".format(filename, path))
-                        zip.extractall(path)
-                except BadZipfile:
-                    print("BAD ZIP: " + filename)
-                    try:
-                        os.remove(file)
-                    except OSError as e:  # this would be "except OSError, e:" before Python 2.6
-                        if e.errno != errno.ENOENT:  # errno.ENOENT = no such file or directory
-                            raise  # re-raise exception if a different error occured                
 
 
 def download_metadata(url):
@@ -77,7 +41,7 @@ def download_all_files(metadata, download_directory):
 
             create_dir_if_not_exists(download_directory)
 
-            download_file(result['url'], os.path.join(download_directory,filename))
+            download_file(result['url'], os.path.join(download_directory, filename))
 
 
 def download_file(file_location, target):
@@ -104,7 +68,7 @@ download_from_data_amsterdam https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3
 Insert full url from main result page of dataset, 
 for example: https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945
 """)
-    parser.add_argument('data_path', help='Specify the desired output folder path, for example: app/data')
+    parser.add_argument('output_folder', help='Specify the desired output folder path, for example: app/data')
     #parser.add_argument('--f','filename_as_folder', default=False, help='use --f=True to unzip to subfolders with name of zipfile.')
     return parser
 
@@ -112,8 +76,8 @@ for example: https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpack
 def main():
     args = parser().parse_args()
     metadata = download_metadata(args.url)
-    download_all_files(metadata, args.data_path)
-    unzip(args.data_path)
+    download_all_files(metadata, args.output_folder)
+    unzip(args.output_folder)
 
 
 if __name__ == "__main__":

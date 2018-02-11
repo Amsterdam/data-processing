@@ -9,13 +9,11 @@ from helper_functions import save_file
 
 def parser():
     """Parser function to run arguments from the command line and to add description to sphinx."""
-    desc = """
+    parser = argparse.ArgumentParser(description="""
 Get multiple layers as a geojson file from a WFS service.
 command line example: 
       `get_geojson_from_wfs https://map.data.amsterdam.nl/maps/gebieden stadsdeel,buurtcombinatie output_folder`
-  """
-
-    parser = argparse.ArgumentParser(desc)
+  """)
     parser.add_argument('url_wfs',
                         type=str,
                         help="WFS url, for example http://map.data.amsterdam.nl/maps/gebieden")
