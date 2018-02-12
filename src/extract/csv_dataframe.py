@@ -6,6 +6,7 @@
 import pandas as pd
 import numpy as np
 import argparse
+import datetime
 
 def read_crow_file(file, datecol):
     """
@@ -76,6 +77,14 @@ def strip_cols(df):
     return df
 
 
+def valid_date(s):
+    try:
+        return datetime.strptime(s, "%d-m-%Y %H:%M:%S")
+    except ValueError:
+        msg = "Not a valid date: '{0}'.".format(s)
+        raise argparse.ArgumentTypeError(msg)
+
+
 def parser():
     """Parser function to run arguments from the command line and to add description to sphinx."""
     parser = argparse.ArgumentParser(description=
@@ -93,7 +102,7 @@ def parser():
                         type=str,
                         help="MORA file to be loaded in")
     parser.add_argument('datecol',
-                        type=date,
+                        type=valid_date,
                         help="date column from which the date and time are extracted and put into different \
                         columns. The mora date column in source file is 'aa_adwh_datum_melding' ")
     return parser
