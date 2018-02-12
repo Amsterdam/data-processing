@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 import argparse
 import datetime
+import sys
 
 def read_crow_file(file, datecol):
     """
@@ -79,11 +80,17 @@ def strip_cols(df):
 
 def valid_date(s):
     try:
-        return datetime.strptime(s, "%d-m-%Y %H:%M:%S")
+        return datetime.strptime(s, "%d-%m-%Y %H:%M:%S")
     except ValueError:
         msg = "Not a valid date: '{0}'.".format(s)
         raise argparse.ArgumentTypeError(msg)
 
+def is_valid_file(parser, arg):
+    if not os.path.exists(arg):
+        parser.error("The file %s does not exist!" % arg)
+    else:
+        return open(arg, 'r')  # return an open file handle
+    
 
 def parser():
     """Parser function to run arguments from the command line and to add description to sphinx."""
@@ -91,15 +98,15 @@ def parser():
     """ parses the MORA Meldingen Openbare Ruimte Amsterdam once downloaded from objectstore.
     Args:
         file (csv): containing at least a date column
-        datecol: in format %d-m-%Y %H:%M:%S
+        datecol: in format %d-%m-%Y %H:%M:%S
     Returns:
         * pd.DataFrame: cleaned data frame with datum and time column added
     command line example: 
       `read_mora_file(PATH_TO_MORA_FILE + MORA_FILE, datecol='aa_adwh_datum_melding')`
     """
                                     )
-    parser.add_argument('file',
-                        type=str,
+    parser.add_argument('-file', dest='filename', required=True,
+                        type=lambda x: is_valid_file(parser, x),
                         help="MORA file to be loaded in")
     parser.add_argument('datecol',
                         type=valid_date,
@@ -108,10 +115,12 @@ def parser():
     return parser
 
 
-def main():
+def main(): #argv=sys.argv[1:]
     args = parser().parse_args()
-    print(args)
-    read_mora_file(args.file, args.datecol)
+    print(args.file.readlines())
+    with args.file as f:
+        print (file.read())
+        #read_mora_file(args.file, args.datecol)
 
 if __name__ == '__main__':
     main()
