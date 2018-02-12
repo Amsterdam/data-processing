@@ -11,9 +11,13 @@ Data preparation scripts for analysis projects in python 3 and docker.
 For more information about the complete workflow, read the
 `data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
 
-This repo is a WIP so the scripts do not work properly yet.
+How to use each function can be read here:
+`Data processing read the docs <https://amsterdam.github.io/data-processing/>`_ 
+
+This repo is a WIP so only the functions explained in the above docs are working. Please use a pull request to add new functions or code review. 
 
 This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control.
+
 
 Getting Started
 ===============
