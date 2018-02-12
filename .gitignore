@@ -12,3 +12,4 @@ venv/
 *.egg-info
 build/
 gh-pages/
+data/
