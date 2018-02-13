@@ -46,6 +46,7 @@ Load
 .. toctree::
     :maxdepth: 1
 
+    load/load_xls_into_postgres
     load/load_wfs_into_postgres
 
 Helper functions
