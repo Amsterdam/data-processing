@@ -55,7 +55,7 @@ def get_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
     """
       Get all features from one layer in WFS service as a geojson.
     """
-    layer_names=layer_names.split(',')
+    layer_names = layer_names.split(',')
     # print(layer_names)
     for layer_name in layer_names:
         parameters = {"REQUEST": "GetFeature",
@@ -74,7 +74,7 @@ def get_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
         filename = "{}_{}".format(layer_name, datetime.now().date())
         save_file(geojson, output_folder, filename, suffix)
 
-    #return geojson
+    # return geojson
 
 
 def main():

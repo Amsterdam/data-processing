@@ -8,10 +8,11 @@ def getJson(url):
         return print(getData.status_code)
 
 
-def getAreaCodes(item, key, lat, lon):
+def getAreaCodes(item, lat, lon):
     """
     Get specific information like area codes based radius to nearest address based on lat/lon value
-       ex: https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&lat=52.3731750&lon=4.8924655radius=50
+       ex: https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&lat=52.3731750&lon=4.8924655&radius=50
+    It currently is coded to work only to get buurten
     """
     url = "https://api.data.amsterdam.nl/geosearch/search/?item=%s&lat=%s&lon=%s&radius=1" % (item, lat, lon)
     print(url)
@@ -22,7 +23,7 @@ def getAreaCodes(item, key, lat, lon):
         uri = jsonData["features"][0]["properties"]["uri"]
         data = getJson(uri)
         # print(data['volledige_code'])
-        return [data[key], data["stadsdeel"]["naam"]]
+        return [data["buurt"]["code"], data["buurt"]["naam"]]
     else:
         print('Valt buiten Amsterdamse buurten')
         return ['Valt niet binnen buurt', 'Buiten Amsterdam']

@@ -62,7 +62,6 @@ Get data and metadata from data.amsterdam.nl, unzip if needed and put the file i
 To test run this command line::
 
 download_from_data_amsterdam https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c app/data
-  
 """)
     parser.add_argument('url', help="""
 Insert full url from main result page of dataset, 
