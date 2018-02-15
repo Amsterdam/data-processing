@@ -8,7 +8,7 @@ import pandas as pd
 from helper_functions import postgres_engine_pandas
 
 
-def load_xls(datadir, tablename, config_path, db_config_name):
+def load_xls(datadir, config_path, db_config_name):
     """Load xlsx into postgres for multiple files"""
     files = os.listdir(datadir)
     files_xls = [f for f in files if f[-4:] in ('xlsx', 'xls')]
@@ -35,8 +35,8 @@ def parser():
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument(
         'datadir', type=str, help='Local data directory, for example: projectdir/data')
-    parser.add_argument(
-        'tablename', type=str, help='Write the desired table name in lowercase and underscores.')
+    #parser.add_argument(
+    #    'tablename', type=str, help='Write the desired table name in lowercase and underscores.')
     parser.add_argument(
         'config_path', type=str, help='Location of the config.ini file: for example: /auth/config.ini')
     parser.add_argument(
@@ -47,7 +47,10 @@ def parser():
 
 def main():
     args = parser().parse_args()
-    load_xls(args.datadir, args.tablename, args.config_path, args.dbconfig)
+    load_xls(args.datadir, 
+             #args.tablename, 
+             args.config_path, 
+             args.dbconfig)
 
 
 if __name__ == '__main__':
