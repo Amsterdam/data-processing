@@ -22,24 +22,43 @@ This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ 
 Getting Started
 ===============
 
+# Clone the repository:
+
 .. code-block:: bash
 
-    # Clone the repository:
-    git clone git@github.com:Amsterdam/data-processing.git
+    git clone https://github.com/Amsterdam/data-processing.git
     cd data-processing
 
+# Create Virtual environment in Windows
+
+.. code-block:: bash
+
     # Create and activate a virtual environment, for example with:
-    python3.6 -m venv --copies --prompt data-processing .venv
-    source ./.venv/bin/activate
+    python -m venv --copies --prompt data-processing .venv 
+    .venv\Scripts\activate
+
+# Create Virtual environment in OSX
+.. code-block:: bash
+
+    virtualenv --python=$(which python3) venv
+    source venv/bin/activate 
+
+# Install the data-processing modules in editable mode
+
+.. code-block:: bash    
 
     pip install -e .[docs,test,dev]
     or when using zsh
     pip install -e ./[docs,test,dev/]
 
-    # Start a database server (required for all sub-services):
+# Start a database server in a new terminal (required for all sub-services):
+
+.. code-block:: bash    
+
     docker-compose up -d database
 
-    # To test the service:
+
+# To test the service:
     (not ready yet)
 
 
