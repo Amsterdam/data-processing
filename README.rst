@@ -22,14 +22,14 @@ This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ 
 Getting Started
 ===============
 
-# Clone the repository:
+Clone the repository:
 
 .. code-block:: bash
 
     git clone https://github.com/Amsterdam/data-processing.git
     cd data-processing
 
-# Create Virtual environment in Windows
+Create Virtual environment in Windows
 
 .. code-block:: bash
 
@@ -37,13 +37,14 @@ Getting Started
     python -m venv --copies --prompt data-processing .venv 
     .venv\Scripts\activate
 
-# Create Virtual environment in OSX
+Create Virtual environment in OSX
+
 .. code-block:: bash
 
     virtualenv --python=$(which python3) venv
     source venv/bin/activate 
 
-# Install the data-processing modules in editable mode
+Install the data-processing modules in editable mode
 
 .. code-block:: bash    
 
@@ -51,7 +52,7 @@ Getting Started
     or when using zsh
     pip install -e ./[docs,test,dev/]
 
-# Start a database server in a new terminal (required for all sub-services):
+Start a database server in a new terminal (required for all sub-services):
 
 .. code-block:: bash    
 
