@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Data Processing modules" href="../modules.html"/>
+        <link rel="next" title="load_wfs_to_postgres" href="load_wfs_into_postgres.html"/>
+        <link rel="prev" title="get_geojson_from_wfs" href="../transform/geospatial/get_geojson_from_wfs.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -92,8 +95,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Data Processing Modules</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Data Processing Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#load">Load</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">load_xls_to_postgres</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-load.load_xls_to_postgres">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="load_wfs_into_postgres.html">load_wfs_to_postgres</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helper-functions">Helper functions</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx_101.html">How to use Sphinx</a></li>
@@ -142,6 +160,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../modules.html">Data Processing modules</a> &raquo;</li>
+        
       <li>load_xls_to_postgres</li>
     
     
@@ -163,8 +183,8 @@
             
   <div class="section" id="load-xls-to-postgres">
 <span id="id1"></span><h1>load_xls_to_postgres<a class="headerlink" href="#load-xls-to-postgres" title="Permalink to this headline">¶</a></h1>
-<p>Upload xls files into PostgreSQL using Pandas.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_xls_to_postgres</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">datadir</span> <span class="n">tablename</span> <span class="n">config_path</span> <span class="n">dbconfig</span>
+<p>Upload xls files as separate tables into PostgreSQL using Pandas to_sql.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_xls_to_postgres</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">datadir</span> <span class="n">config_path</span> <span class="n">dbconfig</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -177,9 +197,6 @@
 <kbd>datadir</kbd></td>
 <td>Local data directory, for example: projectdir/data</td></tr>
 <tr><td class="option-group">
-<kbd>tablename</kbd></td>
-<td>Write the desired table name in lowercase and underscores.</td></tr>
-<tr><td class="option-group">
 <kbd>config_path</kbd></td>
 <td>Location of the config.ini file: for example: /auth/config.ini</td></tr>
 <tr><td class="option-group">
@@ -190,6 +207,12 @@
 </div>
 <div class="section" id="module-load.load_xls_to_postgres">
 <span id="functions"></span><h2>functions<a class="headerlink" href="#module-load.load_xls_to_postgres" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="load.load_xls_to_postgres.load_xls">
+<code class="descclassname">load.load_xls_to_postgres.</code><code class="descname">load_xls</code><span class="sig-paren">(</span><em>datadir</em>, <em>config_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_xls_to_postgres.load_xls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load xlsx into postgres for multiple files</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -200,6 +223,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="load_wfs_into_postgres.html" class="btn btn-neutral float-right" title="load_wfs_to_postgres" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../transform/geospatial/get_geojson_from_wfs.html" class="btn btn-neutral" title="get_geojson_from_wfs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
