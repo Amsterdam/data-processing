@@ -26,7 +26,7 @@ def load_xls(datadir, tablename, config_path, db_config_name):
         # load the data into pg
         engine = postgres_engine_pandas(config_path, db_config_name)
         # TODO: link to to_sql function
-        df.to_sql(filename[-4:], engine, if_exists='replace', index=True, index_label='idx')  # ,dtype={geom: Geometry('POINT', srid='4326')})
+        df.to_sql(filename[:-4], engine, if_exists='replace', index=True, index_label='idx')  # ,dtype={geom: Geometry('POINT', srid='4326')})
         print(filename + ' added')
 
 
