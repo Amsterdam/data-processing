@@ -3,94 +3,106 @@
 ###############################################################################
 
 import os
+import sys
+sys.path.insert(0, '../')
+import errno
 import argparse
-import logging
+import datetime
 import configparser
 from swiftclient.client import Connection
+from dateutil import parser as dateparser
+from helper_functions import create_dir_if_not_exists
+import logging
 
+log = logging.getLogger(__name__)
 logging.getLogger('requests').setLevel(logging.WARNING)
 logging.getLogger('urllib3').setLevel(logging.WARNING)
 logging.getLogger('swiftclient').setLevel(logging.WARNING)
-logger = logging.getLogger(__name__)
+
 
 FORMAT = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 
-def readConfig(configfile):
+
+def get_config(full_path):
+    """Get config file with login credentials, port numbers..."""
     config = configparser.RawConfigParser()
-    config.read(configfile)
-    print(config.sections())
-    return(config)
+    config.read(full_path)
+    print("Found these configs:")
+    for config_name in config.sections():
+        print('-', config_name)
+    return config
 
 
-print(os.getcwd())
-config = readConfig('../../config.ini')
-
-# get config from auth.conf
-OBJECTSTORE = dict(
-    VERSION = config.get('objectstore', 'VERSION'),
-    AUTHURL = config.get('objectstore', 'AUTHURL'),
-    TENANT_NAME = config.get('objectstore', 'TENANT_NAME'),
-    TENANT_ID = config.get('objectstore', 'TENANT_ID'),
-    USER = config.get('objectstore', 'USER'),
-    PASSWORD = config.get('objectstore', 'PASSWORD'),
-    REGION_NAME = config.get('objectstore', 'REGION_NAME')
-)
-
-
-
-def get_connection(store_settings: dict) -> Connection:
+def get_connection(full_path, config_name):
     """
     get an objectsctore connection
+    args:
+        full_path:   path to the config.ini file where the config variables are stored
+        config_name: the different configs as stated in the config file. Pick 'objectstore'
+    returns
+        swiftclient connection
     """
-    store = store_settings
+    config = configparser.RawConfigParser()
+    config.read(full_path)
+    
 
-    os_options = {
-        'tenant_id': store['TENANT_ID'],
-        'region_name': store['REGION_NAME'],
-        # 'endpoint_type': 'internalURL'
-    }
-
-    # when we are running in cloudvps we should use internal urls
-    use_internal = os.getenv('OBJECTSTORE_LOCAL', '')
-    if use_internal:
-        os_options['endpoint_type'] = 'internalURL'
-
-    connection = Connection(
-        authurl=store['AUTHURL'],
-        user=store['USER'],
-        key=store['PASSWORD'],
-        tenant_name=store['TENANT_NAME'],
-        auth_version=store['VERSION'],
-        os_options=os_options
-    )
-
+    OBJECTSTORE = dict(
+        VERSION = config.get(config_name, 'VERSION'),
+        AUTHURL = config.get(config_name, 'AUTHURL'),
+        TENANT_NAME = config.get(config_name, 'TENANT_NAME'),
+        TENANT_ID = config.get(config_name, 'TENANT_ID'),
+        USER = config.get(config_name, 'USER'),
+        #PASSWORD = os.environ['OBJECTSTORE_PASSWORD'],
+        PASSWORD = config.get(config_name, 'PASSWORD'),
+        REGION_NAME = config.get(config_name, 'REGION_NAME')
+)
+    
+    connection = Connection(OBJECTSTORE)
+    
     return connection
 
 
 def get_object(connection, object_meta_data: dict, dirname: str):
     """
-    Download object from objectstore.
-    object_meta_data is an object returned when using 'get_full_container_list'
+    extract file from objectstore
+    Args:
+        connection = swiftclient connection to Objectstore
+        object_meta_data = dictionary of files with metadata on OS
+        dirname = '/../ '
+    returns:
     """
     return connection.get_object(dirname, object_meta_data['name'])[1]
 
-def download_files(file_list):
+
+def download_files(file_list, download_dir):
     """Download the latest data. """
-    for _, source_data_file in file_list:
+    for source_data_file in file_list:
         sql_gz_name = source_data_file['name'].split('/')[-1]
         msg = 'Downloading: %s' % (sql_gz_name)
-        log.debug(msg)
-
+        
+        create_dir_if_not_exists(download_dir)
+        
         new_data = get_object(
-            mora_conn, source_data_file, 'Dataservices')
-
+            connection, source_data_file, 'Dataservices')
+        
+        print (type(download_dir), type(new_data))
+        
         # save output to file!
-        with open('data/{}'.format(sql_gz_name), 'wb') as outputzip:
+        with open(download_dir + '{}'.format(sql_gz_name), 'wb') as outputzip:
             outputzip.write(new_data)
 
 
 def get_full_container_list(conn, container, **kwargs) -> list:
+    """
+    get all files stored in container (incl. sub-containers)
+    
+    Args
+        conn = connection with the Objectstore (using swiftclient Connection API)
+        container == "path/in/Objectstore"
+    returns    
+        generator object
+    """
     limit = 10000
     kwargs['limit'] = limit
     page = []
@@ -109,52 +121,56 @@ def get_full_container_list(conn, container, **kwargs) -> list:
             yield object_info
 
     raise StopIteration
+
     
-def get_latest_mora_files():
+def get_expected_files(EXPECTED_FILES:list):
     """
-    Download the expected files provided by mks / kpn
+    Download the expected files provided by EXPECTED_FILES list
+    for instance: get_expected_files(EXPECTED_FILES=['aanvalsplan_schoon/mora/MORA_data_2014_2017_sel.csv']) 
     """
     file_list = []
 
-    meta_data = get_full_container_list(
-        mora_conn, 'Dataservices')
-
-    for o_info in meta_data:
+    for obj in meta_data:
         for expected_file in EXPECTED_FILES:
-            if not o_info['name'].endswith(expected_file):
+            if not obj['name'].endswith(expected_file):
                 continue
 
-            dt = parser.parse(o_info['last_modified'])
+            dt = dateparser.parse(obj['last_modified'])
             now = datetime.datetime.now()
 
             delta = now - dt
 
             log.debug('AGE: %d %s', delta.days, expected_file)
 
-
             log.debug('%s %s', EXPECTED_FILES, dt)
-            file_list.append((dt, o_info))
-
-    download_files(file_list)
-
-
-def main(datadir):
-    conn = Connection(**OS_CONNECT)
-    download_containers(conn, DATASETS, datadir)
+            file_list.append((obj))
+            print (dt, file_list)
+            
+    download_files(file_list, 'app/data/')
 
 
-if __name__ == '__main__':
-    desc = "Download data from objectore."
-    parser = argparse.ArgumentParser(desc)
-    parser.add_argument('datadir', type=str,
-                        help='Local data directory.', nargs=1)
-    args = parser.parse_args()
+def parser():
+    """Parser function to run arguments from commandline and to add description to sphinx."""
+    parser = argparse.ArgumentParser(description="""
+Download data from the Objectstore, and write to local directory
+To test run this command line: 
+""")
+    parser.add_argument('config_file',
+                        help='weukfwkefy')
+    parser.add_argument('connection', 
+                        help="""a connection to the Objectstore""")
+    parser.add_argument('meta_data', 
+                        help='the meatadate of the files in the specified containers')
+    
+    return parser
 
-    # Check whether local cached downloads should be used.
-    ENV_VAR = 'EXTERNAL_DATASERVICES_USE_LOCAL'
-    use_local = True if os.environ.get(ENV_VAR, '') == 'TRUE' else False
 
-    if not use_local:
-        main(args.datadir[0])
-    else:
-        logger.info('No download from datastore requested, quitting.')
+def main():
+    args = parser().parse_args()
+    config = get_config(arg.config_file)
+    connection = get_connection(args.full_path, args.config)
+    #get_expected_files(....TO DO)
+    
+
+if __name__ == "__main__":
+    main()
