@@ -6,7 +6,7 @@
 import pandas as pd
 import numpy as np
 import argparse
-import datetime
+from datetime import datetime
 import sys
 
 def read_crow_file(file, datecol):
@@ -105,22 +105,20 @@ def parser():
       `read_mora_file(PATH_TO_MORA_FILE + MORA_FILE, datecol='aa_adwh_datum_melding')`
     """
                                     )
-    parser.add_argument('-file', dest='filename', required=True,
-                        type=lambda x: is_valid_file(parser, x),
+    parser.add_argument('file', 
+                        type=str,
                         help="MORA file to be loaded in")
     parser.add_argument('datecol',
-                        type=valid_date,
+                        type=str,
                         help="date column from which the date and time are extracted and put into different \
-                        columns. The mora date column in source file is 'aa_adwh_datum_melding' ")
+                        columns. The mora date column in source file is 'aa_adwh_datum_melding'")
     return parser
 
 
-def main(): #argv=sys.argv[1:]
+def main(): 
     args = parser().parse_args()
-    print(args.file.readlines())
-    with args.file as f:
-        print (file.read())
-        #read_mora_file(args.file, args.datecol)
+    read_mora_file(args.file, args.datecol)
+
 
 if __name__ == '__main__':
     main()
