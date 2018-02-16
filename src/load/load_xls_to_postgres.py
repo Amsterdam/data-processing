@@ -1,7 +1,5 @@
 import os
-import subprocess
 import argparse
-from collections import OrderedDict
 
 import pandas as pd
 
@@ -47,9 +45,9 @@ def parser():
 
 def main():
     args = parser().parse_args()
-    load_xls(args.datadir, 
-             #args.tablename, 
-             args.config_path, 
+    load_xls(args.datadir,
+             #args.tablename,
+             args.config_path,
              args.dbconfig)
 
 
