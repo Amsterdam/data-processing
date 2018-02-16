@@ -35,6 +35,7 @@ setup(
     entry_points={
         'console_scripts': [
             'download_from_data_amsterdam = extract.download_from_data_amsterdam:main',
+            'csv_dataframe = extract.csv_dataframe:main',
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
             'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
             'load_xls_to_postgres = load.load_xls_to_postgres:main',
