@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import sys
+sys.path.insert(0, '../transform/helper_functions/')
 import os, errno
 import shutil
 import argparse
@@ -11,7 +13,9 @@ from helper_functions import create_dir_if_not_exists, unzip
 
 
 def get_catalog_package_id(url):
-    """Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef"""
+    """
+    Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef
+    """
     decoded_url = urlparse.unquote(url)
     parsed_url = urlparse.urlparse(decoded_url)
     meta_id = urlparse.parse_qs(parsed_url.fragment)['?dte'][0]
@@ -19,7 +23,9 @@ def get_catalog_package_id(url):
 
 
 def download_metadata(url):
-    """Download files from data catalog response id."""
+    """
+    Download files from data catalog response id
+    """
     package_id = get_catalog_package_id(url)
     METADATA_URL = 'https://api.data.amsterdam.nl/{}&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945'.format(package_id)
     print("Downloading metadata from", METADATA_URL)
@@ -33,7 +39,9 @@ def download_metadata(url):
 
 
 def download_all_files(metadata, download_directory):
-    """Download all files from metadata resources list."""
+    """
+    Download all files from metadata resources list
+    """
     for result in metadata['result']['resources']:
         if result['url_type'] is not None or result['url_type'] == 'upload':
             filename = result['url'].split('/')[-1]
