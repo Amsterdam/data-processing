@@ -4,7 +4,7 @@
 
 import os
 import sys
-sys.path.insert(0, '../')
+sys.path.insert(0, '../transform/helper_functions/')
 import errno
 import argparse
 import datetime
@@ -12,40 +12,39 @@ import configparser
 from swiftclient.client import Connection
 from dateutil import parser as dateparser
 from helper_functions import create_dir_if_not_exists
+
 import logging
 
-log = logging.getLogger(__name__)
-logging.getLogger('requests').setLevel(logging.WARNING)
-logging.getLogger('urllib3').setLevel(logging.WARNING)
-logging.getLogger('swiftclient').setLevel(logging.WARNING)
-
-
-FORMAT = '%(asctime)-15s %(message)s'
-logging.basicConfig(format=FORMAT, level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s %(levelname)-8s %(message)s',
+                    datefmt='%a, %d %b %Y %H:%M:%S')
+logger = logging.getLogger('objectstore')
 
 
 def get_config(full_path):
-    """Get config file with login credentials, port numbers..."""
+    """
+    Get config file with login credentials, port numbers...
+    Args:
+        full_path - provide path tot he config file/ auth.conf etc.
+    """
     config = configparser.RawConfigParser()
     config.read(full_path)
-    print("Found these configs:")
-    for config_name in config.sections():
-        print('-', config_name)
+    logger.info('Found these configs.. {}'.format(config.sections()))
+        
     return config
 
 
-def get_connection(full_path, config_name):
+def get_connection(full_path, config_name, print_config_vars = None):
     """
     get an objectsctore connection
     args:
         full_path:   path to the config.ini file where the config variables are stored
         config_name: the different configs as stated in the config file. Pick 'objectstore'
+        print_config_vars: if set to True: print all variables from the config file
     returns
         swiftclient connection
     """
-    config = configparser.RawConfigParser()
-    config.read(full_path)
-    
+    config = get_config(full_path)
 
     OBJECTSTORE = dict(
         VERSION = config.get(config_name, 'VERSION'),
@@ -57,8 +56,13 @@ def get_connection(full_path, config_name):
         PASSWORD = config.get(config_name, 'PASSWORD'),
         REGION_NAME = config.get(config_name, 'REGION_NAME')
 )
+    logger.info('Connecting to config..: {}'.format(config_name))
     
+    if print_config_vars:
+        logger.info('config variables.. :{}'.format(OBJECTSTORE))
+        
     connection = Connection(OBJECTSTORE)
+    logger.info('Established successfull connection.. {}'.format(OBJECTSTORE['AUTHURL']))
     
     return connection
 
@@ -75,22 +79,6 @@ def get_object(connection, object_meta_data: dict, dirname: str):
     return connection.get_object(dirname, object_meta_data['name'])[1]
 
 
-def download_files(file_list, download_dir):
-    """Download the latest data. """
-    for source_data_file in file_list:
-        sql_gz_name = source_data_file['name'].split('/')[-1]
-        msg = 'Downloading: %s' % (sql_gz_name)
-        
-        create_dir_if_not_exists(download_dir)
-        
-        new_data = get_object(
-            connection, source_data_file, 'Dataservices')
-        
-        print (type(download_dir), type(new_data))
-        
-        # save output to file!
-        with open(download_dir + '{}'.format(sql_gz_name), 'wb') as outputzip:
-            outputzip.write(new_data)
 
 
 def get_full_container_list(conn, container, **kwargs) -> list:
