@@ -79,19 +79,19 @@ To add new documentation and test new functions, install the docs,test,dev packa
 Steps to add code
 -----------------
 
-#. Convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
+1. Convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
 
-#. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
+2. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
 
-#. Add a rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
+3. Add a rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
 
-#. Regenerate the documentation to test the docs output using:
+4. Regenerate the documentation to test the docs output using:
 
 .. code-block:: bash
     
     sphinx/make docs
 
-#. Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
+5. Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
 
 Workflow
 ========
