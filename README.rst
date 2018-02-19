@@ -60,13 +60,17 @@ To get the functions up and running, also for running them from the command line
     docker-compose up -d database
 
 
-If you want to develop new functions, install the docs,test and dev neede packages using this command:
+How to Contribute
+=================
+If you want to contribute new functions, install the docs,test,dev packages using this command:
 
 .. code-block:: bash    
 
     pip install -e .[docs,test,dev]
     or when using zsh
     pip install -e ./[docs,test,dev/]
+
+Convert your function into a commandline function using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ and PR your newly added function to let review and add them.
 
 
 Workflow
