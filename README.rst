@@ -83,9 +83,12 @@ Steps to add code
    
    See the explanation here: `python-packaging - command line scripts <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_
 
-2. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py
+2. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
 
-3. Add a rst file to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function.
+3. Add a rst file to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_.
+
+Helpers will generate automatically, so you can skip this step if it is only a helper function.
+
 It uses the `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ to generate the documentation, but to get this to work it needs a rst file.
 
 4. Regenerate the documentation using:
@@ -94,6 +97,7 @@ It uses the `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en
     
     sphinx/make docs
 
+5. Make a PR.
 
 Workflow
 ========
