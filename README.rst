@@ -8,26 +8,31 @@ Data-processing
    :target: https://www.mozilla.org/en-US/MPL/2.0/
 
 Data preparation scripts for analysis projects using Python and Docker.
-For more information about the complete workflow, read the
-`data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
 
 This repo is a WIP so only the functions explained in the above docs are working. Please use a pull request to add new functions or code review. 
 
 This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
 
+How to use
+==========
+
+The usage of the functions are described here:
+`amsterdam.github.io/data-processing <https://amsterdam.github.io/data-processing/>`_ 
 
 
 Getting Started
 ===============
 
-Clone the repository:
+To get the functions up and running, also for running them from the command line, follow these 4 steps:
+
+1. Clone the repository:
 
 .. code-block:: bash
 
     git clone https://github.com/Amsterdam/data-processing.git
     cd data-processing
 
-Create Virtual environment in Windows
+2. Create Virtual environment in Windows
 
 .. code-block:: bash
 
@@ -35,14 +40,27 @@ Create Virtual environment in Windows
     python -m venv --copies --prompt data-processing .venv 
     .venv\Scripts\activate
 
-Create Virtual environment in OSX
+2. Create Virtual environment in OSX
 
 .. code-block:: bash
 
     virtualenv --python=$(which python3) venv
     source venv/bin/activate 
 
-Install the data-processing modules in editable mode
+3. Install the data-processing modules in editable mode
+
+.. code-block:: bash    
+
+    pip install -e .
+
+4. Start a database server in a new terminal (required for all load services with current config.ini or not using an existing database):
+
+.. code-block:: bash    
+
+    docker-compose up -d database
+
+
+If you want to develop new functions, install the docs,test and dev neede packages using this command:
 
 .. code-block:: bash    
 
@@ -50,16 +68,10 @@ Install the data-processing modules in editable mode
     or when using zsh
     pip install -e ./[docs,test,dev/]
 
-Start a database server in a new terminal (required for all load services with current config.ini or not using an existing database):
 
-.. code-block:: bash    
+Workflow
+========
 
-    docker-compose up -d database
-
-
-How to use
-----------
-
-The usage of the functions are described in full here:
-`Data processing read the docs <https://amsterdam.github.io/data-processing/>`_ 
+For more information about the complete workflow, read the
+`data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
 
