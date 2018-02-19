@@ -79,23 +79,19 @@ To add new documentation and test new functions, install the docs,test,dev packa
 Steps to add code
 -----------------
 
-1. Convert your function into a commandline script using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
-   
-   See the explanation here: `python-packaging - command line scripts <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_
+#. Convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
 
-2. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
+#. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
 
-3. Add a rst file to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_.
-Helpers will generate automatically, so you can skip this step if it is only a helper function.
-It uses the `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ to generate the documentation, but to get this to work it needs a rst file.
+#. Add a rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
 
-4. Regenerate the documentation using:
+#. Regenerate the documentation to test the docs output using:
 
 .. code-block:: bash
     
     sphinx/make docs
 
-5. Make a PR.
+#. Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
 
 Workflow
 ========
