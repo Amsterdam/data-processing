@@ -62,7 +62,7 @@ To get the functions up and running, also for running them from the command line
 
 How to Contribute
 =================
-If you want to contribute please follow the `contribute guidelines <https://amsterdam.github.io/CONTRIBUTING/>_ 
+If you want to contribute please follow the `contribute guidelines <https://amsterdam.github.io/CONTRIBUTING/>`_ 
 
 Prequisites
 -----------
@@ -80,7 +80,7 @@ Steps to add code
 -----------------
 
 1. Convert your function into a commandline script using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
-   See the explination here: `python-packaging - command line scripts <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_
+   See the explanation here: `python-packaging - command line scripts <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_
 
 2. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py
 
