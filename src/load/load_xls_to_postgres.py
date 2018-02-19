@@ -3,7 +3,7 @@ import argparse
 
 import pandas as pd
 
-from helper_functions import postgres_engine_pandas
+from helpers.connections import postgres_engine_pandas
 
 
 def load_xls(datadir, config_path, db_config_name):

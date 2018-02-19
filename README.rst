@@ -7,13 +7,14 @@ Data-processing
 .. image:: https://img.shields.io/badge/license-MPLv2.0-blue.svg
    :target: https://www.mozilla.org/en-US/MPL/2.0/
 
-Data preparation scripts for analysis projects in python 3 and docker.
+Data preparation scripts for analysis projects using Python and Docker.
 For more information about the complete workflow, read the
 `data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
 
 This repo is a WIP so only the functions explained in the above docs are working. Please use a pull request to add new functions or code review. 
 
-This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control.
+This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
+
 
 
 Getting Started
@@ -49,15 +50,11 @@ Install the data-processing modules in editable mode
     or when using zsh
     pip install -e ./[docs,test,dev/]
 
-Start a database server in a new terminal (required for all sub-services):
+Start a database server in a new terminal (required for all load services with current config.ini or not using an existing database):
 
 .. code-block:: bash    
 
     docker-compose up -d database
-
-
-# To test the service:
-    (not ready yet)
 
 
 How to use

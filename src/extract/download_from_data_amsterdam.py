@@ -8,7 +8,7 @@ import argparse
 import pprint
 import requests
 import urllib.parse as urlparse
-from helper_functions import create_dir_if_not_exists, unzip
+from helpers.files import create_dir_if_not_exists, unzip
 
 
 
@@ -19,6 +19,7 @@ def get_catalog_package_id(url):
     decoded_url = urlparse.unquote(url)
     parsed_url = urlparse.urlparse(decoded_url)
     meta_id = urlparse.parse_qs(parsed_url.fragment)['?dte'][0]
+    print(meta_id)
     return meta_id
 
 
@@ -69,10 +70,10 @@ def parser():
 Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
 To test run this command line::
 
-download_from_data_amsterdam https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c app/data
+download_from_data_amsterdam https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data
 """)
     parser.add_argument('url', help="""
-Insert full url from main result page of dataset, 
+Insert full url from main result page of dataset,
 for example: https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945
 """)
     parser.add_argument('output_folder', help='Specify the desired output folder path, for example: app/data')

@@ -48,7 +48,6 @@ setup(
     package_data={
         # Not yet needed 'extract': ['config_schema*.json', 'openapi*.json', 'openapi.yml']
     },
-
     # Requirements:
     install_requires=[
 

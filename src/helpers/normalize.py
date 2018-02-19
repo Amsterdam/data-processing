@@ -1,3 +1,8 @@
+# -----------------
+# Dict/Json stuff
+# -----------------
+
+
 def flatten_json(jsonObject):
     """
         Flatten nested json Object {"key": "subkey": { "subsubkey":"value" }} to ['key.subkey.subsubkey'] values
@@ -19,3 +24,12 @@ def flatten_json(jsonObject):
 
     flatten(jsonObject)
     return out
+
+
+def clean_dict(d):
+    """
+        Remove a field from a dict based on key name.
+    """
+    if not isinstance(d, dict):
+        return d
+    return dict((clean_dict(k), v) for k, v in d.items() if k is not 'dates')
