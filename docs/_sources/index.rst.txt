@@ -1,21 +1,19 @@
 .. _index:
 
-Data Processing
-===============
+.. include:: ../../README.rst
+
+Modules
+=======
+
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 3
 
     Introduction <introduction>
-    Getting Started <getting_started>
-.. toctree::
-    :maxdepth: 2
-
-    Data Processing Modules <modules>
+    Modules <modules>
 
 .. toctree::
     :maxdepth: 1
 
-    How to use Sphinx <sphinx_101>
     License <license>
 
 Search Functions

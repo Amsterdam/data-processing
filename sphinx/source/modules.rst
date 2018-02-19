@@ -1,7 +1,7 @@
 .. _modules:
 
-Data Processing modules
-=======================
+Modules
+=======
 
 Data Processing contains 4 main modules: Auth, Extract, Transform and Load (the standard ETL processing) and one Helper function module to re-use often used generic functions.
 
@@ -49,12 +49,12 @@ Load
     load/load_xls_into_postgres
     load/load_wfs_into_postgres
 
-Helper functions
-----------------
+Helpers
+-------
 
-**Generic functions for most commonly used data operations**
+**Generic helper functions for most commonly used data operations**
 
 .. toctree::
     :maxdepth: 1
 
-    helper_functions
+    _modules/helpers

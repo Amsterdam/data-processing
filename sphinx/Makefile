@@ -3,6 +3,7 @@
 RM            := rm -rf
 SPHINXOPTS    := -d .doctrees
 SPHINXBUILD   := sphinx-build
+SPHINXAPIDOC  := sphinx-apidoc
 AUTOBUILD     := sphinx-autobuild
 SOURCEDIR     := source
 BUILDDIR      := ../docs
@@ -11,6 +12,7 @@ GITBRANCH     = "$$(git symbolic-ref HEAD | sed -e "s/^refs\/heads\///")"
 
 
 docs:
+	$(SPHINXAPIDOC) -o ./source/_modules ../src -f
 	$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
 	touch $(BUILDDIR)/.nojekyll
 
