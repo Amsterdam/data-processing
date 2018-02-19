@@ -62,7 +62,13 @@ To get the functions up and running, also for running them from the command line
 
 How to Contribute
 =================
-If you want to contribute new functions, install the docs,test,dev packages using this command:
+If you want to contribute please follow the `contribute guidelines <https://amsterdam.github.io/CONTRIBUTING/>_ 
+
+Prequisites
+-----------
+Fork this repository to your local github account.
+
+To add new documentation and test new functions, install the docs,test,dev packages using this command:
 
 .. code-block:: bash    
 
@@ -70,7 +76,20 @@ If you want to contribute new functions, install the docs,test,dev packages usin
     or when using zsh
     pip install -e ./[docs,test,dev/]
 
-Convert your function into a commandline function using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ and PR your newly added function to let review and add them.
+Steps to add code
+-----------------
+
+1. Convert your function into a commandline script using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
+   See the explination here: `python-packaging - command line scripts <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_
+
+2. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py
+
+3. Add a rst file to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_.
+
+4. Regenerate the documentation using
+.. code-block:: bash
+    
+    sphinx/make docs
 
 
 Workflow
