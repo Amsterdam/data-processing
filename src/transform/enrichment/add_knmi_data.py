@@ -192,8 +192,8 @@ def parser():
     parser = argparse.ArgumentParser(description=
     """ Python wrapper to fetch + parse KNMI observations, as csv or Pandas DataFrame
     command line example: get_day_data_dataframe(stations =[240], start = '2017-01-01', end='2018-25-02', variables = ['DDVEC', 'TG', 'DR', 'SQ'])
-    """
-     parser.add_argument('stations', help="""
+    """)
+    parser.add_argument('stations', help="""
 specify the weather stations you want to return. for simplicity reason we only include SCHIPHOL and AMSTERDAM COENHAVEN.
 """)
     parser.add_argument('start', help='Specify the start date')
