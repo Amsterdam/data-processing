@@ -71,8 +71,8 @@ def get_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
         print("{} features returned.".format(str(len(geojson["features"]))))
 
         suffix = '.geojson'
-        filename = "{}_{}".format(layer_name, datetime.now().date())
-        save_file(geojson, output_folder, filename, suffix)
+        filename = "{}_{}.geojson".format(layer_name, datetime.now().date())
+        save_file(geojson, output_folder, filename)
 
     # return geojson
 
