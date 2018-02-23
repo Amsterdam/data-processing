@@ -13,7 +13,7 @@ venv/
 build/
 gh-pages/
 data/
-.sqlite
-.csv
-.json
-.geojson
+*.sqlite
+*.csv
+*.json
+*.geojson
