@@ -9,7 +9,7 @@ from helpers.connections import postgres_engine_pandas
 def load_xls(datadir, config_path, db_config_name):
     """Load xlsx into postgres for multiple files"""
     files = os.listdir(datadir)
-    files_xls = [f for f in files if f[-4:] in ('xlsx', 'xls')]
+    files_xls = [f for f in files if f.split('.')[-1] in ('xlsx', 'xls')]
     print(files_xls)
 
     for filename in files_xls:
@@ -20,12 +20,13 @@ def load_xls(datadir, config_path, db_config_name):
 
         print("added " + filename)
         print(df.columns)
-
+    
         # load the data into pg
         engine = postgres_engine_pandas(config_path, db_config_name)
         # TODO: link to to_sql function
-        df.to_sql(filename[:-4], engine, if_exists='replace', index=True, index_label='idx')  # ,dtype={geom: Geometry('POINT', srid='4326')})
-        print(filename + ' added')
+        table_name = filename.split('.')[0]
+        df.to_sql(table_name, engine, if_exists='replace', index=True, index_label='idx')  # ,dtype={geom: Geometry('POINT', srid='4326')})
+        print(filename + ' added as ' + table_name)
 
 
 def parser():
