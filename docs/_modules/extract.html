@@ -90,7 +90,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
 </ul>
 <ul>
@@ -239,42 +242,73 @@ variableNames can be found here: <a class="reference external" href="https://api
 </dd></dl>
 
 </div>
-<div class="section" id="extract-download-from-api-module">
-<h2>extract.download_from_api module<a class="headerlink" href="#extract-download-from-api-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-extract.download_from_data_amsterdam">
-<span id="extract-download-from-data-amsterdam-module"></span><h2>extract.download_from_data_amsterdam module<a class="headerlink" href="#module-extract.download_from_data_amsterdam" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-extract.download_from_data_amsterdam_api">
+<span id="extract-download-from-data-amsterdam-api-module"></span><h2>extract.download_from_data_amsterdam_api module<a class="headerlink" href="#module-extract.download_from_data_amsterdam_api" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam.download_all_files">
-<code class="descclassname">extract.download_from_data_amsterdam.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam.download_all_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download all files from metadata resources list.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="extract.download_from_data_amsterdam.download_file">
-<code class="descclassname">extract.download_from_data_amsterdam.</code><code class="descname">download_file</code><span class="sig-paren">(</span><em>file_location</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam.download_file" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_data_amsterdam_api.conversionListCvalues">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">conversionListCvalues</code><span class="sig-paren">(</span><em>metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.conversionListCvalues" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam.download_metadata">
-<code class="descclassname">extract.download_from_data_amsterdam.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam.download_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download files from data catalog response id.</p>
+<dt id="extract.download_from_data_amsterdam_api.getJsonData">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_api.get_data">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url_api</em>, <em>endpoint</em>, <em>metadata</em>, <em>accessToken</em>, <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_api.main">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_api.parser">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam.get_catalog_package_id">
-<code class="descclassname">extract.download_from_data_amsterdam.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_data_amsterdam_api.reformatData">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">reformatData</code><span class="sig-paren">(</span><em>item</em>, <em>tellus_metadata</em>, <em>cvalues</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.reformatData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-extract.download_from_data_amsterdam_catalog">
+<span id="extract-download-from-data-amsterdam-catalog-module"></span><h2>extract.download_from_data_amsterdam_catalog module<a class="headerlink" href="#module-extract.download_from_data_amsterdam_catalog" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_catalog.download_all_files">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download all files from metadata resources list</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_catalog.download_file">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_file</code><span class="sig-paren">(</span><em>file_location</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_catalog.download_metadata">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download files from data catalog response id</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_catalog.get_catalog_package_id">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam.main">
-<code class="descclassname">extract.download_from_data_amsterdam.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam.main" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_data_amsterdam_catalog.main">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam.parser">
-<code class="descclassname">extract.download_from_data_amsterdam.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_data_amsterdam_catalog.parser">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx.</p>
 </dd></dl>
 

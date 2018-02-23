@@ -93,13 +93,16 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#helper-functions">Helper functions</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#helpers">Helpers</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">helpers package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.connections">helpers.connections module</a></li>
@@ -205,9 +208,10 @@ db_config_name = dev or docker to get the ip user/password and port values.</p>
 
 <dl class="function">
 <dt id="helpers.files.save_file">
-<code class="descclassname">helpers.files.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>data</em>, <em>output_folder</em>, <em>filename</em>, <em>suffix</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.save_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save data to different file types, using folder, filename and suffix. 
-It currently works only with: (geo)json using .geojson or .json as suffix input</p>
+<code class="descclassname">helpers.files.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>data</em>, <em>output_folder</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.save_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to different file types, using folder, filename and suffix.
+It currently works with: csv, txt, (geo)json using .geojson or .json as suffix input
+for example filename = data_output.csv</p>
 </dd></dl>
 
 <dl class="function">

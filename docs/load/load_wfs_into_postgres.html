@@ -93,7 +93,10 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
@@ -107,7 +110,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#helper-functions">Helper functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
 </ul>
 </li>
 </ul>
@@ -182,7 +185,7 @@
 <span id="id1"></span><h1>load_wfs_to_postgres<a class="headerlink" href="#load-wfs-to-postgres" title="Permalink to this headline">¶</a></h1>
 <p>Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
 Example to run in development: load_wfs_to_postgres config.ini dev</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_wfs_to_postgres</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="n">db_config</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_wfs_to_postgres</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="n">db_config</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -202,6 +205,11 @@ Example to run in development: load_wfs_to_postgres config.ini dev</p>
 </div>
 <div class="section" id="module-load.load_wfs_to_postgres">
 <span id="functions"></span><h2>functions<a class="headerlink" href="#module-load.load_wfs_to_postgres" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="load.load_wfs_to_postgres.NonZeroReturnCode">
+<em class="property">exception </em><code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">NonZeroReturnCode</code><a class="headerlink" href="#load.load_wfs_to_postgres.NonZeroReturnCode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="function">
 <dt id="load.load_wfs_to_postgres.get_config">
 <code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.get_config" title="Permalink to this definition">¶</a></dt>

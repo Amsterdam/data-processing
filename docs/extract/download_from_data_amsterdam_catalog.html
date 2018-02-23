@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>load_xls_to_postgres &mdash; Datapunt processing 0.0.1 documentation</title>
+  <title>download_from_data_amsterdam_catalog &mdash; Datapunt processing 0.0.1 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="load_wfs_to_postgres" href="load_wfs_into_postgres.html"/>
-        <link rel="prev" title="get_geojson_from_wfs" href="../transform/geospatial/get_geojson_from_wfs.html"/> 
+        <link rel="next" title="download_from_data_amsterdam_api" href="download_from_data_amsterdam_api.html"/>
+        <link rel="prev" title="Modules" href="../modules.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -99,17 +99,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#load">Load</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">load_xls_to_postgres</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_data_amsterdam_catalog</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-load.load_xls_to_postgres">functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-extract.download_from_data_amsterdam_catalog">functions</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="load_wfs_into_postgres.html">load_wfs_to_postgres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_data_amsterdam_api.html">download_from_data_amsterdam_api</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
 </ul>
 </li>
@@ -162,13 +162,13 @@
         
           <li><a href="../modules.html">Modules</a> &raquo;</li>
         
-      <li>load_xls_to_postgres</li>
+      <li>download_from_data_amsterdam_catalog</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/load/load_xls_into_postgres.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/extract/download_from_data_amsterdam_catalog.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -181,10 +181,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="load-xls-to-postgres">
-<span id="id1"></span><h1>load_xls_to_postgres<a class="headerlink" href="#load-xls-to-postgres" title="Permalink to this headline">¶</a></h1>
-<p>Upload xls files as separate tables into PostgreSQL using Pandas to_sql.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_xls_to_postgres</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">datadir</span> <span class="n">config_path</span> <span class="n">dbconfig</span>
+  <div class="section" id="download-from-data-amsterdam-catalog">
+<span id="id1"></span><h1>download_from_data_amsterdam_catalog<a class="headerlink" href="#download-from-data-amsterdam-catalog" title="Permalink to this headline">¶</a></h1>
+<p><p>Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
+To test run this command line:</p>
+<p>download_from_data_amsterdam <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data</p>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_data_amsterdam_catalog</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">output_folder</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -194,23 +197,39 @@
 <col class="description" />
 <tbody valign="top">
 <tr><td class="option-group">
-<kbd>datadir</kbd></td>
-<td>Local data directory, for example: projectdir/data</td></tr>
+<kbd>url</kbd></td>
+<td>Insert full url from main result page of dataset,
+for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</td></tr>
 <tr><td class="option-group">
-<kbd>config_path</kbd></td>
-<td>Location of the config.ini file: for example: /auth/config.ini</td></tr>
-<tr><td class="option-group">
-<kbd>dbconfig</kbd></td>
-<td>config.ini name of db settings: dev or docker</td></tr>
+<kbd>output_folder</kbd></td>
+<td>Specify the desired output folder path, for example: app/data</td></tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-load.load_xls_to_postgres">
-<span id="functions"></span><h2>functions<a class="headerlink" href="#module-load.load_xls_to_postgres" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-extract.download_from_data_amsterdam_catalog">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_data_amsterdam_catalog" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="load.load_xls_to_postgres.load_xls">
-<code class="descclassname">load.load_xls_to_postgres.</code><code class="descname">load_xls</code><span class="sig-paren">(</span><em>datadir</em>, <em>config_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_xls_to_postgres.load_xls" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load xlsx into postgres for multiple files</p>
+<dt id="extract.download_from_data_amsterdam_catalog.download_all_files">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download all files from metadata resources list</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_catalog.download_metadata">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download files from data catalog response id</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_catalog.get_catalog_package_id">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_catalog.parser">
+<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx.</p>
 </dd></dl>
 
 </div>
@@ -226,10 +245,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="load_wfs_into_postgres.html" class="btn btn-neutral float-right" title="load_wfs_to_postgres" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="download_from_data_amsterdam_api.html" class="btn btn-neutral float-right" title="download_from_data_amsterdam_api" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../transform/geospatial/get_geojson_from_wfs.html" class="btn btn-neutral" title="get_geojson_from_wfs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

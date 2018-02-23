@@ -25,7 +25,9 @@ stored, from API’s or from the data catalog**
 .. toctree::
     :maxdepth: 1
 
-    extract/download_from_data_amsterdam
+    extract/download_from_data_amsterdam_catalog
+    extract/download_from_data_amsterdam_api
+    
 
 Transform
 ---------

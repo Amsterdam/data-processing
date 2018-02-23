@@ -4,24 +4,24 @@ helpers package
 Submodules
 ----------
 
-helpers\.connections module
----------------------------
+helpers.connections module
+--------------------------
 
 .. automodule:: helpers.connections
     :members:
     :undoc-members:
     :show-inheritance:
 
-helpers\.files module
----------------------
+helpers.files module
+--------------------
 
 .. automodule:: helpers.files
     :members:
     :undoc-members:
     :show-inheritance:
 
-helpers\.normalize module
--------------------------
+helpers.normalize module
+------------------------
 
 .. automodule:: helpers.normalize
     :members:

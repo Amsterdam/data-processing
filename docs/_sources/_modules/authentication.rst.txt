@@ -4,16 +4,16 @@ authentication package
 Submodules
 ----------
 
-authentication\.config module
------------------------------
+authentication.config module
+----------------------------
 
 .. automodule:: authentication.config
     :members:
     :undoc-members:
     :show-inheritance:
 
-authentication\.getaccesstoken module
--------------------------------------
+authentication.getaccesstoken module
+------------------------------------
 
 .. automodule:: authentication.getaccesstoken
     :members:
