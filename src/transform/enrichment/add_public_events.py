@@ -58,13 +58,25 @@ def get_event_json():
     event_df['no_days'] = (event_df.enddate - event_df.startdate).astype('timedelta64[D]') + 1
     
     return event_df
-    
-    
-    
-def clean_dict(d):
+
+
+def parser():
+    """Parser function to run arguments from the command line and to add description to sphinx."""
+    parser = argparse.ArgumentParser(description=
+    """ parse public event data from json at amsterdam.data.nl
+    Args:
+        None
+    Returns:
+        * pd.DataFrame: data frame with events in Amsterdam
+    command line example: 
+        get_event_json()
     """
-    remove a filed from a dict based in key name
-    """
-    if not isinstance(d, dict):
-        return d
-    return dict((cleandict(k), v) for k,v in d.items() if k is not 'dates')
+    return parser
+
+
+def main(): 
+    args = parser().parse_args()
+    get_event_json()
+
+if __name__ == "__main__":
+    main()
