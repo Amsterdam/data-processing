@@ -22,8 +22,9 @@ def create_dir_if_not_exists(directory):
 def save_file(data, output_folder, filename):
     """
         Save data to different file types, using folder, filename and suffix.
-        It currently works with: csv, txt, (geo)json using .geojson or .json as suffix input
-        for example filename = data_output.csv
+        It reads the filename suffix and saves the file as the appropriate type.
+        save_file currently works with: csv, txt, geojson and json as suffixes.
+        for example filename = data_output.csv or data_output.json
     """
     create_dir_if_not_exists(output_folder)
     suffix = filename.split('.')[-1]
@@ -35,10 +36,10 @@ def save_file(data, output_folder, filename):
         with open(full_path, 'w') as out_file:
             # get header titles based on first object in array
             header = list(data[0].keys())
-            csvWriter = csv.DictWriter(out_file, fieldnames=header)
+            csvWriter = csv.writer(out_file, delimiter=';', quoting=csv.QUOTE_MINIMAL)
             csvWriter.writerow(header)
             for row in data:
-                csvWriter.writerow(row)
+                csvWriter.writerow(row.values())
 
     print("File saved here: {}".format(full_path))
 

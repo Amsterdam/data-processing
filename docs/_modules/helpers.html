@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
@@ -210,8 +211,9 @@ db_config_name = dev or docker to get the ip user/password and port values.</p>
 <dt id="helpers.files.save_file">
 <code class="descclassname">helpers.files.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>data</em>, <em>output_folder</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.save_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save data to different file types, using folder, filename and suffix.
-It currently works with: csv, txt, (geo)json using .geojson or .json as suffix input
-for example filename = data_output.csv</p>
+It reads the filename suffix and saves the file as the appropriate type.
+save_file currently works with: csv, txt, geojson and json as suffixes.
+for example filename = data_output.csv or data_output.json</p>
 </dd></dl>
 
 <dl class="function">
