@@ -11,7 +11,7 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.1',
+    version='0.0.2',
     name='datapunt_processing',
     description="Data processing Functions",
     long_description=read('README.rst'),
@@ -34,7 +34,8 @@ setup(
     # Entry points:
     entry_points={
         'console_scripts': [
-            'download_from_data_amsterdam = extract.download_from_data_amsterdam:main',
+            'download_from_data_amsterdam_catalog = extract.download_from_data_amsterdam_catalog:main',
+            'download_from_data_amsterdam_api = extract.download_from_data_amsterdam_api:main',
             'csv_dataframe = extract.csv_dataframe:main',
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
             'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',

@@ -1,6 +1,8 @@
 import os
 import errno
 import json
+import csv
+from collections import OrderedDict
 from zipfile import BadZipfile, ZipFile
 
 
@@ -18,16 +20,40 @@ def create_dir_if_not_exists(directory):
             raise
 
 
-def save_file(data, output_folder, filename, suffix):
+#def save_file(data, output_folder, filename, suffix):
+#    """
+#        Save data to different file types, using folder, filename and suffix. 
+#        It currently works only with: (geo)json using .geojson or .json as suffix input
+#    """
+#    create_dir_if_not_exists(output_folder)
+#    full_path = os.path.join(output_folder, filename + suffix)
+#    if suffix in ('.geojson', 'json'):
+#        with open(full_path, 'w') as out_file:
+#            json.dump(data, out_file, indent=2)
+#    print("File saved here: {}".format(full_path))
+
+
+def save_file(data, output_folder, filename):
     """
-        Save data to different file types, using folder, filename and suffix. 
-        It currently works only with: (geo)json using .geojson or .json as suffix input
+        Save data to different file types, using folder, filename and suffix.
+        It currently works with: csv, txt, (geo)json using .geojson or .json as suffix input
+        for example filename = data_output.csv
     """
     create_dir_if_not_exists(output_folder)
-    full_path = os.path.join(output_folder, filename + suffix)
-    if suffix in ('.geojson', 'json'):
+    suffix = filename.split('.')[-1]
+    full_path = os.path.join(output_folder, filename)
+    if suffix in ('geojson', 'json'):
         with open(full_path, 'w') as out_file:
             json.dump(data, out_file, indent=2)
+    if suffix in ('csv', 'txt'):
+        with open(full_path, 'w') as out_file:
+            # get header titles based on first object in array
+            header = list(data[0].keys())
+            csv_writer = csv.writer(out_file, delimiter=';', quoting=csv.QUOTE_MINIMAL)
+            csv_writer.writerow(header)
+            for row in data:
+                csv_writer.writerow(row.values())
+
     print("File saved here: {}".format(full_path))
 
 
