@@ -2,7 +2,6 @@ import os
 import errno
 import json
 import csv
-from collections import OrderedDict
 from zipfile import BadZipfile, ZipFile
 
 
@@ -18,19 +17,6 @@ def create_dir_if_not_exists(directory):
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
-
-
-#def save_file(data, output_folder, filename, suffix):
-#    """
-#        Save data to different file types, using folder, filename and suffix. 
-#        It currently works only with: (geo)json using .geojson or .json as suffix input
-#    """
-#    create_dir_if_not_exists(output_folder)
-#    full_path = os.path.join(output_folder, filename + suffix)
-#    if suffix in ('.geojson', 'json'):
-#        with open(full_path, 'w') as out_file:
-#            json.dump(data, out_file, indent=2)
-#    print("File saved here: {}".format(full_path))
 
 
 def save_file(data, output_folder, filename):
@@ -49,18 +35,19 @@ def save_file(data, output_folder, filename):
         with open(full_path, 'w') as out_file:
             # get header titles based on first object in array
             header = list(data[0].keys())
-            csv_writer = csv.writer(out_file, delimiter=';', quoting=csv.QUOTE_MINIMAL)
-            csv_writer.writerow(header)
+            csvWriter = csv.DictWriter(out_file, fieldnames=header)
+            csvWriter.writerow(header)
             for row in data:
-                csv_writer.writerow(row.values())
+                csvWriter.writerow(row)
 
     print("File saved here: {}".format(full_path))
 
 
 def unzip(path, filename_as_folder=False):
     """
-    Find all .zip files and unzip in root.
-    Use filename_as_folder=True to unzip to subfolders with name of zipfile."""
+        Find all .zip files and unzip in root.
+        Use filename_as_folder=True to unzip to subfolders with name of zipfile.
+    """
     for filename in os.listdir(path):
         if filename.endswith(".zip"):
             name = os.path.splitext(os.path.basename(filename))[0]
@@ -82,5 +69,4 @@ def unzip(path, filename_as_folder=False):
                         os.remove(file)
                     except OSError as e:  # this would be "except OSError, e:" before Python 2.6
                         if e.errno != errno.ENOENT:  # errno.ENOENT = no such file or directory
-                            raise  # re-raise exception if a different error occured
-
+                            raise  # re-raise exception if a different error occured.
