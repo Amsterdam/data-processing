@@ -17,7 +17,7 @@ How to use
 ==========
 
 The usage of the functions are described here:
-`amsterdam.github.io/data-processing <https://amsterdam.github.io/data-processing/>`_ 
+`amsterdam.github.io/data-processing/modules.html <https://amsterdam.github.io/data-processing/modules.html>`_ 
 
 
 Getting Started
@@ -62,6 +62,8 @@ To get the functions up and running, also for running them from the command line
 Notebooks
 =========
 Some of the examples are in the form of runnable Jupyter notebooks. Copies of these with all the images and output included are hosted at Anaconda Cloud. To run these notebooks on your own system, start up a Jupyter notebook server:
+
+.. code-block:: bash
 
     jupyter notebook --NotebookApp.iopub_data_rate_limit=100000000
 
