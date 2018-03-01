@@ -7,9 +7,15 @@ Data-processing
 .. image:: https://img.shields.io/badge/license-MPLv2.0-blue.svg
    :target: https://www.mozilla.org/en-US/MPL/2.0/
 
-Data preparation scripts for analysis projects using Python and Docker.
+At the City of Amsterdam we deal with many different types of structured and unstructered data. Much of the data is not of high quality and are missing proper semantics to do proper analytics with.
 
-This repo is a WIP so only the functions explained in the above docs are working. Please use a pull request to add new functions or code review. 
+This repository combines generic command line functions to create extract, transform and load steps we can then use for creating a reproducable data for analytics and usage in dashboards and maps.
+
+Workflow
+========
+
+For more information about the our workflow, read the
+`data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
 
 This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
 
@@ -86,21 +92,23 @@ Steps to add code
 
 1. Convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
 
-2. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
+2. Add test to the `test folder<https://github.com/Amsterdam/data-processing/tree/master/tests>`_ and run 
+.. code-block:: bash
+    
+    python setup.py test
 
-3. Add a rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
+to test if no other functions are breaking. Correct those issues if needed.
 
-4. Regenerate the documentation to test the docs output using:
+3. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
+
+4. Add a rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
+
+5. Regenerate the documentation to test the docs output using:
 
 .. code-block:: bash
     
     sphinx/make docs
 
-5. Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
+6. Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
 
-Workflow
-========
-
-For more information about the complete workflow, read the
-`data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
 
