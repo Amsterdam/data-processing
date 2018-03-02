@@ -83,7 +83,7 @@ setup(
         # Getters
         'requests==2.18.4',
         'xlrd==1.1.0',
-        'python-swiftclient',
+        'python-swiftclient==3.4.0',
         'python-keystoneclient',
 
         # Config providers
@@ -103,7 +103,7 @@ setup(
         'pprint>=0.1',
         'pyproj==1.9.5.1',
         'requests_cache==0.4.13',
-
+        'logger==1.4',
 
     ],
     extras_require={
