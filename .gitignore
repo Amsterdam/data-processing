@@ -17,4 +17,4 @@ data/
 *.csv
 *.json
 *.geojson
-.pytest_cache/
+.pytest_cache/v/cache.pytest_cache/
