@@ -1,8 +1,32 @@
 #!/usr/bin/env python
 """See <https://setuptools.readthedocs.io/en/latest/>.
 """
-import os
+import os, sys
 from setuptools import setup, find_packages
+from setuptools.command.test import test as TestCommand
+
+
+# https://docs.pytest.org/en/latest/goodpractices.html
+
+class PyTest(TestCommand):
+    """ Custom class to avoid depending on pytest-runner.
+    """
+    user_options = [('pytest-args=', 'a', "Arguments to pass into py.test")]
+
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        self.pytest_args = ['--cov', find_packages('src')]
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        import pytest
+
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
 
 
 def read(fname):
@@ -36,6 +60,7 @@ setup(
         'console_scripts': [
             'download_from_data_amsterdam_catalog = extract.download_from_data_amsterdam_catalog:main',
             'download_from_data_amsterdam_api = extract.download_from_data_amsterdam_api:main',
+            'download_from_objectstore = extract.download_from_objectstore:main',
             'csv_dataframe = extract.csv_dataframe:main',
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
             'load_xls_to_postgres = load.load_xls_to_postgres:main',
@@ -44,7 +69,8 @@ setup(
             'add_knmi_data = transform.enrichment.add_knmi_data:main'
         ],
     },
-
+    # Add custom pytester class
+    cmdclass={'test': PyTest},
     # Packages and Package Data:
     package_dir={'': 'src'},
     packages=find_packages('src'),
@@ -67,6 +93,7 @@ setup(
         # db connectors
         'sqlalchemy==1.2.2',
         'psycopg2==2.7.3.2',
+        #'pygdal>=1.8.1.0',
 
         # Transformers
         'pandas==0.22.0',
@@ -76,6 +103,7 @@ setup(
         'pprint>=0.1',
         'pyproj==1.9.5.1',
         'requests_cache==0.4.13',
+
 
     ],
     extras_require={
@@ -91,12 +119,10 @@ setup(
             'pytest',
             'pytest-runner',
             'pytest-cov',
+            'flake8'
         ],
         'dev': [
             'jupyter',
         ]
-    },
-    tests_require=[
-            'pytest',
-        ]
+    }
 )

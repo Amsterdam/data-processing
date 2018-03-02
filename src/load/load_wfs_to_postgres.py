@@ -38,7 +38,7 @@ def run_command_sync(cmd, allow_fail=False):
 
 def wfs2psql(url, pg_str, layer_name, **kwargs):
     """Command line ogr2ogr string to load a WFS into PostGres."""
-    cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name ,'-F' ,'PostgreSQL' ,pg_str ,url]
+    cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name,'-F' ,'PostgreSQL' ,pg_str ,url]
     run_command_sync(cmd)
 
 
@@ -55,7 +55,7 @@ def load_layers(pg_str):
 
     srsName = 'EPSG:28992'
 
-    for areaName in areaNames:
+    for areaName in layerNames:
         WFS="https://map.data.amsterdam.nl/maps/gebieden?REQUEST=GetFeature&SERVICE=wfs&Version=2.0.0&SRSNAME=" + srsName + "&typename=" + areaName
         wfs2psql(WFS, pg_str , areaName)
         print(areaName + ' loaded into PG.')

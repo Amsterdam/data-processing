@@ -5,8 +5,8 @@ Modules
 
 Data Processing contains 4 main modules: Auth, Extract, Transform and Load (the standard ETL processing) and one Helper function module to re-use often used generic functions.
 
-Auth
-----
+Authentication
+--------------
 
 **Fill in the config.ini.example with the proper user credentials for the
 project.
@@ -15,6 +15,10 @@ Do not store passwords in this file
 Use .gitignore to ignore .ini files to prevent uploading
 them to github.**
 
+.. toctree::
+    :maxdepth: 1
+
+    _modules/authentication
 
 Extract
 -------

@@ -4,14 +4,13 @@
 
 import os
 import sys
-sys.path.insert(0, '../transform/helper_functions/')
 import errno
 import argparse
 import datetime
 import configparser
 from swiftclient.client import Connection
 from dateutil import parser as dateparser
-from helper_functions import create_dir_if_not_exists
+from helpers.files import create_dir_if_not_exists
 
 import logging
 
@@ -30,11 +29,10 @@ def get_config(full_path):
     config = configparser.RawConfigParser()
     config.read(full_path)
     logger.info('Found these configs.. {}'.format(config.sections()))
-        
     return config
 
 
-def get_connection(full_path, config_name, print_config_vars = None):
+def get_connection(full_config_path, config_name, print_config_vars=None):
     """
     get an objectsctore connection
     args:
@@ -44,26 +42,26 @@ def get_connection(full_path, config_name, print_config_vars = None):
     returns
         swiftclient connection
     """
-    config = get_config(full_path)
+    config = get_config(full_config_path)
 
     OBJECTSTORE = dict(
-        VERSION = config.get(config_name, 'VERSION'),
-        AUTHURL = config.get(config_name, 'AUTHURL'),
-        TENANT_NAME = config.get(config_name, 'TENANT_NAME'),
-        TENANT_ID = config.get(config_name, 'TENANT_ID'),
-        USER = config.get(config_name, 'USER'),
-        #PASSWORD = os.environ['OBJECTSTORE_PASSWORD'],
-        PASSWORD = config.get(config_name, 'PASSWORD'),
-        REGION_NAME = config.get(config_name, 'REGION_NAME')
-)
+        VERSION=config.get(config_name, 'VERSION'),
+        AUTHURL=config.get(config_name, 'AUTHURL'),
+        TENANT_NAME=config.get(config_name, 'TENANT_NAME'),
+        TENANT_ID=config.get(config_name, 'TENANT_ID'),
+        USER=config.get(config_name, 'USER'),
+        # PASSWORD=os.environ['OBJECTSTORE_PASSWORD'],
+        PASSWORD=config.get(config_name, 'PASSWORD'),
+        REGION_NAME=config.get(config_name, 'REGION_NAME')
+    )
     logger.info('Connecting to config..: {}'.format(config_name))
-    
+
     if print_config_vars:
         logger.info('config variables.. :{}'.format(OBJECTSTORE))
-        
+
     connection = Connection(OBJECTSTORE)
     logger.info('Established successfull connection.. {}'.format(OBJECTSTORE['AUTHURL']))
-    
+
     return connection
 
 
@@ -79,16 +77,13 @@ def get_object(connection, object_meta_data: dict, dirname: str):
     return connection.get_object(dirname, object_meta_data['name'])[1]
 
 
-
-
 def get_full_container_list(conn, container, **kwargs) -> list:
     """
     get all files stored in container (incl. sub-containers)
-    
-    Args
+    Args:
         conn = connection with the Objectstore (using swiftclient Connection API)
         container == "path/in/Objectstore"
-    returns    
+    returns
         generator object
     """
     limit = 10000
@@ -110,7 +105,7 @@ def get_full_container_list(conn, container, **kwargs) -> list:
 
     raise StopIteration
 
-    
+
 def get_expected_files(EXPECTED_FILES:list):
     """
     Download the expected files provided by EXPECTED_FILES list
@@ -133,32 +128,35 @@ def get_expected_files(EXPECTED_FILES:list):
             log.debug('%s %s', EXPECTED_FILES, dt)
             file_list.append((obj))
             print (dt, file_list)
-            
+
     download_files(file_list, 'app/data/')
 
 
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx."""
-    parser = argparse.ArgumentParser(description="""
-Download data from the Objectstore, and write to local directory
-To test run this command line: 
-""")
-    parser.add_argument('config_file',
-                        help='weukfwkefy')
-    parser.add_argument('connection', 
-                        help="""a connection to the Objectstore""")
-    parser.add_argument('meta_data', 
-                        help='the meatadate of the files in the specified containers')
-    
+    desc = """
+        Download data from the Objectstore, and write the files to a local directory
+        To test run this command line:
+        download_from_objectstore config.ini objectstore data
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument('full_config_path',
+                        help='The location of the configuration file path including the name: for example config.ini when it is the same folder.')
+    parser.add_argument('objecstore_config',
+                        help="""Connection settings name of the objectstore url, user/pasword and project/tennant id. Stored in config.ini""")
+    parser.add_argument('output_folder',
+                        help="""Outputfolder location, for example my_project_folder/data or . if you want to save in the current dir.""")
+    #parser.add_argument('meta_data',
+    #                    help='the meatadate of the files in the specified containers')
     return parser
 
 
 def main():
     args = parser().parse_args()
-    config = get_config(arg.config_file)
-    connection = get_connection(args.full_path, args.config)
-    #get_expected_files(....TO DO)
+    connection = get_connection(args.full_config_path, args.objecstore_config)
     
+    # get_expected_files(....TO DO)
+
 
 if __name__ == "__main__":
     main()

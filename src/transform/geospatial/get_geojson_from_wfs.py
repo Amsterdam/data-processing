@@ -51,37 +51,41 @@ def get_layers_from_wfs(url_wfs):
     return layer_names
 
 
-def get_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
+def get_geojson_from_wfs(url_wfs, layer_name, srs):
+    parameters = {"REQUEST": "GetFeature",
+                  "TYPENAME": layer_name,
+                  "SERVICE": "WFS",
+                  "VERSION": "2.0.0",
+                  "SRSNAME": "EPSG:{}".format(srs),
+                  "OUTPUTFORMAT": "geojson"
+                  }
+    print("Requesting data from {}, layer: {}".format(url_wfs, layer_name))
+    response = requests.get(url_wfs, params=parameters)
+    geojson = response.json()
+    print("{} features returned.".format(str(len(geojson["features"]))))
+    return geojson
+
+
+def get_multiple_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
     """
       Get all features from one layer in WFS service as a geojson.
     """
     layer_names = layer_names.split(',')
     # print(layer_names)
     for layer_name in layer_names:
-        parameters = {"REQUEST": "GetFeature",
-                      "TYPENAME": layer_name,
-                      "SERVICE": "WFS",
-                      "VERSION": "2.0.0",
-                      "SRSNAME": "EPSG:{}".format(srs),
-                      "OUTPUTFORMAT": "geojson"
-                      }
-        print("Requesting data from {}, layer: {}".format(url_wfs, layer_name))
-        geojson = requests.get(url_wfs, params=parameters)
-        geojson = geojson.json()
-        print("{} features returned.".format(str(len(geojson["features"]))))
-
-        suffix = '.geojson'
         filename = "{}_{}.geojson".format(layer_name, datetime.now().date())
+        geojson = get_geojson_from_wfs(url_wfs, layer_name, srs)
         save_file(geojson, output_folder, filename)
-
-    # return geojson
 
 
 def main():
     args = parser().parse_args()
     print(args)
     get_layers_from_wfs(args.url_wfs)
-    get_geojson_from_wfs(args.url_wfs, args.layer_names[0], args.srs, args.output_folder)
+    get_multiple_geojson_from_wfs(args.url_wfs,
+                                  args.layer_names[0],
+                                  args.srs,
+                                  args.output_folder)
 
 
 if __name__ == '__main__':

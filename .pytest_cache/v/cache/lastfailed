@@ -1,0 +1,6 @@
+{
+  "tests/extract/test_extract.py::test_location_config_file": true,
+  "tests/extract/test_load_from_data_amsterdam_catalog.py": true,
+  "tests/load/test_load_wfs_to_postgres.py::test_run_command_sync": true,
+  "tests/load/test_load_wfs_to_postgres.py::test_wfs2psql": true
+}
