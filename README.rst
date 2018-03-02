@@ -59,7 +59,11 @@ To get the functions up and running, also for running them from the command line
 
     pip install -e .
 
-4. Start a database server in a new terminal (required for all load services with current config.ini or not using an existing database):
+4. A database is required for the transform and load functions. 
+You can setup your postgres database credentials in the config.ini file to apply to the functions.
+
+If want to use 'Docker <https://www.docker.com>'_, you can start a database server for your project in a new terminal. The name, port and login of the database can be changed in the docker-compose.yml. Also change them in the config.ini file which will be used by the functions to connect to that database.
+
 
 .. code-block:: bash    
 
@@ -69,7 +73,13 @@ Notebooks
 =========
 Some of the examples are in the form of runnable Jupyter notebooks. Copies of these with all the images and output included are hosted at Anaconda Cloud. To run these notebooks on your own system, start up a Jupyter notebook server:
 
+To install jupyter:
+.. code-block:: bash    
+
+    pip install -e .\[dev\]
+
     jupyter notebook --NotebookApp.iopub_data_rate_limit=100000000
+
 
 How to Contribute
 =================
