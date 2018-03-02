@@ -185,8 +185,16 @@
             
   <div class="section" id="load-wfs-to-postgres">
 <span id="id1"></span><h1>load_wfs_to_postgres<a class="headerlink" href="#load-wfs-to-postgres" title="Permalink to this headline">¶</a></h1>
-<p>Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
-Example to run in development: load_wfs_to_postgres config.ini dev</p>
+<p><blockquote>
+<div><p>Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.</p>
+<dl class="docutils">
+<dt>Add ogr2ogr path ENV if running locally in a virtual environment:</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH</span></code></dd>
+<dt>Example command line:</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">load_wfs_to_postgres</span> <span class="pre">config.ini</span> <span class="pre">dev</span></code></dd>
+</dl>
+</div></blockquote>
+</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_wfs_to_postgres</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="n">db_config</span>
 </pre></div>
 </div>
@@ -211,12 +219,6 @@ Example to run in development: load_wfs_to_postgres config.ini dev</p>
 <dt id="load.load_wfs_to_postgres.NonZeroReturnCode">
 <em class="property">exception </em><code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">NonZeroReturnCode</code><a class="headerlink" href="#load.load_wfs_to_postgres.NonZeroReturnCode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="function">
-<dt id="load.load_wfs_to_postgres.get_config">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.get_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get config file with login credentials and port numbers.</p>
-</dd></dl>
 
 <dl class="function">
 <dt id="load.load_wfs_to_postgres.get_pg_str">
