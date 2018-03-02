@@ -62,6 +62,7 @@ class GetAccessToken(object):
         fragment = parse_qsl(parsed.fragment)
         access_token = fragment[0][1]
         os.environ["ACCESS_TOKEN"] = access_token
+        print(f'Received new Access Token Header') #{access_token}')
         return {"Authorization": 'Bearer ' + access_token}
 
 

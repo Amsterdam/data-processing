@@ -37,7 +37,7 @@ def conversionListCvalues(metadata):
 def getJsonData(url, accessToken):
     response = requests.get(url, headers=accessToken)  # Get first page for count
     if response.status_code != 200:
-        if response.status_code == 404:
+        if response.status_code == 404 or response.status_code == 401:
             print('Error status: {} {}'.format(str(response.status_code), "trying with trailing / ..."))
             response = requests.get(url + '/', headers=accessToken)
         else:
@@ -158,8 +158,8 @@ def main():
     # Return all arguments in a list
     args = parser().parse_args()
     print("Getting Access token.")
-    getToken = GetAccessToken()  # Create instance of class
-    accessToken = getToken.getAccessToken()
+    #getToken = GetAccessToken()  # Create instance of class
+    accessToken = GetAccessToken().getAccessToken()
     print("Setup temp database to store requests to speed up restart download if network fails.")
     requests_cache.install_cache('requests_db', backend='sqlite')
 
@@ -167,6 +167,7 @@ def main():
     metadata = {}
     for endpoint in endpoints:
         json_data = getJsonData(args.url + '/' + endpoint, accessToken)
+        # print(json_data)
         metadata.update({endpoint: json_data})
         print("retrieved {}".format(endpoint))
     data = get_data(args.url, 'tellusdata', metadata, accessToken, args.limit)
