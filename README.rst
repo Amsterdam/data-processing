@@ -111,9 +111,11 @@ to test if no other functions are breaking. Correct those issues if needed.
 
 3. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
 
-4. Add a rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
+4. Add a awesome_module.rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
 
-5. Regenerate the documentation to test the docs output using:
+5. add the rst file to the `modules.rst <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst>`_ to be found on the main page.
+
+6. Regenerate the documentation to test the docs output using:
 
 .. code-block:: bash
     
