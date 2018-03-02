@@ -2,10 +2,8 @@ import os
 import configparser
 import logging
 from swiftclient.client import Connection
-
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
-from helpers.objectstore import Objectstore
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)-8s %(message)s',
