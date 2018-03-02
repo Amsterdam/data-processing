@@ -6,7 +6,7 @@
 import requests
 import pandas as pd
 from io import StringIO
-from knmi_metadata import stations # metadata
+from transform.enrichment.knmi_metadata import stations # metadata
 import argparse
 
 def parse_day_data(raw):
