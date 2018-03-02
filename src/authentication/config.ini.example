@@ -1,11 +1,11 @@
 [objectstore]
-ST_AUTH_VERSION=2.0
-OS_AUTH_URL=https://identity.stack.cloudvps.com/v2.0
-OS_USERNAME=extern_dataservices
-OS_PASSWORD= **Use export OBJECTSTORE_PASSWORD=###########**
-OS_TENANT_NAME=extern_dataservices
-OS_PROJECT_ID=356c76835e424b968ed6d654c51204f0
-OS_REGION_NAME=NL
+VERSION=2.0
+AUTHURL=https://identity.stack.cloudvps.com/v2.0
+USER=extern_dataservices
+OBJECTSTORE_PASSWORD= **Use export OBJECTSTORE_PASSWORD=###########**
+TENANT_NAME=extern_dataservices
+TENANT_ID=356c76835e424b968ed6d654c51204f0
+REGION_NAME=NL
 
 [dev]
 host=localhost
