@@ -10,8 +10,16 @@ logging.basicConfig(level=logging.INFO,
                     datefmt='%a, %d %b %Y %H:%M:%S')
 logger = logging.getLogger(__name__)
 
-def get_full_container_list(conn, container, **kwargs):
 
+def get_full_container_list(connection, container, **kwargs):
+    """
+    Get all files stored in container (incl. sub-containers)
+    Args
+    :connection = connection with the Objectstore (using swiftclient Connection API)
+    :container = "first folders in objectstore"
+    Returns
+        generator object with all containers
+    """
     # Note: taken from the bag_services project
     limit = 10000
     kwargs['limit'] = limit
@@ -19,53 +27,65 @@ def get_full_container_list(conn, container, **kwargs):
 
     seed = []
 
-    _, page = conn.get_container(container, **kwargs)
+    _, page = connection.get_container(container, **kwargs)
     seed.extend(page)
 
     while len(page) == limit:
         # keep getting pages..
         kwargs['marker'] = seed[-1]['name']
-        _, page = conn.get_container(container, **kwargs)
+        _, page = connection.get_container(container, **kwargs)
         seed.extend(page)
 
     return seed
 
 
-def download_container(conn, container, prefix, output_folder):
+def download_container(connection, container, prefix, output_folder):
+    """
+    extract file from objectstore
+    Args:
+    :connection = swiftclient connection to Objectstore
+    :prefix = tag or folder name of file, for example subfolder/subsubfolder
+    :output_folder = '/{folder}/ '
+    Returns:
+        Written file /{folder}/{prefix}/{file}
+    """
     target_dir = os.path.join(output_folder, prefix)
     create_dir_if_not_exists(target_dir)
-    content = get_full_container_list(conn, container['name'], prefix=prefix)
+    content = get_full_container_list(connection, container['name'], prefix=prefix)
     # print(content)
     for obj in content:
         if obj['content_type'] != 'application/directory':
             target_filename = os.path.join(output_folder, obj['name'])
             with open(target_filename, 'wb') as new_file:
-                _, obj_content = conn.get_object(container['name'], obj['name'])
+                _, obj_content = connection.get_object(container['name'], obj['name'])
                 new_file.write(obj_content)
             logger.info('Written file {}'.format(target_filename))
 
 
-def download_containers(conn, prefixes, output_folder):
+def download_containers(connection, prefixes, output_folder):
     """
     Download multiple files from the objectstore.
-    :conn = connection to the objectstore by using a helper funcion objecstore_connection
-    :prefixes = path where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
-    :output_folder = folder location, for example app/data
+    Args:
+    :connection = connection to the objectstore by using a helper funcion objecstore_connection
+    :prefixes = multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
+    :output_folder = local folder to write files into, for example app/data for a docker setup
+    Result:
+        Loops through download_container function for each prefix (=folder)
     """
     logger.debug('Checking local data directory exists and is empty')
     if not os.path.exists(output_folder):
         raise Exception('Local data directory does not exist.')
 
     #logger.debug('Establishing object store connection.')
-    resp_headers, containers = conn.get_account()
+    resp_headers, containers = connection.get_account()
 
-    logger.debug('Downloading containers ...')
+    logger.info('Downloading containers ...')
     prefixes = prefixes.split(',')
     print(containers)
     print(prefixes)
     for container in containers:
         for prefix in prefixes:
-            download_container(conn, container, prefix, output_folder)
+            download_container(connection, container, prefix, output_folder)
 
 
 def parser():
@@ -96,8 +116,8 @@ def parser():
 def main():
     # Return all arguments in a list
     args = parser().parse_args()
-    conn = objectstore_connection(args.config_path, args.config_name)
-    download_containers(conn, args.prefixes, args.output_folder)
+    connection = objectstore_connection(args.config_path, args.config_name)
+    download_containers(connection, args.prefixes, args.output_folder)
 
 if __name__ == "__main__":
     main()
