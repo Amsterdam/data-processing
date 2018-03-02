@@ -91,11 +91,11 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 <ul>
@@ -177,6 +177,7 @@
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
@@ -230,8 +231,24 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/extract.html#extract.download_from_data_amsterdam_catalog.download_all_files">download_all_files() (in module extract.download_from_data_amsterdam_catalog)</a>, <a href="extract/download_from_data_amsterdam_catalog.html#extract.download_from_data_amsterdam_catalog.download_all_files">[1]</a>
 </li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.download_container">download_container() (helpers.objectstore.Objectstore method)</a>
+
+      <ul>
+        <li><a href="_modules/extract.html#extract.download_from_objectstore.download_container">(in module extract.download_from_objectstore)</a>
+</li>
+        <li><a href="_modules/load.html#load.upload_to_objectstore.download_container">(in module load.upload_to_objectstore)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.download_containers">download_containers() (helpers.objectstore.Objectstore method)</a>
+
+      <ul>
+        <li><a href="_modules/extract.html#extract.download_from_objectstore.download_containers">(in module extract.download_from_objectstore)</a>, <a href="extract/download_from_objectstore.html#extract.download_from_objectstore.download_containers">[1]</a>
+</li>
+        <li><a href="_modules/load.html#load.upload_to_objectstore.download_containers">(in module load.upload_to_objectstore)</a>
+</li>
+      </ul></li>
       <li><a href="_modules/extract.html#extract.download_from_data_amsterdam_catalog.download_file">download_file() (in module extract.download_from_data_amsterdam_catalog)</a>
 </li>
       <li><a href="_modules/extract.html#extract.download_from_data_amsterdam_catalog.download_metadata">download_metadata() (in module extract.download_from_data_amsterdam_catalog)</a>, <a href="extract/download_from_data_amsterdam_catalog.html#extract.download_from_data_amsterdam_catalog.download_metadata">[1]</a>
@@ -246,13 +263,15 @@
 </li>
       <li><a href="_modules/extract.html#module-extract.csv_dataframe">extract.csv_dataframe (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/extract.html#module-extract.download_bbga_by_variable__area_year">extract.download_bbga_by_variable__area_year (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/extract.html#module-extract.download_from_data_amsterdam_api">extract.download_from_data_amsterdam_api (module)</a>, <a href="extract/download_from_data_amsterdam_api.html#module-extract.download_from_data_amsterdam_api">[1]</a>
 </li>
       <li><a href="_modules/extract.html#module-extract.download_from_data_amsterdam_catalog">extract.download_from_data_amsterdam_catalog (module)</a>, <a href="extract/download_from_data_amsterdam_catalog.html#module-extract.download_from_data_amsterdam_catalog">[1]</a>
+</li>
+      <li><a href="_modules/extract.html#module-extract.download_from_objectstore">extract.download_from_objectstore (module)</a>, <a href="extract/download_from_objectstore.html#module-extract.download_from_objectstore">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -272,13 +291,33 @@
 </li>
       <li><a href="_modules/load.html#load.load_wfs_to_postgres.get_config">get_config() (in module load.load_wfs_to_postgres)</a>, <a href="load/load_wfs_into_postgres.html#load.load_wfs_to_postgres.get_config">[1]</a>
 </li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.get_containerroot_csvs">get_containerroot_csvs() (helpers.objectstore.Objectstore method)</a>
+</li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.get_csvs">get_csvs() (helpers.objectstore.Objectstore method)</a>
+</li>
       <li><a href="_modules/extract.html#extract.download_from_data_amsterdam_api.get_data">get_data() (in module extract.download_from_data_amsterdam_api)</a>
 </li>
-      <li><a href="transform/geospatial/get_geojson_from_wfs.html#transform.geospatial.get_geojson_from_wfs.get_geojson_from_wfs">get_geojson_from_wfs() (in module transform.geospatial.get_geojson_from_wfs)</a>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.get_detection_csvs">get_detection_csvs() (helpers.objectstore.Objectstore method)</a>
 </li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.get_full_container_list">get_full_container_list() (helpers.objectstore.Objectstore method)</a>
+
+      <ul>
+        <li><a href="_modules/extract.html#extract.download_from_objectstore.get_full_container_list">(in module extract.download_from_objectstore)</a>
+</li>
+        <li><a href="_modules/load.html#load.upload_to_objectstore.get_full_container_list">(in module load.upload_to_objectstore)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="transform/geospatial/get_geojson_from_wfs.html#transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs">get_layers_from_wfs() (in module transform.geospatial.get_geojson_from_wfs)</a>
+</li>
+      <li><a href="transform/geospatial/get_geojson_from_wfs.html#transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs">get_multiple_geojson_from_wfs() (in module transform.geospatial.get_geojson_from_wfs)</a>
+</li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.get_objectstore_object">get_objectstore_object() (helpers.objectstore.Objectstore method)</a>
+</li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.get_objectstore_objects">get_objectstore_objects() (helpers.objectstore.Objectstore method)</a>
+</li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.get_objectstore_subdirs">get_objectstore_subdirs() (helpers.objectstore.Objectstore method)</a>
 </li>
       <li><a href="_modules/load.html#load.load_wfs_to_postgres.get_pg_str">get_pg_str() (in module load.load_wfs_to_postgres)</a>, <a href="load/load_wfs_into_postgres.html#load.load_wfs_to_postgres.get_pg_str">[1]</a>
 </li>
@@ -304,6 +343,8 @@
 </li>
       <li><a href="_modules/helpers.html#module-helpers.normalize">helpers.normalize (module)</a>
 </li>
+      <li><a href="_modules/helpers.html#module-helpers.objectstore">helpers.objectstore (module)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -322,9 +363,11 @@
 </li>
       <li><a href="_modules/load.html#module-load.load_wfs_to_postgres">load.load_wfs_to_postgres (module)</a>, <a href="load/load_wfs_into_postgres.html#module-load.load_wfs_to_postgres">[1]</a>
 </li>
+      <li><a href="_modules/load.html#module-load.load_xls_to_postgres">load.load_xls_to_postgres (module)</a>, <a href="load/load_xls_into_postgres.html#module-load.load_xls_to_postgres">[1]</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/load.html#module-load.load_xls_to_postgres">load.load_xls_to_postgres (module)</a>, <a href="load/load_xls_into_postgres.html#module-load.load_xls_to_postgres">[1]</a>
+      <li><a href="_modules/load.html#module-load.upload_to_objectstore">load.upload_to_objectstore (module)</a>
 </li>
       <li><a href="_modules/load.html#load.load_wfs_to_postgres.load_layers">load_layers() (in module load.load_wfs_to_postgres)</a>, <a href="load/load_wfs_into_postgres.html#load.load_wfs_to_postgres.load_layers">[1]</a>
 </li>
@@ -347,9 +390,13 @@
 </li>
         <li><a href="_modules/extract.html#extract.download_from_data_amsterdam_catalog.main">(in module extract.download_from_data_amsterdam_catalog)</a>
 </li>
+        <li><a href="_modules/extract.html#extract.download_from_objectstore.main">(in module extract.download_from_objectstore)</a>, <a href="extract/download_from_objectstore.html#extract.download_from_objectstore.main">[1]</a>
+</li>
         <li><a href="_modules/load.html#load.load_wfs_to_postgres.main">(in module load.load_wfs_to_postgres)</a>
 </li>
         <li><a href="_modules/load.html#load.load_xls_to_postgres.main">(in module load.load_xls_to_postgres)</a>
+</li>
+        <li><a href="_modules/load.html#load.upload_to_objectstore.main">(in module load.upload_to_objectstore)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -359,6 +406,18 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/load.html#load.load_wfs_to_postgres.NonZeroReturnCode">NonZeroReturnCode</a>, <a href="load/load_wfs_into_postgres.html#load.load_wfs_to_postgres.NonZeroReturnCode">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore">Objectstore (class in helpers.objectstore)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_modules/helpers.html#helpers.connections.objectstore_connection">objectstore_connection() (in module helpers.connections)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -375,9 +434,13 @@
 </li>
         <li><a href="_modules/extract.html#extract.download_from_data_amsterdam_catalog.parser">(in module extract.download_from_data_amsterdam_catalog)</a>, <a href="extract/download_from_data_amsterdam_catalog.html#extract.download_from_data_amsterdam_catalog.parser">[1]</a>
 </li>
+        <li><a href="_modules/extract.html#extract.download_from_objectstore.parser">(in module extract.download_from_objectstore)</a>, <a href="extract/download_from_objectstore.html#extract.download_from_objectstore.parser">[1]</a>
+</li>
         <li><a href="_modules/load.html#load.load_wfs_to_postgres.parser">(in module load.load_wfs_to_postgres)</a>, <a href="load/load_wfs_into_postgres.html#load.load_wfs_to_postgres.parser">[1]</a>
 </li>
         <li><a href="_modules/load.html#load.load_xls_to_postgres.parser">(in module load.load_xls_to_postgres)</a>
+</li>
+        <li><a href="_modules/load.html#load.upload_to_objectstore.parser">(in module load.upload_to_objectstore)</a>
 </li>
         <li><a href="transform/geospatial/get_geojson_from_wfs.html#transform.geospatial.get_geojson_from_wfs.parser">(in module transform.geospatial.get_geojson_from_wfs)</a>
 </li>
@@ -385,6 +448,10 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/helpers.html#helpers.connections.postgres_engine_pandas">postgres_engine_pandas() (in module helpers.connections)</a>
+</li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.prefixes">prefixes (helpers.objectstore.Objectstore attribute)</a>
+</li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.put_into_objectstore">put_into_objectstore() (helpers.objectstore.Objectstore method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -399,6 +466,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/extract.html#extract.download_from_data_amsterdam_api.reformatData">reformatData() (in module extract.download_from_data_amsterdam_api)</a>
+</li>
+      <li><a href="_modules/helpers.html#helpers.objectstore.Objectstore.RESP_LIMIT">RESP_LIMIT (helpers.objectstore.Objectstore attribute)</a>
 </li>
       <li><a href="_modules/load.html#load.load_wfs_to_postgres.run_command_sync">run_command_sync() (in module load.load_wfs_to_postgres)</a>, <a href="load/load_wfs_into_postgres.html#load.load_wfs_to_postgres.run_command_sync">[1]</a>
 </li>

@@ -31,6 +31,7 @@ stored, from API’s or from the data catalog**
 
     extract/download_from_data_amsterdam_catalog
     extract/download_from_data_amsterdam_api
+    extract/download_from_objectstore
     
 
 Transform

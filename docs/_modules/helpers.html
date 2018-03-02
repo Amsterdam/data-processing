@@ -93,13 +93,13 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
@@ -109,6 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.connections">helpers.connections module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.files">helpers.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.normalize">helpers.normalize module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.objectstore">helpers.objectstore module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers">Module contents</a></li>
 </ul>
 </li>
@@ -192,6 +193,14 @@
 <div class="section" id="module-helpers.connections">
 <span id="helpers-connections-module"></span><h2>helpers.connections module<a class="headerlink" href="#module-helpers.connections" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="helpers.connections.objectstore_connection">
+<code class="descclassname">helpers.connections.</code><code class="descname">objectstore_connection</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.objectstore_connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get objectstore settings as a dict
+:config_full_path = /path_to_config/config.ini or config.ini if in root.
+:config_name = objectstore</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="helpers.connections.postgres_engine_pandas">
 <code class="descclassname">helpers.connections.</code><code class="descname">postgres_engine_pandas</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.postgres_engine_pandas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.
@@ -237,6 +246,90 @@ Use filename_as_folder=True to unzip to subfolders with name of zipfile.</p>
 <code class="descclassname">helpers.normalize.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>jsonObject</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.flatten_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flatten nested json Object {“key”: “subkey”: { “subsubkey”:”value” }} to [‘key.subkey.subsubkey’] values
 <a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-helpers.objectstore">
+<span id="helpers-objectstore-module"></span><h2>helpers.objectstore module<a class="headerlink" href="#module-helpers.objectstore" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="helpers.objectstore.Objectstore">
+<em class="property">class </em><code class="descclassname">helpers.objectstore.</code><code class="descname">Objectstore</code><span class="sig-paren">(</span><em>settings</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="helpers.objectstore.Objectstore.RESP_LIMIT">
+<code class="descname">RESP_LIMIT</code><em class="property"> = 10000</em><a class="headerlink" href="#helpers.objectstore.Objectstore.RESP_LIMIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.download_container">
+<code class="descname">download_container</code><span class="sig-paren">(</span><em>conn</em>, <em>container</em>, <em>prefix</em>, <em>datadir</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.download_container" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.download_containers">
+<code class="descname">download_containers</code><span class="sig-paren">(</span><em>datasets</em>, <em>prefixes</em>, <em>datadir</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download the schoonmonitor datasets from object store.</p>
+<p>Simplifying assumptions:
+* layout on data store matches intended layout of local data directory
+* datasets do not contain nested directories
+* assumes we are running in a clean container (i.e. empty local data dir)
+* do not overwrite / delete old data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.get_containerroot_csvs">
+<code class="descname">get_containerroot_csvs</code><span class="sig-paren">(</span><em>csv_identifier</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.get_containerroot_csvs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.get_csvs">
+<code class="descname">get_csvs</code><span class="sig-paren">(</span><em>csv_identifier</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.get_csvs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.get_detection_csvs">
+<code class="descname">get_detection_csvs</code><span class="sig-paren">(</span><em>day</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.get_detection_csvs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.get_full_container_list">
+<code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>conn</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#helpers.objectstore.Objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>get all files stored in container (incl. sub-containers)
+Args:</p>
+<blockquote>
+<div>conn = connection with the Objectstore (using swiftclient Connection API)
+container == “path/in/Objectstore”</div></blockquote>
+<dl class="docutils">
+<dt>returns</dt>
+<dd>generator object</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.get_objectstore_object">
+<code class="descname">get_objectstore_object</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.get_objectstore_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.get_objectstore_objects">
+<code class="descname">get_objectstore_objects</code><span class="sig-paren">(</span><em>container</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.get_objectstore_objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.get_objectstore_subdirs">
+<code class="descname">get_objectstore_subdirs</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.get_objectstore_subdirs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="helpers.objectstore.Objectstore.prefixes">
+<code class="descname">prefixes</code><em class="property"> = ['aanvalsplan_schoon/crow']</em><a class="headerlink" href="#helpers.objectstore.Objectstore.prefixes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="helpers.objectstore.Objectstore.put_into_objectstore">
+<code class="descname">put_into_objectstore</code><span class="sig-paren">(</span><em>object_name</em>, <em>object_content</em>, <em>content_type</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.objectstore.Objectstore.put_into_objectstore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>

@@ -20,6 +20,14 @@ load.load\_xls\_to\_postgres module
     :undoc-members:
     :show-inheritance:
 
+load.upload\_to\_objectstore module
+-----------------------------------
+
+.. automodule:: load.upload_to_objectstore
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
