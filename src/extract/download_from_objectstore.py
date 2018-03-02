@@ -73,6 +73,7 @@ def parser():
     description = """
     Download files from the objectstore:
     `download_from_objectstore config.ini objectstore aanvalsplan_schoon/crow,aanvalsplan_schoon/mora data`
+    Use: export OBJECTSTORE_PASSWORD=********** to your environment before running this command script.
     """
 
     parser = argparse.ArgumentParser(
