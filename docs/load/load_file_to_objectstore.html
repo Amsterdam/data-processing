@@ -38,7 +38,7 @@
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="../modules.html"/>
         <link rel="next" title="load_xls_to_postgres" href="load_xls_into_postgres.html"/>
-        <link rel="prev" title="get_geojson_from_wfs" href="../transform/geospatial/get_geojson_from_wfs.html"/> 
+        <link rel="prev" title="add_knmi_data" href="../transform/enrichment/add_knmi_data.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -105,7 +105,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../modules.html#load">Load</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">load_file_to_objectstore</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#functions">functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-load.load_file_to_objectstore">functions</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="load_xls_into_postgres.html">load_xls_to_postgres</a></li>
@@ -216,8 +216,59 @@ Use: export OBJECTSTORE_PASSWORD=********** to your environment before running t
 </tbody>
 </table>
 </div>
-<div class="section" id="functions">
-<h2>functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-load.load_file_to_objectstore">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-load.load_file_to_objectstore" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="load.load_file_to_objectstore.check_existence_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">check_existence_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.check_existence_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the file is present on the objectstore container_path,
+Args
+: connection = Objectstore connection based on from helpers.connection import objectstore_connection
+: container_path = Name of container/prefix/subfolder
+: filename = Name of file, for example test.csv
+Result
+‘The object was not found’</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.get_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">get_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from objectstore container.</p>
+<p>Args
+: connection = Objectstore connection based on from helpers.connection import objectstore_connection
+: container_path = Name of container/prefix/subfolder
+: filename = Name of file, for example test.csv
+: output_folder = Define the path to write the file to for example app/data when using docker.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.parser">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.put_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">put_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container: str</em>, <em>filename: str</em>, <em>contents</em>, <em>content_type: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#load.load_file_to_objectstore.put_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file to objectstore
+Args
+:container == “path/in/store”
+:object_name = “your_file_name.txt”
+:contents=thefiledata (fileobject) open(‘ourfile’, ‘rb’)
+:content_type=’text/csv’  / ‘application/json’ .. using the mime package</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.upload_file">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">upload_file</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.upload_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file to the objectstore
+Args
+: connection = Objectstore connection based on from helpers.connection import objectstore_connection
+: container_path = Name of container/prefix/subfolder, for example Dataservices/aanvalsplan_schoon/crow
+: filename_path = full path including the name of file, for example: data/test.csv</p>
+<p>Uses mime for content_type: <a class="reference external" href="https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python">https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python</a></p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -234,7 +285,7 @@ Use: export OBJECTSTORE_PASSWORD=********** to your environment before running t
         <a href="load_xls_into_postgres.html" class="btn btn-neutral float-right" title="load_xls_to_postgres" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../transform/geospatial/get_geojson_from_wfs.html" class="btn btn-neutral" title="get_geojson_from_wfs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../transform/enrichment/add_knmi_data.html" class="btn btn-neutral" title="add_knmi_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

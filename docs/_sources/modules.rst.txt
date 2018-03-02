@@ -40,10 +40,21 @@ Transform
 **Functions to transform, preprocess and enrich datasets. Divided into
 the following subsections**
 
+
+Geospatial
+^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
 
     transform/geospatial/get_geojson_from_wfs
+
+
+Enrichment
+^^^^^^^^^^
+.. toctree::
+    :maxdepth: 1
+
+    transform/enrichment/add_knmi_data
 
 Load
 ----

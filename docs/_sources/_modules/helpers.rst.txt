@@ -28,14 +28,6 @@ helpers.normalize module
     :undoc-members:
     :show-inheritance:
 
-helpers.objectstore module
---------------------------
-
-.. automodule:: helpers.objectstore
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 
 Module contents
 ---------------
