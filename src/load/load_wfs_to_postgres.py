@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-import os
-import subprocess
-import logging
-import argparse
-import configparser
 
-from sqlalchemy import create_engine
-from sqlalchemy.engine.url import URL
+import subprocess
+import argparse
+
+from helpers.logging import logger
+from helpers.connections import get_config
+
+# Setup basic logging
+logger = logger()
 
 
 class NonZeroReturnCode(Exception):
@@ -26,7 +27,7 @@ def scrub(l):
 
 def run_command_sync(cmd, allow_fail=False):
     """Run a string in the command line."""
-    logging.debug('Running %s', scrub(cmd))
+    # logger.info('Running %s', scrub(cmd))
     p = subprocess.Popen(cmd)
     p.wait()
 
@@ -51,21 +52,29 @@ def get_pg_str(host, port, user, dbname, password):
 
 def load_layers(pg_str):
     """Load layers into Postgres using a list of titles of each layer within the WFS service."""
-    layerNames = ['stadsdeel', 'buurt', 'buurtcombinatie', 'gebiedsgerichtwerken']
+    layerNames = ['stadsdeel',
+                  'buurt',
+                  'buurtcombinatie',
+                  'gebiedsgerichtwerken']
 
     srsName = 'EPSG:28992'
 
     for areaName in layerNames:
-        WFS="https://map.data.amsterdam.nl/maps/gebieden?REQUEST=GetFeature&SERVICE=wfs&Version=2.0.0&SRSNAME=" + srsName + "&typename=" + areaName
-        wfs2psql(WFS, pg_str , areaName)
-        print(areaName + ' loaded into PG.')
+        WFS = "https://map.data.amsterdam.nl/maps/gebieden?REQUEST=GetFeature&SERVICE=wfs&Version=2.0.0&SRSNAME=" + srsName + "&typename=" + areaName
+        wfs2psql(WFS, pg_str, areaName)
+        logger.info(areaName + ' loaded into PG.')
 
 
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx."""
     desc = """
-Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
-Example to run in development: load_wfs_to_postgres config.ini dev
+    Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
+
+    Add ogr2ogr path ENV if running locally in a virtual environment:
+        ``export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH``
+
+    Example command line:
+        ``load_wfs_to_postgres config.ini dev``
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument(
@@ -75,19 +84,7 @@ Example to run in development: load_wfs_to_postgres config.ini dev
     return parser
 
 
-def get_config(full_path):
-    """Get config file with login credentials and port numbers."""
-    config = configparser.RawConfigParser()
-    config.read(full_path)
-    print("Found these configs:")
-    for config_name in config.sections():
-        print('-', config_name)
-    return config
-
-
 def main():
-    FORMAT = '%(asctime)-15s %(message)s'
-    logging.basicConfig(format=FORMAT, level=logging.DEBUG)
     args = parser().parse_args()
     config = get_config(args.config_path)
     db_config = args.db_config[0]
