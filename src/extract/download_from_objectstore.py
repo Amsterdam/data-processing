@@ -14,10 +14,10 @@ logger = logging.getLogger(__name__)
 def get_full_container_list(connection, container, **kwargs):
     """
     Get all files stored in container (incl. sub-containers)
-    Args
+    Args:
     :connection = connection with the Objectstore (using swiftclient Connection API)
     :container = "first folders in objectstore"
-    Returns
+    Returns:
         generator object with all containers
     """
     # Note: taken from the bag_services project
@@ -41,7 +41,7 @@ def get_full_container_list(connection, container, **kwargs):
 
 def download_container(connection, container, prefix, output_folder):
     """
-    extract file from objectstore
+    Download file from objectstore
     Args:
     :connection = swiftclient connection to Objectstore
     :prefix = tag or folder name of file, for example subfolder/subsubfolder
@@ -76,7 +76,7 @@ def download_containers(connection, prefixes, output_folder):
     if not os.path.exists(output_folder):
         raise Exception('Local data directory does not exist.')
 
-    #logger.debug('Establishing object store connection.')
+    # logger.debug('Establishing object store connection.')
     resp_headers, containers = connection.get_account()
 
     logger.info('Downloading containers ...')
@@ -118,6 +118,7 @@ def main():
     args = parser().parse_args()
     connection = objectstore_connection(args.config_path, args.config_name)
     download_containers(connection, args.prefixes, args.output_folder)
+
 
 if __name__ == "__main__":
     main()

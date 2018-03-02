@@ -12,5 +12,5 @@ load_file_to_objectstore
 
 functions
 ---------
-.. automodule:: load_file_to_objectstore
+.. automodule:: load.load_file_to_objectstore
    :members:
