@@ -186,9 +186,14 @@
   <div class="section" id="load-file-to-objectstore">
 <span id="id1"></span><h1>load_file_to_objectstore<a class="headerlink" href="#load-file-to-objectstore" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div>Write a file to a container on the objectstore.
-Use: export OBJECTSTORE_PASSWORD=********** to your environment before running this command script.
-<cite>load_file_to_objectstore config.ini objectstore data/test.csv Dataservices/aanvalsplan_schoon/crow</cite></div></blockquote>
+<div><p><strong>Write a file to a container on the objectstore.</strong></p>
+<dl class="docutils">
+<dt>Use ENV:</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">OBJECTSTORE_PASSWORD=**********</span></code> to add the password to your environment before running this command script.</dd>
+<dt>Example commandline code:</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">load_file_to_objectstore</span> <span class="pre">config.ini</span> <span class="pre">objectstore</span> <span class="pre">data/test.csv</span> <span class="pre">Dataservices/aanvalsplan_schoon/crow</span></code></dd>
+</dl>
+</div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_file_to_objectstore</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
                                 <span class="n">config_path</span> <span class="n">config_name</span> <span class="n">filename</span>
@@ -221,24 +226,41 @@ Use: export OBJECTSTORE_PASSWORD=********** to your environment before running t
 <dl class="function">
 <dt id="load.load_file_to_objectstore.check_existence_object">
 <code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">check_existence_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.check_existence_object" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if the file is present on the objectstore container_path,
-Args
-: connection = Objectstore connection based on from helpers.connection import objectstore_connection
-: container_path = Name of container/prefix/subfolder
-: filename = Name of file, for example test.csv
-Result
-‘The object was not found’</p>
+<dd><p>Check if the file is present on the objectstore container_path,</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection = Objectstore connection based on from helpers.connection import objectstore_connection</li>
+<li>container_path = Name of container/prefix/subfolder</li>
+<li>filename = Name of file, for example test.csv</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd><ul class="first last simple">
+<li>‘The object was successfully created’</li>
+<li>‘The object was not found’</li>
+<li>‘Error finding the object’</li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="load.load_file_to_objectstore.get_object">
 <code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">get_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.get_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download file from objectstore container.</p>
-<p>Args
-: connection = Objectstore connection based on from helpers.connection import objectstore_connection
-: container_path = Name of container/prefix/subfolder
-: filename = Name of file, for example test.csv
-: output_folder = Define the path to write the file to for example app/data when using docker.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: Objectstore connection based on from helpers.connection import objectstore_connection</li>
+<li>container_path: Name of container/prefix/subfolder</li>
+<li>filename: Name of file, for example test.csv</li>
+<li>output_folder: Define the path to write the file to for example app/data when using docker.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>A file from the objectstore into the specified output_folder.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -250,23 +272,37 @@ Result
 <dl class="function">
 <dt id="load.load_file_to_objectstore.put_object">
 <code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">put_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container: str</em>, <em>filename: str</em>, <em>contents</em>, <em>content_type: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#load.load_file_to_objectstore.put_object" title="Permalink to this definition">¶</a></dt>
-<dd><p>Upload file to objectstore
-Args
-:container == “path/in/store”
-:object_name = “your_file_name.txt”
-:contents=thefiledata (fileobject) open(‘ourfile’, ‘rb’)
-:content_type=’text/csv’  / ‘application/json’ .. using the mime package</p>
+<dd><p>Upload a file to objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>container: path/in/store</li>
+<li>filename: your_file_name.txt</li>
+<li>contents: contents of file with use of with open(‘your_file_name.txt’, ‘rb’) as contents:</li>
+<li>content_type:’text/csv’,’application/json’, … Is retrievd by using the mime package.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>A saved file in the container of the objectstore.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="load.load_file_to_objectstore.upload_file">
 <code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">upload_file</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.upload_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Upload file to the objectstore
-Args
-: connection = Objectstore connection based on from helpers.connection import objectstore_connection
-: container_path = Name of container/prefix/subfolder, for example Dataservices/aanvalsplan_schoon/crow
-: filename_path = full path including the name of file, for example: data/test.csv</p>
-<p>Uses mime for content_type: <a class="reference external" href="https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python">https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python</a></p>
+<dd><p>Upload file to the objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first arabic simple">
+<li>connection = Objectstore connection based on from helpers.connection import objectstore_connection</li>
+<li>container_path = Name of container/prefix/subfolder, for example Dataservices/aanvalsplan_schoon/crow</li>
+<li>filename_path = full path including the name of file, for example: data/test.csv</li>
+</ol>
+<p class="last">Uses mime for content_type: <a class="reference external" href="https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python">https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python</a></p>
+</dd>
+<dt>Result:</dt>
+<dd>Uploads a file to the objectstore and checks if it exists on in the defined container_path.</dd>
+</dl>
 </dd></dl>
 
 </div>

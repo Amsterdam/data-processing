@@ -20,6 +20,14 @@ helpers.files module
     :undoc-members:
     :show-inheritance:
 
+helpers.logging module
+----------------------
+
+.. automodule:: helpers.logging
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 helpers.normalize module
 ------------------------
 

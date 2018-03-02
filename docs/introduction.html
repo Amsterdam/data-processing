@@ -219,7 +219,7 @@ python -m venv --copies --prompt data-processing .venv
 </div>
 <p>4. A database is required for the transform and load functions.
 You can setup your postgres database credentials in the config.ini file to apply to the functions.</p>
-<p>If want to use ‘Docker &lt;<a class="reference external" href="https://www.docker.com">https://www.docker.com</a>&gt;’_, you can start a database server for your project in a new terminal. The name, port and login of the database can be changed in the docker-compose.yml. Also change them in the config.ini file which will be used by the functions to connect to that database.</p>
+<p>If want to use <a class="reference external" href="https://www.docker.com">Docker</a>, you can start a database server for your project in a new terminal. The name, port and login of the database can be changed in the docker-compose.yml. Also change them in the config.ini file which will be used by the functions to connect to that database.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose up -d database
 </pre></div>
 </div>
@@ -252,7 +252,7 @@ pip install -e ./<span class="o">[</span>docs,test,dev/<span class="o">]</span>
 <ol class="arabic simple">
 <li>Convert your function into a <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">python-package command line script</a> using the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py">boilerplate_function.py</a></li>
 </ol>
-<p>2. Add test to the <a href="#id1"><span class="problematic" id="id2">`test folder&lt;https://github.com/Amsterdam/data-processing/tree/master/tests&gt;`_</span></a> and run
+<p>2. Add test to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/tests">test folder</a> and run
 .. code-block:: bash</p>
 <blockquote>
 <div>python setup.py test</div></blockquote>
