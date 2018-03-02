@@ -167,6 +167,65 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-load.load_file_to_objectstore">
+<span id="load-load-file-to-objectstore-module"></span><h2>load.load_file_to_objectstore module<a class="headerlink" href="#module-load.load_file_to_objectstore" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="load.load_file_to_objectstore.check_existence_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">check_existence_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.check_existence_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the file is present on the objectstore container_path,
+Args
+: connection = Objectstore connection based on from helpers.connection import objectstore_connection
+: container_path = Name of container/prefix/subfolder
+: filename = Name of file, for example test.csv
+Result
+‘The object was not found’</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.get_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">get_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from objectstore container.</p>
+<p>Args
+: connection = Objectstore connection based on from helpers.connection import objectstore_connection
+: container_path = Name of container/prefix/subfolder
+: filename = Name of file, for example test.csv
+: output_folder = Define the path to write the file to for example app/data when using docker.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.main">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.parser">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.put_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">put_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container: str</em>, <em>filename: str</em>, <em>contents</em>, <em>content_type: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#load.load_file_to_objectstore.put_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file to objectstore
+Args
+:container == “path/in/store”
+:object_name = “your_file_name.txt”
+:contents=thefiledata (fileobject) open(‘ourfile’, ‘rb’)
+:content_type=’text/csv’  / ‘application/json’ .. using the mime package</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.upload_file">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">upload_file</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.upload_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file to the objectstore
+Args
+: connection = Objectstore connection based on from helpers.connection import objectstore_connection
+: container_path = Name of container/prefix/subfolder, for example Dataservices/aanvalsplan_schoon/crow
+: filename_path = full path including the name of file, for example: data/test.csv</p>
+<p>Uses mime for content_type: <a class="reference external" href="https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python">https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python</a></p>
+</dd></dl>
+
+</div>
 <div class="section" id="module-load.load_wfs_to_postgres">
 <span id="load-load-wfs-to-postgres-module"></span><h2>load.load_wfs_to_postgres module<a class="headerlink" href="#module-load.load_wfs_to_postgres" title="Permalink to this headline">¶</a></h2>
 <dl class="exception">
@@ -240,39 +299,6 @@
 <dt id="load.load_xls_to_postgres.parser">
 <code class="descclassname">load.load_xls_to_postgres.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_xls_to_postgres.parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-</div>
-<div class="section" id="module-load.upload_to_objectstore">
-<span id="load-upload-to-objectstore-module"></span><h2>load.upload_to_objectstore module<a class="headerlink" href="#module-load.upload_to_objectstore" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="load.upload_to_objectstore.download_container">
-<code class="descclassname">load.upload_to_objectstore.</code><code class="descname">download_container</code><span class="sig-paren">(</span><em>conn</em>, <em>container</em>, <em>prefix</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#load.upload_to_objectstore.download_container" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="load.upload_to_objectstore.download_containers">
-<code class="descclassname">load.upload_to_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>conn</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#load.upload_to_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download multiple files from the objectstore.
-:conn = connection to the objectstore by using a helper funcion objecstore_connection
-:prefixes = path where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
-:output_folder = folder location, for example app/data</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="load.upload_to_objectstore.get_full_container_list">
-<code class="descclassname">load.upload_to_objectstore.</code><code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>conn</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#load.upload_to_objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="load.upload_to_objectstore.main">
-<code class="descclassname">load.upload_to_objectstore.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.upload_to_objectstore.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="load.upload_to_objectstore.parser">
-<code class="descclassname">load.upload_to_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.upload_to_objectstore.parser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
-</dd></dl>
 
 </div>
 <div class="section" id="module-load">

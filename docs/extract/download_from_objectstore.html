@@ -104,7 +104,8 @@
 <li class="toctree-l3"><a class="reference internal" href="download_from_data_amsterdam_catalog.html">download_from_data_amsterdam_catalog</a></li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_data_amsterdam_api.html">download_from_data_amsterdam_api</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_objectstore</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#main">main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-extract.download_from_objectstore">functions</a></li>
 </ul>
 </li>
 </ul>
@@ -184,13 +185,75 @@
             
   <div class="section" id="download-from-objectstore">
 <span id="id1"></span><h1>download_from_objectstore<a class="headerlink" href="#download-from-objectstore" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-extract.download_from_objectstore"></span><dl class="function">
+<p><blockquote>
+<div>Download files from the objectstore:
+<cite>download_from_objectstore config.ini objectstore aanvalsplan_schoon/crow,aanvalsplan_schoon/mora data</cite>
+Use: export OBJECTSTORE_PASSWORD=********** to your environment before running this command script.</div></blockquote>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_objectstore</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                                 <span class="n">config_path</span> <span class="n">config_name</span> <span class="n">prefixes</span>
+                                 <span class="n">output_folder</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h2>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd>config_path</kbd></td>
+<td>Define the full path of the config file, for example /path_to_config/config.ini or config.ini</td></tr>
+<tr><td class="option-group">
+<kbd>config_name</kbd></td>
+<td>Specify the name in the config.ini file, for example objectstore</td></tr>
+<tr><td class="option-group">
+<kbd>prefixes</kbd></td>
+<td>Specify the names of the folders to download, separated by a comma, for example aanvalsplan_schoon/crow, aanvalsplan_schoon/mora</td></tr>
+<tr><td class="option-group">
+<kbd>output_folder</kbd></td>
+<td>Specify the output_folder location, for example data</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-extract.download_from_objectstore">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_objectstore" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_objectstore.download_container">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_container</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>prefix</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from objectstore
+Args:
+:connection = swiftclient connection to Objectstore
+:prefix = tag or folder name of file, for example subfolder/subsubfolder
+:output_folder = ‘/{folder}/ ‘
+Returns:</p>
+<blockquote>
+<div>Written file /{folder}/{prefix}/{file}</div></blockquote>
+</dd></dl>
+
+<dl class="function">
 <dt id="extract.download_from_objectstore.download_containers">
-<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>conn</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>connection</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download multiple files from the objectstore.
-:conn = connection to the objectstore by using a helper funcion objecstore_connection
-:prefixes = path where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
-:output_folder = folder location, for example app/data</p>
+Args:
+:connection = connection to the objectstore by using a helper funcion objecstore_connection
+:prefixes = multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
+:output_folder = local folder to write files into, for example app/data for a docker setup
+Result:</p>
+<blockquote>
+<div>Loops through download_container function for each prefix (=folder)</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.get_full_container_list">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all files stored in container (incl. sub-containers)
+Args:
+:connection = connection with the Objectstore (using swiftclient Connection API)
+:container = “first folders in objectstore”
+Returns:</p>
+<blockquote>
+<div>generator object with all containers</div></blockquote>
 </dd></dl>
 
 <dl class="function">
@@ -198,13 +261,6 @@
 <code class="descclassname">extract.download_from_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
 </dd></dl>
-
-<div class="section" id="main">
-<h2>main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="extract.download_from_objectstore.main">
-<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </div>
 </div>

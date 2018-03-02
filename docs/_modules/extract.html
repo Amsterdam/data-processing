@@ -318,22 +318,41 @@ variableNames can be found here: <a class="reference external" href="https://api
 <span id="extract-download-from-objectstore-module"></span><h2>extract.download_from_objectstore module<a class="headerlink" href="#module-extract.download_from_objectstore" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="extract.download_from_objectstore.download_container">
-<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_container</code><span class="sig-paren">(</span><em>conn</em>, <em>container</em>, <em>prefix</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_container" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_container</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>prefix</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from objectstore
+Args:
+:connection = swiftclient connection to Objectstore
+:prefix = tag or folder name of file, for example subfolder/subsubfolder
+:output_folder = ‘/{folder}/ ‘
+Returns:</p>
+<blockquote>
+<div>Written file /{folder}/{prefix}/{file}</div></blockquote>
+</dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_objectstore.download_containers">
-<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>conn</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>connection</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download multiple files from the objectstore.
-:conn = connection to the objectstore by using a helper funcion objecstore_connection
-:prefixes = path where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
-:output_folder = folder location, for example app/data</p>
+Args:
+:connection = connection to the objectstore by using a helper funcion objecstore_connection
+:prefixes = multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
+:output_folder = local folder to write files into, for example app/data for a docker setup
+Result:</p>
+<blockquote>
+<div>Loops through download_container function for each prefix (=folder)</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_objectstore.get_full_container_list">
-<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>conn</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all files stored in container (incl. sub-containers)
+Args:
+:connection = connection with the Objectstore (using swiftclient Connection API)
+:container = “first folders in objectstore”
+Returns:</p>
+<blockquote>
+<div>generator object with all containers</div></blockquote>
+</dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_objectstore.main">

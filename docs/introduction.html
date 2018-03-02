@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="index.html"/>
         <link rel="next" title="Modules" href="modules.html"/>
-        <link rel="prev" title="Data-processing" href="index.html"/> 
+        <link rel="prev" title="Datapunt Processing" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -217,9 +217,9 @@ python -m venv --copies --prompt data-processing .venv
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e .
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li>Start a database server in a new terminal (required for all load services with current config.ini or not using an existing database):</li>
-</ol>
+<p>4. A database is required for the transform and load functions.
+You can setup your postgres database credentials in the config.ini file to apply to the functions.</p>
+<p>If want to use ‘Docker &lt;<a class="reference external" href="https://www.docker.com">https://www.docker.com</a>&gt;’_, you can start a database server for your project in a new terminal. The name, port and login of the database can be changed in the docker-compose.yml. Also change them in the config.ini file which will be used by the functions to connect to that database.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose up -d database
 </pre></div>
 </div>
@@ -227,8 +227,12 @@ python -m venv --copies --prompt data-processing .venv
 <div class="section" id="notebooks">
 <h1>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this headline">¶</a></h1>
 <p>Some of the examples are in the form of runnable Jupyter notebooks. Copies of these with all the images and output included are hosted at Anaconda Cloud. To run these notebooks on your own system, start up a Jupyter notebook server:</p>
+<p>To install jupyter:
+.. code-block:: bash</p>
 <blockquote>
-<div>jupyter notebook –NotebookApp.iopub_data_rate_limit=100000000</div></blockquote>
+<div><p>pip install -e .[dev]</p>
+<p>jupyter notebook –NotebookApp.iopub_data_rate_limit=100000000</p>
+</div></blockquote>
 </div>
 <div class="section" id="how-to-contribute">
 <h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h1>
@@ -255,7 +259,8 @@ pip install -e ./<span class="o">[</span>docs,test,dev/<span class="o">]</span>
 <p>to test if no other functions are breaking. Correct those issues if needed.</p>
 <ol class="arabic simple" start="3">
 <li>Add your commandline name and location to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36">concole_scripts</a> in setup.py.</li>
-<li>Add a rst file with <a class="reference external" href="http://sphinx-argparse.readthedocs.io/en/latest/">Sphinx Argparse extension</a> fields to generate the description and argument fields by reusing an <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst">existing rst file</a>. Helpers will generate automatically, so you can skip this step if it is only a helper function.</li>
+<li>Add a awesome_module.rst file with <a class="reference external" href="http://sphinx-argparse.readthedocs.io/en/latest/">Sphinx Argparse extension</a> fields to generate the description and argument fields by reusing an <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst">existing rst file</a>. Helpers will generate automatically, so you can skip this step if it is only a helper function.</li>
+<li>add the rst file to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst">modules.rst</a> to be found on the main page.</li>
 <li>Regenerate the documentation to test the docs output using:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx/make docs
@@ -280,7 +285,7 @@ pip install -e ./<span class="o">[</span>docs,test,dev/<span class="o">]</span>
         <a href="modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Data-processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Datapunt Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
