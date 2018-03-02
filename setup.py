@@ -64,6 +64,7 @@ setup(
             'csv_dataframe = extract.csv_dataframe:main',
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
             'load_xls_to_postgres = load.load_xls_to_postgres:main',
+            'load_file_to_objectstore = load.load_file_to_objectstore:main',
             'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
             'add_public_events = transform.enrichment.add_public_events:main',
             'add_knmi_data = transform.enrichment.add_knmi_data:main'
