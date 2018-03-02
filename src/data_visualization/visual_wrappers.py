@@ -32,11 +32,12 @@ def base_plot(tools='pan,wheel_zoom,reset',plot_width=plot_width, plot_height=pl
 
 
 def folium_heatmap(df, lat_col, lon_col, zoom_start=11, \
-                plot_points=False, pt_radius=15, \
+                plot_points=False, pt_radius=15, popup_name = 'subrubriek' , \
                 draw_heatmap=False, heat_map_weights_col=None, \
                 heat_map_weights_normalize=True, heat_map_radius=15):
-    """Creates a Foilium HeatMap given a dataframe of points. Can also produce a 
-    heatmap overlay.
+    """Creates a Foilium HeatMap given a dataframe of lat lon points. Can also produce a 
+    heatmap overlay. 
+    Note: pop_name arg is set to 'subrubriek', only present in Mora dataset
 
     Arg:
         df: dataframe lon lat coordinates to maps
@@ -44,6 +45,7 @@ def folium_heatmap(df, lat_col, lon_col, zoom_start=11, \
         lon_col: Column containing longitude
         zoom_start: initial zoom of the map
         plot_points: Add points to map (boolean)
+        popup_name = When adding points this will be the pop_up name (choose categorical)
         pt_radius: Size of each point
         draw_heatmap: Add heatmap to map (boolean)
         heat_map_weights_col: Column containing heatmap weights
@@ -58,7 +60,7 @@ def folium_heatmap(df, lat_col, lon_col, zoom_start=11, \
     middle_lat = df[lat_col].median()
     middle_lon = df[lon_col].median()
 
-    curr_map = folium.Map(location=[middle_lat, middle_lon],
+    curr_map = folium.Map(location=[middle_lat, middle_lon], tiles='stamentoner', 
                           zoom_start=zoom_start)
 
     # add points to map
@@ -66,10 +68,10 @@ def folium_heatmap(df, lat_col, lon_col, zoom_start=11, \
         for _, row in df.iterrows():
             folium.CircleMarker([row[lat_col], row[lon_col]],
                                 radius=pt_radius,
-                                popup=row['name'],
+                                popup=row[popup_name],
                                 fill=True,
-                                fill_color="#3db7e4",
-                                #fill_opacity=0.7
+                                fill_color="red", 
+                                fill_opacity=0.7
                                ).add_to(curr_map)
 
     # add heatmap
@@ -89,6 +91,5 @@ def folium_heatmap(df, lat_col, lon_col, zoom_start=11, \
         curr_map.add_child(plugins.HeatMap(stations, radius=heat_map_radius))
 
     return curr_map
-
 
     
