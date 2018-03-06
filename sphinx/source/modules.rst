@@ -46,7 +46,7 @@ Geospatial
 .. toctree::
     :maxdepth: 1
 
-    transform/geospatial/get_geojson_from_wfs
+    _modules/transform.geospatial
 
 
 Enrichment
