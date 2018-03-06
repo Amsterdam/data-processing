@@ -195,10 +195,13 @@
 <dl class="function">
 <dt id="helpers.connections.get_config">
 <code class="descclassname">helpers.connections.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.get_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get config file with login credentials, port numbers…
-Args:</p>
-<blockquote>
-<div>full_path - provide path tot he config file/ auth.conf etc.</div></blockquote>
+<dd><p>Get config file with all login credentials, port numbers, etc.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>full_path: provide the full path to the config.ini file, for example authentication/config.ini</dd>
+<dt>Returns:</dt>
+<dd>The entire configuration file to use them with <code class="docutils literal notranslate"><span class="pre">config.get(config_name,</span> <span class="pre">'AUTHURL')</span></code></dd>
+</dl>
 </dd></dl>
 
 <dl class="function">

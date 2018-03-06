@@ -187,7 +187,9 @@
 <span id="id1"></span><h1>download_from_data_amsterdam_catalog<a class="headerlink" href="#download-from-data-amsterdam-catalog" title="Permalink to this headline">¶</a></h1>
 <p><p>Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
 To test run this command line:</p>
-<p>download_from_data_amsterdam <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>``download_from_data_amsterdam_catalog https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data``
+</pre></div>
+</div>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_data_amsterdam_catalog</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">output_folder</span>
 </pre></div>
@@ -200,8 +202,11 @@ To test run this command line:</p>
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd>url</kbd></td>
-<td>Insert full url from main result page of dataset,
-for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</td></tr>
+<td><p class="first">Insert full url from main result page of dataset.
+For example:</p>
+<blockquote class="last">
+<div><code class="docutils literal notranslate"><span class="pre">https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</span></code></div></blockquote>
+</td></tr>
 <tr><td class="option-group">
 <kbd>output_folder</kbd></td>
 <td>Specify the desired output folder path, for example: app/data</td></tr>
@@ -213,19 +218,46 @@ for example: <a class="reference external" href="https://data.amsterdam.nl">http
 <dl class="function">
 <dt id="extract.download_from_data_amsterdam_catalog.download_all_files">
 <code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download all files from metadata resources list</p>
+<dd><p>Download all files from metadata resources list.</p>
+<p>Args:</p>
+<blockquote>
+<div><ul class="simple">
+<li>metadata: json dictonary from ckan with all the metadata including the resources list of all files.</li>
+<li>download_directory: where to store the files from the , for example data.</li>
+</ul>
+</div></blockquote>
+<p>Result:</p>
+<blockquote>
+<div>Unzipped and created dir filled with all data in the download_directory, if this does not yet exists.</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_data_amsterdam_catalog.download_metadata">
 <code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download files from data catalog response id</p>
+<p>Args:</p>
+<ul class="simple">
+<li>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</li>
+</ul>
+<p>Result:</p>
+<blockquote>
+<div>All the Metadata from this dataset as a json dictonary, with the owner, refresh data, resource url’s to the desired files, etc.</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_data_amsterdam_catalog.get_catalog_package_id">
 <code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
+<p>Args:</p>
+<blockquote>
+<div><ul class="simple">
+<li>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Result:</dt>
+<dd>Unique id number of package.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
