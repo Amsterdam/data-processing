@@ -46,7 +46,7 @@ Geospatial
 .. toctree::
     :maxdepth: 1
 
-    _modules/transform.geospatial
+    transform.geospatial
 
 
 Enrichment
