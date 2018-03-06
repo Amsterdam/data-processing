@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.insert(0, '../transform/helper_functions/')
 import os, errno
 import shutil
 import argparse
@@ -15,6 +14,13 @@ from helpers.files import create_dir_if_not_exists, unzip
 def get_catalog_package_id(url):
     """
     Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef
+
+    Args:
+
+       - url: full data.amsterdam.nl url of the desired dataset, for example: https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c
+
+    Result:
+       Unique id number of package.
     """
     decoded_url = urlparse.unquote(url)
     parsed_url = urlparse.urlparse(decoded_url)
@@ -26,6 +32,14 @@ def get_catalog_package_id(url):
 def download_metadata(url):
     """
     Download files from data catalog response id
+
+    Args:
+
+    - url: full data.amsterdam.nl url of the desired dataset, for example: https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c
+
+    Result:
+
+       All the Metadata from this dataset as a json dictonary, with the owner, refresh data, resource url's to the desired files, etc.
     """
     package_id = get_catalog_package_id(url)
     METADATA_URL = 'https://api.data.amsterdam.nl/{}&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945'.format(package_id)
@@ -41,7 +55,16 @@ def download_metadata(url):
 
 def download_all_files(metadata, download_directory):
     """
-    Download all files from metadata resources list
+    Download all files from metadata resources list.
+
+    Args:
+
+       - metadata: json dictonary from ckan with all the metadata including the resources list of all files.
+       - download_directory: where to store the files from the , for example data.
+
+    Result:
+
+        Unzipped and created dir filled with all data in the download_directory, if this does not yet exists.
     """
     for result in metadata['result']['resources']:
         if result['url_type'] is not None or result['url_type'] == 'upload':
@@ -70,11 +93,12 @@ def parser():
 Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
 To test run this command line::
 
-download_from_data_amsterdam https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data
+    ``download_from_data_amsterdam_catalog https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data``
 """)
     parser.add_argument('url', help="""
-Insert full url from main result page of dataset,
-for example: https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945
+Insert full url from main result page of dataset.
+For example:
+    ``https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945``
 """)
     parser.add_argument('output_folder', help='Specify the desired output folder path, for example: app/data')
     #parser.add_argument('--f','filename_as_folder', default=False, help='use --f=True to unzip to subfolders with name of zipfile.')

@@ -40,9 +40,13 @@ def postgres_engine_pandas(config_full_path, db_config_name):
 # -----------------
 def get_config(full_path):
     """
-    Get config file with login credentials, port numbers...
+    Get config file with all login credentials, port numbers, etc.
+
     Args:
-        full_path - provide path tot he config file/ auth.conf etc.
+        full_path: provide the full path to the config.ini file, for example authentication/config.ini
+
+    Returns:
+        The entire configuration file to use them with ``config.get(config_name, 'AUTHURL')``
      """
     config = configparser.RawConfigParser()
     config.read(full_path)
