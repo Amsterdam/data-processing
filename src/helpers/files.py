@@ -10,7 +10,13 @@ from zipfile import BadZipfile, ZipFile
 # -----------------
 def create_dir_if_not_exists(directory):
     """
-        Create directory if it does not yet exists. directory can be set as: `dir/anotherdir`
+    Create directory if it does not yet exists.
+
+    Args:
+        Specify the name of directory, for example: `dir/anotherdir`
+
+    Result:
+        Creates the directory if it does not exists, of return the error message.
     """
     try:
         os.makedirs(directory)
@@ -21,10 +27,16 @@ def create_dir_if_not_exists(directory):
 
 def save_file(data, output_folder, filename):
     """
-        Save data to different file types, using folder, filename and suffix.
-        It reads the filename suffix and saves the file as the appropriate type.
         save_file currently works with: csv, txt, geojson and json as suffixes.
-        for example filename = data_output.csv or data_output.json
+        It reads the filename suffix and saves the file as the appropriate type.
+
+        Args:
+            1. data: list of flattened dictionary objects for example: [{id:1, attr:value, attr2:value}, {id:2, attr:value, attr2:value}]
+            2. filename: data_output.csv or data_output.json
+            3. output_folder: dir/anotherdir
+
+        Result:
+            Saved the list of objects to the given geojson or csv type.
     """
     create_dir_if_not_exists(output_folder)
     suffix = filename.split('.')[-1]
@@ -46,8 +58,14 @@ def save_file(data, output_folder, filename):
 
 def unzip(path, filename_as_folder=False):
     """
-        Find all .zip files and unzip in root.
-        Use filename_as_folder=True to unzip to subfolders with name of zipfile.
+    Find all zip files and unzip in root.
+
+    Args:
+        1. path: set the folder to check for zip files.
+        2. filename_as_folder:Set it to True to unzip to subfolders with name of zipfile instead of in the root folder.
+
+    Result:
+        Unzipped files in the path directory or in the path/name of the zip file.
     """
     for filename in os.listdir(path):
         if filename.endswith(".zip"):

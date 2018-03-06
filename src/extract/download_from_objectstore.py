@@ -14,11 +14,13 @@ logger = logging.getLogger(__name__)
 def get_full_container_list(connection, container, **kwargs):
     """
     Get all files stored in container (incl. sub-containers)
+
     Args:
-    :connection = connection with the Objectstore (using swiftclient Connection API)
-    :container = "first folders in objectstore"
+        1. connection: connection session using the objectstore_connection function from the helpers.connections
+        2. container: "name of the root container/folder in objectstore"
+
     Returns:
-        generator object with all containers
+        Generator object with all containers.
     """
     # Note: taken from the bag_services project
     limit = 10000
@@ -41,11 +43,13 @@ def get_full_container_list(connection, container, **kwargs):
 
 def download_container(connection, container, prefix, output_folder):
     """
-    Download file from objectstore
+    Download file from objectstore.
+
     Args:
-    :connection = swiftclient connection to Objectstore
-    :prefix = tag or folder name of file, for example subfolder/subsubfolder
-    :output_folder = '/{folder}/ '
+        1. connection: connection session using the objectstore_connection function from the helpers.connections
+        2. prefix: tag or folder name of file, for example subfolder/subsubfolder
+        3. output_folder = '/{folder}/ '
+
     Returns:
         Written file /{folder}/{prefix}/{file}
     """
@@ -65,10 +69,12 @@ def download_container(connection, container, prefix, output_folder):
 def download_containers(connection, prefixes, output_folder):
     """
     Download multiple files from the objectstore.
+
     Args:
-    :connection = connection to the objectstore by using a helper funcion objecstore_connection
-    :prefixes = multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
-    :output_folder = local folder to write files into, for example app/data for a docker setup
+        1. connection: connection session using the objectstore_connection function from the helpers.connections
+        2. prefixes: multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
+        3. output_folder: local folder to write files into, for example app/data for a docker setup
+
     Result:
         Loops through download_container function for each prefix (=folder)
     """
@@ -92,8 +98,9 @@ def parser():
     """Parser function to run arguments from commandline and to add description to sphinx docs."""
     description = """
     Download files from the objectstore:
-    `download_from_objectstore config.ini objectstore aanvalsplan_schoon/crow,aanvalsplan_schoon/mora data`
-    Use: export OBJECTSTORE_PASSWORD=********** to your environment before running this command script.
+    ``download_from_objectstore config.ini objectstore aanvalsplan_schoon/crow,aanvalsplan_schoon/mora data``
+
+    Use ``export OBJECTSTORE_PASSWORD=**********`` to add the password to your environment before running this command script.
     """
 
     parser = argparse.ArgumentParser(

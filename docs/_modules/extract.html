@@ -341,39 +341,51 @@ variableNames can be found here: <a class="reference external" href="https://api
 <dl class="function">
 <dt id="extract.download_from_objectstore.download_container">
 <code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_container</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>prefix</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download file from objectstore
-Args:
-:connection = swiftclient connection to Objectstore
-:prefix = tag or folder name of file, for example subfolder/subsubfolder
-:output_folder = ‘/{folder}/ ‘
-Returns:</p>
-<blockquote>
-<div>Written file /{folder}/{prefix}/{file}</div></blockquote>
+<dd><p>Download file from objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>prefix: tag or folder name of file, for example subfolder/subsubfolder</li>
+<li>output_folder = ‘/{folder}/ ‘</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Written file /{folder}/{prefix}/{file}</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_objectstore.download_containers">
 <code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>connection</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download multiple files from the objectstore.
-Args:
-:connection = connection to the objectstore by using a helper funcion objecstore_connection
-:prefixes = multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
-:output_folder = local folder to write files into, for example app/data for a docker setup
-Result:</p>
-<blockquote>
-<div>Loops through download_container function for each prefix (=folder)</div></blockquote>
+<dd><p>Download multiple files from the objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>prefixes: multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora</li>
+<li>output_folder: local folder to write files into, for example app/data for a docker setup</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Loops through download_container function for each prefix (=folder)</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_objectstore.get_full_container_list">
 <code class="descclassname">extract.download_from_objectstore.</code><code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all files stored in container (incl. sub-containers)
-Args:
-:connection = connection with the Objectstore (using swiftclient Connection API)
-:container = “first folders in objectstore”
-Returns:</p>
-<blockquote>
-<div>generator object with all containers</div></blockquote>
+<dd><p>Get all files stored in container (incl. sub-containers)</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>container: “name of the root container/folder in objectstore”</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Generator object with all containers.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">

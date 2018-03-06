@@ -224,8 +224,17 @@
 <dl class="function">
 <dt id="helpers.connections.postgres_engine_pandas">
 <code class="descclassname">helpers.connections.</code><code class="descname">postgres_engine_pandas</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.postgres_engine_pandas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.
-db_config_name = dev or docker to get the ip user/password and port values.</p>
+<dd><p>Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini</li>
+<li>db_config_name: dev or docker to get the ip user/password and port values.</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Returns the postgres pandas engine to do sql queries with.</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -234,23 +243,47 @@ db_config_name = dev or docker to get the ip user/password and port values.</p>
 <dl class="function">
 <dt id="helpers.files.create_dir_if_not_exists">
 <code class="descclassname">helpers.files.</code><code class="descname">create_dir_if_not_exists</code><span class="sig-paren">(</span><em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.create_dir_if_not_exists" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create directory if it does not yet exists. directory can be set as: <cite>dir/anotherdir</cite></p>
+<dd><p>Create directory if it does not yet exists.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>Specify the name of directory, for example: <cite>dir/anotherdir</cite></dd>
+<dt>Result:</dt>
+<dd>Creates the directory if it does not exists, of return the error message.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="helpers.files.save_file">
 <code class="descclassname">helpers.files.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>data</em>, <em>output_folder</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.save_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save data to different file types, using folder, filename and suffix.
-It reads the filename suffix and saves the file as the appropriate type.
-save_file currently works with: csv, txt, geojson and json as suffixes.
-for example filename = data_output.csv or data_output.json</p>
+<dd><p>save_file currently works with: csv, txt, geojson and json as suffixes.
+It reads the filename suffix and saves the file as the appropriate type.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>data: list of flattened dictionary objects for example: [{id:1, attr:value, attr2:value}, {id:2, attr:value, attr2:value}]</li>
+<li>filename: data_output.csv or data_output.json</li>
+<li>output_folder: dir/anotherdir</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Saved the list of objects to the given geojson or csv type.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="helpers.files.unzip">
 <code class="descclassname">helpers.files.</code><code class="descname">unzip</code><span class="sig-paren">(</span><em>path</em>, <em>filename_as_folder=False</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.unzip" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find all .zip files and unzip in root.
-Use filename_as_folder=True to unzip to subfolders with name of zipfile.</p>
+<dd><p>Find all zip files and unzip in root.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>path: set the folder to check for zip files.</li>
+<li>filename_as_folder:Set it to True to unzip to subfolders with name of zipfile instead of in the root folder.</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Unzipped files in the path directory or in the path/name of the zip file.</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -260,6 +293,11 @@ Use filename_as_folder=True to unzip to subfolders with name of zipfile.</p>
 <dt id="helpers.logging.logger">
 <code class="descclassname">helpers.logging.</code><code class="descname">logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#helpers.logging.logger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup basic logging for console.</p>
+<dl class="docutils">
+<dt>Usage:</dt>
+<dd>Initialize the logger by adding the code at the top of your script:
+<code class="docutils literal notranslate"><span class="pre">logger</span> <span class="pre">=</span> <span class="pre">logger()</span></code></dd>
+</dl>
 <p>TODO: add log file export</p>
 </dd></dl>
 
@@ -268,15 +306,32 @@ Use filename_as_folder=True to unzip to subfolders with name of zipfile.</p>
 <span id="helpers-normalize-module"></span><h2>helpers.normalize module<a class="headerlink" href="#module-helpers.normalize" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="helpers.normalize.clean_dict">
-<code class="descclassname">helpers.normalize.</code><code class="descname">clean_dict</code><span class="sig-paren">(</span><em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.clean_dict" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">helpers.normalize.</code><code class="descname">clean_dict</code><span class="sig-paren">(</span><em>dictionary</em>, <em>key_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.clean_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a field from a dict based on key name.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>dictionary: {id:1, dates:2018-12-02}</li>
+<li>key_name: ‘dates’</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>{id:1}</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="helpers.normalize.flatten_json">
-<code class="descclassname">helpers.normalize.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>jsonObject</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.flatten_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flatten nested json Object {“key”: “subkey”: { “subsubkey”:”value” }} to [‘key.subkey.subsubkey’] values
-<a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></p>
+<code class="descclassname">helpers.normalize.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>json_object</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.flatten_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatten nested json Object.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>1 json_object, for example: {“key”: “subkey”: { “subsubkey”:”value” }}</dd>
+<dt>Result:</dt>
+<dd>{“key.subkey.subsubkey”:”value”}</dd>
+<dt>Source:</dt>
+<dd><a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></dd>
+</dl>
 </dd></dl>
 
 </div>

@@ -5,6 +5,10 @@ def logger():
     """
     Setup basic logging for console.
 
+    Usage:
+    	Initialize the logger by adding the code at the top of your script:
+    	``logger = logger()``
+
     TODO: add log file export
     """
     logging.basicConfig(level=logging.INFO,

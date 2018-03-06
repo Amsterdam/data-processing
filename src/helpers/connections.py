@@ -16,8 +16,14 @@ logger = logger()
 
 def postgres_engine_pandas(config_full_path, db_config_name):
     """
-        Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.
-        db_config_name = dev or docker to get the ip user/password and port values.
+    Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.
+
+    Args:
+      1. config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini
+      2. db_config_name: dev or docker to get the ip user/password and port values.
+
+    Result:
+        Returns the postgres pandas engine to do sql queries with.
     """
     config = configparser.RawConfigParser()
     config.read(config_full_path)
