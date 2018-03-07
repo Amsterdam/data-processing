@@ -11,13 +11,8 @@ At the City of Amsterdam we deal with many different types of structured and uns
 
 This repository combines generic command line functions to create extract, transform and load steps we can then use for creating a reproducable data for analytics and usage in dashboards and maps.
 
-Workflow
-========
-
-For more information about the our workflow, read the
+For more information about the how we use these functions in our workflow, read the
 `data-pipeline guide <https://amsterdam.github.io/guides/data-pipeline/>`_.
-
-This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
 
 How to use
 ==========
@@ -99,6 +94,8 @@ To add new documentation and test new functions, install the docs,test,dev packa
 
 Steps to add code
 -----------------
+
+This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
 
 1. Convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
 
