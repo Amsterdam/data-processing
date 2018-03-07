@@ -4,7 +4,7 @@ def calculation(number_of_boxes, bbox):
         Args:
             1. number_of_boxes: in multiples of 2, 8 works well for most cases.
             2. bbox: [110200,476772,134030,493900]
-        Results:
+        Returns:
             list of quadrants [[x1,y1,x2,y2],[..]]
     """
 

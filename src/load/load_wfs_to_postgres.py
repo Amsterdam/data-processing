@@ -4,20 +4,21 @@ import subprocess
 import argparse
 
 from helpers.logging import logger
-from helpers.connections import get_config
+from helpers.connections import psycopg_connection_string
 
 # Setup basic logging
 logger = logger()
 
 
 class NonZeroReturnCode(Exception):
+    """Used for subprocess error messages."""
     pass
 
 
-def scrub(l):
+def scrub(line):
     """Hide the login credentials of Postgres in the console."""
     out = []
-    for x in l:
+    for x in line:
         if x.strip().startswith('PG:'):
             out.append('PG: <CONNECTION STRING REDACTED>')
         else:
@@ -26,7 +27,19 @@ def scrub(l):
 
 
 def run_command_sync(cmd, allow_fail=False):
-    """Run a string in the command line."""
+    """
+    Run a string in the command line.
+
+    Args:
+        1. cmd: command line code formatted as a list::
+
+            ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name,'-F' ,'PostgreSQL' ,pg_str ,url]
+
+        2. Optional: allow_fail: True or false to return error code
+
+    Returns:
+        Excuted program or error message.
+    """
     # logger.info('Running %s', scrub(cmd))
     p = subprocess.Popen(cmd)
     p.wait()
@@ -43,15 +56,19 @@ def wfs2psql(url, pg_str, layer_name, **kwargs):
     run_command_sync(cmd)
 
 
-def get_pg_str(host, port, user, dbname, password):
-    """"Create Postgres connection+login string."""
-    return 'PG:host={} port={} user={} dbname={} password={}'.format(
-        host, port, user, dbname, password
-    )
-
-
 def load_layers(pg_str):
-    """Load layers into Postgres using a list of titles of each layer within the WFS service."""
+    """
+    Load layers into Postgres using a list of titles of each layer within the WFS service.
+
+    Args:
+        pg_str: psycopg2 connection string::
+
+        'PG:host= port= user= dbname= password='
+
+    Returns:
+        Loaded layers into postgres using ogr2ogr.
+
+    """
     layerNames = ['stadsdeel',
                   'buurt',
                   'buurtcombinatie',
@@ -80,15 +97,14 @@ def parser():
     parser.add_argument(
         'config_path', type=str, help="Type the relative path + name of the config file, for example: auth/config.ini")
     parser.add_argument(
-        'db_config', type=str, help="Type 'dev' or 'docker' to setup the proper port and ip settings", nargs=1)
+        'db_config', type=str, help="Type 'dev' or 'docker' to load the proper port and ip settings in the config file")
     return parser
 
 
 def main():
     args = parser().parse_args()
-    config = get_config(args.config_path)
     db_config = args.db_config[0]
-    pg_str = get_pg_str(config.get(db_config,'host'),config.get(db_config,'port'),config.get(db_config,'dbname'), config.get(db_config,'user'), config.get(db_config,'password'))
+    pg_str = psycopg_connection_string(args.config_path, args.db_config)
     load_layers(pg_str)
 
 

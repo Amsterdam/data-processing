@@ -10,7 +10,7 @@ def flatten_json(json_object):
     Args:
         1 json_object, for example: {"key": "subkey": { "subsubkey":"value" }}
 
-    Result:
+    Returns:
         {"key.subkey.subsubkey":"value"}
 
     Source:
@@ -42,7 +42,7 @@ def clean_dict(dictionary, key_name):
         1. dictionary: {id:1, dates:2018-12-02}
         2. key_name: 'dates'
 
-    Result:
+    Returns:
         {id:1}
     """
     if not isinstance(dictionary, dict):

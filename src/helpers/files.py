@@ -15,7 +15,7 @@ def create_dir_if_not_exists(directory):
     Args:
         Specify the name of directory, for example: `dir/anotherdir`
 
-    Result:
+    Returns:
         Creates the directory if it does not exists, of return the error message.
     """
     try:
@@ -35,7 +35,7 @@ def save_file(data, output_folder, filename):
             2. filename: data_output.csv or data_output.json
             3. output_folder: dir/anotherdir
 
-        Result:
+        Returns:
             Saved the list of objects to the given geojson or csv type.
     """
     create_dir_if_not_exists(output_folder)
@@ -64,7 +64,7 @@ def unzip(path, filename_as_folder=False):
         1. path: set the folder to check for zip files.
         2. filename_as_folder:Set it to True to unzip to subfolders with name of zipfile instead of in the root folder.
 
-    Result:
+    Returns:
         Unzipped files in the path directory or in the path/name of the zip file.
     """
     for filename in os.listdir(path):

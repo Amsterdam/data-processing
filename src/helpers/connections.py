@@ -1,5 +1,7 @@
 import os
 import configparser
+import psycopg2
+
 from swiftclient.client import Connection
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
@@ -14,6 +16,7 @@ logger = logger()
 # Database stuff
 # -----------------
 
+
 def postgres_engine_pandas(config_full_path, db_config_name):
     """
     Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.
@@ -22,8 +25,8 @@ def postgres_engine_pandas(config_full_path, db_config_name):
       1. config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini
       2. db_config_name: dev or docker to get the ip user/password and port values.
 
-    Result:
-        Returns the postgres pandas engine to do sql queries with.
+    Returns:
+        The postgres pandas engine to do sql queries with.
     """
     config = configparser.RawConfigParser()
     config.read(config_full_path)
@@ -40,6 +43,52 @@ def postgres_engine_pandas(config_full_path, db_config_name):
     engine = create_engine(postgres_url)
     return engine
 
+
+def psycopg_connection_string(config_full_path, db_config_name):
+    """
+    Postgres connection string for psycopg2.
+
+    Args:
+      1. config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini
+      2. db_config_name: dev or docker to get the ip user/password and port values.
+
+    Returns:
+        Returns the psycopg required connection string: 'PG:host= port= user= dbname= password='
+    """
+
+    config = configparser.RawConfigParser()
+    config.read(config_full_path)
+
+    logger.info('Config names: {}'.format(config.sections()))
+    print(db_config_name)
+    host = config.get(db_config_name,'host')
+    logger.info(host)
+    port = config.get(db_config_name,'port')
+    user = config.get(db_config_name,'user')
+    dbname = config.get(db_config_name,'dbname')
+    password = config.get(db_config_name,'password')
+
+    return 'PG:host={} port={} user={} dbname={} password={}'.format(
+        host, port, user, dbname, password
+    )
+
+
+def execute_sql(pg_str, sql):
+    """
+    Execute a sql query with psycopg2.
+
+    Args:
+        1. pg_str: connection string using helper function psycopg_connection_string, returning:``host= port= user= dbname= password=``
+        2. sql: SQL string in triple quotes::
+
+            ```CREATE TABLE foo (bar text)```
+
+    Returns:
+        Executed sql with conn.cursor().execute(sql)
+    """
+    with psycopg2.connect(pg_str) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(sql)
 
 # -----------------
 # Objectstore
@@ -71,7 +120,7 @@ def objectstore_connection(config_full_path, config_name, print_config_vars=None
         3. print_config_vars: if set to True: print all variables from the config file
 
     Returns:
-        objectstore connection
+        An objectstore connection session.
       """
 
     assert os.environ['OBJECTSTORE_PASSWORD']

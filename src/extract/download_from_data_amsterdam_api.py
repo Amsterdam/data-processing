@@ -7,10 +7,14 @@ import os
 
 from authentication.getaccesstoken import GetAccessToken
 from helpers.files import save_file
+from helpers.logging import logger
 
+logger = logger()
 
 def conversionListCvalues(metadata):
-    # Create conversion table for matrix c1-c60
+    """
+        Create a conversion dictionairy for values in tellus api which consists of 60 speed +length values named: c1 to c60
+    """
     lCategorie = metadata["lengtecategorie"]["_embedded"][0]
     sCategorie = metadata["snelheidscategorie"]["_embedded"][0]
     cValues = {}
@@ -27,7 +31,7 @@ def conversionListCvalues(metadata):
                         lName = value
                 sValue = 's' + str(speed)
                 cValues.update({cValue: [lValue, lName, sValue]})
-                # print('c'+str(length)+', ' + str(length) + ', '+ str(speed))
+                # logger.info('c'+str(length)+', ' + str(length) + ', '+ str(speed))
                 speed += 1
                 cNumber += 1
             length += 1
@@ -35,22 +39,43 @@ def conversionListCvalues(metadata):
 
 
 def getJsonData(url, accessToken):
+    """
+    Get a json response from a url with accesstoken.
+
+    Args:
+        1. url: api endpoint
+        2. accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()
+
+    Returns:
+        parsed json or error message
+    """
     response = requests.get(url, headers=accessToken)  # Get first page for count
     if response.status_code != 200:
         if response.status_code == 404 or response.status_code == 401:
-            print('Error status: {} {}'.format(str(response.status_code), "trying with trailing / ..."))
+            logger.info('Error status: {} {}'.format(str(response.status_code), "trying with trailing / ..."))
             response = requests.get(url + '/', headers=accessToken)
         else:
-            return print('Error status: ' + str(response.status_code))
+            return logger.info('Error status: ' + str(response.status_code))
     jsonData = response.json()
-    print("recieved data from {} ".format(url))
+    logger.info("recieved data from {} ".format(url))
     return jsonData
 
 
 def reformatData(item, tellus_metadata, cvalues):
+    """
+    Reformat the data from a matrix to a flattend dict with label and tellus names.
+
+    Args:
+        1. item: one recorded hour which contains 60 types of registrations c1-c60.
+        2. tellus_metadata: list of description values for each tellus.
+        3. cvalues: converted 60 values to add the proper labels to c1 to c6 counted record.
+
+    Returns:
+        60 rows by c-value with metadata an label descriptions
+    """
     newRow = {}  # Create empty dict for row key, values
     reusingItem = {}  # Create dict with same data for each c value
-    #print(item)
+    #logger.info(item)
     for k, v in item.items():  # fill dict with same value data
         if k[:1] != 'c':
             reusingItem[k] = v
@@ -89,6 +114,26 @@ def reformatData(item, tellus_metadata, cvalues):
 
 
 def get_data(url_api, endpoint, metadata, accessToken, limit):
+    """
+    Get and flatten all the data from the api.
+
+    Args:
+        1. url_api: get the main api url::
+
+            https://api.data.amsterdam.nl/tellus
+        2. get one endpoint::
+
+            tellus
+
+        3. get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.
+        4. accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()
+        5. limit: set the number of pages you want to retrieve, ideal for testing first::
+
+           10
+
+    Returns:
+        A list containing multiple items which are all reformatted to a flattened json with added metadata.
+    """
     data = []
     url = url_api + '/' + endpoint
     startPage = 1
@@ -98,34 +143,34 @@ def get_data(url_api, endpoint, metadata, accessToken, limit):
     json_data = getJsonData(url, accessToken)
 
     number_of_items = json_data['count']
-    print("number of items {}".format(number_of_items))
+    logger.info("number of items {}".format(number_of_items))
     number_of_pages = int(abs(number_of_items/100))
 
     if "next" in json_data["_links"].keys():
         has_next_key = True
         url = json_data["_links"]["next"]
-        print(url)
+        logger.info(url)
     while has_next_key and startPage < limit:
         response = getJsonData(url, accessToken)
         if "next" in response["_links"].keys():
             url = response["_links"]["next"]
-            print(nextKey)
+            logger.info(nextKey)
         else:
             has_next_key = False
             # no next_key, stop the loop
-        # print('status: ' + str(response.status_code))
+        # logger.info('status: ' + str(response.status_code))
 
         for item in response["_embedded"]:
-            #print(item)
+            #logger.info(item)
             newRow = reformatData(item, metadata['tellus']['_embedded'], cvalues)
             # Add c-waarde row
             #values = list(newRow.values())
             # append to main data array
             data.append(newRow)
         # json.dump(data, outputFile, indent=4, sort_keys=True)
-        print('Page {} of {}'.format(startPage,number_of_pages))
+        logger.info('Page {} of {}'.format(startPage,number_of_pages))
         startPage += 1
-    #print(data)
+    #logger.info(data)
     return data
 
 
@@ -133,8 +178,11 @@ def get_data(url_api, endpoint, metadata, accessToken, limit):
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx docs."""
     description = """
-    Download from an API from data.amsterdam.nl through the OAuth2 datapunt Authorization service:
-    `download_from_data_amsterdam_api https://api.data.amsterdam.nl/tellus data tellusdata.csv 10`
+    Download from the Tellus API from data.amsterdam.nl using the OAuth2 datapunt Authorization service.
+    Command line example::
+
+        download_from_data_amsterdam_api https://api.data.amsterdam.nl/tellus data tellusdata.csv 10
+
     """
 
     parser = argparse.ArgumentParser(
@@ -157,19 +205,19 @@ def parser():
 def main():
     # Return all arguments in a list
     args = parser().parse_args()
-    print("Getting Access token.")
+    logger.info("Getting Access token.")
     #getToken = GetAccessToken()  # Create instance of class
     accessToken = GetAccessToken().getAccessToken()
-    print("Setup temp database to store requests to speed up restart download if network fails.")
+    logger.info("Setup temp database to store requests to speed up restart download if network fails.")
     requests_cache.install_cache('requests_db', backend='sqlite')
 
     endpoints = ['tellus', 'snelheidscategorie', 'lengtecategorie']
     metadata = {}
     for endpoint in endpoints:
         json_data = getJsonData(args.url + '/' + endpoint, accessToken)
-        # print(json_data)
+        # logger.info(json_data)
         metadata.update({endpoint: json_data})
-        print("retrieved {}".format(endpoint))
+        logger.info("retrieved {}".format(endpoint))
     data = get_data(args.url, 'tellusdata', metadata, accessToken, args.limit)
     save_file(data, args.output_folder, args.filename)
 

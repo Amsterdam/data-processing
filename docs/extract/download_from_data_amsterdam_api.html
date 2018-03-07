@@ -186,8 +186,12 @@
   <div class="section" id="download-from-data-amsterdam-api">
 <span id="id1"></span><h1>download_from_data_amsterdam_api<a class="headerlink" href="#download-from-data-amsterdam-api" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div>Download from an API from data.amsterdam.nl through the OAuth2 datapunt Authorization service:
-<cite>download_from_data_amsterdam_api https://api.data.amsterdam.nl/tellus data tellusdata.csv 10</cite></div></blockquote>
+<div><p>Download from the Tellus API from data.amsterdam.nl using the OAuth2 datapunt Authorization service.
+Command line example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_data_amsterdam_api</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span> <span class="n">data</span> <span class="n">tellusdata</span><span class="o">.</span><span class="n">csv</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_data_amsterdam_api</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">output_folder</span> <span class="n">filename</span> <span class="n">limit</span>
 </pre></div>
@@ -216,9 +220,79 @@
 <div class="section" id="module-extract.download_from_data_amsterdam_api">
 <span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_data_amsterdam_api" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="extract.download_from_data_amsterdam_api.conversionListCvalues">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">conversionListCvalues</code><span class="sig-paren">(</span><em>metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.conversionListCvalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a conversion dictionairy for values in tellus api which consists of 60 speed +length values named: c1 to c60</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_api.getJsonData">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url with accesstoken.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_api.get_data">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url_api</em>, <em>endpoint</em>, <em>metadata</em>, <em>accessToken</em>, <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get and flatten all the data from the api.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url_api: get the main api url:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get one endpoint:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.</p>
+</li>
+<li><p class="first">accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</p>
+</li>
+<li><p class="first">limit: set the number of pages you want to retrieve, ideal for testing first:</p>
+<p>10</p>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>A list containing multiple items which are all reformatted to a flattened json with added metadata.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="extract.download_from_data_amsterdam_api.parser">
 <code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_data_amsterdam_api.reformatData">
+<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">reformatData</code><span class="sig-paren">(</span><em>item</em>, <em>tellus_metadata</em>, <em>cvalues</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.reformatData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reformat the data from a matrix to a flattend dict with label and tellus names.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>item: one recorded hour which contains 60 types of registrations c1-c60.</li>
+<li>tellus_metadata: list of description values for each tellus.</li>
+<li>cvalues: converted 60 values to add the proper labels to c1 to c6 counted record.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>60 rows by c-value with metadata an label descriptions</dd>
+</dl>
 </dd></dl>
 
 </div>

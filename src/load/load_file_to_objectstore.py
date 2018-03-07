@@ -62,7 +62,7 @@ def check_existence_object(connection, container_path, filename):
         2. container_path = Name of container/prefix/subfolder
         3. filename = Name of file, for example test.csv
 
-    Result:
+    Returns:
         - 'The object was successfully created'
         - 'The object was not found'
         - 'Error finding the object'

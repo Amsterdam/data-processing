@@ -24,7 +24,7 @@ Extract
 -------
 
 **Functions to extract data from the Objectstore where raw files are
-stored, from API’s or from the data catalog**
+stored, from API’s or from the data catalog.**
 
 .. toctree::
     :maxdepth: 1
@@ -37,8 +37,7 @@ stored, from API’s or from the data catalog**
 Transform
 ---------
 
-**Functions to transform, preprocess and enrich datasets. Divided into
-the following subsections**
+**Functions to transform, preprocess and enrich datasets.**
 
 
 Geospatial
@@ -58,7 +57,7 @@ Enrichment
 
 Load
 ----
-**Common functions to load data into PostgreSQL**
+**Common functions to load data into PostgreSQL.**
 
 
 .. toctree::
@@ -71,7 +70,7 @@ Load
 Helpers
 -------
 
-**Generic helper functions for most commonly used data operations**
+**Generic helper functions for most commonly used data operations.**
 
 .. toctree::
     :maxdepth: 1

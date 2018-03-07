@@ -36,10 +36,15 @@ transform.geospatial.get\_areacodes\_from\_latlon module
     :undoc-members:
     :show-inheritance:
 
-transform.geospatial.get\_centroid\_street\_NED module
-------------------------------------------------------
+transform.geospatial.get\_centroid\_of\_street module
+-----------------------------------------------------
 
-.. automodule:: transform.geospatial.get_centroid_street_NED
+.. argparse::
+    :filename: ../src/transform/geospatial/get_centroid_of_street.py
+    :func: parser
+    :prog: get_centroid_of_street
+
+.. automodule:: transform.geospatial.get_centroid_of_street
     :members:
     :undoc-members:
     :show-inheritance:

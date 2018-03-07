@@ -35,10 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/>
-        <link rel="up" title="Modules" href="../../modules.html"/>
-        <link rel="next" title="add_knmi_data" href="../enrichment/add_knmi_data.html"/>
-        <link rel="prev" title="download_from_objectstore" href="../../extract/download_from_objectstore.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -91,28 +88,14 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#extract">Extract</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../modules.html#transform">Transform</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../../modules.html#geospatial">Geospatial</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">get_geojson_from_wfs</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../modules.html#enrichment">Enrichment</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#load">Load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#helpers">Helpers</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
@@ -160,8 +143,6 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../modules.html">Modules</a> &raquo;</li>
-        
       <li>get_geojson_from_wfs</li>
     
     
@@ -183,10 +164,13 @@
             
   <div class="section" id="get-geojson-from-wfs">
 <span id="id1"></span><h1>get_geojson_from_wfs<a class="headerlink" href="#get-geojson-from-wfs" title="Permalink to this headline">¶</a></h1>
-<p><p>Get multiple layers as a geojson file from a WFS service.
+<p><blockquote>
+<div><p>Get multiple layers as a geojson file from a WFS service.
 command line example:</p>
-<blockquote>
-<div><cite>get_geojson_from_wfs https://map.data.amsterdam.nl/maps/gebieden stadsdeel,buurtcombinatie output_folder</cite></div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_geojson_from_wfs</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span> <span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span> <span class="n">output_folder</span>
+</pre></div>
+</div>
+</div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">get_geojson_from_wfs</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
                             <span class="n">url_wfs</span> <span class="n">layer_names</span> <span class="p">[</span><span class="n">layer_names</span> <span class="o">...</span><span class="p">]</span> <span class="p">{</span><span class="mi">28992</span><span class="p">,</span><span class="mi">4326</span><span class="p">}</span>
@@ -220,6 +204,41 @@ command line example:</p>
 <div class="section" id="module-transform.geospatial.get_geojson_from_wfs">
 <span id="functions"></span><h2>functions<a class="headerlink" href="#module-transform.geospatial.get_geojson_from_wfs" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs">
+<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get layer from a wfs service.
+Args:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_name: Title of the layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">outputformat: leave empty to return standard GML, else define json, geojson, txt, shapezip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geojson</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The layer in the specified output format.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs">
 <code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_layers_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all layer names in WFS service, print and return them in a list.</p>
@@ -228,7 +247,33 @@ command line example:</p>
 <dl class="function">
 <dt id="transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs">
 <code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_multiple_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_names</em>, <em>srs</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all features from one layer in WFS service as a geojson.</p>
+<dd><p>Get all layers and save them as a geojson</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_names: single or multiple titles of the layers, separated by a comma without spaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span><span class="p">,</span><span class="n">gebiedsgerichtwerken</span><span class="p">,</span><span class="n">buurt</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">output_folder: define the folder to save the files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path_to_folder</span><span class="o">/</span><span class="n">another_folder</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -247,15 +292,6 @@ command line example:</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../enrichment/add_knmi_data.html" class="btn btn-neutral float-right" title="add_knmi_data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../../extract/download_from_objectstore.html" class="btn btn-neutral" title="download_from_objectstore" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

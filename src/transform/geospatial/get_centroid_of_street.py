@@ -6,25 +6,33 @@ import sys
 import argparse
 
 
+def get_centroid_street(filename, street_column, city_name):
+    """
+    Get the X,Y centroid of an address.
 
-def get_centroid_street(street_column, city_name):
+    Args:
+        1. street_column: Dam 1
+        2. city_name: Amsterdam
+    Returns:
+        Origional CSV file with coordinates and BAG corrected naming.
+    """
     # fileName = 'test'
-    csvName = fileName + '_coord.csv'
-    with open(fileName, 'r') as inputFile:
+    csv_name = filename + '_coord.csv'
+    with open(filename, 'r') as inputFile:
         header = False
         reader = csv.DictReader(inputFile, dialect='excel')
-        with open(csvName, 'w') as outputFile:
+        with open(csv_name, 'w') as output_file:
             for row in reader:
                 for fieldName in reader.fieldnames:
                     if fieldName.lower() in ('straatnaam','adres','straat', 'openbareruimtenaam'):
                        continue
                     elif len(sys.argv) == 2:
                         print('Please give the name of the street column...')
-                        fileName = input('Enter column Name: ')
+                        filename = input('Enter column Name: ')
                     else:
-                        fieldName = sys.argv[2]
+                        street_column = sys.argv[2]
                     try:
-                        getUrl = "http://geodata.nationaalgeoregister.nl/locatieserver/free?q=%s AND woonplaatsnaam:Amsterdam&fl=centroide_ll,straatnaam,score" % row[fieldName]
+                        getUrl = "http://geodata.nationaalgeoregister.nl/locatieserver/free?q={}&woonplaatsnaam={}&fl=centroide_ll,straatnaam,score".format(row[street_column],city_name)
                         result = requests.get(getUrl)
                         resultJson = result.json()
                         print(getUrl)
@@ -39,19 +47,36 @@ def get_centroid_street(street_column, city_name):
                     except result.status_code as statusError:
                         print(statusError)
 
-                    w = csv.DictWriter(outputFile, row.keys())
+                    w = csv.DictWriter(output_file, row.keys())
                     if header == False:
                         w.writeheader()
                         header = True
                     w.writerow(row)
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Get the centroid of streetnames in a city using:\
-                                                  https://github.com/PDOK/locatieserver/wiki/API-Locatieserver')
-    parser.add_argument('file', help='Add filename location: example/test.csv')
-    parser.add_argument('city', help='Add the name of the city, for example: Amsterdam')
-    args = parser.parse_args()
+def parser():
+    description = """
+    Get the centroid of streetnames in a city using::
 
+        https://github.com/PDOK/locatieserver/wiki/API-Locatieserver
+
+    Command line example::
+
+        python get_centroid_street_NED.py ../../tests/transform/testdata/centroid_street.csv straatnaam amsterdam
+
+    """
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('file', help='Add filename location: example/test.csv')
+    parser.add_argument('street_column', help='Header name of the address column')
+    parser.add_argument('city', help='Add the name of the city, for example: Amsterdam')
+    return parser
+
+
+def main():
+    args = parser().parse_args()
     # save api requests to temporary sqlite db for use with many reoccuring names
     requests_cache.install_cache('requests_cache', backend='sqlite')  # , expire_after=180)
-    get_centroid_street(args.file, args.city)
+    get_centroid_street(args.file, args.street_column, args.city)
+
+
+if __name__ == "__main__":
+    main()

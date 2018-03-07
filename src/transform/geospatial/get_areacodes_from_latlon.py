@@ -1,4 +1,14 @@
 def getJson(url):
+    """
+    Get a json from an url
+
+    Args:
+        url: give an api url::
+
+            https://api.data.amsterdam.nl/bag/gebieden/stadsdeel
+    Returns:
+        a parsed json result or an error message
+    """
     getData = requests.get(url)
     if getData.status_code == 200:
         # print(getData.status_code)

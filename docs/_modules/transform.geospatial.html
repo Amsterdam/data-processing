@@ -208,7 +208,7 @@ Args:</p>
 </ol>
 </div></blockquote>
 <dl class="docutils">
-<dt>Results:</dt>
+<dt>Returns:</dt>
 <dd>list of quadrants [[x1,y1,x2,y2],[..]]</dd>
 </dl>
 </dd></dl>
@@ -229,23 +229,85 @@ Args:</p>
 <dl class="function">
 <dt id="transform.geospatial.get_areacodes_from_latlon.getJson">
 <code class="descclassname">transform.geospatial.get_areacodes_from_latlon.</code><code class="descname">getJson</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_areacodes_from_latlon.getJson" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get a json from an url</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">url: give an api url:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">bag</span><span class="o">/</span><span class="n">gebieden</span><span class="o">/</span><span class="n">stadsdeel</span>
+</pre></div>
+</div>
+</dd>
+<dt>Returns:</dt>
+<dd>a parsed json result or an error message</dd>
+</dl>
+</dd></dl>
 
 </div>
-<div class="section" id="module-transform.geospatial.get_centroid_street_NED">
-<span id="transform-geospatial-get-centroid-street-ned-module"></span><h2>transform.geospatial.get_centroid_street_NED module<a class="headerlink" href="#module-transform.geospatial.get_centroid_street_NED" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-transform.geospatial.get_centroid_of_street">
+<span id="transform-geospatial-get-centroid-of-street-module"></span><h2>transform.geospatial.get_centroid_of_street module<a class="headerlink" href="#module-transform.geospatial.get_centroid_of_street" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.get_centroid_street_NED.get_centroid_street">
-<code class="descclassname">transform.geospatial.get_centroid_street_NED.</code><code class="descname">get_centroid_street</code><span class="sig-paren">(</span><em>street_column</em>, <em>city_name</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_centroid_street_NED.get_centroid_street" title="Permalink to this definition">¶</a></dt>
+<dt id="transform.geospatial.get_centroid_of_street.get_centroid_street">
+<code class="descclassname">transform.geospatial.get_centroid_of_street.</code><code class="descname">get_centroid_street</code><span class="sig-paren">(</span><em>filename</em>, <em>street_column</em>, <em>city_name</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_centroid_of_street.get_centroid_street" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the X,Y centroid of an address.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>street_column: Dam 1</li>
+<li>city_name: Amsterdam</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Origional CSV file with coordinates and BAG corrected naming.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.geospatial.get_centroid_of_street.main">
+<code class="descclassname">transform.geospatial.get_centroid_of_street.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_centroid_of_street.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="transform.geospatial.get_centroid_of_street.parser">
+<code class="descclassname">transform.geospatial.get_centroid_of_street.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_centroid_of_street.parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="section" id="module-transform.geospatial.get_geojson_from_wfs">
 <span id="transform-geospatial-get-geojson-from-wfs-module"></span><h2>transform.geospatial.get_geojson_from_wfs module<a class="headerlink" href="#module-transform.geospatial.get_geojson_from_wfs" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.get_geojson_from_wfs">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs">
+<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get layer from a wfs service.
+Args:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_name: Title of the layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">outputformat: leave empty to return standard GML, else define json, geojson, txt, shapezip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geojson</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The layer in the specified output format.</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs">
@@ -256,7 +318,33 @@ Args:</p>
 <dl class="function">
 <dt id="transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs">
 <code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_multiple_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_names</em>, <em>srs</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all features from one layer in WFS service as a geojson.</p>
+<dd><p>Get all layers and save them as a geojson</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_names: single or multiple titles of the layers, separated by a comma without spaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span><span class="p">,</span><span class="n">gebiedsgerichtwerken</span><span class="p">,</span><span class="n">buurt</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">output_folder: define the folder to save the files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path_to_folder</span><span class="o">/</span><span class="n">another_folder</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">

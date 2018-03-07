@@ -91,14 +91,32 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#helpers">Helpers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">helpers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.connections">helpers.connections module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.files">helpers.files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.logging">helpers.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.normalize">helpers.normalize module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -175,6 +193,27 @@
 <div class="section" id="module-helpers.connections">
 <span id="helpers-connections-module"></span><h2>helpers.connections module<a class="headerlink" href="#module-helpers.connections" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="helpers.connections.execute_sql">
+<code class="descclassname">helpers.connections.</code><code class="descname">execute_sql</code><span class="sig-paren">(</span><em>pg_str</em>, <em>sql</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.execute_sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a sql query with psycopg2.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">pg_str: connection string using helper function psycopg_connection_string, returning:<code class="docutils literal notranslate"><span class="pre">host=</span> <span class="pre">port=</span> <span class="pre">user=</span> <span class="pre">dbname=</span> <span class="pre">password=</span></code></p>
+</li>
+<li><p class="first">sql: SQL string in triple quotes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```CREATE TABLE foo (bar text)```
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Executed sql with conn.cursor().execute(sql)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="helpers.connections.get_config">
 <code class="descclassname">helpers.connections.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.get_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get config file with all login credentials, port numbers, etc.</p>
@@ -199,7 +238,7 @@
 </ol>
 </dd>
 <dt>Returns:</dt>
-<dd>objectstore connection</dd>
+<dd>An objectstore connection session.</dd>
 </dl>
 </dd></dl>
 
@@ -214,8 +253,24 @@
 <li>db_config_name: dev or docker to get the ip user/password and port values.</li>
 </ol>
 </dd>
-<dt>Result:</dt>
-<dd>Returns the postgres pandas engine to do sql queries with.</dd>
+<dt>Returns:</dt>
+<dd>The postgres pandas engine to do sql queries with.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.connections.psycopg_connection_string">
+<code class="descclassname">helpers.connections.</code><code class="descname">psycopg_connection_string</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.psycopg_connection_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Postgres connection string for psycopg2.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini</li>
+<li>db_config_name: dev or docker to get the ip user/password and port values.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Returns the psycopg required connection string: ‘PG:host= port= user= dbname= password=’</dd>
 </dl>
 </dd></dl>
 
@@ -229,7 +284,7 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd>Specify the name of directory, for example: <cite>dir/anotherdir</cite></dd>
-<dt>Result:</dt>
+<dt>Returns:</dt>
 <dd>Creates the directory if it does not exists, of return the error message.</dd>
 </dl>
 </dd></dl>
@@ -247,7 +302,7 @@ It reads the filename suffix and saves the file as the appropriate type.</p>
 <li>output_folder: dir/anotherdir</li>
 </ol>
 </dd>
-<dt>Result:</dt>
+<dt>Returns:</dt>
 <dd>Saved the list of objects to the given geojson or csv type.</dd>
 </dl>
 </dd></dl>
@@ -263,7 +318,7 @@ It reads the filename suffix and saves the file as the appropriate type.</p>
 <li>filename_as_folder:Set it to True to unzip to subfolders with name of zipfile instead of in the root folder.</li>
 </ol>
 </dd>
-<dt>Result:</dt>
+<dt>Returns:</dt>
 <dd>Unzipped files in the path directory or in the path/name of the zip file.</dd>
 </dl>
 </dd></dl>
@@ -297,7 +352,7 @@ It reads the filename suffix and saves the file as the appropriate type.</p>
 <li>key_name: ‘dates’</li>
 </ol>
 </dd>
-<dt>Result:</dt>
+<dt>Returns:</dt>
 <dd>{id:1}</dd>
 </dl>
 </dd></dl>
@@ -309,7 +364,7 @@ It reads the filename suffix and saves the file as the appropriate type.</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd>1 json_object, for example: {“key”: “subkey”: { “subsubkey”:”value” }}</dd>
-<dt>Result:</dt>
+<dt>Returns:</dt>
 <dd>{“key.subkey.subsubkey”:”value”}</dd>
 <dt>Source:</dt>
 <dd><a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></dd>
