@@ -146,7 +146,7 @@ def parser():
     description = """
     Loads WFS areas into Postgres and joins all the names and codes to a dummy table by using lat lon or X,Y.
 
-    Use ENV:
+    Use ENV for ogr2ogr if using this in a virtual env:
         ``export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH``
 
     Example command line:
