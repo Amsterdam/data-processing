@@ -61,13 +61,14 @@ Transform Enrichment
 
 Load
 ----
-**Common functions to load data into PostgreSQL.**
+**Common functions to load data into the Objectstore, CKAN (our public data.amsterdam.nl) or PostgreSQL.**
 
 
 .. toctree::
     :maxdepth: 1
 
     load/load_file_to_objectstore
+    load/load_file_to_ckan
     load/load_xls_into_postgres
     load/load_wfs_into_postgres
 

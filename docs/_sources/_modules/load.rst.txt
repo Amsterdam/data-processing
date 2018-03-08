@@ -4,6 +4,14 @@ load package
 Submodules
 ----------
 
+load.load\_file\_to\_ckan module
+--------------------------------
+
+.. automodule:: load.load_file_to_ckan
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 load.load\_file\_to\_objectstore module
 ---------------------------------------
 
