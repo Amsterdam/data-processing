@@ -101,7 +101,7 @@ def parser():
     Get multiple layers as a geojson file from a WFS service.
     command line example::
 
-      get_geojson_from_wfs https://map.data.amsterdam.nl/maps/gebieden stadsdeel,buurtcombinatie output_folder
+      download_from_wfs https://map.data.amsterdam.nl/maps/gebieden stadsdeel,buurtcombinatie output_folder
 
     """)
     parser.add_argument('url_wfs',

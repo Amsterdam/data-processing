@@ -90,7 +90,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
@@ -447,6 +446,93 @@ variableNames can be found here: <a class="reference external" href="https://api
 <dt id="extract.download_from_objectstore.parser">
 <code class="descclassname">extract.download_from_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-extract.download_from_wfs">
+<span id="extract-download-from-wfs-module"></span><h2>extract.download_from_wfs module<a class="headerlink" href="#module-extract.download_from_wfs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_wfs.get_layer_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get layer from a wfs service.
+Args:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_name: Title of the layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">outputformat: leave empty to return standard GML, else define json, geojson, txt, shapezip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geojson</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The layer in the specified output format.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.get_layers_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_layers_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_layers_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all layer names in WFS service, print and return them in a list.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.get_multiple_geojson_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_multiple_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_names</em>, <em>srs</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_multiple_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all layers and save them as a geojson</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_names: single or multiple titles of the layers, separated by a comma without spaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span><span class="p">,</span><span class="n">gebiedsgerichtwerken</span><span class="p">,</span><span class="n">buurt</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">output_folder: define the folder to save the files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path_to_folder</span><span class="o">/</span><span class="n">another_folder</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.main">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.parser">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
 </dd></dl>
 
 </div>

@@ -44,6 +44,14 @@ extract.download\_from\_objectstore module
     :undoc-members:
     :show-inheritance:
 
+extract.download\_from\_wfs module
+----------------------------------
+
+.. automodule:: extract.download_from_wfs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

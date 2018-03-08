@@ -90,7 +90,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
@@ -167,58 +166,26 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-transform.geospatial.add_area_codes_from_centroid">
-<span id="transform-geospatial-add-area-codes-from-centroid-module"></span><h2>transform.geospatial.add_area_codes_from_centroid module<a class="headerlink" href="#module-transform.geospatial.add_area_codes_from_centroid" title="Permalink to this headline">¶</a></h2>
-<p>This is where SQL queries that must be run after import go.</p>
+<div class="section" id="module-transform.geospatial.api_clean_BAG_address_NED">
+<span id="transform-geospatial-api-clean-bag-address-ned-module"></span><h2>transform.geospatial.api_clean_BAG_address_NED module<a class="headerlink" href="#module-transform.geospatial.api_clean_BAG_address_NED" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.add_area_codes_from_centroid.executeScriptsFromFile">
-<code class="descclassname">transform.geospatial.add_area_codes_from_centroid.</code><code class="descname">executeScriptsFromFile</code><span class="sig-paren">(</span><em>pg_str</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.add_area_codes_from_centroid.executeScriptsFromFile" title="Permalink to this definition">¶</a></dt>
+<dt id="transform.geospatial.api_clean_BAG_address_NED.main">
+<code class="descclassname">transform.geospatial.api_clean_BAG_address_NED.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_clean_BAG_address_NED.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="transform.geospatial.add_area_codes_from_centroid.execute_sql">
-<code class="descclassname">transform.geospatial.add_area_codes_from_centroid.</code><code class="descname">execute_sql</code><span class="sig-paren">(</span><em>pg_str</em>, <em>sql</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.add_area_codes_from_centroid.execute_sql" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.add_area_codes_from_centroid.get_pg_str">
-<code class="descclassname">transform.geospatial.add_area_codes_from_centroid.</code><code class="descname">get_pg_str</code><span class="sig-paren">(</span><em>host</em>, <em>port</em>, <em>user</em>, <em>dbname</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.add_area_codes_from_centroid.get_pg_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.add_area_codes_from_centroid.main">
-<code class="descclassname">transform.geospatial.add_area_codes_from_centroid.</code><code class="descname">main</code><span class="sig-paren">(</span><em>dbConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.add_area_codes_from_centroid.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="transform-geospatial-clean-bag-address-ned-module">
-<h2>transform.geospatial.clean_BAG_address_NED module<a class="headerlink" href="#transform-geospatial-clean-bag-address-ned-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-transform.geospatial.divide_bbox_amsterdam_in_quadrants">
-<span id="transform-geospatial-divide-bbox-amsterdam-in-quadrants-module"></span><h2>transform.geospatial.divide_bbox_amsterdam_in_quadrants module<a class="headerlink" href="#module-transform.geospatial.divide_bbox_amsterdam_in_quadrants" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="transform.geospatial.divide_bbox_amsterdam_in_quadrants.calculation">
-<code class="descclassname">transform.geospatial.divide_bbox_amsterdam_in_quadrants.</code><code class="descname">calculation</code><span class="sig-paren">(</span><em>number_of_boxes</em>, <em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.divide_bbox_amsterdam_in_quadrants.calculation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Divide the BBOX of the City of Amsterdam in x number of quadrants/rectangles for use in limiting WFS/geo queries.
-Args:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>number_of_boxes: in multiples of 2, 8 works well for most cases.</li>
-<li>bbox: [110200,476772,134030,493900]</li>
-</ol>
-</div></blockquote>
-<dl class="docutils">
-<dt>Returns:</dt>
-<dd>list of quadrants [[x1,y1,x2,y2],[..]]</dd>
-</dl>
+<dt id="transform.geospatial.api_clean_BAG_address_NED.parser">
+<code class="descclassname">transform.geospatial.api_clean_BAG_address_NED.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_clean_BAG_address_NED.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-transform.geospatial.get_areacodes_from_latlon">
-<span id="transform-geospatial-get-areacodes-from-latlon-module"></span><h2>transform.geospatial.get_areacodes_from_latlon module<a class="headerlink" href="#module-transform.geospatial.get_areacodes_from_latlon" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-transform.geospatial.api_get_areacodes_from_latlon">
+<span id="transform-geospatial-api-get-areacodes-from-latlon-module"></span><h2>transform.geospatial.api_get_areacodes_from_latlon module<a class="headerlink" href="#module-transform.geospatial.api_get_areacodes_from_latlon" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.get_areacodes_from_latlon.getAreaCodes">
-<code class="descclassname">transform.geospatial.get_areacodes_from_latlon.</code><code class="descname">getAreaCodes</code><span class="sig-paren">(</span><em>item</em>, <em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_areacodes_from_latlon.getAreaCodes" title="Permalink to this definition">¶</a></dt>
+<dt id="transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes">
+<code class="descclassname">transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getAreaCodes</code><span class="sig-paren">(</span><em>item</em>, <em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Get specific information like area codes based radius to nearest address based on lat/lon value</dt>
 <dd>ex: <a class="reference external" href="https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&amp;lat=52.3731750&amp;lon=4.8924655&amp;radius=50">https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&amp;lat=52.3731750&amp;lon=4.8924655&amp;radius=50</a></dd>
@@ -227,8 +194,8 @@ Args:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.geospatial.get_areacodes_from_latlon.getJson">
-<code class="descclassname">transform.geospatial.get_areacodes_from_latlon.</code><code class="descname">getJson</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_areacodes_from_latlon.getJson" title="Permalink to this definition">¶</a></dt>
+<dt id="transform.geospatial.api_get_areacodes_from_latlon.getJson">
+<code class="descclassname">transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getJson</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_get_areacodes_from_latlon.getJson" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a json from an url</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -243,127 +210,11 @@ Args:</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-transform.geospatial.get_centroid_of_street">
-<span id="transform-geospatial-get-centroid-of-street-module"></span><h2>transform.geospatial.get_centroid_of_street module<a class="headerlink" href="#module-transform.geospatial.get_centroid_of_street" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-transform.geospatial.api_get_nearest_address_from_latlon">
+<span id="transform-geospatial-api-get-nearest-address-from-latlon-module"></span><h2>transform.geospatial.api_get_nearest_address_from_latlon module<a class="headerlink" href="#module-transform.geospatial.api_get_nearest_address_from_latlon" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.get_centroid_of_street.get_centroid_street">
-<code class="descclassname">transform.geospatial.get_centroid_of_street.</code><code class="descname">get_centroid_street</code><span class="sig-paren">(</span><em>filename</em>, <em>street_column</em>, <em>city_name</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_centroid_of_street.get_centroid_street" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the X,Y centroid of an address.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><ol class="first last arabic simple">
-<li>street_column: Dam 1</li>
-<li>city_name: Amsterdam</li>
-</ol>
-</dd>
-<dt>Returns:</dt>
-<dd>Origional CSV file with coordinates and BAG corrected naming.</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.get_centroid_of_street.main">
-<code class="descclassname">transform.geospatial.get_centroid_of_street.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_centroid_of_street.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.get_centroid_of_street.parser">
-<code class="descclassname">transform.geospatial.get_centroid_of_street.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_centroid_of_street.parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="module-transform.geospatial.get_geojson_from_wfs">
-<span id="transform-geospatial-get-geojson-from-wfs-module"></span><h2>transform.geospatial.get_geojson_from_wfs module<a class="headerlink" href="#module-transform.geospatial.get_geojson_from_wfs" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get layer from a wfs service.
-Args:</p>
-<blockquote>
-<div><ol class="arabic">
-<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">layer_name: Title of the layer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">outputformat: leave empty to return standard GML, else define json, geojson, txt, shapezip:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geojson</span>
-</pre></div>
-</div>
-</li>
-</ol>
-</div></blockquote>
-<dl class="docutils">
-<dt>Returns:</dt>
-<dd>The layer in the specified output format.</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_layers_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all layer names in WFS service, print and return them in a list.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_multiple_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_names</em>, <em>srs</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all layers and save them as a geojson</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><ol class="first last arabic">
-<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">layer_names: single or multiple titles of the layers, separated by a comma without spaces:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span><span class="p">,</span><span class="n">gebiedsgerichtwerken</span><span class="p">,</span><span class="n">buurt</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">output_folder: define the folder to save the files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path_to_folder</span><span class="o">/</span><span class="n">another_folder</span>
-</pre></div>
-</div>
-</li>
-</ol>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.main">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.parser">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.parser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-transform.geospatial.get_nearest_address_from_point">
-<span id="transform-geospatial-get-nearest-address-from-point-module"></span><h2>transform.geospatial.get_nearest_address_from_point module<a class="headerlink" href="#module-transform.geospatial.get_nearest_address_from_point" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="transform.geospatial.get_nearest_address_from_point.get_address_near_point">
-<code class="descclassname">transform.geospatial.get_nearest_address_from_point.</code><code class="descname">get_address_near_point</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em>, <em>radius</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_nearest_address_from_point.get_address_near_point" title="Permalink to this definition">¶</a></dt>
+<dt id="transform.geospatial.api_get_nearest_address_from_latlon.get_address_near_point">
+<code class="descclassname">transform.geospatial.api_get_nearest_address_from_latlon.</code><code class="descname">get_address_near_point</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em>, <em>radius</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_get_nearest_address_from_latlon.get_address_near_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get nearest addres and housenumber based on location.</p>
 <p><code class="docutils literal notranslate"><span class="pre">get_address_near_point(52.3729378,</span> <span class="pre">4.8937806,</span> <span class="pre">50)</span></code></p>
 <dl class="docutils">
@@ -380,8 +231,8 @@ Args:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.geospatial.get_nearest_address_from_point.get_openbareruimte">
-<code class="descclassname">transform.geospatial.get_nearest_address_from_point.</code><code class="descname">get_openbareruimte</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_nearest_address_from_point.get_openbareruimte" title="Permalink to this definition">¶</a></dt>
+<dt id="transform.geospatial.api_get_nearest_address_from_latlon.get_openbareruimte">
+<code class="descclassname">transform.geospatial.api_get_nearest_address_from_latlon.</code><code class="descname">get_openbareruimte</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_get_nearest_address_from_latlon.get_openbareruimte" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the name the street location where it coordinate resides on.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -394,6 +245,73 @@ Args:</p>
 <dd>Returns dictionary of the openbare ruimte object</dd>
 </dl>
 </dd></dl>
+
+</div>
+<div class="section" id="module-transform.geospatial.csv_get_centroid_of_street">
+<span id="transform-geospatial-csv-get-centroid-of-street-module"></span><h2>transform.geospatial.csv_get_centroid_of_street module<a class="headerlink" href="#module-transform.geospatial.csv_get_centroid_of_street" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="transform.geospatial.csv_get_centroid_of_street.get_centroid_street">
+<code class="descclassname">transform.geospatial.csv_get_centroid_of_street.</code><code class="descname">get_centroid_street</code><span class="sig-paren">(</span><em>filename</em>, <em>street_column</em>, <em>city_name</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.csv_get_centroid_of_street.get_centroid_street" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the X,Y centroid of an address.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>street_column: Dam 1</li>
+<li>city_name: Amsterdam</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Origional CSV file with coordinates and BAG corrected naming.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.geospatial.csv_get_centroid_of_street.main">
+<code class="descclassname">transform.geospatial.csv_get_centroid_of_street.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.csv_get_centroid_of_street.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="transform.geospatial.csv_get_centroid_of_street.parser">
+<code class="descclassname">transform.geospatial.csv_get_centroid_of_street.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.csv_get_centroid_of_street.parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-transform.geospatial.divide_bbox_amsterdam_in_quadrants">
+<span id="transform-geospatial-divide-bbox-amsterdam-in-quadrants-module"></span><h2>transform.geospatial.divide_bbox_amsterdam_in_quadrants module<a class="headerlink" href="#module-transform.geospatial.divide_bbox_amsterdam_in_quadrants" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="transform.geospatial.divide_bbox_amsterdam_in_quadrants.calculation">
+<code class="descclassname">transform.geospatial.divide_bbox_amsterdam_in_quadrants.</code><code class="descname">calculation</code><span class="sig-paren">(</span><em>number_of_boxes</em>, <em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.divide_bbox_amsterdam_in_quadrants.calculation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divide the BBOX of the City of Amsterdam in x number of quadrants/rectangles for use in limiting WFS/geo queries.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>number_of_boxes: in multiples of 2, 8 works well for most cases.</li>
+<li>bbox: [110200,476772,134030,493900]</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>list of quadrants [[x1,y1,x2,y2],[..]]</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-transform.geospatial.postgres_add_areas_from_coordinates">
+<span id="transform-geospatial-postgres-add-areas-from-coordinates-module"></span><h2>transform.geospatial.postgres_add_areas_from_coordinates module<a class="headerlink" href="#module-transform.geospatial.postgres_add_areas_from_coordinates" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="transform.geospatial.postgres_add_areas_from_coordinates.executeScriptsFromFile">
+<code class="descclassname">transform.geospatial.postgres_add_areas_from_coordinates.</code><code class="descname">executeScriptsFromFile</code><span class="sig-paren">(</span><em>pg_str</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.postgres_add_areas_from_coordinates.executeScriptsFromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>WIP does not work yet</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.geospatial.postgres_add_areas_from_coordinates.main">
+<code class="descclassname">transform.geospatial.postgres_add_areas_from_coordinates.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.postgres_add_areas_from_coordinates.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="transform.geospatial.postgres_add_areas_from_coordinates.parser">
+<code class="descclassname">transform.geospatial.postgres_add_areas_from_coordinates.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.postgres_add_areas_from_coordinates.parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-transform.geospatial.rd_to_wgs84">

@@ -92,7 +92,6 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data-processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#notebooks">Notebooks</a></li>
@@ -174,12 +173,8 @@
 <a class="reference external image-reference" href="https://www.mozilla.org/en-US/MPL/2.0/"><img alt="https://img.shields.io/badge/license-MPLv2.0-blue.svg" src="https://img.shields.io/badge/license-MPLv2.0-blue.svg" /></a>
 <p>At the City of Amsterdam we deal with many different types of structured and unstructered data. Much of the data is not of high quality and are missing proper semantics to do proper analytics with.</p>
 <p>This repository combines generic command line functions to create extract, transform and load steps we can then use for creating a reproducable data for analytics and usage in dashboards and maps.</p>
-</div>
-<div class="section" id="workflow">
-<h1>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h1>
-<p>For more information about the our workflow, read the
+<p>For more information about the how we use these functions in our workflow, read the
 <a class="reference external" href="https://amsterdam.github.io/guides/data-pipeline/">data-pipeline guide</a>.</p>
-<p>This package is build by using <a class="reference external" href="http://setuptools.readthedocs.io">setuptools</a> to be able to deploy this later on PyPi with version control. It follows some of <a class="reference external" href="http://alexanderwaldin.github.io/packaging-python-project.html">these</a> guidelines of setting up a python package.</p>
 </div>
 <div class="section" id="how-to-use">
 <h1>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h1>
@@ -249,6 +244,7 @@ pip install -e ./<span class="o">[</span>docs,test,dev/<span class="o">]</span>
 </div>
 <div class="section" id="steps-to-add-code">
 <h2>Steps to add code<a class="headerlink" href="#steps-to-add-code" title="Permalink to this headline">¶</a></h2>
+<p>This package is build by using <a class="reference external" href="http://setuptools.readthedocs.io">setuptools</a> to be able to deploy this later on PyPi with version control. It follows some of <a class="reference external" href="http://alexanderwaldin.github.io/packaging-python-project.html">these</a> guidelines of setting up a python package.</p>
 <ol class="arabic simple">
 <li>Convert your function into a <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">python-package command line script</a> using the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py">boilerplate_function.py</a></li>
 </ol>

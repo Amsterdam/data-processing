@@ -32,6 +32,7 @@ stored, from API’s or from the data catalog.**
     extract/download_from_data_amsterdam_catalog
     extract/download_from_data_amsterdam_api
     extract/download_from_objectstore
+    extract/download_from_wfs
     
 
 Transform
@@ -45,8 +46,12 @@ Geospatial
 .. toctree::
     :maxdepth: 1
 
-    transform.geospatial
-
+    transform/geospatial/postgres_add_areas_from_coordinates
+    transform/geospatial/api_clean_BAG_address_NED
+    transform/geospatial/api_get_nearest_address_from_latlon
+    transform/geospatial/api_get_areacodes_from_latlon
+    transform/geospatial/divide_bbox_amsterdam_in_quadrants
+    transform/geospatial/rd_to_wgs84
 
 Enrichment
 ^^^^^^^^^^

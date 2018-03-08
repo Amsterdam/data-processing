@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>get_geojson_from_wfs &mdash; Datapunt processing 0.0.1 documentation</title>
+  <title>download_from_wfs &mdash; Datapunt processing 0.0.1 documentation</title>
   
 
   
@@ -26,19 +26,19 @@
 
   
   
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
 
   
 
   
         <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/> 
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
 
   
-  <script src="../../_static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -54,7 +54,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> Datapunt processing
+            <a href="../index.html" class="icon icon-home"> Datapunt processing
           
 
           
@@ -71,7 +71,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -89,16 +89,15 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Data-processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../introduction.html#workflow">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-use">How to use</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../introduction.html#getting-started">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../introduction.html#notebooks">Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 </ul>
 
             
@@ -113,7 +112,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Datapunt processing</a>
+          <a href="../index.html">Datapunt processing</a>
         
       </nav>
 
@@ -141,15 +140,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>get_geojson_from_wfs</li>
+      <li>download_from_wfs</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/transform/geospatial/get_geojson_from_wfs.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/extract/download_from_wfs.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -162,19 +161,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="get-geojson-from-wfs">
-<span id="id1"></span><h1>get_geojson_from_wfs<a class="headerlink" href="#get-geojson-from-wfs" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="download-from-wfs">
+<h1>download_from_wfs<a class="headerlink" href="#download-from-wfs" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
 <div><p>Get multiple layers as a geojson file from a WFS service.
 command line example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_geojson_from_wfs</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span> <span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span> <span class="n">output_folder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_wfs</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span> <span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span> <span class="n">output_folder</span>
 </pre></div>
 </div>
 </div></blockquote>
 </p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">get_geojson_from_wfs</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
-                            <span class="n">url_wfs</span> <span class="n">layer_names</span> <span class="p">[</span><span class="n">layer_names</span> <span class="o">...</span><span class="p">]</span> <span class="p">{</span><span class="mi">28992</span><span class="p">,</span><span class="mi">4326</span><span class="p">}</span>
-                            <span class="n">output_folder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">wfs_get_geojson</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                       <span class="n">url_wfs</span> <span class="n">layer_names</span> <span class="p">[</span><span class="n">layer_names</span> <span class="o">...</span><span class="p">]</span> <span class="p">{</span><span class="mi">28992</span><span class="p">,</span><span class="mi">4326</span><span class="p">}</span>
+                       <span class="n">output_folder</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -201,11 +200,11 @@ command line example:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-transform.geospatial.get_geojson_from_wfs">
-<span id="functions"></span><h2>functions<a class="headerlink" href="#module-transform.geospatial.get_geojson_from_wfs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-extract.download_from_wfs">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_wfs" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_wfs.get_layer_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get layer from a wfs service.
 Args:</p>
 <blockquote>
@@ -239,14 +238,14 @@ Args:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_layers_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_layers_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_wfs.get_layers_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_layers_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_layers_from_wfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all layer names in WFS service, print and return them in a list.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">get_multiple_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_names</em>, <em>srs</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.get_multiple_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_wfs.get_multiple_geojson_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_multiple_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_names</em>, <em>srs</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_multiple_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all layers and save them as a geojson</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -277,8 +276,8 @@ Args:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.geospatial.get_geojson_from_wfs.parser">
-<code class="descclassname">transform.geospatial.get_geojson_from_wfs.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.get_geojson_from_wfs.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_wfs.parser">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
 </dd></dl>
 
@@ -319,7 +318,7 @@ Args:</p>
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
+            URL_ROOT:'../',
             VERSION:'0.0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -327,15 +326,15 @@ Args:</p>
             SOURCELINK_SUFFIX: '.txt'
         };
     </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
   
   
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
   
