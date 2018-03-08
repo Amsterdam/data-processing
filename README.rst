@@ -17,8 +17,26 @@ For more information about the how we use these functions in our workflow, read 
 How to use
 ==========
 
-The usage of the functions are described here:
+All functions are searchable and described in full here:
 `amsterdam.github.io/data-processing <https://amsterdam.github.io/data-processing/>`_ 
+
+To use a function in python you can use::
+
+    from extract import download_from_data_amsterdam
+
+    or 
+
+    from helpers.connections import objectstore_connection
+
+To use the functions directly from the command line, you can do this after installing the package via::
+    
+    pip install .
+
+You can then use functions directly in your virtual environment or docker shell like this::
+    
+    download_from_data_amsterdam -h 
+
+To see the list of command line functions see the modules below or directly in `setup.py <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L60>`_
 
 
 Getting Started

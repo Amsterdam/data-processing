@@ -178,8 +178,25 @@
 </div>
 <div class="section" id="how-to-use">
 <h1>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h1>
-<p>The usage of the functions are described here:
+<p>All functions are searchable and described in full here:
 <a class="reference external" href="https://amsterdam.github.io/data-processing/">amsterdam.github.io/data-processing</a></p>
+<p>To use a function in python you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">extract</span> <span class="k">import</span> <span class="n">download_from_data_amsterdam</span>
+
+<span class="ow">or</span>
+
+<span class="kn">from</span> <span class="nn">helpers.connections</span> <span class="k">import</span> <span class="n">objectstore_connection</span>
+</pre></div>
+</div>
+<p>To use the functions directly from the command line, you can do this after installing the package via:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>You can then use functions directly in your virtual environment or docker shell like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_data_amsterdam</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>To see the list of command line functions see the modules below or directly in <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/setup.py#L60">setup.py</a></p>
 </div>
 <div class="section" id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>

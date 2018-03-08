@@ -3,7 +3,13 @@
 Modules
 =======
 
-Data Processing contains 4 main modules: Auth, Extract, Transform and Load (the standard ETL processing) and one Helper function module to re-use often used generic functions.
+Data Processing contains 5 modules: 
+1. Authentication
+2. Extract
+3. Transform
+4. Load 
+5. Helpers
+
 
 Authentication
 --------------
