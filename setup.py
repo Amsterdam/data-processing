@@ -66,7 +66,7 @@ setup(
             'load_xls_to_postgres = load.load_xls_to_postgres:main',
             'load_file_to_objectstore = load.load_file_to_objectstore:main',
             'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
-            'postgres_add_areas_from_coordinates' = 'transform.geospatial.postgres_add_areas_from_coordinates:main',
+            'postgres_add_areas_from_coordinates = transform.geospatial.postgres_add_areas_from_coordinates:main',
             'add_public_events = transform.enrichment.add_public_events:main',
             'add_knmi_data = transform.enrichment.add_knmi_data:main'
         ],
