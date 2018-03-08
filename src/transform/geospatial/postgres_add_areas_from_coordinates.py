@@ -143,11 +143,19 @@ def executeScriptsFromFile(pg_str, filename):
 
 
 def parser():
-    description = "Run additional SQL."
-    parser = argparse.ArgumentParser(description)
+    description = """
+    Loads WFS areas into Postgres and joins all the names and codes to a dummy table by using lat lon or X,Y.
+
+    Use ENV:
+        ``export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH``
+
+    Example command line:
+        ``postgres_add_areas_from_coordinates config.ini dev``
+    """
+    parser = argparse.ArgumentParser(description=description)
     parser.add_argument('full_config_path',
                         type=str,
-                        help='write the full config.ini path including the name, for example authentication/config.ini')
+                        help="""write the full config.ini path including the name. For example authentication/config.ini""")
     parser.add_argument('db_config_name',
                         type=str,
                         help='dev or docker')
