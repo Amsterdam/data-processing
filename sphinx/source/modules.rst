@@ -34,15 +34,11 @@ stored, from API’s or from the data catalog.**
     extract/download_from_objectstore
     extract/download_from_wfs
     
+Transform Geospatial
+--------------------
 
-Transform
----------
+**Functions to spatial transform and enrich datasets.**
 
-**Functions to transform, preprocess and enrich datasets.**
-
-
-Geospatial
-^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
 
@@ -53,8 +49,11 @@ Geospatial
     transform/geospatial/divide_bbox_amsterdam_in_quadrants
     transform/geospatial/rd_to_wgs84
 
-Enrichment
-^^^^^^^^^^
+Transform Enrichment
+--------------------
+
+**Functions to enrich datasets.**
+
 .. toctree::
     :maxdepth: 1
 
