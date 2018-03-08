@@ -4,18 +4,34 @@ transform.geospatial package
 Submodules
 ----------
 
-transform.geospatial.add\_area\_codes\_from\_centroid module
-------------------------------------------------------------
+transform.geospatial.api\_clean\_BAG\_address\_NED module
+---------------------------------------------------------
 
-.. automodule:: transform.geospatial.add_area_codes_from_centroid
+.. automodule:: transform.geospatial.api_clean_BAG_address_NED
     :members:
     :undoc-members:
     :show-inheritance:
 
-transform.geospatial.clean\_BAG\_address\_NED module
-----------------------------------------------------
+transform.geospatial.api\_get\_areacodes\_from\_latlon module
+-------------------------------------------------------------
 
-.. automodule:: transform.geospatial.clean_BAG_address_NED
+.. automodule:: transform.geospatial.api_get_areacodes_from_latlon
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+transform.geospatial.api\_get\_nearest\_address\_from\_latlon module
+--------------------------------------------------------------------
+
+.. automodule:: transform.geospatial.api_get_nearest_address_from_latlon
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+transform.geospatial.csv\_get\_centroid\_of\_street module
+----------------------------------------------------------
+
+.. automodule:: transform.geospatial.csv_get_centroid_of_street
     :members:
     :undoc-members:
     :show-inheritance:
@@ -28,34 +44,10 @@ transform.geospatial.divide\_bbox\_amsterdam\_in\_quadrants module
     :undoc-members:
     :show-inheritance:
 
-transform.geospatial.get\_areacodes\_from\_latlon module
---------------------------------------------------------
+transform.geospatial.postgres\_add\_areas\_from\_coordinates module
+-------------------------------------------------------------------
 
-.. automodule:: transform.geospatial.get_areacodes_from_latlon
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-transform.geospatial.get\_centroid\_of\_street module
------------------------------------------------------
-
-.. automodule:: transform.geospatial.get_centroid_of_street
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-transform.geospatial.get\_geojson\_from\_wfs module
----------------------------------------------------
-
-.. automodule:: transform.geospatial.get_geojson_from_wfs
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-transform.geospatial.get\_nearest\_address\_from\_point module
---------------------------------------------------------------
-
-.. automodule:: transform.geospatial.get_nearest_address_from_point
+.. automodule:: transform.geospatial.postgres_add_areas_from_coordinates
     :members:
     :undoc-members:
     :show-inheritance:

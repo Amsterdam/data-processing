@@ -52,7 +52,7 @@ def run_command_sync(cmd, allow_fail=False):
 
 def wfs2psql(url, pg_str, layer_name, **kwargs):
     """Command line ogr2ogr string to load a WFS into PostGres."""
-    cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name,'-F' ,'PostgreSQL' ,pg_str ,url]
+    cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name,'-F' ,'PostgreSQL' ,'PG:'+pg_str ,url]
     run_command_sync(cmd)
 
 

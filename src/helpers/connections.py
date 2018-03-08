@@ -68,7 +68,7 @@ def psycopg_connection_string(config_full_path, db_config_name):
     dbname = config.get(db_config_name,'dbname')
     password = config.get(db_config_name,'password')
 
-    return 'PG:host={} port={} user={} dbname={} password={}'.format(
+    return 'host={} port={} user={} dbname={} password={}'.format(
         host, port, user, dbname, password
     )
 
@@ -87,7 +87,9 @@ def execute_sql(pg_str, sql):
         Executed sql with conn.cursor().execute(sql)
     """
     with psycopg2.connect(pg_str) as conn:
+        logger.info('connected to database')
         with conn.cursor() as cursor:
+            logger.info('start exectuting sql query')
             cursor.execute(sql)
 
 # -----------------
