@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-"""See <https://setuptools.readthedocs.io/en/latest/>.
+"""
+See <https://setuptools.readthedocs.io/en/latest/>.
+best practices: https://docs.pytest.org/en/latest/goodpractices.html
 """
 import os, sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
-
-# https://docs.pytest.org/en/latest/goodpractices.html
 
 class PyTest(TestCommand):
     """ Custom class to avoid depending on pytest-runner.
@@ -55,17 +55,21 @@ setup(
     ],
 
 
-    # Entry points - pls try to keep some order when adding functions, placing it load/transform etc..
+    # Entry points - pls try to keep some order when adding functions, placing it in adequate section: load/transform etc..
     entry_points={
         'console_scripts': [
+            # extract
             'download_from_data_amsterdam_catalog = extract.download_from_data_amsterdam_catalog:main',
             'download_from_data_amsterdam_api = extract.download_from_data_amsterdam_api:main',
             'download_from_objectstore = extract.download_from_objectstore:main',
             'csv_dataframe = extract.csv_dataframe:main',
+            'download_from_kvk_api = extract.download_from_kvk_api:main',
+            # load
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
             'load_xls_to_postgres = load.load_xls_to_postgres:main',
             'load_file_to_ckan = load.load_file_to_ckan:main',
             'load_file_to_objectstore = load.load_file_to_objectstore:main',
+            #transform
             'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
             'postgres_add_areas_from_coordinates = transform.geospatial.postgres_add_areas_from_coordinates:main',
             'add_public_events = transform.enrichment.add_public_events:main',
