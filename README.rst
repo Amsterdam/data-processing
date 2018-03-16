@@ -117,6 +117,8 @@ This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ 
 
 1. Convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
 
+side note: not all functions are suitable for CL. Machine learning preprocessing steps or general API calls for instance, (that often require parameters in the form of dicts or lists) as input are not suitable and can be used as stand-alone scripts. 
+
 2. Add test to the `test folder <https://github.com/Amsterdam/data-processing/tree/master/tests>`_ and run 
 .. code-block:: bash
     
@@ -124,7 +126,7 @@ This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ 
 
 to test if no other functions are breaking. Correct those issues if needed.
 
-3. Add your commandline name and location to the `concole_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
+3. Add your commandline name and end point location to the `console_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
 
 4. Add a awesome_module.rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
 
