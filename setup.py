@@ -60,7 +60,7 @@ setup(
         'console_scripts': [
             # extract
             'download_from_data_amsterdam_catalog = extract.download_from_data_amsterdam_catalog:main',
-            'download_from_data_amsterdam_api = extract.download_from_data_amsterdam_api:main',
+            'download_from_tellus_api = extract.download_from_tellus_api:main',
             'download_from_objectstore = extract.download_from_objectstore:main',
             'csv_dataframe = extract.csv_dataframe:main',
             'download_from_kvk_api = extract.download_from_kvk_api:main',
