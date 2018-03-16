@@ -12,7 +12,7 @@ logger = logger()
 BASE_URL = "https://api.kvk.nl/api/v2/search/companies?"
 error_key = ''
 
-def get_kvk_json(url=BASE_URL, params, api_key = None):
+def get_kvk_json(url, params, api_key = None):
     """
     Get a json response from a url, provided params + api_key.
     Args:
