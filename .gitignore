@@ -18,3 +18,8 @@ data/
 *.geojson
 .pytest_cache/v/cache.pytest_cache/
 .pytest_cache/
+
+# Setuptools
+*.egg-info
+.eggs
+dist
