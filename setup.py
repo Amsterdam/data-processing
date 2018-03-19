@@ -2,6 +2,7 @@
 """
 See <https://setuptools.readthedocs.io/en/latest/>.
 best practices: https://docs.pytest.org/en/latest/goodpractices.html
+For Pypi deployment steps: https://packaging.python.org/tutorials/distributing-packages/
 """
 import os
 import sys
@@ -36,9 +37,9 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.1',
+    version='0.0.1a1',
     name='datapunt_processing',
-    description="Data processing Functions",
+    description="Reusable ETL functions for use Docker import scripts",
     long_description=read('README.rst'),
     url='https://github.com/Amsterdam/data-processing',
     author='Amsterdam Datapunt',
@@ -107,13 +108,15 @@ setup(
 
         # Transformers
         'pandas==0.22.0',
-
+        'scikit-learn==0.19.1',
         # Utilities
         'docutils',
         'pprint>=0.1',
         'pyproj==1.9.5.1',
         'requests_cache==0.4.13',
         'logger==1.4',
+        'IPython==6.2.1',
+
 
     ],
     extras_require={
