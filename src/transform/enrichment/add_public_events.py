@@ -5,11 +5,11 @@
 
 import pandas as pd
 import json
-import urllib, json
-import pprint
+import urllib
+import argparse
+
 
 def get_event_json():
-    
     """parse public event data from json at amsterdam.data.nl
     Args:
         None
@@ -19,13 +19,12 @@ def get_event_json():
 
     url = 'https://open.data.amsterdam.nl/Evenementen.json'
     with urllib.request.urlopen(url) as url:
-        data = json.loads(url.read().decode('utf-8'))   
-    
+        data = json.loads(url.read().decode('utf-8'))
     # extract values from json
     results = []
 
     for item in data:
-        result= {}
+        result = {}
 
         result['title'] = item['details']['en']['title']
         result['name'] = item['location']['name']
@@ -39,7 +38,7 @@ def get_event_json():
 
     # convert to Pandas Dataframe
     event_df = pd.DataFrame(results)
-    
+
     # extract start and enddate from nested lists
     event_df = pd.concat([event_df.drop(['dates'], axis=1), event_df['dates'].apply(pd.Series)], axis=1)
     # replace NaNs with startdates, enddates
@@ -53,30 +52,31 @@ def get_event_json():
 
     for col in ['startdate', 'enddate']:
         event_df[col] = pd.to_datetime(event_df[col], format = '%d-%m-%Y')
-    
+
     # add column event duration in days
     event_df['no_days'] = (event_df.enddate - event_df.startdate).astype('timedelta64[D]') + 1
-    
+
     return event_df
 
 
 def parser():
     """Parser function to run arguments from the command line and to add description to sphinx."""
-    parser = argparse.ArgumentParser(description=
-    """ parse public event data from json at amsterdam.data.nl
+    parser = argparse.ArgumentParser(description="""
+    parse public event data from json at amsterdam.data.nl
     Args:
         None
     Returns:
         * pd.DataFrame: data frame with events in Amsterdam
-    command line example: 
+    command line example:
         get_event_json()
-    """
+    """)
     return parser
 
 
-def main(): 
+def main():
     args = parser().parse_args()
     get_event_json()
+
 
 if __name__ == "__main__":
     main()

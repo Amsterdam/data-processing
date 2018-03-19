@@ -2,8 +2,6 @@
 import argparse
 import requests
 import requests_cache
-import json
-import os
 
 from authentication.getaccesstoken import GetAccessToken
 from helpers.files import save_file
@@ -11,12 +9,13 @@ from helpers.logging import logger
 
 logger = logger()
 
+
 def conversionListCvalues(metadata):
     """
         Create a conversion dictionairy for values in tellus api which consists of 60 speed +length values named: c1 to c60
     """
     lCategorie = metadata["lengtecategorie"]["_embedded"][0]
-    sCategorie = metadata["snelheidscategorie"]["_embedded"][0]
+    # sCategorie = metadata["snelheidscategorie"]["_embedded"][0]
     cValues = {}
     cNumber = 1
     while cNumber <= 60:  # c1 to c60 colums
@@ -44,7 +43,7 @@ def getJsonData(url, accessToken):
 
     Args:
         1. url: api endpoint
-        2. accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()
+        2. accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype='employee', scopes='TLLS/R')
 
     Returns:
         parsed json or error message
@@ -174,7 +173,6 @@ def get_data(url_api, endpoint, metadata, accessToken, limit):
     return data
 
 
-
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx docs."""
     description = """
@@ -206,8 +204,7 @@ def main():
     # Return all arguments in a list
     args = parser().parse_args()
     logger.info("Getting Access token.")
-    #getToken = GetAccessToken()  # Create instance of class
-    accessToken = GetAccessToken().getAccessToken()
+    accessToken = GetAccessToken().getAccessToken(usertype='employee', scopes='TLLS/R')
     logger.info("Setup temp database to store requests to speed up restart download if network fails.")
     requests_cache.install_cache('requests_db', backend='sqlite')
 

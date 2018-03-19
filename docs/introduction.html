@@ -265,13 +265,14 @@ pip install -e ./<span class="o">[</span>docs,test,dev/<span class="o">]</span>
 <ol class="arabic simple">
 <li>Convert your function into a <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">python-package command line script</a> using the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py">boilerplate_function.py</a></li>
 </ol>
+<p>side note: not all functions are suitable for CL. Machine learning preprocessing steps or general API calls for instance, (that often require parameters in the form of dicts or lists) as input are not suitable and can be used as stand-alone scripts.</p>
 <p>2. Add test to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/tests">test folder</a> and run
 .. code-block:: bash</p>
 <blockquote>
 <div>python setup.py test</div></blockquote>
 <p>to test if no other functions are breaking. Correct those issues if needed.</p>
 <ol class="arabic simple" start="3">
-<li>Add your commandline name and location to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36">concole_scripts</a> in setup.py.</li>
+<li>Add your commandline name and end point location to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36">console_scripts</a> in setup.py.</li>
 <li>Add a awesome_module.rst file with <a class="reference external" href="http://sphinx-argparse.readthedocs.io/en/latest/">Sphinx Argparse extension</a> fields to generate the description and argument fields by reusing an <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst">existing rst file</a>. Helpers will generate automatically, so you can skip this step if it is only a helper function.</li>
 <li>add the rst file to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst">modules.rst</a> to be found on the main page.</li>
 <li>Regenerate the documentation to test the docs output using:</li>

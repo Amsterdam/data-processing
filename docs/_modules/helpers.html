@@ -100,15 +100,17 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../modules.html#helpers">Helpers</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">helpers package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.connections">helpers.connections module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.files">helpers.files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.json_dict_handlers">helpers.json_dict_handlers module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.logging">helpers.logging module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-helpers.normalize">helpers.normalize module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#helpers-xml-handlers-module">helpers.xml_handlers module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers">Module contents</a></li>
 </ul>
 </li>
@@ -323,6 +325,61 @@ It reads the filename suffix and saves the file as the appropriate type.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-helpers.json_dict_handlers">
+<span id="helpers-json-dict-handlers-module"></span><h2>helpers.json_dict_handlers module<a class="headerlink" href="#module-helpers.json_dict_handlers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="helpers.json_dict_handlers.clean_dict">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">clean_dict</code><span class="sig-paren">(</span><em>dictionary</em>, <em>key_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.clean_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a field from a dict based on key name.
+Args:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>dictionary: {id:1, dates:2018-12-02}</li>
+<li>key_name: ‘dates’</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>{id:1}</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.json_dict_handlers.flatten_json">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>json_object</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.flatten_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatten nested json Object.
+Args:</p>
+<blockquote>
+<div>1 json_object, for example: {“key”: “subkey”: { “subsubkey”:”value” }}</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>{“key.subkey.subsubkey”:”value”}</dd>
+<dt>Source:</dt>
+<dd><a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.json_dict_handlers.joinByKeyNames">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">joinByKeyNames</code><span class="sig-paren">(</span><em>geojson</em>, <em>dataset</em>, <em>key1</em>, <em>key2</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.joinByKeyNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert data from dataset to geojson where key1 from dataset matches key2 from geojson</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.json_dict_handlers.jsonPoints2geojson">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">jsonPoints2geojson</code><span class="sig-paren">(</span><em>df</em>, <em>latColumn</em>, <em>lonColumn</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.jsonPoints2geojson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert JSON with lat/lon columns to geojson.
+<a class="reference external" href="https://gis.stackexchange.com/questions/220997/pandas-to-geojson-multiples-points-features-with-python">https://gis.stackexchange.com/questions/220997/pandas-to-geojson-multiples-points-features-with-python</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.json_dict_handlers.openJsonArrayKeyDict2FlattenedJson">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">openJsonArrayKeyDict2FlattenedJson</code><span class="sig-paren">(</span><em>fileName</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.openJsonArrayKeyDict2FlattenedJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open json and return array of objects without object value name.
+For example: [{‘container’:{…}}, {‘container’:{…}}] returns now as [{…},{…}])</p>
+</dd></dl>
+
+</div>
 <div class="section" id="module-helpers.logging">
 <span id="helpers-logging-module"></span><h2>helpers.logging module<a class="headerlink" href="#module-helpers.logging" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -338,38 +395,8 @@ It reads the filename suffix and saves the file as the appropriate type.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-helpers.normalize">
-<span id="helpers-normalize-module"></span><h2>helpers.normalize module<a class="headerlink" href="#module-helpers.normalize" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="helpers.normalize.clean_dict">
-<code class="descclassname">helpers.normalize.</code><code class="descname">clean_dict</code><span class="sig-paren">(</span><em>dictionary</em>, <em>key_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.clean_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove a field from a dict based on key name.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><ol class="first last arabic simple">
-<li>dictionary: {id:1, dates:2018-12-02}</li>
-<li>key_name: ‘dates’</li>
-</ol>
-</dd>
-<dt>Returns:</dt>
-<dd>{id:1}</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="helpers.normalize.flatten_json">
-<code class="descclassname">helpers.normalize.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>json_object</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.flatten_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flatten nested json Object.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>1 json_object, for example: {“key”: “subkey”: { “subsubkey”:”value” }}</dd>
-<dt>Returns:</dt>
-<dd>{“key.subkey.subsubkey”:”value”}</dd>
-<dt>Source:</dt>
-<dd><a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></dd>
-</dl>
-</dd></dl>
-
+<div class="section" id="helpers-xml-handlers-module">
+<h2>helpers.xml_handlers module<a class="headerlink" href="#helpers-xml-handlers-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-helpers">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-helpers" title="Permalink to this headline">¶</a></h2>

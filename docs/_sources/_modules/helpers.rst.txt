@@ -20,6 +20,14 @@ helpers.files module
     :undoc-members:
     :show-inheritance:
 
+helpers.json\_dict\_handlers module
+-----------------------------------
+
+.. automodule:: helpers.json_dict_handlers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 helpers.logging module
 ----------------------
 
@@ -28,10 +36,10 @@ helpers.logging module
     :undoc-members:
     :show-inheritance:
 
-helpers.normalize module
-------------------------
+helpers.xml\_handlers module
+----------------------------
 
-.. automodule:: helpers.normalize
+.. automodule:: helpers.xml_handlers
     :members:
     :undoc-members:
     :show-inheritance:

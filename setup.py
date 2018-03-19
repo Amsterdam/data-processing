@@ -3,7 +3,8 @@
 See <https://setuptools.readthedocs.io/en/latest/>.
 best practices: https://docs.pytest.org/en/latest/goodpractices.html
 """
-import os, sys
+import os
+import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
@@ -59,11 +60,12 @@ setup(
     entry_points={
         'console_scripts': [
             # extract
-            'download_from_data_amsterdam_catalog = extract.download_from_data_amsterdam_catalog:main',
-            'download_from_tellus_api = extract.download_from_tellus_api:main',
+            'download_from_data_amsterdam_catalog = extract.download_from_catalog:main',
+            'download_from_tellus_api = extract.download_from_api_brk:main',
+            'download_from_tellus_api = extract.download_from_api_tellus:main',
+            'download_from_tellus_api = extract.download_from_api_kvk:main',
             'download_from_objectstore = extract.download_from_objectstore:main',
             'csv_dataframe = extract.csv_dataframe:main',
-            'download_from_kvk_api = extract.download_from_kvk_api:main',
             # load
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
             'load_xls_to_postgres = load.load_xls_to_postgres:main',

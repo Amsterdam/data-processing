@@ -20,10 +20,26 @@ extract.download\_bbga\_by\_variable\_\_area\_year module
     :undoc-members:
     :show-inheritance:
 
-extract.download\_from\_data\_amsterdam\_api module
----------------------------------------------------
+extract.download\_from\_api\_brk module
+---------------------------------------
 
-.. automodule:: extract.download_from_data_amsterdam_api
+.. automodule:: extract.download_from_api_brk
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+extract.download\_from\_api\_kvk module
+---------------------------------------
+
+.. automodule:: extract.download_from_api_kvk
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+extract.download\_from\_api\_tellus module
+------------------------------------------
+
+.. automodule:: extract.download_from_api_tellus
     :members:
     :undoc-members:
     :show-inheritance:

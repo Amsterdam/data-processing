@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-import os
 import requests
 import argparse
 from datetime import datetime
 import xml.etree.ElementTree as ET
 from helpers.files import save_file
+from helpers.logging import logger
+
+logging = logger()
 
 
 def get_layers_from_wfs(url_wfs):
@@ -21,7 +23,7 @@ def get_layers_from_wfs(url_wfs):
 
     for neighbor in root.iter('{http://www.opengis.net/wfs/2.0}FeatureType'):
         # print(neighbor.tag, neighbor.attrib)
-        print("layername: " + neighbor[1].text)  # neighbor[0]==name, neighbor[1]==title
+        logger.info("layername: " + neighbor[1].text)  # neighbor[0]==name, neighbor[1]==title
         layer_names.append(neighbor[1].text)
     return layer_names
 
@@ -56,11 +58,11 @@ def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat):
                   "SRSNAME": "EPSG:{}".format(srs),
                   "OUTPUTFORMAT": outputformat
                   }
-    print("Requesting data from {}, layer: {}".format(url_wfs, layer_name))
+    logger.info("Requesting data from {}, layer: {}".format(url_wfs, layer_name))
     response = requests.get(url_wfs, params=parameters)
     if outputformat in ('geojson, json'):
         geojson = response.json()
-        print("{} features returned.".format(str(len(geojson["features"]))))
+        logger.info("{} features returned.".format(str(len(geojson["features"]))))
         return geojson
     return response
 
@@ -88,10 +90,10 @@ def get_multiple_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
 
     """
     layer_names = layer_names.split(',')
-    # print(layer_names)
+
     for layer_name in layer_names:
         filename = "{}_{}.geojson".format(layer_name, datetime.now().date())
-        geojson = get_geojson_from_wfs(url_wfs, layer_name, srs, 'geojson')
+        geojson = get_layer_from_wfs(url_wfs, layer_name, srs, 'geojson')
         save_file(geojson, output_folder, filename)
 
 
