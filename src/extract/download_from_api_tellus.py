@@ -179,7 +179,7 @@ def parser():
     Download from the Tellus API from data.amsterdam.nl using the OAuth2 datapunt Authorization service.
     Command line example::
 
-        download_from_data_amsterdam_api https://api.data.amsterdam.nl/tellus data tellusdata.csv 10
+        download_from_api_tellus https://api.data.amsterdam.nl/tellus data tellusdata.csv 10
 
     """
 

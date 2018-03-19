@@ -36,7 +36,7 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.2',
+    version='0.0.1',
     name='datapunt_processing',
     description="Data processing Functions",
     long_description=read('README.rst'),
@@ -60,10 +60,11 @@ setup(
     entry_points={
         'console_scripts': [
             # extract
-            'download_from_data_amsterdam_catalog = extract.download_from_catalog:main',
-            'download_from_tellus_api = extract.download_from_api_brk:main',
-            'download_from_tellus_api = extract.download_from_api_tellus:main',
-            'download_from_tellus_api = extract.download_from_api_kvk:main',
+            'download_from_catalog = extract.download_from_catalog:main',
+            'download_from_api_brk = extract.download_from_api_brk:main',
+            'download_from_api_tellus = extract.download_from_api_tellus:main',
+            'download_from_api_kvk = extract.download_from_api_kvk:main',
+            'download_from_wfs = extract.download_from_wfs:main', 
             'download_from_objectstore = extract.download_from_objectstore:main',
             'csv_dataframe = extract.csv_dataframe:main',
             # load

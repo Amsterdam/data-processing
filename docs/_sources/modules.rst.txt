@@ -37,10 +37,11 @@ stored, from API’s or from the data catalog.**
 
     extract/download_from_catalog
     extract/download_from_objectstore
-    extract/download_from_api_kvk
+    extract/download_from_wfs
     extract/download_from_api_brk
     extract/download_from_api_tellus
-    extract/download_from_wfs
+    extract/download_from_api_kvk
+    
     
 Transform Geospatial
 --------------------

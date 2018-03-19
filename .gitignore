@@ -6,7 +6,6 @@ reports
 .env
 .jenkins/backups
 venv/
-.ini
 .conf
 .ipynb_checkpoints
 *.egg-info
@@ -18,3 +17,4 @@ data/
 *.json
 *.geojson
 .pytest_cache/v/cache.pytest_cache/
+.pytest_cache/
