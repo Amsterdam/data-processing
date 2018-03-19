@@ -38,8 +38,8 @@ def read(fname):
 setup(
     # Publication Metadata:
     version='0.0.1a1',
-    name='datapunt_processing',
-    description="Reusable ETL functions for use Docker import scripts",
+    name='datapunt-processing',
+    description="Datapunt generic ETL command line scripts and functions for shell scripting in Docker.",
     long_description=read('README.rst'),
     url='https://github.com/Amsterdam/data-processing',
     author='Amsterdam Datapunt',
