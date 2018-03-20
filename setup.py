@@ -37,7 +37,7 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.1a1',
+    version='0.0.1a3',
     name='datapunt-processing',
     description="Datapunt generic ETL command line scripts and functions for shell scripting in Docker.",
     long_description=read('README.rst'),
@@ -116,8 +116,7 @@ setup(
         'pyproj==1.9.5.1',
         'requests_cache==0.4.13',
         'logger==1.4',
-        'IPython==6.2.1',
-
+        'ipython==5.5.0'
 
     ],
     extras_require={

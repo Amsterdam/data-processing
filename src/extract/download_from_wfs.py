@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 from helpers.files import save_file
 from helpers.logging import logger
 
-logging = logger()
+logger = logger()
 
 
 def get_layers_from_wfs(url_wfs):
