@@ -78,6 +78,7 @@ class GetAccessToken(object):
             location = response.headers["Location"]
             printUrlParameterMessage(location)
         else:
+            log.info('Error in parameters.')
             return {}
 
         if usertype == 'employee_plus':
@@ -99,6 +100,7 @@ class GetAccessToken(object):
             location = response.headers["Location"]
             printUrlParameterMessage(location)
         else:
+            log.info('Error retrieving token')
             return {}
 
         response = requests.get(location, allow_redirects=False)
@@ -106,6 +108,7 @@ class GetAccessToken(object):
             returnedUrl = response.headers["Location"]
             printUrlParameterMessage(returnedUrl)
         else:
+            log.info('Error retrieving token')
             return {}
 
         # Get grantToken from parameter aselect_credentials in session URL

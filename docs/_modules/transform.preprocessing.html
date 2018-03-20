@@ -306,8 +306,154 @@ Args:</p>
 <div class="section" id="transform-preprocessing-ml-preprocessing-module">
 <h2>transform.preprocessing.ml_preprocessing module<a class="headerlink" href="#transform-preprocessing-ml-preprocessing-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="transform-preprocessing-utilities-module">
-<h2>transform.preprocessing.utilities module<a class="headerlink" href="#transform-preprocessing-utilities-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-transform.preprocessing.utilities">
+<span id="transform-preprocessing-utilities-module"></span><h2>transform.preprocessing.utilities module<a class="headerlink" href="#module-transform.preprocessing.utilities" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transform.preprocessing.utilities.BigFile">
+<em class="property">class </em><code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">BigFile</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.BigFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper for pickling big files
+See pickle_big_dump and pickle_big_load functions.</p>
+<dl class="method">
+<dt id="transform.preprocessing.utilities.BigFile.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.BigFile.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read n bytes
+Reads a big file in batch of almost ~ 1 GB
+Args:</p>
+<blockquote>
+<div>n (int): number of bytes</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>bytearray: buffer</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="transform.preprocessing.utilities.BigFile.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.BigFile.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write buffer
+Writes in batches of ~ 1GB
+Args:</p>
+<blockquote>
+<div>buffer (bytearray): buffer</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.assert_unique">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">assert_unique</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.assert_unique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that all values are unique. Raises a value error if not. Empty series are ignored.
+:param series: input
+:return: none</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.calc_error">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">calc_error</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.calc_error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>df</strong> – DataFrame
+Predictions data frame.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Series
+Error (truth - prediction)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.cols_not_in">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">cols_not_in</code><span class="sig-paren">(</span><em>columns</em>, <em>df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.cols_not_in" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.get_last_full_year">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">get_last_full_year</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.get_last_full_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the last full year in data frame
+E.g. will return 2016 if you are in 2017.
+Args:</p>
+<blockquote>
+<div>df (pd.DataFrame): input data, has column dayofyear</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>int: last full year</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.get_script_dir">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">get_script_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.get_script_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.is_numeric">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">is_numeric</code><span class="sig-paren">(</span><em>column</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.is_numeric" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>column</strong> – Series
+A column.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool
+True when is a numeric type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.merge_and_report">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">merge_and_report</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>on: list</em>, <em>description=''</em>, <em>n_unmatched_limit=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#transform.preprocessing.utilities.merge_and_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a merge between two data frame and reports stats on matches
+Only left merges are supported for now. If a column is present in both the
+left and right data frame, the left column has priority and the right
+column is ignored.
+Args:</p>
+<blockquote>
+<div><p>left (pd.DataFrame): lhs
+right (pd.DataFrame): rhs
+on (list[str]): columns to match on.
+description (str or None): description of what merge is done
+n_unmatched_limit (int): throw error when number of rows not found in</p>
+<blockquote>
+<div>left side is larger than this number</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>pd.DataFrame</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.optional_make_dir">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">optional_make_dir</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.optional_make_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates directory at if it does not exist yet
+Args:</p>
+<blockquote>
+<div>path (str): path to create directory in</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.pickle_big_dump">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">pickle_big_dump</code><span class="sig-paren">(</span><em>obj</em>, <em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.pickle_big_dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.pickle_big_load">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">pickle_big_load</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.pickle_big_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="transform.preprocessing.utilities.rms">
+<code class="descclassname">transform.preprocessing.utilities.</code><code class="descname">rms</code><span class="sig-paren">(</span><em>array</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.preprocessing.utilities.rms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the root mean square of an array</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-transform.preprocessing">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-transform.preprocessing" title="Permalink to this headline">¶</a></h2>

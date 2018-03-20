@@ -44,10 +44,18 @@ extract.download\_from\_api\_tellus module
     :undoc-members:
     :show-inheritance:
 
-extract.download\_from\_data\_amsterdam\_catalog module
--------------------------------------------------------
+extract.download\_from\_api\_with\_authentication module
+--------------------------------------------------------
 
-.. automodule:: extract.download_from_data_amsterdam_catalog
+.. automodule:: extract.download_from_api_with_authentication
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+extract.download\_from\_catalog module
+--------------------------------------
+
+.. automodule:: extract.download_from_catalog
     :members:
     :undoc-members:
     :show-inheritance:

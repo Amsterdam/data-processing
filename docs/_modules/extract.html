@@ -393,11 +393,46 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-extract.download_from_data_amsterdam_catalog">
-<span id="extract-download-from-data-amsterdam-catalog-module"></span><h2>extract.download_from_data_amsterdam_catalog module<a class="headerlink" href="#module-extract.download_from_data_amsterdam_catalog" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-extract.download_from_api_with_authentication">
+<span id="extract-download-from-api-with-authentication-module"></span><h2>extract.download_from_api_with_authentication module<a class="headerlink" href="#module-extract.download_from_api_with_authentication" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.download_all_files">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_api_with_authentication.getJsonData">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url with accesstoken.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.main">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.parser">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.retrywithtrailingslash">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">retrywithtrailingslash</code><span class="sig-paren">(</span><em>url</em>, <em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.retrywithtrailingslash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-extract.download_from_catalog">
+<span id="extract-download-from-catalog-module"></span><h2>extract.download_from_catalog module<a class="headerlink" href="#module-extract.download_from_catalog" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_catalog.download_all_files">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download all files from metadata resources list.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -412,13 +447,13 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.download_file">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_file</code><span class="sig-paren">(</span><em>file_location</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_file" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_catalog.download_file">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">download_file</code><span class="sig-paren">(</span><em>file_location</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.download_file" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.download_metadata">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_catalog.download_metadata">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download files from data catalog response id.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -429,8 +464,8 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.get_catalog_package_id">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_catalog.get_catalog_package_id">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -441,13 +476,13 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.main">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.main" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_catalog.main">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.parser">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_catalog.parser">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx.</p>
 </dd></dl>
 
