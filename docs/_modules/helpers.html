@@ -97,18 +97,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../modules.html#helpers">Helpers</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">helpers package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.connections">helpers.connections module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers.files">helpers.files module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-helpers.normalize">helpers.normalize module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.json_dict_handlers">helpers.json_dict_handlers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-helpers.logging">helpers.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#helpers-xml-handlers-module">helpers.xml_handlers module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-helpers">Module contents</a></li>
 </ul>
 </li>
@@ -192,10 +194,85 @@
 <div class="section" id="module-helpers.connections">
 <span id="helpers-connections-module"></span><h2>helpers.connections module<a class="headerlink" href="#module-helpers.connections" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="helpers.connections.execute_sql">
+<code class="descclassname">helpers.connections.</code><code class="descname">execute_sql</code><span class="sig-paren">(</span><em>pg_str</em>, <em>sql</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.execute_sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a sql query with psycopg2.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">pg_str: connection string using helper function psycopg_connection_string, returning:<code class="docutils literal notranslate"><span class="pre">host=</span> <span class="pre">port=</span> <span class="pre">user=</span> <span class="pre">dbname=</span> <span class="pre">password=</span></code></p>
+</li>
+<li><p class="first">sql: SQL string in triple quotes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```CREATE TABLE foo (bar text)```
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Executed sql with conn.cursor().execute(sql)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.connections.get_config">
+<code class="descclassname">helpers.connections.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get config file with all login credentials, port numbers, etc.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>full_path: provide the full path to the config.ini file, for example authentication/config.ini</dd>
+<dt>Returns:</dt>
+<dd>The entire configuration file to use them with <code class="docutils literal notranslate"><span class="pre">config.get(config_name,</span> <span class="pre">'AUTHURL')</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.connections.objectstore_connection">
+<code class="descclassname">helpers.connections.</code><code class="descname">objectstore_connection</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>config_name</em>, <em>print_config_vars=None</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.objectstore_connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an objectsctore connection.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: /path_to_config/config.ini or config.ini if in root.</li>
+<li>config_name: objectstore</li>
+<li>print_config_vars: if set to True: print all variables from the config file</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>An objectstore connection session.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="helpers.connections.postgres_engine_pandas">
 <code class="descclassname">helpers.connections.</code><code class="descname">postgres_engine_pandas</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.postgres_engine_pandas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.
-db_config_name = dev or docker to get the ip user/password and port values.</p>
+<dd><p>Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini</li>
+<li>db_config_name: dev or docker to get the ip user/password and port values.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>The postgres pandas engine to do sql queries with.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.connections.psycopg_connection_string">
+<code class="descclassname">helpers.connections.</code><code class="descname">psycopg_connection_string</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.connections.psycopg_connection_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Postgres connection string for psycopg2.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini</li>
+<li>db_config_name: dev or docker to get the ip user/password and port values.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Returns the psycopg required connection string: ‘PG:host= port= user= dbname= password=’</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -204,41 +281,122 @@ db_config_name = dev or docker to get the ip user/password and port values.</p>
 <dl class="function">
 <dt id="helpers.files.create_dir_if_not_exists">
 <code class="descclassname">helpers.files.</code><code class="descname">create_dir_if_not_exists</code><span class="sig-paren">(</span><em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.create_dir_if_not_exists" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create directory if it does not yet exists. directory can be set as: <cite>dir/anotherdir</cite></p>
+<dd><p>Create directory if it does not yet exists.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>Specify the name of directory, for example: <cite>dir/anotherdir</cite></dd>
+<dt>Returns:</dt>
+<dd>Creates the directory if it does not exists, of return the error message.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="helpers.files.save_file">
 <code class="descclassname">helpers.files.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>data</em>, <em>output_folder</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.save_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save data to different file types, using folder, filename and suffix.
-It reads the filename suffix and saves the file as the appropriate type.
-save_file currently works with: csv, txt, geojson and json as suffixes.
-for example filename = data_output.csv or data_output.json</p>
+<dd><p>save_file currently works with: csv, txt, geojson and json as suffixes.
+It reads the filename suffix and saves the file as the appropriate type.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>data: list of flattened dictionary objects for example: [{id:1, attr:value, attr2:value}, {id:2, attr:value, attr2:value}]</li>
+<li>filename: data_output.csv or data_output.json</li>
+<li>output_folder: dir/anotherdir</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Saved the list of objects to the given geojson or csv type.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="helpers.files.unzip">
 <code class="descclassname">helpers.files.</code><code class="descname">unzip</code><span class="sig-paren">(</span><em>path</em>, <em>filename_as_folder=False</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.files.unzip" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find all .zip files and unzip in root.
-Use filename_as_folder=True to unzip to subfolders with name of zipfile.</p>
+<dd><p>Find all zip files and unzip in root.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>path: set the folder to check for zip files.</li>
+<li>filename_as_folder:Set it to True to unzip to subfolders with name of zipfile instead of in the root folder.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Unzipped files in the path directory or in the path/name of the zip file.</dd>
+</dl>
 </dd></dl>
 
 </div>
-<div class="section" id="module-helpers.normalize">
-<span id="helpers-normalize-module"></span><h2>helpers.normalize module<a class="headerlink" href="#module-helpers.normalize" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-helpers.json_dict_handlers">
+<span id="helpers-json-dict-handlers-module"></span><h2>helpers.json_dict_handlers module<a class="headerlink" href="#module-helpers.json_dict_handlers" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="helpers.normalize.clean_dict">
-<code class="descclassname">helpers.normalize.</code><code class="descname">clean_dict</code><span class="sig-paren">(</span><em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.clean_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove a field from a dict based on key name.</p>
+<dt id="helpers.json_dict_handlers.clean_dict">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">clean_dict</code><span class="sig-paren">(</span><em>dictionary</em>, <em>key_name</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.clean_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a field from a dict based on key name.
+Args:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>dictionary: {id:1, dates:2018-12-02}</li>
+<li>key_name: ‘dates’</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>{id:1}</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
-<dt id="helpers.normalize.flatten_json">
-<code class="descclassname">helpers.normalize.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>jsonObject</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.normalize.flatten_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flatten nested json Object {“key”: “subkey”: { “subsubkey”:”value” }} to [‘key.subkey.subsubkey’] values
-<a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></p>
+<dt id="helpers.json_dict_handlers.flatten_json">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>json_object</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.flatten_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatten nested json Object.
+Args:</p>
+<blockquote>
+<div>1 json_object, for example: {“key”: “subkey”: { “subsubkey”:”value” }}</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>{“key.subkey.subsubkey”:”value”}</dd>
+<dt>Source:</dt>
+<dd><a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></dd>
+</dl>
 </dd></dl>
 
+<dl class="function">
+<dt id="helpers.json_dict_handlers.joinByKeyNames">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">joinByKeyNames</code><span class="sig-paren">(</span><em>geojson</em>, <em>dataset</em>, <em>key1</em>, <em>key2</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.joinByKeyNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert data from dataset to geojson where key1 from dataset matches key2 from geojson</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.json_dict_handlers.jsonPoints2geojson">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">jsonPoints2geojson</code><span class="sig-paren">(</span><em>df</em>, <em>latColumn</em>, <em>lonColumn</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.jsonPoints2geojson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert JSON with lat/lon columns to geojson.
+<a class="reference external" href="https://gis.stackexchange.com/questions/220997/pandas-to-geojson-multiples-points-features-with-python">https://gis.stackexchange.com/questions/220997/pandas-to-geojson-multiples-points-features-with-python</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="helpers.json_dict_handlers.openJsonArrayKeyDict2FlattenedJson">
+<code class="descclassname">helpers.json_dict_handlers.</code><code class="descname">openJsonArrayKeyDict2FlattenedJson</code><span class="sig-paren">(</span><em>fileName</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.json_dict_handlers.openJsonArrayKeyDict2FlattenedJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open json and return array of objects without object value name.
+For example: [{‘container’:{…}}, {‘container’:{…}}] returns now as [{…},{…}])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-helpers.logging">
+<span id="helpers-logging-module"></span><h2>helpers.logging module<a class="headerlink" href="#module-helpers.logging" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="helpers.logging.logger">
+<code class="descclassname">helpers.logging.</code><code class="descname">logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#helpers.logging.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup basic logging for console.</p>
+<dl class="docutils">
+<dt>Usage:</dt>
+<dd>Initialize the logger by adding the code at the top of your script:
+<code class="docutils literal notranslate"><span class="pre">logger</span> <span class="pre">=</span> <span class="pre">logger()</span></code></dd>
+</dl>
+<p>TODO: add log file export</p>
+</dd></dl>
+
+</div>
+<div class="section" id="helpers-xml-handlers-module">
+<h2>helpers.xml_handlers module<a class="headerlink" href="#helpers-xml-handlers-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-helpers">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-helpers" title="Permalink to this headline">¶</a></h2>

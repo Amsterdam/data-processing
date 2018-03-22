@@ -1,8 +1,34 @@
 #!/usr/bin/env python
-"""See <https://setuptools.readthedocs.io/en/latest/>.
+"""
+See <https://setuptools.readthedocs.io/en/latest/>.
+best practices: https://docs.pytest.org/en/latest/goodpractices.html
+For Pypi deployment steps: https://packaging.python.org/tutorials/distributing-packages/
 """
 import os
+import sys
 from setuptools import setup, find_packages
+from setuptools.command.test import test as TestCommand
+
+
+class PyTest(TestCommand):
+    """ Custom class to avoid depending on pytest-runner.
+    """
+    user_options = [('pytest-args=', 'a', "Arguments to pass into py.test")]
+
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        self.pytest_args = ['--cov', find_packages('src')]
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        import pytest
+
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
 
 
 def read(fname):
@@ -11,9 +37,9 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.2',
-    name='datapunt_processing',
-    description="Data processing Functions",
+    version='0.0.1a3',
+    name='datapunt-processing',
+    description="Datapunt generic ETL command line scripts and functions for shell scripting in Docker.",
     long_description=read('README.rst'),
     url='https://github.com/Amsterdam/data-processing',
     author='Amsterdam Datapunt',
@@ -31,20 +57,32 @@ setup(
     ],
 
 
-    # Entry points - pls try to keep some order when adding functions, placing it load/transform etc..
+    # Entry points - pls try to keep some order when adding functions, placing it in adequate section: load/transform etc..
     entry_points={
         'console_scripts': [
-            'download_from_data_amsterdam_catalog = extract.download_from_data_amsterdam_catalog:main',
-            'download_from_data_amsterdam_api = extract.download_from_data_amsterdam_api:main',
+            # extract
+            'download_from_catalog = extract.download_from_catalog:main',
+            'download_from_api_with_authentication = extract.download_from_api_with_authentication:main',
+            'download_from_api_brk = extract.download_from_api_brk:main',
+            'download_from_api_tellus = extract.download_from_api_tellus:main',
+            'download_from_api_kvk = extract.download_from_api_kvk:main',
+            'download_from_wfs = extract.download_from_wfs:main',
+            'download_from_objectstore = extract.download_from_objectstore:main',
             'csv_dataframe = extract.csv_dataframe:main',
+            # load
             'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
             'load_xls_to_postgres = load.load_xls_to_postgres:main',
+            'load_file_to_ckan = load.load_file_to_ckan:main',
+            'load_file_to_objectstore = load.load_file_to_objectstore:main',
+            #transform
             'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
+            'postgres_add_areas_from_coordinates = transform.geospatial.postgres_add_areas_from_coordinates:main',
             'add_public_events = transform.enrichment.add_public_events:main',
             'add_knmi_data = transform.enrichment.add_knmi_data:main'
         ],
     },
-
+    # Add custom pytester class
+    cmdclass={'test': PyTest},
     # Packages and Package Data:
     package_dir={'': 'src'},
     packages=find_packages('src'),
@@ -57,7 +95,7 @@ setup(
         # Getters
         'requests==2.18.4',
         'xlrd==1.1.0',
-        'python-swiftclient',
+        'python-swiftclient==3.4.0',
         'python-keystoneclient',
 
         # Config providers
@@ -67,15 +105,18 @@ setup(
         # db connectors
         'sqlalchemy==1.2.2',
         'psycopg2==2.7.3.2',
+        #'pygdal>=1.8.1.0',
 
         # Transformers
         'pandas==0.22.0',
-
+        'scikit-learn==0.19.1',
         # Utilities
         'docutils',
         'pprint>=0.1',
         'pyproj==1.9.5.1',
         'requests_cache==0.4.13',
+        'logger==1.4',
+        'ipython==5.5.0'
 
     ],
     extras_require={
@@ -91,12 +132,10 @@ setup(
             'pytest',
             'pytest-runner',
             'pytest-cov',
+            'flake8'
         ],
         'dev': [
             'jupyter',
         ]
-    },
-    tests_require=[
-            'pytest',
-        ]
+    }
 )

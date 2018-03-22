@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="../modules.html"/>
+        <link rel="next" title="download_from_catalog" href="../extract/download_from_catalog.html"/>
+        <link rel="prev" title="Modules" href="../modules.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,13 +91,30 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#authentication">Authentication</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">authentication package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-authentication.config">authentication.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-authentication.getaccesstoken">authentication.getaccesstoken module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-authentication">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -142,6 +162,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../modules.html">Modules</a> &raquo;</li>
+        
       <li>authentication package</li>
     
     
@@ -181,20 +203,39 @@
 <em class="property">class </em><code class="descclassname">authentication.getaccesstoken.</code><code class="descname">GetAccessToken</code><a class="headerlink" href="#authentication.getaccesstoken.GetAccessToken" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Get an header authentication item for access token
-for using the internal API’s
-by logging in as type = ‘employee’</p>
+for using the internal API’s by logging in as with email and password credentials and authenticated scopes or as type ‘employee’
+To see the available scopes and types, see this file:</p>
+<blockquote>
+<div><a class="reference external" href="https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py">https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py</a></div></blockquote>
 <dl class="docutils">
 <dt>Usage:</dt>
-<dd>from accesstoken import AccessToken
-getToken = AccessToken()
-accessToken = getToken.getAccessToken()
-requests.get(url, headers= accessToken)</dd>
+<dd><p class="first">from authentication.getaccesstoken import GetAccessToken</p>
+<p class="last">accessToken = GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=BRK/RS,BRK/RSN,BRK/RO)
+requests.get(url, headers=accessToken)</p>
+</dd>
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>scopes: Add scopes as a comma separated list.</li>
+<li>usertype: Add the usertype</li>
+<li>email: Set and get environment variable: export DATAPUNT_EMAIL=*****</li>
+<li>password: Set and get environment variable: export DATAPUNT_PASSWORD=*****</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd>accesstoken</dd>
 </dl>
 <dl class="method">
 <dt id="authentication.getaccesstoken.GetAccessToken.getAccessToken">
-<code class="descname">getAccessToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#authentication.getaccesstoken.GetAccessToken.getAccessToken" title="Permalink to this definition">¶</a></dt>
+<code class="descname">getAccessToken</code><span class="sig-paren">(</span><em>usertype='employee'</em>, <em>scopes='TLLS/R'</em>, <em>acc=False</em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.getaccesstoken.GetAccessToken.getAccessToken" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="authentication.getaccesstoken.parser">
+<code class="descclassname">authentication.getaccesstoken.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#authentication.getaccesstoken.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
 </dd></dl>
 
 </div>
@@ -210,6 +251,15 @@ requests.get(url, headers= accessToken)</dd>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../extract/download_from_catalog.html" class="btn btn-neutral float-right" title="download_from_catalog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

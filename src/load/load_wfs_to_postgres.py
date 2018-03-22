@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
-import os
-import subprocess
-import logging
-import argparse
-import configparser
 
-from sqlalchemy import create_engine
-from sqlalchemy.engine.url import URL
+import subprocess
+import argparse
+
+from helpers.logging import logger
+from helpers.connections import psycopg_connection_string
+
+# Setup basic logging
+logger = logger()
 
 
 class NonZeroReturnCode(Exception):
+    """Used for subprocess error messages."""
     pass
 
 
-def scrub(l):
+def scrub(line):
     """Hide the login credentials of Postgres in the console."""
     out = []
-    for x in l:
+    for x in line:
         if x.strip().startswith('PG:'):
             out.append('PG: <CONNECTION STRING REDACTED>')
         else:
@@ -25,8 +27,20 @@ def scrub(l):
 
 
 def run_command_sync(cmd, allow_fail=False):
-    """Run a string in the command line."""
-    logging.debug('Running %s', scrub(cmd))
+    """
+    Run a string in the command line.
+
+    Args:
+        1. cmd: command line code formatted as a list::
+
+            ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name,'-F' ,'PostgreSQL' ,pg_str ,url]
+
+        2. Optional: allow_fail: True or false to return error code
+
+    Returns:
+        Excuted program or error message.
+    """
+    # logger.info('Running %s', scrub(cmd))
     p = subprocess.Popen(cmd)
     p.wait()
 
@@ -38,60 +52,59 @@ def run_command_sync(cmd, allow_fail=False):
 
 def wfs2psql(url, pg_str, layer_name, **kwargs):
     """Command line ogr2ogr string to load a WFS into PostGres."""
-    cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name ,'-F' ,'PostgreSQL' ,pg_str ,url]
+    cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name,'-F' ,'PostgreSQL' ,'PG:'+pg_str ,url]
     run_command_sync(cmd)
 
 
-def get_pg_str(host, port, user, dbname, password):
-    """"Create Postgres connection+login string."""
-    return 'PG:host={} port={} user={} dbname={} password={}'.format(
-        host, port, user, dbname, password
-    )
-
-
 def load_layers(pg_str):
-    """Load layers into Postgres using a list of titles of each layer within the WFS service."""
-    layerNames = ['stadsdeel', 'buurt', 'buurtcombinatie', 'gebiedsgerichtwerken']
+    """
+    Load layers into Postgres using a list of titles of each layer within the WFS service.
+
+    Args:
+        pg_str: psycopg2 connection string::
+
+        'PG:host= port= user= dbname= password='
+
+    Returns:
+        Loaded layers into postgres using ogr2ogr.
+
+    """
+    layerNames = ['stadsdeel',
+                  'buurt',
+                  'buurtcombinatie',
+                  'gebiedsgerichtwerken']
 
     srsName = 'EPSG:28992'
 
-    for areaName in areaNames:
-        WFS="https://map.data.amsterdam.nl/maps/gebieden?REQUEST=GetFeature&SERVICE=wfs&Version=2.0.0&SRSNAME=" + srsName + "&typename=" + areaName
-        wfs2psql(WFS, pg_str , areaName)
-        print(areaName + ' loaded into PG.')
+    for areaName in layerNames:
+        WFS = "https://map.data.amsterdam.nl/maps/gebieden?REQUEST=GetFeature&SERVICE=wfs&Version=2.0.0&SRSNAME=" + srsName + "&typename=" + areaName
+        wfs2psql(WFS, pg_str, areaName)
+        logger.info(areaName + ' loaded into PG.')
 
 
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx."""
     desc = """
-Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
-Example to run in development: load_wfs_to_postgres config.ini dev
+    Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
+
+    Add ogr2ogr path ENV if running locally in a virtual environment:
+        ``export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH``
+
+    Example command line:
+        ``load_wfs_to_postgres config.ini dev``
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument(
         'config_path', type=str, help="Type the relative path + name of the config file, for example: auth/config.ini")
     parser.add_argument(
-        'db_config', type=str, help="Type 'dev' or 'docker' to setup the proper port and ip settings", nargs=1)
+        'db_config', type=str, help="Type 'dev' or 'docker' to load the proper port and ip settings in the config file")
     return parser
 
 
-def get_config(full_path):
-    """Get config file with login credentials and port numbers."""
-    config = configparser.RawConfigParser()
-    config.read(full_path)
-    print("Found these configs:")
-    for config_name in config.sections():
-        print('-', config_name)
-    return config
-
-
 def main():
-    FORMAT = '%(asctime)-15s %(message)s'
-    logging.basicConfig(format=FORMAT, level=logging.DEBUG)
     args = parser().parse_args()
-    config = get_config(args.config_path)
     db_config = args.db_config[0]
-    pg_str = get_pg_str(config.get(db_config,'host'),config.get(db_config,'port'),config.get(db_config,'dbname'), config.get(db_config,'user'), config.get(db_config,'password'))
+    pg_str = psycopg_connection_string(args.config_path, args.db_config)
     load_layers(pg_str)
 
 

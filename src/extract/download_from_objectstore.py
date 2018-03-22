@@ -1,164 +1,131 @@
-###############################################################################
-# functions to dowload data from the Cloud VPS Objectstore
-###############################################################################
-
+#!/usr/bin/env python
 import os
-import sys
-sys.path.insert(0, '../transform/helper_functions/')
-import errno
 import argparse
-import datetime
-import configparser
-from swiftclient.client import Connection
-from dateutil import parser as dateparser
-from helper_functions import create_dir_if_not_exists
-
 import logging
+from helpers.connections import objectstore_connection
+from helpers.files import create_dir_if_not_exists
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)-8s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S')
-logger = logging.getLogger('objectstore')
+logger = logging.getLogger(__name__)
 
 
-def get_config(full_path):
+def get_full_container_list(connection, container, **kwargs):
     """
-    Get config file with login credentials, port numbers...
+    Get all files stored in container (incl. sub-containers)
+
     Args:
-        full_path - provide path tot he config file/ auth.conf etc.
+        1. connection: connection session using the objectstore_connection function from the helpers.connections
+        2. container: "name of the root container/folder in objectstore"
+
+    Returns:
+        Generator object with all containers.
     """
-    config = configparser.RawConfigParser()
-    config.read(full_path)
-    logger.info('Found these configs.. {}'.format(config.sections()))
-        
-    return config
-
-
-def get_connection(full_path, config_name, print_config_vars = None):
-    """
-    get an objectsctore connection
-    args:
-        full_path:   path to the config.ini file where the config variables are stored
-        config_name: the different configs as stated in the config file. Pick 'objectstore'
-        print_config_vars: if set to True: print all variables from the config file
-    returns
-        swiftclient connection
-    """
-    config = get_config(full_path)
-
-    OBJECTSTORE = dict(
-        VERSION = config.get(config_name, 'VERSION'),
-        AUTHURL = config.get(config_name, 'AUTHURL'),
-        TENANT_NAME = config.get(config_name, 'TENANT_NAME'),
-        TENANT_ID = config.get(config_name, 'TENANT_ID'),
-        USER = config.get(config_name, 'USER'),
-        #PASSWORD = os.environ['OBJECTSTORE_PASSWORD'],
-        PASSWORD = config.get(config_name, 'PASSWORD'),
-        REGION_NAME = config.get(config_name, 'REGION_NAME')
-)
-    logger.info('Connecting to config..: {}'.format(config_name))
-    
-    if print_config_vars:
-        logger.info('config variables.. :{}'.format(OBJECTSTORE))
-        
-    connection = Connection(OBJECTSTORE)
-    logger.info('Established successfull connection.. {}'.format(OBJECTSTORE['AUTHURL']))
-    
-    return connection
-
-
-def get_object(connection, object_meta_data: dict, dirname: str):
-    """
-    extract file from objectstore
-    Args:
-        connection = swiftclient connection to Objectstore
-        object_meta_data = dictionary of files with metadata on OS
-        dirname = '/../ '
-    returns:
-    """
-    return connection.get_object(dirname, object_meta_data['name'])[1]
-
-
-
-
-def get_full_container_list(conn, container, **kwargs) -> list:
-    """
-    get all files stored in container (incl. sub-containers)
-    
-    Args
-        conn = connection with the Objectstore (using swiftclient Connection API)
-        container == "path/in/Objectstore"
-    returns    
-        generator object
-    """
+    # Note: taken from the bag_services project
     limit = 10000
     kwargs['limit'] = limit
     page = []
 
-    _, page = conn.get_container(container, **kwargs)
-    lastpage = page
+    seed = []
 
-    for object_info in lastpage:
-        yield object_info
+    _, page = connection.get_container(container, **kwargs)
+    seed.extend(page)
 
-    while len(lastpage) == limit:
+    while len(page) == limit:
         # keep getting pages..
-        kwargs['marker'] = lastpage['name']
-        _, lastpage = conn.get_container(container, **kwargs)
-        for object_info in lastpage:
-            yield object_info
+        kwargs['marker'] = seed[-1]['name']
+        _, page = connection.get_container(container, **kwargs)
+        seed.extend(page)
 
-    raise StopIteration
+    return seed
 
-    
-def get_expected_files(EXPECTED_FILES:list):
+
+def download_container(connection, container, prefix, output_folder):
     """
-    Download the expected files provided by EXPECTED_FILES list
-    for instance: get_expected_files(EXPECTED_FILES=['aanvalsplan_schoon/mora/MORA_data_2014_2017_sel.csv']) 
+    Download file from objectstore.
+
+    Args:
+        1. connection: connection session using the objectstore_connection function from the helpers.connections
+        2. prefix: tag or folder name of file, for example subfolder/subsubfolder
+        3. output_folder = '/{folder}/ '
+
+    Returns:
+        Written file /{folder}/{prefix}/{file}
     """
-    file_list = []
+    target_dir = os.path.join(output_folder, prefix)
+    create_dir_if_not_exists(target_dir)
+    content = get_full_container_list(connection, container['name'], prefix=prefix)
+    # print(content)
+    for obj in content:
+        if obj['content_type'] != 'application/directory':
+            target_filename = os.path.join(output_folder, obj['name'])
+            with open(target_filename, 'wb') as new_file:
+                _, obj_content = connection.get_object(container['name'], obj['name'])
+                new_file.write(obj_content)
+            logger.info('Written file {}'.format(target_filename))
 
-    for obj in meta_data:
-        for expected_file in EXPECTED_FILES:
-            if not obj['name'].endswith(expected_file):
-                continue
 
-            dt = dateparser.parse(obj['last_modified'])
-            now = datetime.datetime.now()
+def download_containers(connection, prefixes, output_folder):
+    """
+    Download multiple files from the objectstore.
 
-            delta = now - dt
+    Args:
+        1. connection: connection session using the objectstore_connection function from the helpers.connections
+        2. prefixes: multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora
+        3. output_folder: local folder to write files into, for example app/data for a docker setup
 
-            log.debug('AGE: %d %s', delta.days, expected_file)
+    Result:
+        Loops through download_container function for each prefix (=folder)
+    """
+    logger.debug('Checking local data directory exists and is empty')
+    if not os.path.exists(output_folder):
+        raise Exception('Local data directory does not exist.')
 
-            log.debug('%s %s', EXPECTED_FILES, dt)
-            file_list.append((obj))
-            print (dt, file_list)
-            
-    download_files(file_list, 'app/data/')
+    # logger.debug('Establishing object store connection.')
+    resp_headers, containers = connection.get_account()
+
+    logger.info('Downloading containers ...')
+    prefixes = prefixes.split(',')
+    print(containers)
+    print(prefixes)
+    for container in containers:
+        for prefix in prefixes:
+            download_container(connection, container, prefix, output_folder)
 
 
 def parser():
-    """Parser function to run arguments from commandline and to add description to sphinx."""
-    parser = argparse.ArgumentParser(description="""
-Download data from the Objectstore, and write to local directory
-To test run this command line: 
-""")
-    parser.add_argument('config_file',
-                        help='weukfwkefy')
-    parser.add_argument('connection', 
-                        help="""a connection to the Objectstore""")
-    parser.add_argument('meta_data', 
-                        help='the meatadate of the files in the specified containers')
-    
+    """Parser function to run arguments from commandline and to add description to sphinx docs."""
+    description = """
+    Download files from the objectstore:
+    ``download_from_objectstore config.ini objectstore aanvalsplan_schoon/crow,aanvalsplan_schoon/mora data``
+
+    Use ``export OBJECTSTORE_PASSWORD=**********`` to add the password to your environment before running this command script.
+    """
+
+    parser = argparse.ArgumentParser(
+                        description=description)
+    parser.add_argument('config_path',
+                        type=str,
+                        help='Define the full path of the config file, for example /path_to_config/config.ini or config.ini')
+    parser.add_argument('config_name',
+                        type=str,
+                        help='Specify the name in the config.ini file, for example objectstore')
+    parser.add_argument('prefixes',
+                        type=str,
+                        help='Specify the names of the folders to download, separated by a comma, for example aanvalsplan_schoon/crow, aanvalsplan_schoon/mora')
+    parser.add_argument('output_folder',
+                        type=str,
+                        help='Specify the output_folder location, for example data')
     return parser
 
 
 def main():
+    # Return all arguments in a list
     args = parser().parse_args()
-    config = get_config(arg.config_file)
-    connection = get_connection(args.full_path, args.config)
-    #get_expected_files(....TO DO)
-    
+    connection = objectstore_connection(args.config_path, args.config_name)
+    download_containers(connection, args.prefixes, args.output_folder)
+
 
 if __name__ == "__main__":
     main()

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Download from objectstore &mdash; Datapunt processing 0.0.1 documentation</title>
+  <title>download_from_objectstore &mdash; Datapunt processing 0.0.1 documentation</title>
   
 
   
@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="../modules.html"/>
+        <link rel="next" title="download_from_wfs" href="download_from_wfs.html"/>
+        <link rel="prev" title="download_from_catalog" href="download_from_catalog.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,14 +91,34 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_from_catalog.html">download_from_catalog</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_objectstore</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-extract.download_from_objectstore">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_wfs.html">download_from_wfs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_with_authentication.html">download_from_api_with_authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_brk.html">download_from_api_brk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -143,7 +166,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Download from objectstore</li>
+          <li><a href="../modules.html">Modules</a> &raquo;</li>
+        
+      <li>download_from_objectstore</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,9 +188,97 @@
            <div itemprop="articleBody">
             
   <div class="section" id="download-from-objectstore">
-<span id="id1"></span><h1>Download from objectstore<a class="headerlink" href="#download-from-objectstore" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="main">
-<h2>main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h1>download_from_objectstore<a class="headerlink" href="#download-from-objectstore" title="Permalink to this headline">¶</a></h1>
+<p><blockquote>
+<div><p>Download files from the objectstore:
+<code class="docutils literal notranslate"><span class="pre">download_from_objectstore</span> <span class="pre">config.ini</span> <span class="pre">objectstore</span> <span class="pre">aanvalsplan_schoon/crow,aanvalsplan_schoon/mora</span> <span class="pre">data</span></code></p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">OBJECTSTORE_PASSWORD=**********</span></code> to add the password to your environment before running this command script.</p>
+</div></blockquote>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_objectstore</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                                 <span class="n">config_path</span> <span class="n">config_name</span> <span class="n">prefixes</span>
+                                 <span class="n">output_folder</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h2>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd>config_path</kbd></td>
+<td>Define the full path of the config file, for example /path_to_config/config.ini or config.ini</td></tr>
+<tr><td class="option-group">
+<kbd>config_name</kbd></td>
+<td>Specify the name in the config.ini file, for example objectstore</td></tr>
+<tr><td class="option-group">
+<kbd>prefixes</kbd></td>
+<td>Specify the names of the folders to download, separated by a comma, for example aanvalsplan_schoon/crow, aanvalsplan_schoon/mora</td></tr>
+<tr><td class="option-group">
+<kbd>output_folder</kbd></td>
+<td>Specify the output_folder location, for example data</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-extract.download_from_objectstore">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_objectstore" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_objectstore.download_container">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_container</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>prefix</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>prefix: tag or folder name of file, for example subfolder/subsubfolder</li>
+<li>output_folder = ‘/{folder}/ ‘</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Written file /{folder}/{prefix}/{file}</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.download_containers">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>connection</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download multiple files from the objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>prefixes: multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora</li>
+<li>output_folder: local folder to write files into, for example app/data for a docker setup</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Loops through download_container function for each prefix (=folder)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.get_full_container_list">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all files stored in container (incl. sub-containers)</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>container: “name of the root container/folder in objectstore”</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Generator object with all containers.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.parser">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -176,6 +289,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download_from_wfs.html" class="btn btn-neutral float-right" title="download_from_wfs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="download_from_catalog.html" class="btn btn-neutral" title="download_from_catalog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

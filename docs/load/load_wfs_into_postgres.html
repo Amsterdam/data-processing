@@ -95,13 +95,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../modules.html#load">Load</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="load_file_to_objectstore.html">load_file_to_objectstore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load_file_to_ckan.html">load_file_to_ckan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="load_xls_into_postgres.html">load_xls_to_postgres</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">load_wfs_to_postgres</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
@@ -183,8 +186,16 @@
             
   <div class="section" id="load-wfs-to-postgres">
 <span id="id1"></span><h1>load_wfs_to_postgres<a class="headerlink" href="#load-wfs-to-postgres" title="Permalink to this headline">¶</a></h1>
-<p>Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
-Example to run in development: load_wfs_to_postgres config.ini dev</p>
+<p><blockquote>
+<div><p>Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.</p>
+<dl class="docutils">
+<dt>Add ogr2ogr path ENV if running locally in a virtual environment:</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH</span></code></dd>
+<dt>Example command line:</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">load_wfs_to_postgres</span> <span class="pre">config.ini</span> <span class="pre">dev</span></code></dd>
+</dl>
+</div></blockquote>
+</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">load_wfs_to_postgres</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="n">db_config</span>
 </pre></div>
 </div>
@@ -199,7 +210,7 @@ Example to run in development: load_wfs_to_postgres config.ini dev</p>
 <td>Type the relative path + name of the config file, for example: auth/config.ini</td></tr>
 <tr><td class="option-group">
 <kbd>db_config</kbd></td>
-<td>Type ‘dev’ or ‘docker’ to setup the proper port and ip settings</td></tr>
+<td>Type ‘dev’ or ‘docker’ to load the proper port and ip settings in the config file</td></tr>
 </tbody>
 </table>
 </div>
@@ -208,24 +219,23 @@ Example to run in development: load_wfs_to_postgres config.ini dev</p>
 <dl class="exception">
 <dt id="load.load_wfs_to_postgres.NonZeroReturnCode">
 <em class="property">exception </em><code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">NonZeroReturnCode</code><a class="headerlink" href="#load.load_wfs_to_postgres.NonZeroReturnCode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="load.load_wfs_to_postgres.get_config">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.get_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get config file with login credentials and port numbers.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="load.load_wfs_to_postgres.get_pg_str">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">get_pg_str</code><span class="sig-paren">(</span><em>host</em>, <em>port</em>, <em>user</em>, <em>dbname</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.get_pg_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>“Create Postgres connection+login string.</p>
+<dd><p>Used for subprocess error messages.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="load.load_wfs_to_postgres.load_layers">
 <code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">load_layers</code><span class="sig-paren">(</span><em>pg_str</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.load_layers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load layers into Postgres using a list of titles of each layer within the WFS service.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">pg_str: psycopg2 connection string:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;PG:host= port= user= dbname= password=&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt>Returns:</dt>
+<dd>Loaded layers into postgres using ogr2ogr.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -238,11 +248,26 @@ Example to run in development: load_wfs_to_postgres config.ini dev</p>
 <dt id="load.load_wfs_to_postgres.run_command_sync">
 <code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">run_command_sync</code><span class="sig-paren">(</span><em>cmd</em>, <em>allow_fail=False</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.run_command_sync" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a string in the command line.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">cmd: command line code formatted as a list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;ogr2ogr&#39;</span><span class="p">,</span> <span class="s1">&#39;-overwrite&#39;</span><span class="p">,</span> <span class="s1">&#39;-t_srs&#39;</span><span class="p">,</span> <span class="s1">&#39;EPSG:28992&#39;</span><span class="p">,</span><span class="s1">&#39;-nln&#39;</span><span class="p">,</span><span class="n">layer_name</span><span class="p">,</span><span class="s1">&#39;-F&#39;</span> <span class="p">,</span><span class="s1">&#39;PostgreSQL&#39;</span> <span class="p">,</span><span class="n">pg_str</span> <span class="p">,</span><span class="n">url</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Optional: allow_fail: True or false to return error code</p>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Excuted program or error message.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="load.load_wfs_to_postgres.scrub">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">scrub</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.scrub" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">scrub</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.scrub" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hide the login credentials of Postgres in the console.</p>
 </dd></dl>
 

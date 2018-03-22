@@ -4,29 +4,32 @@ import argparse
 import pandas as pd
 
 from helpers.connections import postgres_engine_pandas
+from helpers.logging import logger
 
+# Setup basic logging
+logger = logger()
 
 def load_xls(datadir, config_path, db_config_name):
     """Load xlsx into postgres for multiple files"""
     files = os.listdir(datadir)
     files_xls = [f for f in files if f.split('.')[-1] in ('xlsx', 'xls')]
-    print(files_xls)
+    logger.info(files_xls)
 
     for filename in files_xls:
         df = pd.read_excel(datadir + '/' + filename)
         if df.empty:
-            print('no data')
+            logger.info('No data')
             continue
 
-        print("added " + filename)
-        print(df.columns)
-    
+        logger.info("added " + filename)
+        logger.info(df.columns)
+
         # load the data into pg
         engine = postgres_engine_pandas(config_path, db_config_name)
         # TODO: link to to_sql function
         table_name = filename.split('.')[0]
         df.to_sql(table_name, engine, if_exists='replace', index=True, index_label='idx')  # ,dtype={geom: Geometry('POINT', srid='4326')})
-        print(filename + ' added as ' + table_name)
+        logger.info(filename + ' added as ' + table_name)
 
 
 def parser():
