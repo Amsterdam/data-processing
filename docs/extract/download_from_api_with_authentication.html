@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>download_from_api_with_authentication &mdash; Datapunt processing 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="../modules.html"/>
+        <link rel="next" title="download_from_api_brk" href="download_from_api_brk.html"/>
+        <link rel="prev" title="download_from_wfs" href="download_from_wfs.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Datapunt processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_from_catalog.html">download_from_catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_objectstore.html">download_from_objectstore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_wfs.html">download_from_wfs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_api_with_authentication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-extract.download_from_api_with_authentication">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_brk.html">download_from_api_brk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datapunt processing</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../modules.html">Modules</a> &raquo;</li>
+        
+      <li>download_from_api_with_authentication</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/extract/download_from_api_with_authentication.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="download-from-api-with-authentication">
+<span id="id1"></span><h1>download_from_api_with_authentication<a class="headerlink" href="#download-from-api-with-authentication" title="Permalink to this headline">¶</a></h1>
+<p><blockquote>
+<div><p>Generic download function to download data from authenticated endpoints on api.data.amsterdam.nl using the authentication/getaccesstoken.py script:</p>
+<p>You can login as 2 types of users:</p>
+<ul>
+<li><p class="first">employee:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">endpoints</span> <span class="n">which</span> <span class="n">are</span> <span class="n">only</span> <span class="n">viewable</span> <span class="n">when</span> <span class="n">on</span> <span class="n">the</span> <span class="n">internal</span> <span class="n">network</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>uses:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;employee&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">employee_plus credentials.</p>
+<p>For endpoints which require a user/password which can be given, by filling in this form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">intranet</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">kennis</span><span class="o">-</span><span class="n">beleid</span><span class="o">/</span><span class="n">dienstverlening</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">programma</span><span class="o">-</span><span class="n">datapunt</span><span class="o">/</span><span class="n">autorisatie</span><span class="o">-</span><span class="n">datapunt</span><span class="o">/</span> 
+</pre></div>
+</div>
+<p>and sending it to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datapunt</span><span class="nd">@amsterdam</span><span class="o">.</span><span class="n">nl</span>
+</pre></div>
+</div>
+<p>uses:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;employee&#39;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;&lt;registered email&gt;&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;&lt;recieved password&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>When using the employee_plus type add the following ENV variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DATAPUNT_EMAIL</span><span class="o">=***</span>
+<span class="n">export</span> <span class="n">DATAPUNT_PASSWORD</span><span class="o">=***</span>
+</pre></div>
+</div>
+<p>Command line example using employee for tellus api’s on acc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_api_brk</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">acc</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span><span class="o">/</span><span class="n">tellusdata</span> <span class="n">employee</span> <span class="n">TLLS</span><span class="o">/</span><span class="n">R</span> <span class="n">data</span> <span class="n">tellus</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Command line example using employee_plus for kadaster api’s on acc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_api_brk</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">acc</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">brk</span><span class="o">/</span><span class="nb">object</span><span class="o">/</span> <span class="n">employee_plus</span> <span class="n">BRK</span><span class="o">/</span><span class="n">RS</span><span class="p">,</span><span class="n">BRK</span><span class="o">/</span><span class="n">RSN</span><span class="p">,</span><span class="n">BRK</span><span class="o">/</span><span class="n">RO</span> <span class="n">data</span> <span class="nb">object</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</div></blockquote>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_api_with_authentication</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                                             <span class="n">url</span> <span class="p">{</span><span class="n">employee</span><span class="p">,</span><span class="n">employee_plus</span><span class="p">}</span>
+                                             <span class="n">scopes</span> <span class="n">output_folder</span> <span class="n">filename</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h2>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd>url</kbd></td>
+<td>add full endpoint, for example <a class="reference external" href="https://api.data.amsterdam.nl/brk/object/">https://api.data.amsterdam.nl/brk/object/</a></td></tr>
+<tr><td class="option-group">
+<kbd>usertype</kbd></td>
+<td><p class="first">Possible choices: employee, employee_plus</p>
+<p>Choose user type employee or employee_plus</p>
+<p class="last">Default: “employee”</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd>scopes</kbd></td>
+<td>Define scopes of the endpoints, the names can be found here: <a class="reference external" href="https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py">https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py</a>. For example: TLLS/R or multiple: BRK/RS,BRK/RSN,BRK/RO</td></tr>
+<tr><td class="option-group">
+<kbd>output_folder</kbd></td>
+<td>Add outputfolder location, for example: my_project_folder/data or . if you want to save in the current dir</td></tr>
+<tr><td class="option-group">
+<kbd>filename</kbd></td>
+<td>Add filename: for example brk.json</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-extract.download_from_api_with_authentication">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_api_with_authentication" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.getJsonData">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url with accesstoken.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.parser">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download_from_api_brk.html" class="btn btn-neutral float-right" title="download_from_api_brk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="download_from_wfs.html" class="btn btn-neutral" title="download_from_wfs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gemeente Amsterdam.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

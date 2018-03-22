@@ -1,9 +1,8 @@
 .. _index:
 
-.. include:: ../../README.rst
 
-Modules
-=======
+Datapunt Processing
+===================
 
 .. toctree::
     :maxdepth: 3

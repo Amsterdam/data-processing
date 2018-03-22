@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>download_from_tellus_api &mdash; Datapunt processing 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Datapunt processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datapunt processing</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>download_from_tellus_api</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/extract/download_from_tellus_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="download-from-tellus-api">
+<span id="id1"></span><h1>download_from_tellus_api<a class="headerlink" href="#download-from-tellus-api" title="Permalink to this headline">¶</a></h1>
+<p><blockquote>
+<div><p>Download from the Tellus API from data.amsterdam.nl using the OAuth2 datapunt Authorization service.
+Command line example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_tellus_api</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span> <span class="n">data</span> <span class="n">tellusdata</span><span class="o">.</span><span class="n">csv</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div></blockquote>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_tellus_api</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">output_folder</span> <span class="n">filename</span> <span class="n">limit</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h2>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd>url</kbd></td>
+<td>add full endpoint, for example <a class="reference external" href="https://api.data.amsterdam.nl/tellus/">https://api.data.amsterdam.nl/tellus/</a></td></tr>
+<tr><td class="option-group">
+<kbd>output_folder</kbd></td>
+<td>add outputfolder location, for example my_project_folder/data or . if you want to save in the current dir</td></tr>
+<tr><td class="option-group">
+<kbd>filename</kbd></td>
+<td>add filename for example tellusdata.csv</td></tr>
+<tr><td class="option-group">
+<kbd>limit</kbd></td>
+<td>add limited number of pages to test outputfile</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-extract.download_from_tellus_api">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_tellus_api" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_tellus_api.conversionListCvalues">
+<code class="descclassname">extract.download_from_tellus_api.</code><code class="descname">conversionListCvalues</code><span class="sig-paren">(</span><em>metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_tellus_api.conversionListCvalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a conversion dictionairy for values in tellus api which consists of 60 speed +length values named: c1 to c60</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_tellus_api.getJsonData">
+<code class="descclassname">extract.download_from_tellus_api.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_tellus_api.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url with accesstoken.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_tellus_api.get_data">
+<code class="descclassname">extract.download_from_tellus_api.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url_api</em>, <em>endpoint</em>, <em>metadata</em>, <em>accessToken</em>, <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_tellus_api.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get and flatten all the data from the api.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url_api: get the main api url:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get one endpoint:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.</p>
+</li>
+<li><p class="first">accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</p>
+</li>
+<li><p class="first">limit: set the number of pages you want to retrieve, ideal for testing first:</p>
+<p>10</p>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>A list containing multiple items which are all reformatted to a flattened json with added metadata.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_tellus_api.parser">
+<code class="descclassname">extract.download_from_tellus_api.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_tellus_api.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_tellus_api.reformatData">
+<code class="descclassname">extract.download_from_tellus_api.</code><code class="descname">reformatData</code><span class="sig-paren">(</span><em>item</em>, <em>tellus_metadata</em>, <em>cvalues</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_tellus_api.reformatData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reformat the data from a matrix to a flattend dict with label and tellus names.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>item: one recorded hour which contains 60 types of registrations c1-c60.</li>
+<li>tellus_metadata: list of description values for each tellus.</li>
+<li>cvalues: converted 60 values to add the proper labels to c1 to c6 counted record.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>60 rows by c-value with metadata an label descriptions</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gemeente Amsterdam.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

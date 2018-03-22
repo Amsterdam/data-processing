@@ -92,8 +92,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
 </ul>
 <ul>
@@ -166,30 +166,170 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-load.load_file_to_ckan">
+<span id="load-load-file-to-ckan-module"></span><h2>load.load_file_to_ckan module<a class="headerlink" href="#module-load.load_file_to_ckan" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="load.load_file_to_ckan.find_resource_id_if_exists">
+<code class="descclassname">load.load_file_to_ckan.</code><code class="descname">find_resource_id_if_exists</code><span class="sig-paren">(</span><em>url</em>, <em>dataset_name</em>, <em>file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_ckan.find_resource_id_if_exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_ckan.main">
+<code class="descclassname">load.load_file_to_ckan.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_ckan.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_ckan.parser">
+<code class="descclassname">load.load_file_to_ckan.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_ckan.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_ckan.upload_file_to_ckan">
+<code class="descclassname">load.load_file_to_ckan.</code><code class="descname">upload_file_to_ckan</code><span class="sig-paren">(</span><em>url</em>, <em>dataset_name</em>, <em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_ckan.upload_file_to_ckan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload a file to the CKAN datastore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url: url of the catalog:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">catalogus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_name: name of the dataset, which can be found on the ckan page url:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">catalogus</span><span class="o">/</span><span class="n">dataset</span><span class="o">/</span><span class="n">afvalcontainers</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">api_key: your private user key, which can be found on the user profile page.</p>
+</li>
+<li><p class="first">file_path: location of the file including filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">upload</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>An uploaded file to the CKAN datastore.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-load.load_file_to_objectstore">
+<span id="load-load-file-to-objectstore-module"></span><h2>load.load_file_to_objectstore module<a class="headerlink" href="#module-load.load_file_to_objectstore" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="load.load_file_to_objectstore.check_existence_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">check_existence_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.check_existence_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the file is present on the objectstore container_path,</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection = Objectstore connection based on from helpers.connection import objectstore_connection</li>
+<li>container_path = Name of container/prefix/subfolder</li>
+<li>filename = Name of file, for example test.csv</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>‘The object was successfully created’</li>
+<li>‘The object was not found’</li>
+<li>‘Error finding the object’</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.get_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">get_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from objectstore container.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: Objectstore connection based on from helpers.connection import objectstore_connection</li>
+<li>container_path: Name of container/prefix/subfolder</li>
+<li>filename: Name of file, for example test.csv</li>
+<li>output_folder: Define the path to write the file to for example app/data when using docker.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>A file from the objectstore into the specified output_folder.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.main">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.parser">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.put_object">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">put_object</code><span class="sig-paren">(</span><em>connection</em>, <em>container: str</em>, <em>filename: str</em>, <em>contents</em>, <em>content_type: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#load.load_file_to_objectstore.put_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload a file to objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>container: path/in/store</li>
+<li>filename: your_file_name.txt</li>
+<li>contents: contents of file with use of with open(‘your_file_name.txt’, ‘rb’) as contents:</li>
+<li>content_type:’text/csv’,’application/json’, … Is retrievd by using the mime package.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>A saved file in the container of the objectstore.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="load.load_file_to_objectstore.upload_file">
+<code class="descclassname">load.load_file_to_objectstore.</code><code class="descname">upload_file</code><span class="sig-paren">(</span><em>connection</em>, <em>container_path</em>, <em>filename_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_file_to_objectstore.upload_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file to the objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first arabic simple">
+<li>connection = Objectstore connection based on from helpers.connection import objectstore_connection</li>
+<li>container_path = Name of container/prefix/subfolder, for example Dataservices/aanvalsplan_schoon/crow</li>
+<li>filename_path = full path including the name of file, for example: data/test.csv</li>
+</ol>
+<p class="last">Uses mime for content_type: <a class="reference external" href="https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python">https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python</a></p>
+</dd>
+<dt>Result:</dt>
+<dd>Uploads a file to the objectstore and checks if it exists on in the defined container_path.</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-load.load_wfs_to_postgres">
 <span id="load-load-wfs-to-postgres-module"></span><h2>load.load_wfs_to_postgres module<a class="headerlink" href="#module-load.load_wfs_to_postgres" title="Permalink to this headline">¶</a></h2>
 <dl class="exception">
 <dt id="load.load_wfs_to_postgres.NonZeroReturnCode">
 <em class="property">exception </em><code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">NonZeroReturnCode</code><a class="headerlink" href="#load.load_wfs_to_postgres.NonZeroReturnCode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-</dd></dl>
-
-<dl class="function">
-<dt id="load.load_wfs_to_postgres.get_config">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.get_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get config file with login credentials and port numbers.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="load.load_wfs_to_postgres.get_pg_str">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">get_pg_str</code><span class="sig-paren">(</span><em>host</em>, <em>port</em>, <em>user</em>, <em>dbname</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.get_pg_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>“Create Postgres connection+login string.</p>
+<p>Used for subprocess error messages.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="load.load_wfs_to_postgres.load_layers">
 <code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">load_layers</code><span class="sig-paren">(</span><em>pg_str</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.load_layers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load layers into Postgres using a list of titles of each layer within the WFS service.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">pg_str: psycopg2 connection string:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;PG:host= port= user= dbname= password=&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt>Returns:</dt>
+<dd>Loaded layers into postgres using ogr2ogr.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -207,11 +347,26 @@
 <dt id="load.load_wfs_to_postgres.run_command_sync">
 <code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">run_command_sync</code><span class="sig-paren">(</span><em>cmd</em>, <em>allow_fail=False</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.run_command_sync" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a string in the command line.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">cmd: command line code formatted as a list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;ogr2ogr&#39;</span><span class="p">,</span> <span class="s1">&#39;-overwrite&#39;</span><span class="p">,</span> <span class="s1">&#39;-t_srs&#39;</span><span class="p">,</span> <span class="s1">&#39;EPSG:28992&#39;</span><span class="p">,</span><span class="s1">&#39;-nln&#39;</span><span class="p">,</span><span class="n">layer_name</span><span class="p">,</span><span class="s1">&#39;-F&#39;</span> <span class="p">,</span><span class="s1">&#39;PostgreSQL&#39;</span> <span class="p">,</span><span class="n">pg_str</span> <span class="p">,</span><span class="n">url</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Optional: allow_fail: True or false to return error code</p>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Excuted program or error message.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="load.load_wfs_to_postgres.scrub">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">scrub</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.scrub" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">scrub</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.scrub" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hide the login credentials of Postgres in the console.</p>
 </dd></dl>
 

@@ -38,7 +38,7 @@
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="../modules.html"/>
         <link rel="next" title="download_from_data_amsterdam_api" href="download_from_data_amsterdam_api.html"/>
-        <link rel="prev" title="Modules" href="../modules.html"/> 
+        <link rel="prev" title="authentication package" href="../_modules/authentication.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -95,10 +95,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#auth">Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_data_amsterdam_catalog</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
@@ -106,6 +106,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_data_amsterdam_api.html">download_from_data_amsterdam_api</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_objectstore.html">download_from_objectstore</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#transform">Transform</a></li>
@@ -183,9 +184,10 @@
             
   <div class="section" id="download-from-data-amsterdam-catalog">
 <span id="id1"></span><h1>download_from_data_amsterdam_catalog<a class="headerlink" href="#download-from-data-amsterdam-catalog" title="Permalink to this headline">¶</a></h1>
-<p><p>Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
-To test run this command line:</p>
-<p>download_from_data_amsterdam <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data</p>
+<p><blockquote>
+<div>Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
+To test run this command line:
+<code class="docutils literal notranslate"><span class="pre">download_from_data_amsterdam_catalog</span> <span class="pre">https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</span> <span class="pre">data</span></code></div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_data_amsterdam_catalog</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">output_folder</span>
 </pre></div>
@@ -198,8 +200,11 @@ To test run this command line:</p>
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd>url</kbd></td>
-<td>Insert full url from main result page of dataset,
-for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</td></tr>
+<td><blockquote class="first last">
+<div>Insert full url from main result page of dataset.
+For example:
+<code class="docutils literal notranslate"><span class="pre">https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</span></code></div></blockquote>
+</td></tr>
 <tr><td class="option-group">
 <kbd>output_folder</kbd></td>
 <td>Specify the desired output folder path, for example: app/data</td></tr>
@@ -211,19 +216,41 @@ for example: <a class="reference external" href="https://data.amsterdam.nl">http
 <dl class="function">
 <dt id="extract.download_from_data_amsterdam_catalog.download_all_files">
 <code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download all files from metadata resources list</p>
+<dd><p>Download all files from metadata resources list.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>metadata: json dictonary from ckan with all the metadata including the resources list of all files.</li>
+<li>download_directory: path where to store the files from the files, for example data.</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Unzipped and created dir filled with all data in the download_directory, if this does not yet exists.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_data_amsterdam_catalog.download_metadata">
 <code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download files from data catalog response id</p>
+<dd><p>Download files from data catalog response id.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dt>Result:</dt>
+<dd>All the Metadata from this dataset as a json dictonary, with the owner, refresh data, resource url’s to the desired files, etc.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="extract.download_from_data_amsterdam_catalog.get_catalog_package_id">
 <code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dt>Result:</dt>
+<dd>Unique id number of package.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -248,7 +275,7 @@ for example: <a class="reference external" href="https://data.amsterdam.nl">http
         <a href="download_from_data_amsterdam_api.html" class="btn btn-neutral float-right" title="download_from_data_amsterdam_api" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../_modules/authentication.html" class="btn btn-neutral" title="authentication package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

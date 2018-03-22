@@ -94,7 +94,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html#workflow">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
 </ul>
 <ul>
@@ -243,79 +242,401 @@ variableNames can be found here: <a class="reference external" href="https://api
 </dd></dl>
 
 </div>
-<div class="section" id="module-extract.download_from_data_amsterdam_api">
-<span id="extract-download-from-data-amsterdam-api-module"></span><h2>extract.download_from_data_amsterdam_api module<a class="headerlink" href="#module-extract.download_from_data_amsterdam_api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-extract.download_from_api_brk">
+<span id="extract-download-from-api-brk-module"></span><h2>extract.download_from_api_brk module<a class="headerlink" href="#module-extract.download_from_api_brk" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_api.conversionListCvalues">
-<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">conversionListCvalues</code><span class="sig-paren">(</span><em>metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.conversionListCvalues" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_api_brk.getJsonData">
+<code class="descclassname">extract.download_from_api_brk.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_brk.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url with accesstoken.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_brk.main">
+<code class="descclassname">extract.download_from_api_brk.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_brk.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_api.getJsonData">
-<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_api_brk.parser">
+<code class="descclassname">extract.download_from_api_brk.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_brk.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-extract.download_from_api_kvk">
+<span id="extract-download-from-api-kvk-module"></span><h2>extract.download_from_api_kvk module<a class="headerlink" href="#module-extract.download_from_api_kvk" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_api_kvk.get_kvk_json">
+<code class="descclassname">extract.download_from_api_kvk.</code><code class="descname">get_kvk_json</code><span class="sig-paren">(</span><em>url</em>, <em>params</em>, <em>api_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_kvk.get_kvk_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url, provided params + api_key.
+Args:</p>
+<blockquote>
+<div><p>url: api endpoint
+params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
+<blockquote>
+<div>city, tradeName, or provide lists/dicts of values</div></blockquote>
+<p>api_key: kvk api_key. add KVK_API_KEY to your ENV variables</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_kvk.main">
+<code class="descclassname">extract.download_from_api_kvk.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_kvk.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_api.get_data">
-<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url_api</em>, <em>endpoint</em>, <em>metadata</em>, <em>accessToken</em>, <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.get_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="extract.download_from_data_amsterdam_api.main">
-<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="extract.download_from_data_amsterdam_api.parser">
-<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_api_kvk.parser">
+<code class="descclassname">extract.download_from_api_kvk.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_kvk.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_api.reformatData">
-<code class="descclassname">extract.download_from_data_amsterdam_api.</code><code class="descname">reformatData</code><span class="sig-paren">(</span><em>item</em>, <em>tellus_metadata</em>, <em>cvalues</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_api.reformatData" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_api_kvk.response_to_json">
+<code class="descclassname">extract.download_from_api_kvk.</code><code class="descname">response_to_json</code><span class="sig-paren">(</span><em>response</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_kvk.response_to_json" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
-<div class="section" id="module-extract.download_from_data_amsterdam_catalog">
-<span id="extract-download-from-data-amsterdam-catalog-module"></span><h2>extract.download_from_data_amsterdam_catalog module<a class="headerlink" href="#module-extract.download_from_data_amsterdam_catalog" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-extract.download_from_api_tellus">
+<span id="extract-download-from-api-tellus-module"></span><h2>extract.download_from_api_tellus module<a class="headerlink" href="#module-extract.download_from_api_tellus" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.download_all_files">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download all files from metadata resources list</p>
+<dt id="extract.download_from_api_tellus.conversionListCvalues">
+<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">conversionListCvalues</code><span class="sig-paren">(</span><em>metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.conversionListCvalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a conversion dictionairy for values in tellus api which consists of 60 speed +length values named: c1 to c60</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.download_file">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_file</code><span class="sig-paren">(</span><em>file_location</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_file" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_api_tellus.getJsonData">
+<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url with accesstoken.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype=’employee’, scopes=’TLLS/R’)</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_tellus.get_data">
+<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url_api</em>, <em>endpoint</em>, <em>metadata</em>, <em>accessToken</em>, <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get and flatten all the data from the api.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url_api: get the main api url:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get one endpoint:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.</p>
+</li>
+<li><p class="first">accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</p>
+</li>
+<li><p class="first">limit: set the number of pages you want to retrieve, ideal for testing first:</p>
+<p>10</p>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>A list containing multiple items which are all reformatted to a flattened json with added metadata.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_tellus.main">
+<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.download_metadata">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download files from data catalog response id</p>
+<dt id="extract.download_from_api_tellus.parser">
+<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.get_catalog_package_id">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_api_tellus.reformatData">
+<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">reformatData</code><span class="sig-paren">(</span><em>item</em>, <em>tellus_metadata</em>, <em>cvalues</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.reformatData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reformat the data from a matrix to a flattend dict with label and tellus names.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>item: one recorded hour which contains 60 types of registrations c1-c60.</li>
+<li>tellus_metadata: list of description values for each tellus.</li>
+<li>cvalues: converted 60 values to add the proper labels to c1 to c6 counted record.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>60 rows by c-value with metadata an label descriptions</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-extract.download_from_api_with_authentication">
+<span id="extract-download-from-api-with-authentication-module"></span><h2>extract.download_from_api_with_authentication module<a class="headerlink" href="#module-extract.download_from_api_with_authentication" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.getJsonData">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json response from a url with accesstoken.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>parsed json or error message</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.main">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.parser">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_api_with_authentication.retrywithtrailingslash">
+<code class="descclassname">extract.download_from_api_with_authentication.</code><code class="descname">retrywithtrailingslash</code><span class="sig-paren">(</span><em>url</em>, <em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_with_authentication.retrywithtrailingslash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-extract.download_from_catalog">
+<span id="extract-download-from-catalog-module"></span><h2>extract.download_from_catalog module<a class="headerlink" href="#module-extract.download_from_catalog" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_catalog.download_all_files">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.download_all_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download all files from metadata resources list.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>metadata: json dictonary from ckan with all the metadata including the resources list of all files.</li>
+<li>download_directory: path where to store the files from the files, for example data.</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Unzipped and created dir filled with all data in the download_directory, if this does not yet exists.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_catalog.download_file">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">download_file</code><span class="sig-paren">(</span><em>file_location</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.download_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_catalog.download_metadata">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download files from data catalog response id.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dt>Result:</dt>
+<dd>All the Metadata from this dataset as a json dictonary, with the owner, refresh data, resource url’s to the desired files, etc.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_catalog.get_catalog_package_id">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dt>Result:</dt>
+<dd>Unique id number of package.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.main">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.main" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_catalog.main">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_data_amsterdam_catalog.parser">
-<code class="descclassname">extract.download_from_data_amsterdam_catalog.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_data_amsterdam_catalog.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="extract.download_from_catalog.parser">
+<code class="descclassname">extract.download_from_catalog.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_catalog.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="extract-download-from-objectstore-module">
-<h2>extract.download_from_objectstore module<a class="headerlink" href="#extract-download-from-objectstore-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-extract.download_from_objectstore">
+<span id="extract-download-from-objectstore-module"></span><h2>extract.download_from_objectstore module<a class="headerlink" href="#module-extract.download_from_objectstore" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_objectstore.download_container">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_container</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>prefix</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>prefix: tag or folder name of file, for example subfolder/subsubfolder</li>
+<li>output_folder = ‘/{folder}/ ‘</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Written file /{folder}/{prefix}/{file}</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.download_containers">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>connection</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download multiple files from the objectstore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>prefixes: multiple folders where the files are located, for example aanvalsplan_schoon/crow,aanvalsplan_schoon/mora</li>
+<li>output_folder: local folder to write files into, for example app/data for a docker setup</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Loops through download_container function for each prefix (=folder)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.get_full_container_list">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">get_full_container_list</code><span class="sig-paren">(</span><em>connection</em>, <em>container</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.get_full_container_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all files stored in container (incl. sub-containers)</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>connection: connection session using the objectstore_connection function from the helpers.connections</li>
+<li>container: “name of the root container/folder in objectstore”</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Generator object with all containers.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.main">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_objectstore.parser">
+<code class="descclassname">extract.download_from_objectstore.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_objectstore.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-extract.download_from_wfs">
+<span id="extract-download-from-wfs-module"></span><h2>extract.download_from_wfs module<a class="headerlink" href="#module-extract.download_from_wfs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="extract.download_from_wfs.get_layer_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get layer from a wfs service.
+Args:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_name: Title of the layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">outputformat: leave empty to return standard GML, else define json, geojson, txt, shapezip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geojson</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The layer in the specified output format.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.get_layers_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_layers_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_layers_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all layer names in WFS service, print and return them in a list.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.get_multiple_geojson_from_wfs">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">get_multiple_geojson_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_names</em>, <em>srs</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.get_multiple_geojson_from_wfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all layers and save them as a geojson</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_names: single or multiple titles of the layers, separated by a comma without spaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span><span class="p">,</span><span class="n">gebiedsgerichtwerken</span><span class="p">,</span><span class="n">buurt</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">output_folder: define the folder to save the files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path_to_folder</span><span class="o">/</span><span class="n">another_folder</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.main">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="extract.download_from_wfs.parser">
+<code class="descclassname">extract.download_from_wfs.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_wfs.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-extract">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-extract" title="Permalink to this headline">¶</a></h2>
