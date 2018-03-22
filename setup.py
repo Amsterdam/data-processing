@@ -113,7 +113,6 @@ setup(
         # Utilities
         'docutils',
         'pprint>=0.1',
-        'pyproj==1.9.5.1',
         'requests_cache==0.4.13',
         'logger==1.4',
         'ipython==5.5.0'

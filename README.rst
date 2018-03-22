@@ -88,10 +88,9 @@ Some of the examples are in the form of runnable Jupyter notebooks. Copies of th
 
 To install jupyter:
 
-.. code-block::
+.. code-block:: bash
 
     pip install -e .\[dev\]
-
     jupyter notebook --NotebookApp.iopub_data_rate_limit=100000000
 
 How to Contribute
@@ -108,7 +107,7 @@ To add new documentation and test new functions, install the docs,test,dev packa
 
     pip install -e .[docs,test,dev]
     or when using zsh
-    pip install -e ./[docs,test,dev/]
+    pip install -e .\[docs,test,dev\]
 
 Steps to add code
 -----------------
