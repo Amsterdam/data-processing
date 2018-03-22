@@ -87,12 +87,12 @@ Notebooks
 Some of the examples are in the form of runnable Jupyter notebooks. Copies of these with all the images and output included are hosted at Anaconda Cloud. To run these notebooks on your own system, start up a Jupyter notebook server:
 
 To install jupyter:
-.. code-block:: bash    
+
+.. code-block::
 
     pip install -e .\[dev\]
 
     jupyter notebook --NotebookApp.iopub_data_rate_limit=100000000
-
 
 How to Contribute
 =================

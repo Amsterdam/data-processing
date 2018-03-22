@@ -1,3 +1,6 @@
+import requests
+import pandas as pd
+
 def getJson(url):
     """
     Get a json from an url
@@ -15,25 +18,53 @@ def getJson(url):
         jsonData = getData.json()
         return jsonData
     else:
-        return print(getData.status_code)
+        return getData.status_code
 
 
 def getAreaCodes(item, lat, lon):
     """
     Get specific information like area codes based radius to nearest address based on lat/lon value
        ex: https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&lat=52.3731750&lon=4.8924655&radius=50
-    It currently is coded to work only to get buurten
+    It currently is coded to work to get:
+    - "buurt"
+    - "buurtcombinatie"
+    - "stadsdeel"
     """
-    url = "https://api.data.amsterdam.nl/geosearch/search/?item=%s&lat=%s&lon=%s&radius=1" % (item, lat, lon)
-    print(url)
-    jsonData = getJson(url)
-    print(jsonData)
-
-    if jsonData["features"]:
-        uri = jsonData["features"][0]["properties"]["uri"]
-        data = getJson(uri)
-        # print(data['volledige_code'])
-        return [data["buurt"]["code"], data["buurt"]["naam"]]
-    else:
-        print('Valt buiten Amsterdamse buurten')
-        return ['Valt niet binnen buurt', 'Buiten Amsterdam']
+    if item in ["buurt", "buurtcombinatie", "stadsdeel"]:
+        url = "https://api.data.amsterdam.nl/geosearch/search/?item=%s&lat=%s&lon=%s&radius=1" % (item, lat, lon)
+        print(url)
+        jsonData = getJson(url)
+        print(jsonData)
+     
+        if "features" in jsonData and len(jsonData["features"]) > 0: 
+            uri = jsonData["features"][0]["properties"]["uri"]
+            data = getJson(uri)
+            if item == "buurt" or item == "buurtcombinatie":
+                return [data["volledige_code"], data["naam"]]
+            if item == "stadsdeel":
+                return [data["code"], data["naam"]]
+        else:
+            print('Valt buiten Amsterdam')
+            return None
+    else: 
+        print "Ongeldig item"
+        return None
+    
+def getAreaCodesforDataFrame(df, item):
+    """
+    Get specific information like area codes based radius to nearest address based on lat/lon value for each row in pandas DF. 
+    Args: 
+        df with column "lon" and "lat"
+        item, which is "buurt", "buurtcombinatie" or "stadsdeel"
+    Returns:
+        df with two new columns that describe name and code of the item "
+    """
+    df['code'] = 0
+    df['%snaam' % (item)] = 0
+    
+    for i in range(len(df)):
+        if getAreaCodes(item, df['lat'][i], df['lon'][i]):
+            df.loc[i, 'code'], df.loc[i,'%snaam' % (item)] = getAreaCodes(item, df['lat'][i], df['lon'][i])
+        else:
+            df.loc[i,'code'], df.loc[i,'%snaam' % (item)] = ["",""]
+    return df
