@@ -37,8 +37,8 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.1a4',
-    name='datapunt-processing',
+    version='0.0.1a5',
+    name='datapunt_processing',
     description="Datapunt generic ETL command line scripts and functions for shell scripting in Docker.",
     long_description=read('README.rst'),
     url='https://github.com/Amsterdam/data-processing',
@@ -61,24 +61,25 @@ setup(
     entry_points={
         'console_scripts': [
             # extract
-            'download_from_catalog = extract.download_from_catalog:main',
-            'download_from_api_with_authentication = extract.download_from_api_with_authentication:main',
-            'download_from_api_brk = extract.download_from_api_brk:main',
-            'download_from_api_tellus = extract.download_from_api_tellus:main',
-            'download_from_api_kvk = extract.download_from_api_kvk:main',
-            'download_from_wfs = extract.download_from_wfs:main',
-            'download_from_objectstore = extract.download_from_objectstore:main',
-            'csv_dataframe = extract.csv_dataframe:main',
+            'download_from_catalog = datapunt_processing.extract.download_from_catalog:main',
+            'download_from_api_with_authentication = datapunt_processing.extract.download_from_api_with_authentication:main',
+            'download_from_api_brk = datapunt_processing.extract.download_from_api_brk:main',
+            'download_from_api_tellus = datapunt_processing.extract.download_from_api_tellus:main',
+            'download_from_api_kvk = datapunt_processing.extract.download_from_api_kvk:main',
+            'download_from_wfs = datapunt_processing.extract.download_from_wfs:main',
+            'download_from_objectstore = datapunt_processing.extract.download_from_objectstore:main',
+            'csv_dataframe = datapunt_processing.extract.csv_dataframe:main',
             # load
-            'load_wfs_to_postgres = load.load_wfs_to_postgres:main',
-            'load_xls_to_postgres = load.load_xls_to_postgres:main',
-            'load_file_to_ckan = load.load_file_to_ckan:main',
-            'load_file_to_objectstore = load.load_file_to_objectstore:main',
+            'load_wfs_to_postgres = datapunt_processing.load.load_wfs_to_postgres:main',
+            'load_xls_to_postgres = datapunt_processing.load.load_xls_to_postgres:main',
+            'load_file_to_ckan = datapunt_processing.load.load_file_to_ckan:main',
+            'load_file_to_objectstore = datapunt_processing.load.load_file_to_objectstore:main',
             #transform
-            'get_geojson_from_wfs = transform.geospatial.get_geojson_from_wfs:main',
-            'postgres_add_areas_from_coordinates = transform.geospatial.postgres_add_areas_from_coordinates:main',
-            'add_public_events = transform.enrichment.add_public_events:main',
-            'add_knmi_data = transform.enrichment.add_knmi_data:main'
+            'api_clean_BAG_address_NED = datapunt_processing.transform.geospatial.api_clean_BAG_address_NED:main',
+            'get_geojson_from_wfs = datapunt_processing.transform.geospatial.get_geojson_from_wfs:main',
+            'postgres_add_areas_from_coordinates = datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates:main',
+            'add_public_events = datapunt_processing.transform.enrichment.add_public_events:main',
+            'add_knmi_data = datapunt_processing.transform.enrichment.add_knmi_data:main'
         ],
     },
     # Add custom pytester class
@@ -95,6 +96,7 @@ setup(
         # Getters
         'requests==2.18.4',
         'xlrd==1.1.0',
+        'lxml==4.2.1',
         'python-swiftclient==3.4.0',
         'python-keystoneclient',
 

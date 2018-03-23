@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="download_from_catalog" href="../extract/download_from_catalog.html"/>
+        <link rel="next" title="helpers package" href="helpers.html"/>
         <link rel="prev" title="Modules" href="../modules.html"/> 
 
   
@@ -101,9 +101,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../modules.html#authentication">Authentication</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">authentication package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-authentication.config">authentication.config module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-authentication.getaccesstoken">authentication.getaccesstoken module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-authentication">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-config-module">authentication.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-getaccesstoken-module">authentication.getaccesstoken module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -188,59 +188,14 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-authentication.config">
-<span id="authentication-config-module"></span><h2>authentication.config module<a class="headerlink" href="#module-authentication.config" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="authentication.config.config">
-<code class="descclassname">authentication.config.</code><code class="descname">config</code><span class="sig-paren">(</span><em>section</em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.config.config" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="authentication-config-module">
+<h2>authentication.config module<a class="headerlink" href="#authentication-config-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-authentication.getaccesstoken">
-<span id="authentication-getaccesstoken-module"></span><h2>authentication.getaccesstoken module<a class="headerlink" href="#module-authentication.getaccesstoken" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="authentication.getaccesstoken.GetAccessToken">
-<em class="property">class </em><code class="descclassname">authentication.getaccesstoken.</code><code class="descname">GetAccessToken</code><a class="headerlink" href="#authentication.getaccesstoken.GetAccessToken" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Get an header authentication item for access token
-for using the internal API’s by logging in as with email and password credentials and authenticated scopes or as type ‘employee’
-To see the available scopes and types, see this file:</p>
-<blockquote>
-<div><a class="reference external" href="https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py">https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py</a></div></blockquote>
-<dl class="docutils">
-<dt>Usage:</dt>
-<dd><p class="first">from authentication.getaccesstoken import GetAccessToken</p>
-<p class="last">accessToken = GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=BRK/RS,BRK/RSN,BRK/RO)
-requests.get(url, headers=accessToken)</p>
-</dd>
-<dt>Args:</dt>
-<dd><ul class="first last simple">
-<li>scopes: Add scopes as a comma separated list.</li>
-<li>usertype: Add the usertype</li>
-<li>email: Set and get environment variable: export DATAPUNT_EMAIL=*****</li>
-<li>password: Set and get environment variable: export DATAPUNT_PASSWORD=*****</li>
-</ul>
-</dd>
-<dt>Returns:</dt>
-<dd>accesstoken</dd>
-</dl>
-<dl class="method">
-<dt id="authentication.getaccesstoken.GetAccessToken.getAccessToken">
-<code class="descname">getAccessToken</code><span class="sig-paren">(</span><em>usertype='employee'</em>, <em>scopes='TLLS/R'</em>, <em>acc=False</em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.getaccesstoken.GetAccessToken.getAccessToken" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="authentication.getaccesstoken.parser">
-<code class="descclassname">authentication.getaccesstoken.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#authentication.getaccesstoken.parser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
-To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
-</dd></dl>
-
+<div class="section" id="authentication-getaccesstoken-module">
+<h2>authentication.getaccesstoken module<a class="headerlink" href="#authentication-getaccesstoken-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-authentication">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-authentication" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -254,7 +209,7 @@ To see possible styling options: <a class="reference external" href="https://pyt
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../extract/download_from_catalog.html" class="btn btn-neutral float-right" title="download_from_catalog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="helpers.html" class="btn btn-neutral float-right" title="helpers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

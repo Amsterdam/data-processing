@@ -35,10 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/>
-        <link rel="up" title="Modules" href="../../modules.html"/>
-        <link rel="next" title="add_knmi_data" href="../enrichment/add_knmi_data.html"/>
-        <link rel="prev" title="divide_bbox_amsterdam_in_quadrants" href="divide_bbox_amsterdam_in_quadrants.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -91,30 +88,13 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#extract">Extract</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../modules.html#transform-geospatial">Transform Geospatial</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="postgres_add_areas_from_coordinates.html">postgres_add_areas_from_coordinates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api_clean_BAG_address_NED.html">api_clean_BAG_address_NED</a></li>
-<li class="toctree-l3"><a class="reference internal" href="divide_bbox_amsterdam_in_quadrants.html">divide_bbox_amsterdam_in_quadrants</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">rd_to_wgs84</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-transform.geospatial.rd_to_wgs84">function</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#transform-enrichment">Transform Enrichment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#load">Load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#helpers">Helpers</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
@@ -162,8 +142,6 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../modules.html">Modules</a> &raquo;</li>
-        
       <li>rd_to_wgs84</li>
     
     
@@ -185,11 +163,11 @@
             
   <div class="section" id="rd-to-wgs84">
 <h1>rd_to_wgs84<a class="headerlink" href="#rd-to-wgs84" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-transform.geospatial.rd_to_wgs84">
-<span id="function"></span><h2>function<a class="headerlink" href="#module-transform.geospatial.rd_to_wgs84" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-datapunt_processing.transform.geospatial.rd_to_wgs84">
+<span id="function"></span><h2>function<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.rd_to_wgs84" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.rd_to_wgs84.rd_to_wgs84">
-<code class="descclassname">transform.geospatial.rd_to_wgs84.</code><code class="descname">rd_to_wgs84</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.rd_to_wgs84.rd_to_wgs84" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.geospatial.rd_to_wgs84.rd_to_wgs84">
+<code class="descclassname">datapunt_processing.transform.geospatial.rd_to_wgs84.</code><code class="descname">rd_to_wgs84</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.rd_to_wgs84.rd_to_wgs84" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quick reprojection method, does result in 1m max offset difference.
 Use Postgres ST_Transform method if you want a better reprojection.
 Example downloaded from <a class="reference external" href="http://forum.geocaching.nl/index.php?showtopic=7886">http://forum.geocaching.nl/index.php?showtopic=7886</a></p>
@@ -205,15 +183,6 @@ Example downloaded from <a class="reference external" href="http://forum.geocach
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../enrichment/add_knmi_data.html" class="btn btn-neutral float-right" title="add_knmi_data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="divide_bbox_amsterdam_in_quadrants.html" class="btn btn-neutral" title="divide_bbox_amsterdam_in_quadrants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

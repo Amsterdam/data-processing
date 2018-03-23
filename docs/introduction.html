@@ -178,21 +178,16 @@
 </div>
 <div class="section" id="how-to-use">
 <h1>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h1>
-<p>All functions are searchable and described in full here:
-<a class="reference external" href="https://amsterdam.github.io/data-processing/">amsterdam.github.io/data-processing</a></p>
+<p><a class="reference external" href="https://amsterdam.github.io/data-processing/">amsterdam.github.io/data-processing</a></p>
 <p>To use a function in python you can use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">extract</span> <span class="k">import</span> <span class="n">download_from_data_amsterdam</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datapunt_processing.extract</span> <span class="k">import</span> <span class="n">download_from_catalog</span>
 
 <span class="ow">or</span>
 
-<span class="kn">from</span> <span class="nn">helpers.connections</span> <span class="k">import</span> <span class="n">objectstore_connection</span>
+<span class="kn">from</span> <span class="nn">datapunt_processing.helpers.connections</span> <span class="k">import</span> <span class="n">objectstore_connection</span>
 </pre></div>
 </div>
-<p>To use the functions directly from the command line, you can do this after installing the package via:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
-</pre></div>
-</div>
-<p>You can then use functions directly in your virtual environment or docker shell like this:</p>
+<p>To use the functions directly from the command line in your virtual environment or docker shell you can use it like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_data_amsterdam</span> <span class="o">-</span><span class="n">h</span>
 </pre></div>
 </div>
@@ -200,7 +195,11 @@
 </div>
 <div class="section" id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>To get the functions up and running, also for running them from the command line, follow these 4 steps:</p>
+<p>To get the functions up and running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install datapunt-processing
+</pre></div>
+</div>
+<p>To develop the functions locally use these steps:</p>
 <ol class="arabic simple">
 <li>Clone the repository:</li>
 </ol>
@@ -239,12 +238,12 @@ You can setup your postgres database credentials in the config.ini file to apply
 <div class="section" id="notebooks">
 <h1>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this headline">¶</a></h1>
 <p>Some of the examples are in the form of runnable Jupyter notebooks. Copies of these with all the images and output included are hosted at Anaconda Cloud. To run these notebooks on your own system, start up a Jupyter notebook server:</p>
-<p>To install jupyter:
-.. code-block:: bash</p>
-<blockquote>
-<div><p>pip install -e .[dev]</p>
-<p>jupyter notebook –NotebookApp.iopub_data_rate_limit=100000000</p>
-</div></blockquote>
+<p>To install jupyter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e .<span class="se">\[</span>dev<span class="se">\]</span>
+
+jupyter notebook --NotebookApp.iopub_data_rate_limit<span class="o">=</span><span class="m">100000000</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-contribute">
 <h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h1>
@@ -255,7 +254,7 @@ You can setup your postgres database credentials in the config.ini file to apply
 <p>To add new documentation and test new functions, install the docs,test,dev packages using this command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e .<span class="o">[</span>docs,test,dev<span class="o">]</span>
 or when using zsh
-pip install -e ./<span class="o">[</span>docs,test,dev/<span class="o">]</span>
+pip install -e .<span class="se">\[</span>docs,test,dev<span class="se">\]</span>
 </pre></div>
 </div>
 </div>

@@ -5,7 +5,7 @@
     ~~~~~~~~~~~~~~~~~~~~~
 """
 
-from src.extract.download_from_wfs import get_layers_from_wfs, get_layer_from_wfs
+from src.datapunt_processing.extract.download_from_wfs import get_layers_from_wfs, get_layer_from_wfs
 
 
 def test_get_layers_from_wfs():
