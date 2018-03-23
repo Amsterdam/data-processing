@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>datapunt_processing.transform.preprocessing package &mdash; Datapunt processing 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Datapunt processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datapunt processing</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>datapunt_processing.transform.preprocessing package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_modules/datapunt_processing.transform.preprocessing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datapunt-processing-transform-preprocessing-package">
+<h1>datapunt_processing.transform.preprocessing package<a class="headerlink" href="#datapunt-processing-transform-preprocessing-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datapunt_processing.transform.preprocessing.data_selection">
+<span id="datapunt-processing-transform-preprocessing-data-selection-module"></span><h2>datapunt_processing.transform.preprocessing.data_selection module<a class="headerlink" href="#module-datapunt_processing.transform.preprocessing.data_selection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="datapunt_processing.transform.preprocessing.data_selection.DateRange">
+<em class="property">class </em><code class="descclassname">datapunt_processing.transform.preprocessing.data_selection.</code><code class="descname">DateRange</code><span class="sig-paren">(</span><em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.DateRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class representing a range of dates</p>
+<p>Can be used to select data in data frames if the data frame contains a
+column ‘date’ and is populated with datetime.date values.</p>
+<dl class="staticmethod">
+<dt id="datapunt_processing.transform.preprocessing.data_selection.DateRange.from_dataframe">
+<em class="property">static </em><code class="descname">from_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.DateRange.from_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create date range from a data frame
+Args:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>df (pd.DataFrame): a data frame  having a date column populated</dt>
+<dd>with dt.datetime values.</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>DateRange object</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="datapunt_processing.transform.preprocessing.data_selection.DateRange.length">
+<code class="descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.DateRange.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the time delta between end and start</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>dt.timedelta</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="datapunt_processing.transform.preprocessing.data_selection.DateRange.select">
+<code class="descname">select</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.DateRange.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the data range selection on a data frame
+Args:</p>
+<blockquote>
+<div>df (pd.DataFrame): input data frame</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>pd.DataFrame</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.data_selection.remove_nan_targets">
+<code class="descclassname">datapunt_processing.transform.preprocessing.data_selection.</code><code class="descname">remove_nan_targets</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.remove_nan_targets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove NaNs in the target list.
+Args:</p>
+<blockquote>
+<div>df(pd.DataFrame): data frame on which to operate
+run (Run): run parameters</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>pd.DataFrame</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.data_selection.select_and_report">
+<code class="descclassname">datapunt_processing.transform.preprocessing.data_selection.</code><code class="descname">select_and_report</code><span class="sig-paren">(</span><em>df</em>, <em>selection</em>, <em>description</em>, <em>max_drop_rate=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.select_and_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select data from a data frame and report how many rows were dropped.
+Args:</p>
+<blockquote>
+<div>df(pd.DataFrame): apply selection on this data frame
+selection(pd.Series): boolean selection
+description(str): description in log message
+max_drop_rate(float, optional): max fraction of dropped rows</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>pd.DataFrame</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.preprocessing.enrichment">
+<span id="datapunt-processing-transform-preprocessing-enrichment-module"></span><h2>datapunt_processing.transform.preprocessing.enrichment module<a class="headerlink" href="#module-datapunt_processing.transform.preprocessing.enrichment" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.enrichment.enrich_datetime">
+<code class="descclassname">datapunt_processing.transform.preprocessing.enrichment.</code><code class="descname">enrich_datetime</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.enrichment.enrich_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add datetime features (i.e. year, day of week, etc., also for ML feature generation)
+Args:</p>
+<blockquote>
+<div>df (pd.DataFrame): schedule or historical data</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>pd.DataFrame</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.preprocessing.ml_helperfunctions">
+<span id="datapunt-processing-transform-preprocessing-ml-helperfunctions-module"></span><h2>datapunt_processing.transform.preprocessing.ml_helperfunctions module<a class="headerlink" href="#module-datapunt_processing.transform.preprocessing.ml_helperfunctions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.ml_helperfunctions.accuracy_score">
+<code class="descclassname">datapunt_processing.transform.preprocessing.ml_helperfunctions.</code><code class="descname">accuracy_score</code><span class="sig-paren">(</span><em>y_true</em>, <em>y_pred</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.ml_helperfunctions.accuracy_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare y_true to y_pred and return the accuracy</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.ml_helperfunctions.calculate_covariance_matrix">
+<code class="descclassname">datapunt_processing.transform.preprocessing.ml_helperfunctions.</code><code class="descname">calculate_covariance_matrix</code><span class="sig-paren">(</span><em>X</em>, <em>Y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.ml_helperfunctions.calculate_covariance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the covariance matrix for the dataset X</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.ml_helperfunctions.calculate_std_dev">
+<code class="descclassname">datapunt_processing.transform.preprocessing.ml_helperfunctions.</code><code class="descname">calculate_std_dev</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.ml_helperfunctions.calculate_std_dev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the standard deviations of the features in dataset X</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.ml_helperfunctions.calculate_variance">
+<code class="descclassname">datapunt_processing.transform.preprocessing.ml_helperfunctions.</code><code class="descname">calculate_variance</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.ml_helperfunctions.calculate_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the variance of the features in dataset X</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.ml_helperfunctions.euclidean_distance">
+<code class="descclassname">datapunt_processing.transform.preprocessing.ml_helperfunctions.</code><code class="descname">euclidean_distance</code><span class="sig-paren">(</span><em>x1</em>, <em>x2</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.ml_helperfunctions.euclidean_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the l2 distance between two vectors</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.ml_helperfunctions.mean_squared_error">
+<code class="descclassname">datapunt_processing.transform.preprocessing.ml_helperfunctions.</code><code class="descname">mean_squared_error</code><span class="sig-paren">(</span><em>y_true</em>, <em>y_pred</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.ml_helperfunctions.mean_squared_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean squared error between y_true and y_pred</p>
+</dd></dl>
+
+</div>
+<div class="section" id="datapunt-processing-transform-preprocessing-ml-preprocessing-module">
+<h2>datapunt_processing.transform.preprocessing.ml_preprocessing module<a class="headerlink" href="#datapunt-processing-transform-preprocessing-ml-preprocessing-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datapunt_processing.transform.preprocessing.utilities">
+<span id="datapunt-processing-transform-preprocessing-utilities-module"></span><h2>datapunt_processing.transform.preprocessing.utilities module<a class="headerlink" href="#module-datapunt_processing.transform.preprocessing.utilities" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="datapunt_processing.transform.preprocessing.utilities.BigFile">
+<em class="property">class </em><code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">BigFile</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.BigFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper for pickling big files
+See pickle_big_dump and pickle_big_load functions.</p>
+<dl class="method">
+<dt id="datapunt_processing.transform.preprocessing.utilities.BigFile.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.BigFile.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read n bytes
+Reads a big file in batch of almost ~ 1 GB
+Args:</p>
+<blockquote>
+<div>n (int): number of bytes</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>bytearray: buffer</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="datapunt_processing.transform.preprocessing.utilities.BigFile.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.BigFile.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write buffer
+Writes in batches of ~ 1GB
+Args:</p>
+<blockquote>
+<div>buffer (bytearray): buffer</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.assert_unique">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">assert_unique</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.assert_unique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that all values are unique. Raises a value error if not. Empty series are ignored.
+:param series: input
+:return: none</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.calc_error">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">calc_error</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.calc_error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>df</strong> – DataFrame
+Predictions data frame.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Series
+Error (truth - prediction)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.cols_not_in">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">cols_not_in</code><span class="sig-paren">(</span><em>columns</em>, <em>df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.cols_not_in" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.get_last_full_year">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">get_last_full_year</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.get_last_full_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the last full year in data frame
+E.g. will return 2016 if you are in 2017.
+Args:</p>
+<blockquote>
+<div>df (pd.DataFrame): input data, has column dayofyear</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>int: last full year</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.get_script_dir">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">get_script_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.get_script_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.is_numeric">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">is_numeric</code><span class="sig-paren">(</span><em>column</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.is_numeric" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>column</strong> – Series
+A column.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool
+True when is a numeric type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.merge_and_report">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">merge_and_report</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>on: list</em>, <em>description=''</em>, <em>n_unmatched_limit=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.merge_and_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a merge between two data frame and reports stats on matches
+Only left merges are supported for now. If a column is present in both the
+left and right data frame, the left column has priority and the right
+column is ignored.
+Args:</p>
+<blockquote>
+<div><p>left (pd.DataFrame): lhs
+right (pd.DataFrame): rhs
+on (list[str]): columns to match on.
+description (str or None): description of what merge is done
+n_unmatched_limit (int): throw error when number of rows not found in</p>
+<blockquote>
+<div>left side is larger than this number</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>pd.DataFrame</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.optional_make_dir">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">optional_make_dir</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.optional_make_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates directory at if it does not exist yet
+Args:</p>
+<blockquote>
+<div>path (str): path to create directory in</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.pickle_big_dump">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">pickle_big_dump</code><span class="sig-paren">(</span><em>obj</em>, <em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.pickle_big_dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.pickle_big_load">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">pickle_big_load</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.pickle_big_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.preprocessing.utilities.rms">
+<code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">rms</code><span class="sig-paren">(</span><em>array</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.rms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the root mean square of an array</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.preprocessing">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datapunt_processing.transform.preprocessing" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gemeente Amsterdam.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

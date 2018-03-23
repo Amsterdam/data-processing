@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>datapunt_processing.helpers package &mdash; Datapunt processing 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Datapunt processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datapunt processing</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>datapunt_processing.helpers package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_modules/datapunt_processing.helpers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datapunt-processing-helpers-package">
+<h1>datapunt_processing.helpers package<a class="headerlink" href="#datapunt-processing-helpers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datapunt_processing.helpers.connections">
+<span id="datapunt-processing-helpers-connections-module"></span><h2>datapunt_processing.helpers.connections module<a class="headerlink" href="#module-datapunt_processing.helpers.connections" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.helpers.connections.execute_sql">
+<code class="descclassname">datapunt_processing.helpers.connections.</code><code class="descname">execute_sql</code><span class="sig-paren">(</span><em>pg_str</em>, <em>sql</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.connections.execute_sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a sql query with psycopg2.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">pg_str: connection string using helper function psycopg_connection_string, returning:<code class="docutils literal notranslate"><span class="pre">host=</span> <span class="pre">port=</span> <span class="pre">user=</span> <span class="pre">dbname=</span> <span class="pre">password=</span></code></p>
+</li>
+<li><p class="first">sql: SQL string in triple quotes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```CREATE TABLE foo (bar text)```
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Executed sql with conn.cursor().execute(sql)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.connections.get_config">
+<code class="descclassname">datapunt_processing.helpers.connections.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>full_path</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.connections.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get config file with all login credentials, port numbers, etc.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>full_path: provide the full path to the config.ini file, for example authentication/config.ini</dd>
+<dt>Returns:</dt>
+<dd>The entire configuration file to use them with <code class="docutils literal notranslate"><span class="pre">config.get(config_name,</span> <span class="pre">'AUTHURL')</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.connections.objectstore_connection">
+<code class="descclassname">datapunt_processing.helpers.connections.</code><code class="descname">objectstore_connection</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>config_name</em>, <em>print_config_vars=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.connections.objectstore_connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an objectsctore connection.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: /path_to_config/config.ini or config.ini if in root.</li>
+<li>config_name: objectstore</li>
+<li>print_config_vars: if set to True: print all variables from the config file</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>An objectstore connection session.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.connections.postgres_engine_pandas">
+<code class="descclassname">datapunt_processing.helpers.connections.</code><code class="descname">postgres_engine_pandas</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.connections.postgres_engine_pandas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pandas uses SQLalchemy, this is the config wrapper to insert config parameters in to_sql queries.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini</li>
+<li>db_config_name: dev or docker to get the ip user/password and port values.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>The postgres pandas engine to do sql queries with.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.connections.psycopg_connection_string">
+<code class="descclassname">datapunt_processing.helpers.connections.</code><code class="descname">psycopg_connection_string</code><span class="sig-paren">(</span><em>config_full_path</em>, <em>db_config_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.connections.psycopg_connection_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Postgres connection string for psycopg2.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>config_full_path: location of the config.ini file including the name of the file, for example authentication/config.ini</li>
+<li>db_config_name: dev or docker to get the ip user/password and port values.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Returns the psycopg required connection string: ‘PG:host= port= user= dbname= password=’</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.helpers.files">
+<span id="datapunt-processing-helpers-files-module"></span><h2>datapunt_processing.helpers.files module<a class="headerlink" href="#module-datapunt_processing.helpers.files" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.helpers.files.create_dir_if_not_exists">
+<code class="descclassname">datapunt_processing.helpers.files.</code><code class="descname">create_dir_if_not_exists</code><span class="sig-paren">(</span><em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.files.create_dir_if_not_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create directory if it does not yet exists.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>Specify the name of directory, for example: <cite>dir/anotherdir</cite></dd>
+<dt>Returns:</dt>
+<dd>Creates the directory if it does not exists, of return the error message.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.files.save_file">
+<code class="descclassname">datapunt_processing.helpers.files.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>data</em>, <em>output_folder</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.files.save_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>save_file currently works with: csv, txt, geojson and json as suffixes.
+It reads the filename suffix and saves the file as the appropriate type.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>data: list of flattened dictionary objects for example: [{id:1, attr:value, attr2:value}, {id:2, attr:value, attr2:value}]</li>
+<li>filename: data_output.csv or data_output.json</li>
+<li>output_folder: dir/anotherdir</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Saved the list of objects to the given geojson or csv type.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.files.unzip">
+<code class="descclassname">datapunt_processing.helpers.files.</code><code class="descname">unzip</code><span class="sig-paren">(</span><em>path</em>, <em>filename_as_folder=False</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.files.unzip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all zip files and unzip in root.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>path: set the folder to check for zip files.</li>
+<li>filename_as_folder:Set it to True to unzip to subfolders with name of zipfile instead of in the root folder.</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Unzipped files in the path directory or in the path/name of the zip file.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.helpers.getaccesstoken">
+<span id="datapunt-processing-helpers-getaccesstoken-module"></span><h2>datapunt_processing.helpers.getaccesstoken module<a class="headerlink" href="#module-datapunt_processing.helpers.getaccesstoken" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="datapunt_processing.helpers.getaccesstoken.GetAccessToken">
+<em class="property">class </em><code class="descclassname">datapunt_processing.helpers.getaccesstoken.</code><code class="descname">GetAccessToken</code><a class="headerlink" href="#datapunt_processing.helpers.getaccesstoken.GetAccessToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Get an header authentication item for access token
+for using the internal API’s by logging in as with email and password credentials and authenticated scopes or as type ‘employee’
+To see the available scopes and types, see this file:</p>
+<blockquote>
+<div><a class="reference external" href="https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py">https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py</a></div></blockquote>
+<dl class="docutils">
+<dt>Usage:</dt>
+<dd><p class="first">from authentication.getaccesstoken import GetAccessToken</p>
+<p class="last">accessToken = GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=BRK/RS,BRK/RSN,BRK/RO)
+requests.get(url, headers=accessToken)</p>
+</dd>
+<dt>Args:</dt>
+<dd><ul class="first last simple">
+<li>scopes: Add scopes as a comma separated list.</li>
+<li>usertype: Add the usertype</li>
+<li>email: Set and get environment variable: export DATAPUNT_EMAIL=*****</li>
+<li>password: Set and get environment variable: export DATAPUNT_PASSWORD=*****</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd>accesstoken</dd>
+</dl>
+<dl class="method">
+<dt id="datapunt_processing.helpers.getaccesstoken.GetAccessToken.getAccessToken">
+<code class="descname">getAccessToken</code><span class="sig-paren">(</span><em>usertype='employee'</em>, <em>scopes='TLLS/R'</em>, <em>acc=False</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.getaccesstoken.GetAccessToken.getAccessToken" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.getaccesstoken.parser">
+<code class="descclassname">datapunt_processing.helpers.getaccesstoken.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.getaccesstoken.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.helpers.json_dict_handlers">
+<span id="datapunt-processing-helpers-json-dict-handlers-module"></span><h2>datapunt_processing.helpers.json_dict_handlers module<a class="headerlink" href="#module-datapunt_processing.helpers.json_dict_handlers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.helpers.json_dict_handlers.clean_dict">
+<code class="descclassname">datapunt_processing.helpers.json_dict_handlers.</code><code class="descname">clean_dict</code><span class="sig-paren">(</span><em>dictionary</em>, <em>key_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.json_dict_handlers.clean_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a field from a dict based on key name.
+Args:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>dictionary: {id:1, dates:2018-12-02}</li>
+<li>key_name: ‘dates’</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>{id:1}</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.json_dict_handlers.flatten_json">
+<code class="descclassname">datapunt_processing.helpers.json_dict_handlers.</code><code class="descname">flatten_json</code><span class="sig-paren">(</span><em>json_object</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.json_dict_handlers.flatten_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatten nested json Object.
+Args:</p>
+<blockquote>
+<div>1 json_object, for example: {“key”: “subkey”: { “subsubkey”:”value” }}</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>{“key.subkey.subsubkey”:”value”}</dd>
+<dt>Source:</dt>
+<dd><a class="reference external" href="https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10">https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.json_dict_handlers.joinByKeyNames">
+<code class="descclassname">datapunt_processing.helpers.json_dict_handlers.</code><code class="descname">joinByKeyNames</code><span class="sig-paren">(</span><em>geojson</em>, <em>dataset</em>, <em>key1</em>, <em>key2</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.json_dict_handlers.joinByKeyNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert data from dataset to geojson where key1 from dataset matches key2 from geojson</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.json_dict_handlers.jsonPoints2geojson">
+<code class="descclassname">datapunt_processing.helpers.json_dict_handlers.</code><code class="descname">jsonPoints2geojson</code><span class="sig-paren">(</span><em>df</em>, <em>latColumn</em>, <em>lonColumn</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.json_dict_handlers.jsonPoints2geojson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert JSON with lat/lon columns to geojson.
+<a class="reference external" href="https://gis.stackexchange.com/questions/220997/pandas-to-geojson-multiples-points-features-with-python">https://gis.stackexchange.com/questions/220997/pandas-to-geojson-multiples-points-features-with-python</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.json_dict_handlers.openJsonArrayKeyDict2FlattenedJson">
+<code class="descclassname">datapunt_processing.helpers.json_dict_handlers.</code><code class="descname">openJsonArrayKeyDict2FlattenedJson</code><span class="sig-paren">(</span><em>fileName</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.json_dict_handlers.openJsonArrayKeyDict2FlattenedJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open json and return array of objects without object value name.
+For example: [{‘container’:{…}}, {‘container’:{…}}] returns now as [{…},{…}])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.helpers.logging">
+<span id="datapunt-processing-helpers-logging-module"></span><h2>datapunt_processing.helpers.logging module<a class="headerlink" href="#module-datapunt_processing.helpers.logging" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.helpers.logging.logger">
+<code class="descclassname">datapunt_processing.helpers.logging.</code><code class="descname">logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.logging.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup basic logging for console.</p>
+<dl class="docutils">
+<dt>Usage:</dt>
+<dd>Initialize the logger by adding the code at the top of your script:
+<code class="docutils literal notranslate"><span class="pre">logger</span> <span class="pre">=</span> <span class="pre">logger()</span></code></dd>
+</dl>
+<p>TODO: add log file export</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.helpers.xml_handlers">
+<span id="datapunt-processing-helpers-xml-handlers-module"></span><h2>datapunt_processing.helpers.xml_handlers module<a class="headerlink" href="#module-datapunt_processing.helpers.xml_handlers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.helpers.xml_handlers.parse_and_remove">
+<code class="descclassname">datapunt_processing.helpers.xml_handlers.</code><code class="descname">parse_and_remove</code><span class="sig-paren">(</span><em>filename</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.xml_handlers.parse_and_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>incremental XML parsing
+Args:</p>
+<blockquote>
+<div>filename: xml file name
+path: path to xml file</div></blockquote>
+<dl class="docutils">
+<dt>source: </dt>
+<dd><a class="reference external" href="https://github.com/dabeaz/python-cookbook/blob/master/src/6/incremental_parsing_of_huge_xml_files/example.py">https://github.com/dabeaz/python-cookbook/blob/master/src/6/incremental_parsing_of_huge_xml_files/example.py</a></dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.helpers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datapunt_processing.helpers" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gemeente Amsterdam.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

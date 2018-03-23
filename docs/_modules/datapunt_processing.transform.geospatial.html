@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>datapunt_processing.transform.geospatial package &mdash; Datapunt processing 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Datapunt processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datapunt processing</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>datapunt_processing.transform.geospatial package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_modules/datapunt_processing.transform.geospatial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datapunt-processing-transform-geospatial-package">
+<h1>datapunt_processing.transform.geospatial package<a class="headerlink" href="#datapunt-processing-transform-geospatial-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.addres_to_latlon_in_df">
+<span id="datapunt-processing-transform-geospatial-addres-to-latlon-in-df-module"></span><h2>datapunt_processing.transform.geospatial.addres_to_latlon_in_df module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.addres_to_latlon_in_df" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.addres_to_latlon_in_df.adress_to_latlon">
+<code class="descclassname">datapunt_processing.transform.geospatial.addres_to_latlon_in_df.</code><code class="descname">adress_to_latlon</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.addres_to_latlon_in_df.adress_to_latlon" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function adds the lattitude and longtitude to a pandas df based on an adress.</p>
+<p>input:
+pandas df met tenminste de volgende variabelen:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Straat: String met de naam van de straat</li>
+<li>Huisnr: String met huisnummer</li>
+</ul>
+</div></blockquote>
+<p>output:
+pandas df waaraan de volgende variabelen zijn toegevoegd:</p>
+<blockquote>
+<div><ul class="simple">
+<li>lon: longtitude behorend bij adres</li>
+<li>lat: lattitude behorend bij adres</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.api_clean_BAG_address_NED">
+<span id="datapunt-processing-transform-geospatial-api-clean-bag-address-ned-module"></span><h2>datapunt_processing.transform.geospatial.api_clean_BAG_address_NED module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.api_clean_BAG_address_NED" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_clean_BAG_address_NED.main">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_clean_BAG_address_NED.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_clean_BAG_address_NED.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_clean_BAG_address_NED.parser">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_clean_BAG_address_NED.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_clean_BAG_address_NED.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon">
+<span id="datapunt-processing-transform-geospatial-api-get-areacodes-from-latlon-module"></span><h2>datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getAreaCodes</code><span class="sig-paren">(</span><em>item</em>, <em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Get specific information like area codes based radius to nearest address based on lat/lon value</dt>
+<dd>ex: <a class="reference external" href="https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&amp;lat=52.3731750&amp;lon=4.8924655&amp;radius=50">https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&amp;lat=52.3731750&amp;lon=4.8924655&amp;radius=50</a></dd>
+</dl>
+<p>It currently is coded to work to get:
+- “buurt”
+- “buurtcombinatie”
+- “stadsdeel”</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodesforDataFrame">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getAreaCodesforDataFrame</code><span class="sig-paren">(</span><em>df</em>, <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodesforDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get specific information like area codes based radius to nearest address based on lat/lon value for each row in pandas DF. 
+Args:</p>
+<blockquote>
+<div>df with column “lon” and “lat”
+item, which is “buurt”, “buurtcombinatie” or “stadsdeel”</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>df with two new columns that describe name and code of the item “</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getJson">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getJson</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a json from an url</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">url: give an api url:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">bag</span><span class="o">/</span><span class="n">gebieden</span><span class="o">/</span><span class="n">stadsdeel</span>
+</pre></div>
+</div>
+</dd>
+<dt>Returns:</dt>
+<dd>a parsed json result or an error message</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon">
+<span id="datapunt-processing-transform-geospatial-api-get-nearest-address-from-latlon-module"></span><h2>datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon.get_address_near_point">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon.</code><code class="descname">get_address_near_point</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em>, <em>radius</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon.get_address_near_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get nearest addres and housenumber based on location.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_address_near_point(52.3729378,</span> <span class="pre">4.8937806,</span> <span class="pre">50)</span></code></p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>lat: 52.3729378</li>
+<li>lon:  4.8937806</li>
+<li>radius: 50</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Dictionary of the first found address with openbareruimte, huisnummer, postcode, etc…</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon.get_openbareruimte">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon.</code><code class="descname">get_openbareruimte</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_nearest_address_from_latlon.get_openbareruimte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name the street location where it coordinate resides on.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>lat: 52.3729378</li>
+<li>lon:  4.8937806</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Returns dictionary of the openbare ruimte object</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.csv_get_centroid_of_street">
+<span id="datapunt-processing-transform-geospatial-csv-get-centroid-of-street-module"></span><h2>datapunt_processing.transform.geospatial.csv_get_centroid_of_street module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.csv_get_centroid_of_street" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.csv_get_centroid_of_street.get_centroid_street">
+<code class="descclassname">datapunt_processing.transform.geospatial.csv_get_centroid_of_street.</code><code class="descname">get_centroid_street</code><span class="sig-paren">(</span><em>filename</em>, <em>street_column</em>, <em>city_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.csv_get_centroid_of_street.get_centroid_street" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the X,Y centroid of an address.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>street_column: Dam 1</li>
+<li>city_name: Amsterdam</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Origional CSV file with coordinates and BAG corrected naming.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.csv_get_centroid_of_street.main">
+<code class="descclassname">datapunt_processing.transform.geospatial.csv_get_centroid_of_street.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.csv_get_centroid_of_street.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.csv_get_centroid_of_street.parser">
+<code class="descclassname">datapunt_processing.transform.geospatial.csv_get_centroid_of_street.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.csv_get_centroid_of_street.parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.divide_bbox_amsterdam_in_quadrants">
+<span id="datapunt-processing-transform-geospatial-divide-bbox-amsterdam-in-quadrants-module"></span><h2>datapunt_processing.transform.geospatial.divide_bbox_amsterdam_in_quadrants module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.divide_bbox_amsterdam_in_quadrants" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.divide_bbox_amsterdam_in_quadrants.calculation">
+<code class="descclassname">datapunt_processing.transform.geospatial.divide_bbox_amsterdam_in_quadrants.</code><code class="descname">calculation</code><span class="sig-paren">(</span><em>number_of_boxes</em>, <em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.divide_bbox_amsterdam_in_quadrants.calculation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divide the BBOX of the City of Amsterdam in x number of quadrants/rectangles for use in limiting WFS/geo queries.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>number_of_boxes: in multiples of 2, 8 works well for most cases.</li>
+<li>bbox: [110200,476772,134030,493900]</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>list of quadrants [[x1,y1,x2,y2],[..]]</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates">
+<span id="datapunt-processing-transform-geospatial-postgres-add-areas-from-coordinates-module"></span><h2>datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.executeScriptsFromFile">
+<code class="descclassname">datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.</code><code class="descname">executeScriptsFromFile</code><span class="sig-paren">(</span><em>pg_str</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.executeScriptsFromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>WIP does not work yet</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.main">
+<code class="descclassname">datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.parser">
+<code class="descclassname">datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.rd_to_wgs84">
+<span id="datapunt-processing-transform-geospatial-rd-to-wgs84-module"></span><h2>datapunt_processing.transform.geospatial.rd_to_wgs84 module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.rd_to_wgs84" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.rd_to_wgs84.rd_to_wgs84">
+<code class="descclassname">datapunt_processing.transform.geospatial.rd_to_wgs84.</code><code class="descname">rd_to_wgs84</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.rd_to_wgs84.rd_to_wgs84" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quick reprojection method, does result in 1m max offset difference.
+Use Postgres ST_Transform method if you want a better reprojection.
+Example downloaded from <a class="reference external" href="http://forum.geocaching.nl/index.php?showtopic=7886">http://forum.geocaching.nl/index.php?showtopic=7886</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datapunt_processing.transform.geospatial" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gemeente Amsterdam.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
