@@ -3,28 +3,22 @@
 Modules
 =======
 
-Data Processing contains 5 modules: 
-1. Authentication
-2. Extract
-3. Transform
-4. Load 
-5. Helpers
+Data Processing contains 4 main modules:
+
+    1. Extract
+    2. Transform
+    3. Load 
+    4. Helpers
 
 
-Authentication
---------------
+Basic usage
+-----------
 
-**Fill in the config.ini.example with the proper user credentials for the
-project.
-Rename this file to config.ini. 
-Do not store passwords in this file
+**Fill in the config.ini with the proper testuser credentials for the
+project. 
+Do not store passwords in this file but use ENV variables with `export ENV=****`
 Use .gitignore to ignore .ini files to prevent uploading
 them to github.**
-
-.. toctree::
-    :maxdepth: 1
-
-    _modules/authentication
 
 Extract
 -------
@@ -35,13 +29,13 @@ stored, from API’s or from the data catalog.**
 .. toctree::
     :maxdepth: 1
 
-    datapunt_processing/extract/download_from_catalog
-    datapunt_processing/extract/download_from_objectstore
-    datapunt_processing/extract/download_from_wfs
-    datapunt_processing/extract/download_from_api_with_authentication
-    datapunt_processing/extract/download_from_api_brk
-    datapunt_processing/extract/download_from_api_tellus
-    datapunt_processing/extract/download_from_api_kvk
+    extract/download_from_catalog
+    extract/download_from_objectstore
+    extract/download_from_wfs
+    extract/download_from_api_with_authentication
+    extract/download_from_api_brk
+    extract/download_from_api_tellus
+    extract/download_from_api_kvk
     
     
 Transform Geospatial
@@ -52,13 +46,13 @@ Transform Geospatial
 .. toctree::
     :maxdepth: 1
 
-    datapunt_processing/transform/geospatial/postgres_add_areas_from_coordinates
-    datapunt_processing/transform/geospatial/api_clean_BAG_address_NED
-    datapunt_processing/transform/geospatial/api_get_nearest_address_from_latlon
-    datapunt_processing/transform/geospatial/api_get_areacodes_from_latlon
-    datapunt_processing/transform/geospatial/divide_bbox_amsterdam_in_quadrants
-    datapunt_processing/transform/geospatial/rd_to_wgs84
-
+    transform/geospatial/postgres_add_areas_from_coordinates
+    transform/geospatial/api_clean_BAG_address_NED
+    transform/geospatial/api_get_nearest_address_from_coordinate
+    transform/geospatial/api_get_area_codes_from_latlon
+    transform/geospatial/divide_bbox_amsterdam_in_quadrants
+    transform/geospatial/rd_to_wgs84
+    
 Transform Enrichment
 --------------------
 
@@ -67,7 +61,8 @@ Transform Enrichment
 .. toctree::
     :maxdepth: 1
 
-    datapunt_processing/transform/enrichment/add_knmi_data
+    transform/enrichment/add_knmi_data
+    transform/enrichment/add_public_events
 
 Load
 ----
@@ -77,10 +72,10 @@ Load
 .. toctree::
     :maxdepth: 1
 
-    datapunt_processing/load/load_file_to_objectstore
-    datapunt_processing/load/load_file_to_ckan
-    datapunt_processing/load/load_xls_into_postgres
-    datapunt_processing/load/load_wfs_into_postgres
+    load/load_file_to_objectstore
+    load/load_file_to_ckan
+    load/load_xls_into_postgres
+    load/load_wfs_into_postgres
 
 Helpers
 -------
@@ -90,4 +85,4 @@ Helpers
 .. toctree::
     :maxdepth: 1
 
-    _modules/helpers
+    _modules/datapunt_processing.helpers
