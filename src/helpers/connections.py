@@ -125,16 +125,18 @@ def objectstore_connection(config_full_path, config_name, print_config_vars=None
         An objectstore connection session.
       """
 
-    assert os.environ['OBJECTSTORE_PASSWORD']
-
     config = get_config(config_full_path)
+
+    tenant_password_name = config.get(config_name, 'TENANT_PASSWORD_NAME')
+
+    assert os.environ[tenant_password_name]
 
     if print_config_vars:
          logger.info('config variables.. :{}'.format(OBJECTSTORE))
 
     conn = Connection(authurl=config.get(config_name, 'AUTHURL'),
                       user=config.get(config_name, 'USER'),
-                      key=os.environ['OBJECTSTORE_PASSWORD'],
+                      key=os.environ[tenant_password_name],
                       tenant_name=config.get(config_name, 'TENANT_NAME'),
                       auth_version=config.get(config_name, 'VERSION'),
                       os_options={'tenant_id': config.get(config_name, 'TENANT_ID'),

@@ -100,7 +100,10 @@ def parser():
     Download files from the objectstore:
     ``download_from_objectstore config.ini objectstore aanvalsplan_schoon/crow,aanvalsplan_schoon/mora data``
 
-    Use ``export OBJECTSTORE_PASSWORD=**********`` to add the password to your environment before running this command script.
+    Choose a PASSWORD_NAME to name the objectstore password. Add this to the config.ini file:
+    ``TENANT_PASSWORD_NAME=PASSWORD_NAME``
+
+    Use ``export PASSWORD_NAME=**********`` to add the password to your environment before running this command script.
     """
 
     parser = argparse.ArgumentParser(
