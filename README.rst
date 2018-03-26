@@ -17,22 +17,17 @@ For more information about the how we use these functions in our workflow, read 
 How to use
 ==========
 
-All functions are searchable and described in full here:
 `amsterdam.github.io/data-processing <https://amsterdam.github.io/data-processing/>`_ 
 
 To use a function in python you can use::
 
-    from extract import download_from_data_amsterdam
+    from datapunt_processing.extract import download_from_catalog
 
     or 
 
-    from helpers.connections import objectstore_connection
+    from datapunt_processing.helpers.connections import objectstore_connection
 
-To use the functions directly from the command line, you can do this after installing the package via::
-    
-    pip install .
-
-You can then use functions directly in your virtual environment or docker shell like this::
+To use the functions directly from the command line in your virtual environment or docker shell you can use it like this::
     
     download_from_data_amsterdam -h 
 
@@ -42,7 +37,16 @@ To see the list of command line functions see the modules below or directly in `
 Getting Started
 ===============
 
-To get the functions up and running, also for running them from the command line, follow these 4 steps:
+
+To get the functions up and running:
+
+.. code-block:: bash
+
+    pip install datapunt-processing
+
+
+
+To develop the functions locally use these steps:
 
 1. Clone the repository:
 
@@ -91,6 +95,7 @@ To install jupyter:
 .. code-block:: bash
 
     pip install -e .\[dev\]
+
     jupyter notebook --NotebookApp.iopub_data_rate_limit=100000000
 
 How to Contribute

@@ -35,10 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="helpers package" href="../_modules/helpers.html"/>
-        <link rel="prev" title="load_xls_to_postgres" href="load_xls_into_postgres.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -91,31 +88,13 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#extract">Extract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#load">Load</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="load_file_to_objectstore.html">load_file_to_objectstore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="load_file_to_ckan.html">load_file_to_ckan</a></li>
-<li class="toctree-l3"><a class="reference internal" href="load_xls_into_postgres.html">load_xls_to_postgres</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">load_wfs_to_postgres</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-load.load_wfs_to_postgres">functions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -162,8 +141,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../modules.html">Modules</a> &raquo;</li>
         
       <li>load_wfs_to_postgres</li>
     
@@ -214,17 +191,17 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="module-load.load_wfs_to_postgres">
-<span id="functions"></span><h2>functions<a class="headerlink" href="#module-load.load_wfs_to_postgres" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-datapunt_processing.load.load_wfs_to_postgres">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.load.load_wfs_to_postgres" title="Permalink to this headline">¶</a></h2>
 <dl class="exception">
-<dt id="load.load_wfs_to_postgres.NonZeroReturnCode">
-<em class="property">exception </em><code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">NonZeroReturnCode</code><a class="headerlink" href="#load.load_wfs_to_postgres.NonZeroReturnCode" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.load.load_wfs_to_postgres.NonZeroReturnCode">
+<em class="property">exception </em><code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">NonZeroReturnCode</code><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.NonZeroReturnCode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used for subprocess error messages.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="load.load_wfs_to_postgres.load_layers">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">load_layers</code><span class="sig-paren">(</span><em>pg_str</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.load_layers" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.load.load_wfs_to_postgres.load_layers">
+<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">load_layers</code><span class="sig-paren">(</span><em>pg_str</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.load_layers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load layers into Postgres using a list of titles of each layer within the WFS service.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -239,14 +216,14 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="load.load_wfs_to_postgres.parser">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.load.load_wfs_to_postgres.parser">
+<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="load.load_wfs_to_postgres.run_command_sync">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">run_command_sync</code><span class="sig-paren">(</span><em>cmd</em>, <em>allow_fail=False</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.run_command_sync" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.load.load_wfs_to_postgres.run_command_sync">
+<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">run_command_sync</code><span class="sig-paren">(</span><em>cmd</em>, <em>allow_fail=False</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.run_command_sync" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a string in the command line.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -266,14 +243,14 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="load.load_wfs_to_postgres.scrub">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">scrub</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.scrub" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.load.load_wfs_to_postgres.scrub">
+<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">scrub</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.scrub" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hide the login credentials of Postgres in the console.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="load.load_wfs_to_postgres.wfs2psql">
-<code class="descclassname">load.load_wfs_to_postgres.</code><code class="descname">wfs2psql</code><span class="sig-paren">(</span><em>url</em>, <em>pg_str</em>, <em>layer_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#load.load_wfs_to_postgres.wfs2psql" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.load.load_wfs_to_postgres.wfs2psql">
+<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">wfs2psql</code><span class="sig-paren">(</span><em>url</em>, <em>pg_str</em>, <em>layer_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.wfs2psql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Command line ogr2ogr string to load a WFS into PostGres.</p>
 </dd></dl>
 
@@ -287,15 +264,6 @@
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../_modules/helpers.html" class="btn btn-neutral float-right" title="helpers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="load_xls_into_postgres.html" class="btn btn-neutral" title="load_xls_to_postgres" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

@@ -5,12 +5,12 @@ add_knmi_data
 ====================
 
 .. argparse::
-    :filename: ../src/transform/enrichment/add_knmi_data.py
+    :filename: ../src/datapunt_processing/transform/enrichment/add_knmi_data.py
     :func: parser
     :prog: add_knmi_data
 
 
 functions
 ---------
-.. automodule:: transform.enrichment.add_knmi_data
+.. automodule:: datapunt_processing.transform.enrichment.add_knmi_data
    :members:

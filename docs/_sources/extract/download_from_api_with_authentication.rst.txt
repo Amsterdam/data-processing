@@ -5,12 +5,12 @@ download_from_api_with_authentication
 =====================
 
 .. argparse::
-    :filename: ../src/extract/download_from_api_with_authentication.py
+    :filename: ../src/datapunt_processing/extract/download_from_api_with_authentication.py
     :func: parser
     :prog: download_from_api_with_authentication
 
 
 functions
 ---------
-.. automodule:: extract.download_from_api_with_authentication
+.. automodule:: datapunt_processing.extract.download_from_api_with_authentication
    :members:

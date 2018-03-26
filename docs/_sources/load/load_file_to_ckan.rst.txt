@@ -5,12 +5,12 @@ load_file_to_ckan
 =================
 
 .. argparse::
-    :filename: ../src/load/load_file_to_ckan.py
+    :filename: ../src/datapunt_processing/load/load_file_to_ckan.py
     :func: parser
     :prog: load_file_to_ckan
 
 
 functions
 ---------
-.. automodule:: load.load_file_to_ckan
+.. automodule:: datapunt_processing.load.load_file_to_ckan
    :members:

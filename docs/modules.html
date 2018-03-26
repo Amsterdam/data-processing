@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="index.html"/>
-        <link rel="next" title="authentication package" href="_modules/authentication.html"/>
+        <link rel="next" title="download_from_catalog" href="extract/download_from_catalog.html"/>
         <link rel="prev" title="Data-processing" href="introduction.html"/> 
 
   
@@ -97,10 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#how-to-contribute">How to Contribute</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_modules/authentication.html">authentication package</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#extract">Extract</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="extract/download_from_catalog.html">download_from_catalog</a></li>
 <li class="toctree-l3"><a class="reference internal" href="extract/download_from_objectstore.html">download_from_objectstore</a></li>
@@ -114,12 +111,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#transform-geospatial">Transform Geospatial</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="transform/geospatial/postgres_add_areas_from_coordinates.html">postgres_add_areas_from_coordinates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="transform/geospatial/api_clean_BAG_address_NED.html">api_clean_BAG_address_NED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform/geospatial/api_get_nearest_address_from_coordinate.html">api_get_nearest_address_from_latlon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform/geospatial/api_get_area_codes_from_latlon.html">api_get_areacodes_from_latlon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="transform/geospatial/divide_bbox_amsterdam_in_quadrants.html">divide_bbox_amsterdam_in_quadrants</a></li>
 <li class="toctree-l3"><a class="reference internal" href="transform/geospatial/rd_to_wgs84.html">rd_to_wgs84</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#transform-enrichment">Transform Enrichment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="transform/enrichment/add_knmi_data.html">add_knmi_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform/enrichment/add_public_events.html">add_public_events</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#load">Load</a><ul>
@@ -130,7 +130,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#helpers">Helpers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_modules/helpers.html">helpers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_modules/datapunt_processing.helpers.html">datapunt_processing.helpers package</a></li>
 </ul>
 </li>
 </ul>
@@ -203,25 +203,22 @@
             
   <div class="section" id="modules">
 <span id="id1"></span><h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
-<p>Data Processing contains 5 modules:
-1. Authentication
-2. Extract
-3. Transform
-4. Load
-5. Helpers</p>
-<div class="section" id="authentication">
-<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<p><strong>Fill in the config.ini.example with the proper user credentials for the
+<p>Data Processing contains 4 main modules:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Extract</li>
+<li>Transform</li>
+<li>Load</li>
+<li>Helpers</li>
+</ol>
+</div></blockquote>
+<div class="section" id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p><strong>Fill in the config.ini with the proper testuser credentials for the
 project.
-Rename this file to config.ini.
-Do not store passwords in this file
+Do not store passwords in this file but use ENV variables with `export ENV=****`
 Use .gitignore to ignore .ini files to prevent uploading
 them to github.</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_modules/authentication.html">authentication package</a></li>
-</ul>
-</div>
 </div>
 <div class="section" id="extract">
 <h2>Extract<a class="headerlink" href="#extract" title="Permalink to this headline">¶</a></h2>
@@ -246,6 +243,8 @@ stored, from API’s or from the data catalog.</strong></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="transform/geospatial/postgres_add_areas_from_coordinates.html">postgres_add_areas_from_coordinates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform/geospatial/api_clean_BAG_address_NED.html">api_clean_BAG_address_NED</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform/geospatial/api_get_nearest_address_from_coordinate.html">api_get_nearest_address_from_latlon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform/geospatial/api_get_area_codes_from_latlon.html">api_get_areacodes_from_latlon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform/geospatial/divide_bbox_amsterdam_in_quadrants.html">divide_bbox_amsterdam_in_quadrants</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform/geospatial/rd_to_wgs84.html">rd_to_wgs84</a></li>
 </ul>
@@ -257,6 +256,7 @@ stored, from API’s or from the data catalog.</strong></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="transform/enrichment/add_knmi_data.html">add_knmi_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform/enrichment/add_public_events.html">add_public_events</a></li>
 </ul>
 </div>
 </div>
@@ -277,7 +277,7 @@ stored, from API’s or from the data catalog.</strong></p>
 <p><strong>Generic helper functions for most commonly used data operations.</strong></p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_modules/helpers.html">helpers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_modules/datapunt_processing.helpers.html">datapunt_processing.helpers package</a></li>
 </ul>
 </div>
 </div>
@@ -293,7 +293,7 @@ stored, from API’s or from the data catalog.</strong></p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="_modules/authentication.html" class="btn btn-neutral float-right" title="authentication package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="extract/download_from_catalog.html" class="btn btn-neutral float-right" title="download_from_catalog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="introduction.html" class="btn btn-neutral" title="Data-processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -35,10 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="download_from_api_kvk" href="download_from_api_kvk.html"/>
-        <link rel="prev" title="download_from_api_brk" href="download_from_api_brk.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -91,34 +88,13 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#authentication">Authentication</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="download_from_catalog.html">download_from_catalog</a></li>
-<li class="toctree-l3"><a class="reference internal" href="download_from_objectstore.html">download_from_objectstore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="download_from_wfs.html">download_from_wfs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="download_from_api_with_authentication.html">download_from_api_with_authentication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="download_from_api_brk.html">download_from_api_brk</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_api_tellus</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-extract.download_from_api_tellus">functions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -165,8 +141,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../modules.html">Modules</a> &raquo;</li>
         
       <li>download_from_api_tellus</li>
     
@@ -221,17 +195,17 @@ Command line example:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-extract.download_from_api_tellus">
-<span id="functions"></span><h2>functions<a class="headerlink" href="#module-extract.download_from_api_tellus" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-datapunt_processing.extract.download_from_api_tellus">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.extract.download_from_api_tellus" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="extract.download_from_api_tellus.conversionListCvalues">
-<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">conversionListCvalues</code><span class="sig-paren">(</span><em>metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.conversionListCvalues" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.download_from_api_tellus.conversionListCvalues">
+<code class="descclassname">datapunt_processing.extract.download_from_api_tellus.</code><code class="descname">conversionListCvalues</code><span class="sig-paren">(</span><em>metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_tellus.conversionListCvalues" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a conversion dictionairy for values in tellus api which consists of 60 speed +length values named: c1 to c60</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_api_tellus.getJsonData">
-<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.getJsonData" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.download_from_api_tellus.getJsonData">
+<code class="descclassname">datapunt_processing.extract.download_from_api_tellus.</code><code class="descname">getJsonData</code><span class="sig-paren">(</span><em>url</em>, <em>accessToken</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_tellus.getJsonData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a json response from a url with accesstoken.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -246,8 +220,8 @@ Command line example:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_api_tellus.get_data">
-<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url_api</em>, <em>endpoint</em>, <em>metadata</em>, <em>accessToken</em>, <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.get_data" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.download_from_api_tellus.get_data">
+<code class="descclassname">datapunt_processing.extract.download_from_api_tellus.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url_api</em>, <em>endpoint</em>, <em>metadata</em>, <em>accessToken</em>, <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_tellus.get_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get and flatten all the data from the api.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -277,14 +251,14 @@ Command line example:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_api_tellus.parser">
-<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.download_from_api_tellus.parser">
+<code class="descclassname">datapunt_processing.extract.download_from_api_tellus.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_tellus.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="extract.download_from_api_tellus.reformatData">
-<code class="descclassname">extract.download_from_api_tellus.</code><code class="descname">reformatData</code><span class="sig-paren">(</span><em>item</em>, <em>tellus_metadata</em>, <em>cvalues</em><span class="sig-paren">)</span><a class="headerlink" href="#extract.download_from_api_tellus.reformatData" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.download_from_api_tellus.reformatData">
+<code class="descclassname">datapunt_processing.extract.download_from_api_tellus.</code><code class="descname">reformatData</code><span class="sig-paren">(</span><em>item</em>, <em>tellus_metadata</em>, <em>cvalues</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_tellus.reformatData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reformat the data from a matrix to a flattend dict with label and tellus names.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -309,15 +283,6 @@ Command line example:</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="download_from_api_kvk.html" class="btn btn-neutral float-right" title="download_from_api_kvk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="download_from_api_brk.html" class="btn btn-neutral" title="download_from_api_brk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

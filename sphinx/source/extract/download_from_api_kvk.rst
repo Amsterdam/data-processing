@@ -5,12 +5,12 @@ download_from_api_kvk
 =====================
 
 .. argparse::
-    :filename: ../src/extract/download_from_api_kvk.py
+    :filename: ../src/datapunt_processing/extract/download_from_api_kvk.py
     :func: parser
     :prog: download_from_api_kvk
 
 
 functions
 ---------
-.. automodule:: extract.download_from_api_kvk
+.. automodule:: datapunt_processing.extract.download_from_api_kvk
    :members:

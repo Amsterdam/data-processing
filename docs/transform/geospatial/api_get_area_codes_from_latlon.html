@@ -163,21 +163,38 @@
             
   <div class="section" id="api-get-areacodes-from-latlon">
 <h1>api_get_areacodes_from_latlon<a class="headerlink" href="#api-get-areacodes-from-latlon" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-transform.geospatial.api_get_areacodes_from_latlon">
-<span id="functions"></span><h2>functions<a class="headerlink" href="#module-transform.geospatial.api_get_areacodes_from_latlon" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes">
-<code class="descclassname">transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getAreaCodes</code><span class="sig-paren">(</span><em>item</em>, <em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getAreaCodes</code><span class="sig-paren">(</span><em>item</em>, <em>lat</em>, <em>lon</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodes" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Get specific information like area codes based radius to nearest address based on lat/lon value</dt>
 <dd>ex: <a class="reference external" href="https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&amp;lat=52.3731750&amp;lon=4.8924655&amp;radius=50">https://api.data.amsterdam.nl/geosearch/search/?item=verblijfsobject&amp;lat=52.3731750&amp;lon=4.8924655&amp;radius=50</a></dd>
 </dl>
-<p>It currently is coded to work only to get buurten</p>
+<p>It currently is coded to work to get:
+- “buurt”
+- “buurtcombinatie”
+- “stadsdeel”</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.geospatial.api_get_areacodes_from_latlon.getJson">
-<code class="descclassname">transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getJson</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.geospatial.api_get_areacodes_from_latlon.getJson" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodesforDataFrame">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getAreaCodesforDataFrame</code><span class="sig-paren">(</span><em>df</em>, <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getAreaCodesforDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get specific information like area codes based radius to nearest address based on lat/lon value for each row in pandas DF. 
+Args:</p>
+<blockquote>
+<div>df with column “lon” and “lat”
+item, which is “buurt”, “buurtcombinatie” or “stadsdeel”</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>df with two new columns that describe name and code of the item “</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getJson">
+<code class="descclassname">datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.</code><code class="descname">getJson</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.api_get_areacodes_from_latlon.getJson" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a json from an url</p>
 <dl class="docutils">
 <dt>Args:</dt>

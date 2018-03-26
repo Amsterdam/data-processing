@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/>
         <link rel="up" title="Modules" href="../../modules.html"/>
-        <link rel="next" title="load_file_to_objectstore" href="../../load/load_file_to_objectstore.html"/>
+        <link rel="next" title="add_public_events" href="add_public_events.html"/>
         <link rel="prev" title="rd_to_wgs84" href="../geospatial/rd_to_wgs84.html"/> 
 
   
@@ -98,15 +98,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-contribute">How to Contribute</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules.html#basic-usage">Basic usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../modules.html#extract">Extract</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../modules.html#transform-geospatial">Transform Geospatial</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../modules.html#transform-enrichment">Transform Enrichment</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">add_knmi_data</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-transform.enrichment.add_knmi_data">functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.transform.enrichment.add_knmi_data">functions</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="add_public_events.html">add_public_events</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../modules.html#load">Load</a></li>
@@ -214,11 +215,11 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="module-transform.enrichment.add_knmi_data">
-<span id="functions"></span><h2>functions<a class="headerlink" href="#module-transform.enrichment.add_knmi_data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-datapunt_processing.transform.enrichment.add_knmi_data">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.transform.enrichment.add_knmi_data" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="transform.enrichment.add_knmi_data.chunk_splitter">
-<code class="descclassname">transform.enrichment.add_knmi_data.</code><code class="descname">chunk_splitter</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.enrichment.add_knmi_data.chunk_splitter" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.chunk_splitter">
+<code class="descclassname">datapunt_processing.transform.enrichment.add_knmi_data.</code><code class="descname">chunk_splitter</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.chunk_splitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generator to read a raw file and yield chunks that are separated by ‘empty lines’: “# ”
 Args:</p>
 <blockquote>
@@ -226,8 +227,8 @@ Args:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.enrichment.add_knmi_data.get_day_data_dataframe">
-<code class="descclassname">transform.enrichment.add_knmi_data.</code><code class="descname">get_day_data_dataframe</code><span class="sig-paren">(</span><em>stations</em>, <em>start=None</em>, <em>end=None</em>, <em>inseason=False</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.enrichment.add_knmi_data.get_day_data_dataframe" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.get_day_data_dataframe">
+<code class="descclassname">datapunt_processing.transform.enrichment.add_knmi_data.</code><code class="descname">get_day_data_dataframe</code><span class="sig-paren">(</span><em>stations</em>, <em>start=None</em>, <em>end=None</em>, <em>inseason=False</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.get_day_data_dataframe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get daily weather data from KNMI as a Pandas DataFrame
 args:</p>
 <blockquote>
@@ -254,8 +255,8 @@ disclaimer, stations, legend, data</dd>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.enrichment.add_knmi_data.get_day_data_raw">
-<code class="descclassname">transform.enrichment.add_knmi_data.</code><code class="descname">get_day_data_raw</code><span class="sig-paren">(</span><em>stations</em>, <em>start=None</em>, <em>end=None</em>, <em>inseason=False</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.enrichment.add_knmi_data.get_day_data_raw" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.get_day_data_raw">
+<code class="descclassname">datapunt_processing.transform.enrichment.add_knmi_data.</code><code class="descname">get_day_data_raw</code><span class="sig-paren">(</span><em>stations</em>, <em>start=None</em>, <em>end=None</em>, <em>inseason=False</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.get_day_data_raw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get daily weather data from KNMI
 args:</p>
 <blockquote>
@@ -289,8 +290,8 @@ disclaimer, stations, legend, data</dd>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.enrichment.add_knmi_data.parse_day_data">
-<code class="descclassname">transform.enrichment.add_knmi_data.</code><code class="descname">parse_day_data</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="headerlink" href="#transform.enrichment.add_knmi_data.parse_day_data" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.parse_day_data">
+<code class="descclassname">datapunt_processing.transform.enrichment.add_knmi_data.</code><code class="descname">parse_day_data</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.parse_day_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse the raw csv response of KNMI into relevant pieces.
 Args:</p>
 <blockquote>
@@ -299,8 +300,8 @@ Args:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="transform.enrichment.add_knmi_data.parser">
-<code class="descclassname">transform.enrichment.add_knmi_data.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transform.enrichment.add_knmi_data.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.parser">
+<code class="descclassname">datapunt_processing.transform.enrichment.add_knmi_data.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
 </dd></dl>
 
@@ -317,7 +318,7 @@ Args:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../load/load_file_to_objectstore.html" class="btn btn-neutral float-right" title="load_file_to_objectstore" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="add_public_events.html" class="btn btn-neutral float-right" title="add_public_events" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../geospatial/rd_to_wgs84.html" class="btn btn-neutral" title="rd_to_wgs84" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -3,28 +3,22 @@
 Modules
 =======
 
-Data Processing contains 5 modules: 
-1. Authentication
-2. Extract
-3. Transform
-4. Load 
-5. Helpers
+Data Processing contains 4 main modules:
+
+    1. Extract
+    2. Transform
+    3. Load 
+    4. Helpers
 
 
-Authentication
---------------
+Basic usage
+-----------
 
-**Fill in the config.ini.example with the proper user credentials for the
-project.
-Rename this file to config.ini. 
-Do not store passwords in this file
+**Fill in the config.ini with the proper testuser credentials for the
+project. 
+Do not store passwords in this file but use ENV variables with `export ENV=****`
 Use .gitignore to ignore .ini files to prevent uploading
 them to github.**
-
-.. toctree::
-    :maxdepth: 1
-
-    _modules/authentication
 
 Extract
 -------
@@ -54,11 +48,11 @@ Transform Geospatial
 
     transform/geospatial/postgres_add_areas_from_coordinates
     transform/geospatial/api_clean_BAG_address_NED
-    transform/geospatial/api_get_nearest_address_from_latlon
-    transform/geospatial/api_get_areacodes_from_latlon
+    transform/geospatial/api_get_nearest_address_from_coordinate
+    transform/geospatial/api_get_area_codes_from_latlon
     transform/geospatial/divide_bbox_amsterdam_in_quadrants
     transform/geospatial/rd_to_wgs84
-
+    
 Transform Enrichment
 --------------------
 
@@ -68,6 +62,7 @@ Transform Enrichment
     :maxdepth: 1
 
     transform/enrichment/add_knmi_data
+    transform/enrichment/add_public_events
 
 Load
 ----
@@ -90,4 +85,4 @@ Helpers
 .. toctree::
     :maxdepth: 1
 
-    _modules/helpers
+    _modules/datapunt_processing.helpers

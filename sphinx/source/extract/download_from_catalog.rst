@@ -5,12 +5,12 @@ download_from_catalog
 =====================
 
 .. argparse::
-    :filename: ../src/extract/download_from_catalog.py
+    :filename: ../src/datapunt_processing/extract/download_from_catalog.py
     :func: parser
     :prog: download_from_data_amsterdam_catalog
 
 
 functions
 ---------
-.. automodule:: extract.download_from_catalog
+.. automodule:: datapunt_processing.extract.download_from_catalog
    :members:
