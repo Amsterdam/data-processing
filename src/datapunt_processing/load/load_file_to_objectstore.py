@@ -106,6 +106,8 @@ def parser():
     **Write a file to a container on the objectstore.**
 
     Use ENV:
+    Choose a PASSWORD_NAME to name the objectstore password. Add this to the config.ini file:
+    ``TENANT_PASSWORD_NAME=PASSWORD_NAME``
         ``export OBJECTSTORE_PASSWORD=**********`` to add the password to your environment before running this command script.
 
     Example commandline code:

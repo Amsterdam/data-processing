@@ -2,8 +2,12 @@
 import os
 import argparse
 import logging
+
+from pathlib import Path
+
 from datapunt_processing.helpers.connections import objectstore_connection
 from datapunt_processing.helpers.files import create_dir_if_not_exists
+
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)-8s %(message)s',
@@ -41,6 +45,11 @@ def get_full_container_list(connection, container, **kwargs):
     return seed
 
 
+def file_exists(target):
+    target = Path(target)
+    return target.is_file()
+
+
 def download_container(connection, container, prefix, output_folder):
     """
     Download file from objectstore.
@@ -55,9 +64,26 @@ def download_container(connection, container, prefix, output_folder):
     """
     target_dir = os.path.join(output_folder, prefix)
     create_dir_if_not_exists(target_dir)
+
     content = get_full_container_list(connection, container['name'], prefix=prefix)
-    # print(content)
+
     for obj in content:
+        # check if object type is not application or dir, or a "part" file
+        if obj['content_type'] == 'application/directory':
+            logger.info('skipping dir')
+            continue
+
+        if 'part' in obj['name']:
+            logger.info('skipping part')
+            continue
+
+        # target filename of object
+        target_filename = os.path.join(target_dir, obj['name'])
+
+        if file_exists(target_filename):
+            logger.info('skipping %s, file already exists', target_filename)
+            continue
+
         if obj['content_type'] != 'application/directory':
             target_filename = os.path.join(output_folder, obj['name'])
             with open(target_filename, 'wb') as new_file:
@@ -78,7 +104,7 @@ def download_containers(connection, prefixes, output_folder):
     Result:
         Loops through download_container function for each prefix (=folder)
     """
-    logger.debug('Checking local data directory exists and is empty')
+    logger.info('Checking local data directory exists and is empty')
     if not os.path.exists(output_folder):
         raise Exception('Local data directory does not exist.')
 
@@ -87,8 +113,7 @@ def download_containers(connection, prefixes, output_folder):
 
     logger.info('Downloading containers ...')
     prefixes = prefixes.split(',')
-    print(containers)
-    print(prefixes)
+
     for container in containers:
         for prefix in prefixes:
             download_container(connection, container, prefix, output_folder)
@@ -100,7 +125,10 @@ def parser():
     Download files from the objectstore:
     ``download_from_objectstore config.ini objectstore aanvalsplan_schoon/crow,aanvalsplan_schoon/mora data``
 
-    Use ``export OBJECTSTORE_PASSWORD=**********`` to add the password to your environment before running this command script.
+    Choose a PASSWORD_NAME to name the objectstore password. Add this to the config.ini file:
+    ``TENANT_PASSWORD_NAME=PASSWORD_NAME``
+
+    Use ``export PASSWORD_NAME=**********`` to add the password to your environment before running this command script.
     """
 
     parser = argparse.ArgumentParser(
