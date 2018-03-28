@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import requests
+import time
 import argparse
 from datetime import datetime
 import xml.etree.ElementTree as ET
@@ -14,21 +15,22 @@ def get_layers_from_wfs(url_wfs):
         Get all layer names in WFS service, print and return them in a list.
     """
     layer_names = []
-    parameters = {"REQUEST": "GetCapabilities",
-                  "SERVICE": "WFS"
-                  }
+    parameters = {
+        "REQUEST": "GetCapabilities",
+        "SERVICE": "WFS"
+    }
+
     getcapabilities = requests.get(url_wfs, params=parameters)
-    # print(getcapabilities.text)
     root = ET.fromstring(getcapabilities.text)
 
     for neighbor in root.iter('{http://www.opengis.net/wfs/2.0}FeatureType'):
-        # print(neighbor.tag, neighbor.attrib)
-        logger.info("layername: " + neighbor[1].text)  # neighbor[0]==name, neighbor[1]==title
+        # neighbor[0]==name, neighbor[1]==title
+        logger.info("layername: " + neighbor[1].text)
         layer_names.append(neighbor[1].text)
     return layer_names
 
 
-def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat):
+def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat, retry_count=3):
     """
     Get layer from a wfs service.
     Args:
@@ -44,25 +46,42 @@ def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat):
 
             28992
 
-        4. outputformat: leave empty to return standard GML, else define json, geojson, txt, shapezip::
+        4. outputformat: leave empty to return standard GML,
+           else define json, geojson, txt, shapezip::
 
             geojson
 
     Returns:
         The layer in the specified output format.
-    """
-    parameters = {"REQUEST": "GetFeature",
-                  "TYPENAME": layer_name,
-                  "SERVICE": "WFS",
-                  "VERSION": "2.0.0",
-                  "SRSNAME": "EPSG:{}".format(srs),
-                  "OUTPUTFORMAT": outputformat
-                  }
-    logger.info("Requesting data from {}, layer: {}".format(url_wfs, layer_name))
-    response = requests.get(url_wfs, params=parameters)
+    """  # noqa
+
+    parameters = {
+        "REQUEST": "GetFeature",
+        "TYPENAME": layer_name,
+        "SERVICE": "WFS",
+        "VERSION": "2.0.0",
+        "SRSNAME": "EPSG:{}".format(srs),
+        "OUTPUTFORMAT": outputformat
+    }
+
+    logger.info("Requesting data from {}, layer: {}".format(
+        url_wfs, layer_name))
+
+    retry = 0
+
+    # webrequests sometimes fail..
+    while retry < retry_count:
+        response = requests.get(url_wfs, params=parameters)
+        if response.status_code != 200:
+            time.sleep(3)
+            # try again..
+            retry += 1
+        else:
+            break
+
     if outputformat in ('geojson, json'):
         geojson = response.json()
-        logger.info("{} features returned.".format(str(len(geojson["features"]))))
+        logger.info("%s features returned.", len(geojson["features"]))
         return geojson
     return response
 
@@ -76,7 +95,8 @@ def get_multiple_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
 
             https://map.data.amsterdam.nl/maps/gebieden
 
-        2. layer_names: single or multiple titles of the layers, separated by a comma without spaces::
+        2. layer_names: single or multiple titles of the layers, separated
+           by a comma without spaces::
 
             stadsdeel,buurtcombinatie,gebiedsgerichtwerken,buurt
 
@@ -98,40 +118,50 @@ def get_multiple_geojson_from_wfs(url_wfs, layer_names, srs, output_folder):
 
 
 def parser():
-    """Parser function to run arguments from the command line and to add description to sphinx."""
+    """Parser function to run arguments from the command line
+    and to add description to sphinx."""
+
     parser = argparse.ArgumentParser(description="""
     Get multiple layers as a geojson file from a WFS service.
     command line example::
 
       download_from_wfs https://map.data.amsterdam.nl/maps/gebieden stadsdeel,buurtcombinatie output_folder
 
-    """)
-    parser.add_argument('url_wfs',
-                        type=str,
-                        help="WFS url, for example http://map.data.amsterdam.nl/maps/gebieden")
-    parser.add_argument('layer_names',
-                        type=str,
-                        nargs="+",
-                        help="Layers to export, separated by a , for example: stadsdeel,buurtcombinatie")
-    parser.add_argument("srs",
-                        type=str,
-                        default="28992",
-                        choices=["28992", "4326"],
-                        help="choose srs (default: %(default)s)")
-    parser.add_argument("output_folder",
-                        type=str,
-                        help="Set the output location path, for example output or projectdir/data")
+    """)  # noqa
+
+    parser.add_argument(
+        'url_wfs',
+        type=str,
+        help="WFS url, for example http://map.data.amsterdam.nl/maps/gebieden")
+    parser.add_argument(
+        'layer_names',
+        type=str,
+        nargs="+",
+        help="Layers to export, separated by a , for example: stadsdeel,buurtcombinatie")  # noqa
+    parser.add_argument(
+        "srs",
+        type=str,
+        default="28992",
+        choices=["28992", "4326"],
+        help="choose srs (default: %(default)s)")
+    parser.add_argument(
+        "output_folder",
+        type=str,
+        help="Set the output location path, for example output or projectdir/data")  # noqa
+
     return parser
 
 
 def main():
     args = parser().parse_args()
-    print(args)
+    logging.info('Using %s', args)
     get_layers_from_wfs(args.url_wfs)
-    get_multiple_geojson_from_wfs(args.url_wfs,
-                                  args.layer_names[0],
-                                  args.srs,
-                                  args.output_folder)
+    get_multiple_geojson_from_wfs(
+        args.url_wfs,
+        args.layer_names[0],
+        args.srs,
+        args.output_folder
+    )
 
 
 if __name__ == '__main__':
