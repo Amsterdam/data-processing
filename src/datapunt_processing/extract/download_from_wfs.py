@@ -72,6 +72,10 @@ def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat, retry_count=3):
     # webrequests sometimes fail..
     while retry < retry_count:
         response = requests.get(url_wfs, params=parameters)
+        logger.debug(response)
+        if response.status_code == 400:
+            logger.info("Incorrect layer name: {}, please correct the layer name".format(layer_name))
+            continue
         if response.status_code != 200:
             time.sleep(3)
             # try again..
