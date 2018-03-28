@@ -77,6 +77,7 @@ def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat, retry_count=3):
             # try again..
             retry += 1
         else:
+            # status 200. succes.
             break
 
     if outputformat in ('geojson, json'):
