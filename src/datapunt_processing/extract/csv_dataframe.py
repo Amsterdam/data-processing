@@ -14,7 +14,7 @@ def read_crow_file(file, datecol):
     parses the CROW afvaldata
     Args:
         file (xls/xlsx): containing at least a date column
-        datecol: informat %Y-m-%d %H:%M:%S
+        datecol: 'datum' format %Y-m-%d %H:%M:%S
     Returns:
         * pd.DataFrame: cleaned data frame with datum and time column added
     """
@@ -33,12 +33,20 @@ def read_crow_file(file, datecol):
     #sort on datum (ascending)
     df = df.sort_values(by = 'datum').reset_index(drop=True)
     
-    print('Resulting Data Shape: {} cols, {} rows.'.format(df.shape[0], df.shape[1]))
+    print('Resulting Data Shape: {} cols, {} ros.'.format(df.shape[0], df.shape[1]))
     
     return df
 
 
 def read_mora_file(file, datecol):
+    """
+    parses the MORA csv and transforms into clean Pandas Dataframe
+    Args:
+        file (csv/xls/xlsx): containing at least a date column
+        datecol: 'aa_adwh_datum_melding' format %Y-m-%d %H:%M:%S
+    Returns:
+        pd.DataFrame: cleaned data frame with datum and time column added
+    """
     
     df = (pd.read_csv(file, sep=';')
           .pipe(strip_cols)
