@@ -54,7 +54,9 @@ def read_mora_file(file, datecol):
            datum = lambda x: pd.to_datetime(x[datecol], 
                    format = '%d-%m-%Y %H:%M:%S').dt.strftime('%Y-%m-%d'),
            tijd = lambda x: pd.to_datetime(x[datecol], 
-                   format= '%d-%m-%Y %H:%M:%S').dt.strftime('%H:%M:%S'),
+                   format = '%d-%m-%Y %H:%M:%S').dt.strftime('%H:%M:%S'),
+           jaar = lambda x: pd.to_datetime(x[datecol],
+                   format = '%d-%m-%Y %H:%M:%S').dt.strftime('%Y')
                   )
           .rename(columns={'aa_adwh_bag_buurt_code': 'bag_buurt_code',
                            'aa_adwh_datum_melding': 'datum_melding',
