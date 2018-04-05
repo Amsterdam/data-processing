@@ -52,6 +52,9 @@ def get_event_json():
 
     for col in ['startdate', 'enddate']:
         event_df[col] = pd.to_datetime(event_df[col], format = '%d-%m-%Y')
+    
+    for col in ['lon', 'lat']:
+        event_df[col] = event_df[col].str.replace(',', '.').astype('float64')
 
     # add column event duration in days
     event_df['no_days'] = (event_df.enddate - event_df.startdate).astype('timedelta64[D]') + 1
