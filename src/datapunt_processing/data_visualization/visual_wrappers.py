@@ -5,6 +5,7 @@ import folium
 from folium import plugins
 from bokeh.models import BoxZoomTool
 from bokeh.plotting import figure, output_notebook, show
+from bokeh.tile_providers import STAMEN_TONER, STAMEN_TERRAIN, STAMEN_TONER_BACKGROUND
 
 output_notebook()
 
