@@ -1,5 +1,8 @@
-
-
+#####################################################################
+#geo_spatial transformation functions
+#####################################################################
+import numpy as np
+import pandas as pd
 
 def lonlat_to_meters(df, lon_column, lat_column):
     """
