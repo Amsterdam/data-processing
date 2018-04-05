@@ -1,12 +1,14 @@
 from collections import namedtuple
 
+# knmi stations closest to Amsterdam
 Station = namedtuple('Station', ['number', 'longitude', 'latitude', 'altitude', 'name'])
 
 stations = {
     240: Station(number=240, longitude=4.79, latitude=52.318, altitude=-3.3, name='SCHIPHOL'),
-    616: Station(number=616, longitude=4.907, latitude=52.367, altitude=999.9, name='AMSTERDAM (COENHAVEN)'),
+    616: Station(number=616, longitude=4.907, latitude=52.367, altitude=999.9, name='AMSTERDAM (COENHAVEN)')
 }
 
+# knmi weather variables.
 variables = {'FXXH': 'Hourly division in which FXX was measured', 'PXH': 'Hourly division in which PX was measured',
              'TG': 'Daily mean temperature in (0.1 degrees Celsius)',
              'RHXH': 'Hourly division in which RHX was measured',

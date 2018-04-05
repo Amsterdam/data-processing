@@ -8,6 +8,15 @@ import pandas as pd
 from io import StringIO
 from datapunt_processing.transform.enrichment.knmi_metadata import stations # metadata
 import argparse
+from collections import namedtuple
+
+Station = namedtuple('Station', ['number', 'longitude', 'latitude', 'altitude', 'name'])
+
+stations = {
+    240: Station(number=240, longitude=4.79, latitude=52.318, altitude=-3.3, name='SCHIPHOL'),
+    616: Station(number=616, longitude=4.907, latitude=52.367, altitude=999.9, name='AMSTERDAM (COENHAVEN)')
+           }
+
 
 def parse_day_data(raw):
     """
@@ -198,7 +207,7 @@ specify the weather stations you want to return. for simplicity reason we only i
 """)
     parser.add_argument('start', help='Specify the start date')
     parser.add_argument('end', help='Specify the end date')
-    parser.add_argument('variables', help='weather variables you want to see returned. Default is fetch all. Following categories are available: WIND = DDVEC:FG:FHX:FHX:FX wind, TEMP = TG:TN:TX:T10N temperatuur, SUNR = SQ:SP:Q Zonneschijnduur en globale straling, PRCP = DR:RH:EV24 neerslag en potentiële verdamping, PRES = PG:PGX:PGN druk op zeeniveau, VICL = VVN:VVX:NG zicht en bewolking, MSTR = UG:UX:UN luchtvochtigheid')                                 
+    parser.add_argument('variables', help='weather variables you want to see returned. Default is fetch all. Available categories: WIND = DDVEC:FG:FHX:FHX:FX wind, TEMP = TG:TN:TX:T10N temperatuur, SUNR = SQ:SP:Q Zonneschijnduur en globale straling, PRCP = DR:RH:EV24 neerslag en potentiële verdamping, PRES = PG:PGX:PGN druk op zeeniveau, VICL = VVN:VVX:NG zicht en bewolking, MSTR = UG:UX:UN luchtvochtigheid')                                 
                                      
     return parser
 
