@@ -185,7 +185,7 @@ def parser():
 
 def main():
     args = parser().parse_args()
-    logging.info('Using %s', args)
+    logger.info('Using %s', args)
     get_layers_from_wfs(args.url_wfs)
     get_multiple_geojson_from_wfs(
         args.url_wfs,
