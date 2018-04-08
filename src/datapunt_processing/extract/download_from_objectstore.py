@@ -66,7 +66,7 @@ def download_container(connection, container, prefix, output_folder):
             logger.info('Written file {}'.format(target_filename))
 
 
-def download_containers(connection, prefixes, output_folder):
+def download_containers(config_path, config_name, prefixes, output_folder):
     """
     Download multiple files from the objectstore.
 
@@ -78,6 +78,9 @@ def download_containers(connection, prefixes, output_folder):
     Result:
         Loops through download_container function for each prefix (=folder)
     """
+    logger.debug('Setting up objectstore connection')
+    connection = objectstore_connection(config_path, config_name)
+
     logger.debug('Checking local data directory exists and is empty')
     if not os.path.exists(output_folder):
         raise Exception('Local data directory does not exist.')
@@ -123,8 +126,7 @@ def parser():
 def main():
     # Return all arguments in a list
     args = parser().parse_args()
-    connection = objectstore_connection(args.config_path, args.config_name)
-    download_containers(connection, args.prefixes, args.output_folder)
+    download_containers(args.config_path, args,config_name, args.prefixes, args.output_folder)
 
 
 if __name__ == "__main__":
