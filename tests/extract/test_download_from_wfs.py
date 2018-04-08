@@ -20,3 +20,11 @@ def test_get_layer_from_wfs():
     json = get_layer_from_wfs(url, layer_name, '4326','geojson')
     print(type(json))
     assert(isinstance(json, dict))
+
+
+def test_retry_webserver():
+    url = "http://map.data.amsterdam.nl/maps/gebieden"
+    layer_name = "fake"
+    json = get_layer_from_wfs(url, layer_name, '4326','geojson')
+    print(json)
+    #assert(isinstance(json, dict))

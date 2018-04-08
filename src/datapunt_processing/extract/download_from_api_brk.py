@@ -7,11 +7,6 @@ from datapunt_processing.helpers.getaccesstoken import GetAccessToken
 from datapunt_processing.helpers.files import save_file
 from datapunt_processing import logger
 
-# If you need generic helper functions, put them in our helpers folder
-# or reuse the current ones by using this import:
-# from helpers.files import create_dir_if_not_exists, unzip, save_file
-
-
 # Setup logging service
 logger = logger()
 
@@ -22,15 +17,18 @@ def getJsonData(url, accessToken):
 
     Args:
         1. url: api endpoint
-        2. accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype='employee_plus', scopes='BRK/RS,BRK/RSN/,BRK/RO')
+        2. accessToken: acces token generated using the auth helper:
+           GetAccessToken().getAccessToken(usertype='employee_plus',
+                                           scopes='BRK/RS,BRK/RSN/,BRK/RO')
 
     Returns:
         parsed json or error message
-    """
+    """  # noqa
     response = requests.get(url, headers=accessToken)  # Get first page for count
     if response.status_code != 200:
         if response.status_code == 404 or response.status_code == 401:
-            logger.info('Error status: {} {}'.format(str(response.status_code), "trying with trailing / ..."))
+            logger.info('Error status: {} {}'.format(str(response.status_code),
+                                                     "trying with trailing / ..."))
             response = requests.get(url + '/', headers=accessToken)
         else:
             return logger.info('Error status: ' + str(response.status_code))
@@ -40,9 +38,10 @@ def getJsonData(url, accessToken):
 
 
 def parser():
-    """Parser function to run arguments from commandline and to add description to sphinx docs."""
-    description = """
-    Download from the BRK API from api.data.amsterdam.nl using the OAuth2 datapunt Authorization service with employee_plus credentials.
+    """Parser function to run arguments from commandline and to add description to sphinx docs."""  # noqa
+    parser = argparse.ArgumentParser(description="""
+    Download from the BRK API from api.data.amsterdam.nl using the
+    OAuth2 datapunt Authorization service with employee_plus credentials.
 
     Use ENV::
 
@@ -53,22 +52,27 @@ def parser():
 
         download_from_api_brk https://api.data.amsterdam.nl/brk/object/ BRK/RS,BRK/RSN,BRK/RO data object.json
 
-    """
-
-    parser = argparse.ArgumentParser(
-                        description=description)
-    parser.add_argument('url',
-                        type=str,
-                        help='add full endpoint, for example https://api.data.amsterdam.nl/brk/object/')
-    parser.add_argument('scopes',
-                        type=str,
-                        help='Choose scopes, the names can be found here: https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py. For example: TLLS/R or multiple: BRK/RS,BRK/RSN,BRK/RO')
-    parser.add_argument('output_folder',
-                        type=str,
-                        help='add outputfolder location, for example my_project_folder/data or . if you want to save in the current dir')
-    parser.add_argument('filename',
-                        type=str,
-                        help='add filename for example brk.json')
+    """)
+    parser.add_argument(
+        'url',
+        type=str,
+        help='add full endpoint, for example:\
+              https://api.data.amsterdam.nl/brk/object/')
+    parser.add_argument(
+        'scopes',
+        type=str,
+        help='Choose scopes, the names can be found here:\
+              https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py.\
+              For example: TLLS/R or multiple: BRK/RS,BRK/RSN,BRK/RO')
+    parser.add_argument(
+        'output_folder',
+        type=str,
+        help='add outputfolder location, for example:\
+              my_project_folder/data')
+    parser.add_argument(
+        'filename',
+        type=str,
+        help='add filename for example brk.json')
     return parser
 
 

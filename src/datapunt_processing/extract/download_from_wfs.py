@@ -21,6 +21,7 @@ def get_layers_from_wfs(url_wfs):
     }
 
     getcapabilities = requests.get(url_wfs, params=parameters)
+    # print(getcapabilities.text)
     root = ET.fromstring(getcapabilities.text)
 
     for neighbor in root.iter('{http://www.opengis.net/wfs/2.0}FeatureType'):
@@ -80,9 +81,38 @@ def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat, retry_count=3):
             # status 200. succes.
             break
 
+    parameters = {
+        "REQUEST": "GetFeature",
+        "TYPENAME": layer_name,
+        "SERVICE": "WFS",
+        "VERSION": "2.0.0",
+        "SRSNAME": "EPSG:{}".format(srs),
+        "OUTPUTFORMAT": outputformat
+    }
+
+    logger.info("Requesting data from {}, layer: {}".format(
+        url_wfs, layer_name))
+
+    retry = 0
+
+    # webrequests sometimes fail..
+    while retry < retry_count:
+        response = requests.get(url_wfs, params=parameters)
+        logger.debug(response)
+        if response.status_code == 400:
+            logger.info("Incorrect layer name: {}, please correct the layer name".format(layer_name))
+            continue
+        if response.status_code != 200:
+            time.sleep(3)
+            # try again..
+            retry += 1
+        else:
+            # status 200. succes.
+            break
+
     if outputformat in ('geojson, json'):
         geojson = response.json()
-        logger.info("%s features returned.", len(geojson["features"]))
+        logger.info("{} features returned.".format(str(len(geojson["features"]))))
         return geojson
     return response
 

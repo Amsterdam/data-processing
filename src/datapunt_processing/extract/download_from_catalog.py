@@ -82,17 +82,29 @@ def download_file(file_location, target):
 
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx."""
-    parser = argparse.ArgumentParser(description="""
-    Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
-    To test run this command line:
-    ``download_from_catalog https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c data``
-    """)
-    parser.add_argument('url', help="""
-    Insert full url from main result page of dataset.
-    For example:
-    ``https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&dtfs=T&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945``
-    """)
-    parser.add_argument('output_folder', help='Specify the desired output folder path, for example: app/data')
+    example_url = 'https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c'
+    parser = argparse.ArgumentParser(
+        description="""
+        Get data and metadata from data.amsterdam.nl,
+        unzip if needed and put the file in a local directory.
+        To test run this command line:
+        ``download_from_catalog {} data``
+        """
+        .format(example_url))
+
+    parser.add_argument(
+        'url',
+        type=str,
+        default=example_url,
+        help="""
+        Insert full url from main result page of dataset, for example:
+        %(default)s
+        """)
+    parser.add_argument(
+        'output_folder',
+        type=str,
+        help="""
+        Specify the desired output folder path, for example: app/data""")
     #parser.add_argument('--f','filename_as_folder', default=False, help='use --f=True to unzip to subfolders with name of zipfile.')
     return parser
 
