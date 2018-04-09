@@ -2,7 +2,7 @@
 
 import subprocess
 import argparse
-
+from urllib.parse import urlencode
 from datapunt_processing import logger
 from datapunt_processing.helpers.connections import psycopg_connection_string
 
@@ -50,13 +50,43 @@ def run_command_sync(cmd, allow_fail=False):
     return p.returncode
 
 
-def wfs2psql(url, pg_str, layer_name, **kwargs):
-    """Command line ogr2ogr string to load a WFS into PostGres."""
-    cmd = ['ogr2ogr', '-overwrite', '-t_srs', 'EPSG:28992','-nln',layer_name,'-F' ,'PostgreSQL' ,'PG:'+pg_str ,url]
+def load_wfs_layer_into_postgres(pg_str, url_wfs, layer_name, srs, retry_count=3):
+    """
+    Get layer from a wfs service.
+    Args:
+        1. url_wfs: full url of the WFS including https, excluding /?::
+
+            https://map.data.amsterdam.nl/maps/gebieden
+
+        2. layer_name: Title of the layer::
+
+            stadsdeel
+
+        3. srs: coordinate system number, excluding EPSG::
+
+            28992
+
+    Returns:
+        The layer loaded into postgres
+    """  # noqa
+
+    parameters = {
+        "REQUEST": "GetFeature",
+        "TYPENAME": layer_name,
+        "SERVICE": "WFS",
+        "VERSION": "2.0.0",
+        #"SRSNAME": "EPSG:{}".format(srs)
+    }
+
+    logger.info("Requesting data from {}, layer: {}".format(
+        url_wfs, layer_name))
+    url = url_wfs + '?' + urlencode(parameters)
+    srs = "EPSG:{}".format(srs)
+    cmd = ['ogr2ogr', '-overwrite', '-t_srs', srs, '-nln', layer_name, '-F', 'PostgreSQL', 'PG:'+pg_str, url]
     run_command_sync(cmd)
 
 
-def load_layers(pg_str):
+def load_wfs_layers_into_postgres(config_path, db_config, url_wfs, layer_names, srs_name):
     """
     Load layers into Postgres using a list of titles of each layer within the WFS service.
 
@@ -69,43 +99,64 @@ def load_layers(pg_str):
         Loaded layers into postgres using ogr2ogr.
 
     """
-    layerNames = ['stadsdeel',
-                  'buurt',
-                  'buurtcombinatie',
-                  'gebiedsgerichtwerken']
+    pg_str = psycopg_connection_string(config_path, db_config)
 
-    srsName = 'EPSG:28992'
+    layers = layer_names.split(',')
+    logger.info('Layers:',layers)
 
-    for areaName in layerNames:
-        WFS = "https://map.data.amsterdam.nl/maps/gebieden?REQUEST=GetFeature&SERVICE=wfs&Version=2.0.0&SRSNAME=" + srsName + "&typename=" + areaName
-        wfs2psql(WFS, pg_str, areaName)
-        logger.info(areaName + ' loaded into PG.')
+    for layer_name in layers:
+        load_wfs_layer_into_postgres(pg_str, url_wfs, layer_name, srs_name)
+        logger.info(layer_name + ' loaded into PG.')
 
 
 def parser():
     """Parser function to run arguments from commandline and to add description to sphinx."""
     desc = """
-    Upload gebieden into PostgreSQL from the WFS service of api.data.amsterdam.nl with use of ogr2ogr.
+    Upload gebieden into PostgreSQL from the WFS service with use of ogr2ogr.
 
     Add ogr2ogr path ENV if running locally in a virtual environment:
         ``export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH``
 
     Example command line:
-        ``load_wfs_to_postgres config.ini dev``
+        ``load_wfs_to_postgres config.ini dev https://map.data.amsterdam.nl/maps/gebieden 
+          stadsdeel,buurtcombinatie,gebiedsgerichtwerken,buurt 28992``
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument(
-        'config_path', type=str, help="Type the relative path + name of the config file, for example: auth/config.ini")
+        'config_path',
+        type=str,
+        help="Type the relative path + name of the config file, for example: auth/config.ini")
     parser.add_argument(
-        'db_config', type=str, help="Type 'dev' or 'docker' to load the proper port and ip settings in the config file")
+        'db_config',
+        type=str,
+        help="Type 'dev' or 'docker' to load the proper port and ip settings in the config file")
+    parser.add_argument(
+        'url',
+        type=str,
+        help="""
+        Url of the WFS service, for example:
+        https://map.data.amsterdam.nl/maps/gebieden
+        """)
+    parser.add_argument(
+        'layers',
+        type=str,
+        help="""
+        Name of the layers, for example
+        stadsdeel,buurtcombinatie
+        """)
+    parser.add_argument(
+        "srs",
+        type=str,
+        default="28992",
+        choices=["28992", "4326"],
+        help="choose srs (default: %(default)s)")
     return parser
 
 
 def main():
     args = parser().parse_args()
-    db_config = args.db_config[0]
-    pg_str = psycopg_connection_string(args.config_path, args.db_config)
-    load_layers(pg_str)
+    load_wfs_layers_into_postgres(
+        args.config_path, args.db_config, args.url, args.layers, args.srs)
 
 
 if __name__ == '__main__':
