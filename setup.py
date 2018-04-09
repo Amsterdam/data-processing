@@ -119,7 +119,9 @@ setup(
         'pprint>=0.1',
         'requests_cache==0.4.13',
         'logger==1.4',
-        'ipython==5.5.0'
+        'ipython==5.5.0',
+        # Data visualization
+        'pillow==5.1.0'
 
     ],
     extras_require={
