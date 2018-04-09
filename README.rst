@@ -102,8 +102,8 @@ How to Contribute
 =================
 If you want to contribute please follow the `contribute guidelines <https://amsterdam.github.io/CONTRIBUTING/>`_ 
 
-Prequisites
------------
+0. Prequisites
+--------------
 Fork this repository to your local github account to add add and test new functions.
 
 .. code-block:: bash
@@ -121,7 +121,7 @@ Install the docs,test,dev packages using this command:
 This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to release stable versions on PyPi. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
 
 1. Add function
-^^^^^^^^^^^^^^^
+---------------
 We try to use command line functions as much as possible to ensure we create functions to work easily with different environments and to force yourself creating more generic functions with input variables.
 
 If possible, convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
@@ -136,7 +136,7 @@ Add your function to the appropriate `folder <https://github.com/Amsterdam/data-
 side note: not all functions are suitable for CL. Machine learning preprocessing steps or general API calls for instance, (that often require parameters in the form of dicts or lists) as input are not suitable and can be used as stand-alone scripts. 
 
 2. Add tests
-^^^^^^^^^^^^
+------------
 
 Add test to the `test folder <https://github.com/Amsterdam/data-processing/tree/master/tests>`_ and run:
 
@@ -147,7 +147,7 @@ Add test to the `test folder <https://github.com/Amsterdam/data-processing/tree/
 to test if no other functions are breaking. Correct those issues as well if needed.
 
 3. Add documentation
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 Create a awesome_module.rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. The helpers docs will generate automatically, so you can skip this step if it is placed in the helper function. 
 
 Add the rst filename to the list in `modules.rst <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst>`_ to be found on the main page.
@@ -161,6 +161,6 @@ Regenerate the documentation to test the docs output using this command line fun
     open docs/index.html
 
 4. Add a Pull Request
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
 
