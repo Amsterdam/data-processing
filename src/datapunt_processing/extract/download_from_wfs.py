@@ -73,31 +73,6 @@ def get_layer_from_wfs(url_wfs, layer_name, srs, outputformat, retry_count=3):
     # webrequests sometimes fail..
     while retry < retry_count:
         response = requests.get(url_wfs, params=parameters)
-        if response.status_code != 200:
-            time.sleep(3)
-            # try again..
-            retry += 1
-        else:
-            # status 200. succes.
-            break
-
-    parameters = {
-        "REQUEST": "GetFeature",
-        "TYPENAME": layer_name,
-        "SERVICE": "WFS",
-        "VERSION": "2.0.0",
-        "SRSNAME": "EPSG:{}".format(srs),
-        "OUTPUTFORMAT": outputformat
-    }
-
-    logger.info("Requesting data from {}, layer: {}".format(
-        url_wfs, layer_name))
-
-    retry = 0
-
-    # webrequests sometimes fail..
-    while retry < retry_count:
-        response = requests.get(url_wfs, params=parameters)
         logger.debug(response)
         if response.status_code == 400:
             logger.info("Incorrect layer name: {}, please correct the layer name".format(layer_name))
@@ -156,7 +131,7 @@ def parser():
     Get multiple layers as a geojson file from a WFS service.
     command line example::
 
-      download_from_wfs https://map.data.amsterdam.nl/maps/gebieden stadsdeel,buurtcombinatie output_folder
+      download_from_wfs https://map.data.amsterdam.nl/maps/gebieden stadsdeel,buurtcombinatie 28992 output_folder
 
     """)  # noqa
 
