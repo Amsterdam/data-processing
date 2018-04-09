@@ -79,7 +79,9 @@ setup(
             'get_geojson_from_wfs = datapunt_processing.transform.geospatial.get_geojson_from_wfs:main',
             'postgres_add_areas_from_coordinates = datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates:main',
             'add_public_events = datapunt_processing.transform.enrichment.add_public_events:main',
-            'add_knmi_data = datapunt_processing.transform.enrichment.add_knmi_data:main'
+            'add_knmi_data = datapunt_processing.transform.enrichment.add_knmi_data:main',
+            #data visualization
+            'heatmap = datapunt_processing.data_visualization.heatmap:main'
         ],
     },
     # Add custom pytester class
