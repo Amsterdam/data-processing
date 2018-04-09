@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="../modules.html"/>
+        <link rel="next" title="download_from_objectstore" href="download_from_objectstore.html"/>
+        <link rel="prev" title="Modules" href="../modules.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,13 +91,34 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.download_from_catalog">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_objectstore.html">download_from_objectstore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_wfs.html">download_from_wfs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_with_authentication.html">download_from_api_with_authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_brk.html">download_from_api_brk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -142,6 +166,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../modules.html">Modules</a> &raquo;</li>
+        
       <li>download_from_catalog</li>
     
     
@@ -164,7 +190,8 @@
   <div class="section" id="download-from-catalog">
 <span id="id1"></span><h1>download_from_catalog<a class="headerlink" href="#download-from-catalog" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div>Get data and metadata from data.amsterdam.nl, unzip if needed and put the file in a local directory.
+<div>Get data and metadata from data.amsterdam.nl,
+unzip if needed and put the file in a local directory.
 To test run this command line:
 <code class="docutils literal notranslate"><span class="pre">download_from_catalog</span> <span class="pre">https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</span> <span class="pre">data</span></code></div></blockquote>
 </p>
@@ -179,14 +206,16 @@ To test run this command line:
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd>url</kbd></td>
-<td><blockquote class="first last">
-<div>Insert full url from main result page of dataset.
-For example:
-<code class="docutils literal notranslate"><span class="pre">https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</span></code></div></blockquote>
+<td><blockquote class="first">
+<div>Insert full url from main result page of dataset, for example:
+“<a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c”</div></blockquote>
+<p class="last">Default: “<a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c”</p>
 </td></tr>
 <tr><td class="option-group">
 <kbd>output_folder</kbd></td>
-<td>Specify the desired output folder path, for example: app/data</td></tr>
+<td><blockquote class="first last">
+<div>Specify the desired output folder path, for example: app/data</div></blockquote>
+</td></tr>
 </tbody>
 </table>
 </div>
@@ -248,6 +277,15 @@ For example:
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download_from_objectstore.html" class="btn btn-neutral float-right" title="download_from_objectstore" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

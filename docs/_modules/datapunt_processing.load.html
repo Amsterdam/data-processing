@@ -317,8 +317,38 @@ To see possible styling options: <a class="reference external" href="https://pyt
 </dd></dl>
 
 <dl class="function">
-<dt id="datapunt_processing.load.load_wfs_to_postgres.load_layers">
-<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">load_layers</code><span class="sig-paren">(</span><em>pg_str</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.load_layers" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.load.load_wfs_to_postgres.load_wfs_layer_into_postgres">
+<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">load_wfs_layer_into_postgres</code><span class="sig-paren">(</span><em>pg_str</em>, <em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>retry_count=3</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.load_wfs_layer_into_postgres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get layer from a wfs service.
+Args:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">url_wfs: full url of the WFS including https, excluding /?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">layer_name: Title of the layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">srs: coordinate system number, excluding EPSG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">28992</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The layer loaded into postgres</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.load.load_wfs_to_postgres.load_wfs_layers_into_postgres">
+<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">load_wfs_layers_into_postgres</code><span class="sig-paren">(</span><em>config_path</em>, <em>db_config</em>, <em>url_wfs</em>, <em>layer_names</em>, <em>srs_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.load_wfs_layers_into_postgres" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load layers into Postgres using a list of titles of each layer within the WFS service.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -368,12 +398,6 @@ To see possible styling options: <a class="reference external" href="https://pyt
 <dt id="datapunt_processing.load.load_wfs_to_postgres.scrub">
 <code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">scrub</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.scrub" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hide the login credentials of Postgres in the console.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.load.load_wfs_to_postgres.wfs2psql">
-<code class="descclassname">datapunt_processing.load.load_wfs_to_postgres.</code><code class="descname">wfs2psql</code><span class="sig-paren">(</span><em>url</em>, <em>pg_str</em>, <em>layer_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_wfs_to_postgres.wfs2psql" title="Permalink to this definition">¶</a></dt>
-<dd><p>Command line ogr2ogr string to load a WFS into PostGres.</p>
 </dd></dl>
 
 </div>

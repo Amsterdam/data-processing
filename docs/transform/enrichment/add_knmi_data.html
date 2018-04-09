@@ -211,12 +211,47 @@
 <td>Specify the end date</td></tr>
 <tr><td class="option-group">
 <kbd>variables</kbd></td>
-<td>weather variables you want to see returned. Default is fetch all. Following categories are available: WIND = DDVEC:FG:FHX:FHX:FX wind, TEMP = TG:TN:TX:T10N temperatuur, SUNR = SQ:SP:Q Zonneschijnduur en globale straling, PRCP = DR:RH:EV24 neerslag en potentiële verdamping, PRES = PG:PGX:PGN druk op zeeniveau, VICL = VVN:VVX:NG zicht en bewolking, MSTR = UG:UX:UN luchtvochtigheid</td></tr>
+<td>weather variables you want to see returned. Default is fetch all. Available categories: WIND = DDVEC:FG:FHX:FHX:FX wind, TEMP = TG:TN:TX:T10N temperatuur, SUNR = SQ:SP:Q Zonneschijnduur en globale straling, PRCP = DR:RH:EV24 neerslag en potentiële verdamping, PRES = PG:PGX:PGN druk op zeeniveau, VICL = VVN:VVX:NG zicht en bewolking, MSTR = UG:UX:UN luchtvochtigheid</td></tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="module-datapunt_processing.transform.enrichment.add_knmi_data">
 <span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.transform.enrichment.add_knmi_data" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.Station">
+<em class="property">class </em><code class="descclassname">datapunt_processing.transform.enrichment.add_knmi_data.</code><code class="descname">Station</code><span class="sig-paren">(</span><em>number</em>, <em>longitude</em>, <em>latitude</em>, <em>altitude</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.Station" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.Station.altitude">
+<code class="descname">altitude</code><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.Station.altitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.Station.latitude">
+<code class="descname">latitude</code><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.Station.latitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.Station.longitude">
+<code class="descname">longitude</code><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.Station.longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.Station.name">
+<code class="descname">name</code><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.Station.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="datapunt_processing.transform.enrichment.add_knmi_data.Station.number">
+<code class="descname">number</code><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.Station.number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="datapunt_processing.transform.enrichment.add_knmi_data.chunk_splitter">
 <code class="descclassname">datapunt_processing.transform.enrichment.add_knmi_data.</code><code class="descname">chunk_splitter</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.enrichment.add_knmi_data.chunk_splitter" title="Permalink to this definition">¶</a></dt>

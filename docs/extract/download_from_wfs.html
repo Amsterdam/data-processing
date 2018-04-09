@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="../modules.html"/>
+        <link rel="next" title="download_from_api_with_authentication" href="download_from_api_with_authentication.html"/>
+        <link rel="prev" title="download_from_objectstore" href="download_from_objectstore.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,13 +91,34 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_from_catalog.html">download_from_catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_objectstore.html">download_from_objectstore</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_wfs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.download_from_wfs">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_with_authentication.html">download_from_api_with_authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_brk.html">download_from_api_brk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -142,6 +166,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../modules.html">Modules</a> &raquo;</li>
+        
       <li>download_from_wfs</li>
     
     
@@ -166,7 +192,7 @@
 <p><blockquote>
 <div><p>Get multiple layers as a geojson file from a WFS service.
 command line example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_wfs</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span> <span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span> <span class="n">output_folder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">download_from_wfs</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">map</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">gebieden</span> <span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span> <span class="mi">28992</span> <span class="n">output_folder</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -204,7 +230,7 @@ command line example:</p>
 <span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.extract.download_from_wfs" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_wfs.get_layer_from_wfs">
-<code class="descclassname">datapunt_processing.extract.download_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">datapunt_processing.extract.download_from_wfs.</code><code class="descname">get_layer_from_wfs</code><span class="sig-paren">(</span><em>url_wfs</em>, <em>layer_name</em>, <em>srs</em>, <em>outputformat</em>, <em>retry_count=3</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_wfs.get_layer_from_wfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get layer from a wfs service.
 Args:</p>
 <blockquote>
@@ -224,7 +250,8 @@ Args:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">outputformat: leave empty to return standard GML, else define json, geojson, txt, shapezip:</p>
+<li><p class="first">outputformat: leave empty to return standard GML,
+else define json, geojson, txt, shapezip:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geojson</span>
 </pre></div>
 </div>
@@ -255,7 +282,8 @@ Args:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">layer_names: single or multiple titles of the layers, separated by a comma without spaces:</p>
+<li><p class="first">layer_names: single or multiple titles of the layers, separated
+by a comma without spaces:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stadsdeel</span><span class="p">,</span><span class="n">buurtcombinatie</span><span class="p">,</span><span class="n">gebiedsgerichtwerken</span><span class="p">,</span><span class="n">buurt</span>
 </pre></div>
 </div>
@@ -278,7 +306,8 @@ Args:</p>
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_wfs.parser">
 <code class="descclassname">datapunt_processing.extract.download_from_wfs.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_wfs.parser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
+<dd><p>Parser function to run arguments from the command line
+and to add description to sphinx.</p>
 </dd></dl>
 
 </div>
@@ -291,6 +320,15 @@ Args:</p>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download_from_api_with_authentication.html" class="btn btn-neutral float-right" title="download_from_api_with_authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="download_from_objectstore.html" class="btn btn-neutral" title="download_from_objectstore" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="../modules.html"/>
+        <link rel="next" title="download_from_api_tellus" href="download_from_api_tellus.html"/>
+        <link rel="prev" title="download_from_api_with_authentication" href="download_from_api_with_authentication.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,13 +91,34 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_from_catalog.html">download_from_catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_objectstore.html">download_from_objectstore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_wfs.html">download_from_wfs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_with_authentication.html">download_from_api_with_authentication</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_api_brk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.download_from_api_brk">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -142,6 +166,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../modules.html">Modules</a> &raquo;</li>
+        
       <li>download_from_api_brk</li>
     
     
@@ -164,7 +190,8 @@
   <div class="section" id="download-from-api-brk">
 <span id="id1"></span><h1>download_from_api_brk<a class="headerlink" href="#download-from-api-brk" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div><p>Download from the BRK API from api.data.amsterdam.nl using the OAuth2 datapunt Authorization service with employee_plus credentials.</p>
+<div><p>Download from the BRK API from api.data.amsterdam.nl using the
+OAuth2 datapunt Authorization service with employee_plus credentials.</p>
 <p>Use ENV:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DATAPUNT_EMAIL</span><span class="o">=***</span>
 <span class="n">export</span> <span class="n">DATAPUNT_PASSWORD</span><span class="o">=***</span>
@@ -187,13 +214,13 @@
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd>url</kbd></td>
-<td>add full endpoint, for example <a class="reference external" href="https://api.data.amsterdam.nl/brk/object/">https://api.data.amsterdam.nl/brk/object/</a></td></tr>
+<td>add full endpoint, for example:              <a class="reference external" href="https://api.data.amsterdam.nl/brk/object/">https://api.data.amsterdam.nl/brk/object/</a></td></tr>
 <tr><td class="option-group">
 <kbd>scopes</kbd></td>
-<td>Choose scopes, the names can be found here: <a class="reference external" href="https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py">https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py</a>. For example: TLLS/R or multiple: BRK/RS,BRK/RSN,BRK/RO</td></tr>
+<td>Choose scopes, the names can be found here:              <a class="reference external" href="https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py">https://github.com/Amsterdam/authorization_levels/blob/master/authorization_levels.py</a>.              For example: TLLS/R or multiple: BRK/RS,BRK/RSN,BRK/RO</td></tr>
 <tr><td class="option-group">
 <kbd>output_folder</kbd></td>
-<td>add outputfolder location, for example my_project_folder/data or . if you want to save in the current dir</td></tr>
+<td>add outputfolder location, for example:              my_project_folder/data</td></tr>
 <tr><td class="option-group">
 <kbd>filename</kbd></td>
 <td>add filename for example brk.json</td></tr>
@@ -208,9 +235,15 @@
 <dd><p>Get a json response from a url with accesstoken.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd><ol class="first last arabic simple">
-<li>url: api endpoint</li>
-<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</li>
+<dd><ol class="first last arabic">
+<li><p class="first">url: api endpoint</p>
+</li>
+<li><p class="first">accessToken: acces token generated using the auth helper:
+GetAccessToken().getAccessToken(usertype=’employee_plus’,</p>
+<blockquote>
+<div><p>scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</p>
+</div></blockquote>
+</li>
 </ol>
 </dd>
 <dt>Returns:</dt>
@@ -234,6 +267,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download_from_api_tellus.html" class="btn btn-neutral float-right" title="download_from_api_tellus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="download_from_api_with_authentication.html" class="btn btn-neutral" title="download_from_api_with_authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

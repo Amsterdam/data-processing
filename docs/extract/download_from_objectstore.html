@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="../modules.html"/>
+        <link rel="next" title="download_from_wfs" href="download_from_wfs.html"/>
+        <link rel="prev" title="download_from_catalog" href="download_from_catalog.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,13 +91,34 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../modules.html#extract">Extract</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_from_catalog.html">download_from_catalog</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">download_from_objectstore</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.download_from_objectstore">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_wfs.html">download_from_wfs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_with_authentication.html">download_from_api_with_authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_brk.html">download_from_api_brk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
@@ -141,6 +165,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../modules.html">Modules</a> &raquo;</li>
         
       <li>download_from_objectstore</li>
     
@@ -216,7 +242,7 @@
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_objectstore.download_containers">
-<code class="descclassname">datapunt_processing.extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>connection</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">datapunt_processing.extract.download_from_objectstore.</code><code class="descname">download_containers</code><span class="sig-paren">(</span><em>config_path</em>, <em>config_name</em>, <em>prefixes</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_objectstore.download_containers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download multiple files from the objectstore.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -263,6 +289,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download_from_wfs.html" class="btn btn-neutral float-right" title="download_from_wfs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="download_from_catalog.html" class="btn btn-neutral" title="download_from_catalog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

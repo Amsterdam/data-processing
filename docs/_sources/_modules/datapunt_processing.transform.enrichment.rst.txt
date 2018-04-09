@@ -28,6 +28,14 @@ datapunt\_processing.transform.enrichment.knmi\_metadata module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.transform.enrichment.official\_dutch\_traffic\_signs module
+--------------------------------------------------------------------------------
+
+.. automodule:: datapunt_processing.transform.enrichment.official_dutch_traffic_signs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

@@ -96,8 +96,13 @@
 <li class="toctree-l1"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#how-to-contribute">How to Contribute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#prequisites">Prequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#steps-to-add-code">Steps to add code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prequisites">Prequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-function">1. Add function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-tests">2. Add tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-documentation">3. Add documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-pull-request">4. Add a Pull Request</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
@@ -250,38 +255,56 @@ jupyter notebook --NotebookApp.iopub_data_rate_limit<span class="o">=</span><spa
 <p>If you want to contribute please follow the <a class="reference external" href="https://amsterdam.github.io/CONTRIBUTING/">contribute guidelines</a></p>
 <div class="section" id="prequisites">
 <h2>Prequisites<a class="headerlink" href="#prequisites" title="Permalink to this headline">¶</a></h2>
-<p>Fork this repository to your local github account.</p>
-<p>To add new documentation and test new functions, install the docs,test,dev packages using this command:</p>
+<p>Fork this repository to your local github account to add add and test new functions.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/Amsterdam/data-processing.git
+</pre></div>
+</div>
+<p>Install the docs,test,dev packages using this command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e .<span class="o">[</span>docs,test,dev<span class="o">]</span>
 or when using zsh
 pip install -e .<span class="se">\[</span>docs,test,dev<span class="se">\]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="steps-to-add-code">
-<h2>Steps to add code<a class="headerlink" href="#steps-to-add-code" title="Permalink to this headline">¶</a></h2>
-<p>This package is build by using <a class="reference external" href="http://setuptools.readthedocs.io">setuptools</a> to be able to deploy this later on PyPi with version control. It follows some of <a class="reference external" href="http://alexanderwaldin.github.io/packaging-python-project.html">these</a> guidelines of setting up a python package.</p>
-<ol class="arabic simple">
-<li>Convert your function into a <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">python-package command line script</a> using the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py">boilerplate_function.py</a></li>
-</ol>
+<p>This package is build by using <a class="reference external" href="http://setuptools.readthedocs.io">setuptools</a> to be able to release stable versions on PyPi. It follows some of <a class="reference external" href="http://alexanderwaldin.github.io/packaging-python-project.html">these</a> guidelines of setting up a python package.</p>
+<div class="section" id="add-function">
+<h3>1. Add function<a class="headerlink" href="#add-function" title="Permalink to this headline">¶</a></h3>
+<p>We try to use command line functions as much as possible to ensure we create functions to work easily with different environments and to force yourself creating more generic functions with input variables.</p>
+<p>If possible, convert your function into a <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">python-package command line script</a> using the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py">boilerplate_function.py</a></p>
+<dl class="docutils">
+<dt>Add your function to the appropriate <a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing">folder</a>:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/extract">extract</a></li>
+<li><a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/transform">transform</a></li>
+<li><a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/load">load</a></li>
+<li><a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/helpers">helpers</a></li>
+</ul>
+</dd>
+</dl>
 <p>side note: not all functions are suitable for CL. Machine learning preprocessing steps or general API calls for instance, (that often require parameters in the form of dicts or lists) as input are not suitable and can be used as stand-alone scripts.</p>
-<p>2. Add test to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/tests">test folder</a> and run
-.. code-block:: bash</p>
-<blockquote>
-<div>python setup.py test</div></blockquote>
-<p>to test if no other functions are breaking. Correct those issues if needed.</p>
-<ol class="arabic simple" start="3">
-<li>Add your commandline name and end point location to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36">console_scripts</a> in setup.py.</li>
-<li>Add a awesome_module.rst file with <a class="reference external" href="http://sphinx-argparse.readthedocs.io/en/latest/">Sphinx Argparse extension</a> fields to generate the description and argument fields by reusing an <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst">existing rst file</a>. Helpers will generate automatically, so you can skip this step if it is only a helper function.</li>
-<li>add the rst file to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst">modules.rst</a> to be found on the main page.</li>
-<li>Regenerate the documentation to test the docs output using:</li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx/make docs
+</div>
+<div class="section" id="add-tests">
+<h3>2. Add tests<a class="headerlink" href="#add-tests" title="Permalink to this headline">¶</a></h3>
+<p>Add test to the <a class="reference external" href="https://github.com/Amsterdam/data-processing/tree/master/tests">test folder</a> and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py <span class="nb">test</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
-<li>Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.</li>
-</ol>
+<p>to test if no other functions are breaking. Correct those issues as well if needed.</p>
+</div>
+<div class="section" id="add-documentation">
+<h3>3. Add documentation<a class="headerlink" href="#add-documentation" title="Permalink to this headline">¶</a></h3>
+<p>Create a awesome_module.rst file with <a class="reference external" href="http://sphinx-argparse.readthedocs.io/en/latest/">Sphinx Argparse extension</a> fields to generate the description and argument fields by reusing an <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst">existing rst file</a>. The helpers docs will generate automatically, so you can skip this step if it is placed in the helper function.</p>
+<p>Add the rst filename to the list in <a class="reference external" href="https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst">modules.rst</a> to be found on the main page.</p>
+<p>Regenerate the documentation to test the docs output using this command line function:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx/make docs
+and <span class="nb">test</span> <span class="k">if</span> the readme is not broken:
+open docs/index.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-a-pull-request">
+<h3>4. Add a Pull Request<a class="headerlink" href="#add-a-pull-request" title="Permalink to this headline">¶</a></h3>
+<p>Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.</p>
+</div>
 </div>
 </div>
 
