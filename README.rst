@@ -104,44 +104,63 @@ If you want to contribute please follow the `contribute guidelines <https://amst
 
 Prequisites
 -----------
-Fork this repository to your local github account.
+Fork this repository to your local github account to add add and test new functions.
 
-To add new documentation and test new functions, install the docs,test,dev packages using this command:
+.. code-block:: bash
 
-.. code-block:: bash    
+    git clone https://github.com/Amsterdam/data-processing.git
+
+Install the docs,test,dev packages using this command:
+
+.. code-block:: bash
 
     pip install -e .[docs,test,dev]
     or when using zsh
     pip install -e .\[docs,test,dev\]
 
-Steps to add code
------------------
+This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to release stable versions on PyPi. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
 
-This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ to be able to deploy this later on PyPi with version control. It follows some of `these <http://alexanderwaldin.github.io/packaging-python-project.html>`_ guidelines of setting up a python package.
+1. Add function
+^^^^^^^^^^^^^^^
+We try to use command line functions as much as possible to ensure we create functions to work easily with different environments and to force yourself creating more generic functions with input variables.
 
-1. Convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
+If possible, convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
+
+Add your function to the appropriate `folder <https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing>`_:
+    - `extract <https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/extract>`_
+    - `transform <https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/transform>`_
+    - `load <https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/load>`_
+    - `helpers  <https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/helpers>`_
+
 
 side note: not all functions are suitable for CL. Machine learning preprocessing steps or general API calls for instance, (that often require parameters in the form of dicts or lists) as input are not suitable and can be used as stand-alone scripts. 
 
-2. Add test to the `test folder <https://github.com/Amsterdam/data-processing/tree/master/tests>`_ and run 
+2. Add tests
+^^^^^^^^^^^^
+
+Add test to the `test folder <https://github.com/Amsterdam/data-processing/tree/master/tests>`_ and run:
+
 .. code-block:: bash
-    
+
     python setup.py test
 
-to test if no other functions are breaking. Correct those issues if needed.
+to test if no other functions are breaking. Correct those issues as well if needed.
 
-3. Add your commandline name and end point location to the `console_scripts <https://github.com/Amsterdam/data-processing/blob/master/setup.py#L36>`_ in setup.py.
+3. Add documentation
+^^^^^^^^^^^^^^^^^^^^
+Create a awesome_module.rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. The helpers docs will generate automatically, so you can skip this step if it is placed in the helper function. 
 
-4. Add a awesome_module.rst file with `Sphinx Argparse extension <http://sphinx-argparse.readthedocs.io/en/latest/>`_ fields to generate the description and argument fields by reusing an `existing rst file <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/extract/download_from_data_amsterdam.rst>`_. Helpers will generate automatically, so you can skip this step if it is only a helper function. 
+Add the rst filename to the list in `modules.rst <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst>`_ to be found on the main page.
 
-5. add the rst file to the `modules.rst <https://github.com/Amsterdam/data-processing/blob/master/sphinx/source/modules.rst>`_ to be found on the main page.
-
-6. Regenerate the documentation to test the docs output using:
+Regenerate the documentation to test the docs output using this command line function:
 
 .. code-block:: bash
-    
+
     sphinx/make docs
+    and test if the readme is not broken:
+    open docs/index.html
 
-6. Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
-
+4. Add a Pull Request
+^^^^^^^^^^^^^^^^^^^^^
+Make a PR to add the add your awesome function to our processing code to be reused by many other developpers and data analists.
 
