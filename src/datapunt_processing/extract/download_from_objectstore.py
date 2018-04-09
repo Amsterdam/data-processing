@@ -126,7 +126,7 @@ def parser():
 def main():
     # Return all arguments in a list
     args = parser().parse_args()
-    download_containers(args.config_path, args,config_name, args.prefixes, args.output_folder)
+    download_containers(args.config_path, args.config_name, args.prefixes, args.output_folder)
 
 
 if __name__ == "__main__":
