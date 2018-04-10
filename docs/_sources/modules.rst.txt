@@ -36,7 +36,9 @@ stored, from API’s or from the data catalog.**
     extract/download_from_api_brk
     extract/download_from_api_tellus
     extract/download_from_api_kvk
-    
+    extract/write_table_to_csv
+    extract/write_mdb_to_csv
+    extract/write_csv_to_dataframe
     
 Transform Geospatial
 --------------------

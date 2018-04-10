@@ -37,7 +37,7 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.1a5',
+    version='0.0.1a7',
     name='datapunt_processing',
     description="Datapunt generic ETL command line scripts and functions for shell scripting in Docker.",
     long_description=read('README.rst'),
@@ -68,7 +68,9 @@ setup(
             'download_from_api_kvk = datapunt_processing.extract.download_from_api_kvk:main',
             'download_from_wfs = datapunt_processing.extract.download_from_wfs:main',
             'download_from_objectstore = datapunt_processing.extract.download_from_objectstore:main',
-            'csv_dataframe = datapunt_processing.extract.csv_dataframe:main',
+            'write_csv_to_dataframe = datapunt_processing.extract.csv_dataframe:main',
+            'write_table_to_csv = datapunt_processing.extract.write_table_to_csv:main',
+            'write_mdb_to_csv = datapunt_processing.extract.write_mdb_to_csv:main',
             # load
             'load_wfs_to_postgres = datapunt_processing.load.load_wfs_to_postgres:main',
             'load_xls_to_postgres = datapunt_processing.load.load_xls_to_postgres:main',

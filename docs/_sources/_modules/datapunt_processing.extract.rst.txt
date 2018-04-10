@@ -4,14 +4,6 @@ datapunt\_processing.extract package
 Submodules
 ----------
 
-datapunt\_processing.extract.csv\_dataframe module
---------------------------------------------------
-
-.. automodule:: datapunt_processing.extract.csv_dataframe
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 datapunt\_processing.extract.download\_bbga\_by\_variable\_\_area\_year module
 ------------------------------------------------------------------------------
 
@@ -76,10 +68,26 @@ datapunt\_processing.extract.download\_from\_wfs module
     :undoc-members:
     :show-inheritance:
 
-datapunt\_processing.extract.mdb\_to\_csv module
-------------------------------------------------
+datapunt\_processing.extract.write\_csv\_to\_dataframe module
+-------------------------------------------------------------
 
-.. automodule:: datapunt_processing.extract.mdb_to_csv
+.. automodule:: datapunt_processing.extract.write_csv_to_dataframe
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+datapunt\_processing.extract.write\_mdb\_to\_csv module
+-------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.write_mdb_to_csv
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+datapunt\_processing.extract.write\_table\_to\_csv module
+---------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.write_table_to_csv
     :members:
     :undoc-members:
     :show-inheritance:

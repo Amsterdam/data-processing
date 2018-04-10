@@ -166,67 +166,6 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-datapunt_processing.extract.csv_dataframe">
-<span id="datapunt-processing-extract-csv-dataframe-module"></span><h2>datapunt_processing.extract.csv_dataframe module<a class="headerlink" href="#module-datapunt_processing.extract.csv_dataframe" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="datapunt_processing.extract.csv_dataframe.is_valid_file">
-<code class="descclassname">datapunt_processing.extract.csv_dataframe.</code><code class="descname">is_valid_file</code><span class="sig-paren">(</span><em>parser</em>, <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.csv_dataframe.is_valid_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.csv_dataframe.main">
-<code class="descclassname">datapunt_processing.extract.csv_dataframe.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.csv_dataframe.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.csv_dataframe.parser">
-<code class="descclassname">datapunt_processing.extract.csv_dataframe.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.csv_dataframe.parser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.csv_dataframe.read_crow_file">
-<code class="descclassname">datapunt_processing.extract.csv_dataframe.</code><code class="descname">read_crow_file</code><span class="sig-paren">(</span><em>file</em>, <em>datecol</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.csv_dataframe.read_crow_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>parses the CROW afvaldata
-Args:</p>
-<blockquote>
-<div>file (xls/xlsx): containing at least a date column
-datecol: ‘datum’ format %Y-m-%d %H:%M:%S</div></blockquote>
-<dl class="docutils">
-<dt>Returns:</dt>
-<dd><ul class="first last simple">
-<li>pd.DataFrame: cleaned data frame with datum and time column added</li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.csv_dataframe.read_mora_file">
-<code class="descclassname">datapunt_processing.extract.csv_dataframe.</code><code class="descname">read_mora_file</code><span class="sig-paren">(</span><em>file</em>, <em>datecol</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.csv_dataframe.read_mora_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>parses the MORA csv and transforms into clean Pandas Dataframe
-Args:</p>
-<blockquote>
-<div>file (csv/xls/xlsx): containing at least a date column
-datecol: ‘aa_adwh_datum_melding’ format %Y-m-%d %H:%M:%S</div></blockquote>
-<dl class="docutils">
-<dt>Returns:</dt>
-<dd>pd.DataFrame: cleaned data frame with datum and time column added</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.csv_dataframe.strip_cols">
-<code class="descclassname">datapunt_processing.extract.csv_dataframe.</code><code class="descname">strip_cols</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.csv_dataframe.strip_cols" title="Permalink to this definition">¶</a></dt>
-<dd><p>simple utility function to clean dataframe columns</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.csv_dataframe.valid_date">
-<code class="descclassname">datapunt_processing.extract.csv_dataframe.</code><code class="descname">valid_date</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.csv_dataframe.valid_date" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
 <div class="section" id="module-datapunt_processing.extract.download_bbga_by_variable__area_year">
 <span id="datapunt-processing-extract-download-bbga-by-variable-area-year-module"></span><h2>datapunt_processing.extract.download_bbga_by_variable__area_year module<a class="headerlink" href="#module-datapunt_processing.extract.download_bbga_by_variable__area_year" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -656,32 +595,124 @@ and to add description to sphinx.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-datapunt_processing.extract.mdb_to_csv">
-<span id="datapunt-processing-extract-mdb-to-csv-module"></span><h2>datapunt_processing.extract.mdb_to_csv module<a class="headerlink" href="#module-datapunt_processing.extract.mdb_to_csv" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-datapunt_processing.extract.write_csv_to_dataframe">
+<span id="datapunt-processing-extract-write-csv-to-dataframe-module"></span><h2>datapunt_processing.extract.write_csv_to_dataframe module<a class="headerlink" href="#module-datapunt_processing.extract.write_csv_to_dataframe" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="datapunt_processing.extract.mdb_to_csv.dump_mdb_tables_to_csv">
-<code class="descclassname">datapunt_processing.extract.mdb_to_csv.</code><code class="descname">dump_mdb_tables_to_csv</code><span class="sig-paren">(</span><em>mdb_file</em>, <em>output_folder</em>, <em>table_names</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.mdb_to_csv.dump_mdb_tables_to_csv" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.write_csv_to_dataframe.is_valid_file">
+<code class="descclassname">datapunt_processing.extract.write_csv_to_dataframe.</code><code class="descname">is_valid_file</code><span class="sig-paren">(</span><em>parser</em>, <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_csv_to_dataframe.is_valid_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_csv_to_dataframe.main">
+<code class="descclassname">datapunt_processing.extract.write_csv_to_dataframe.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_csv_to_dataframe.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_csv_to_dataframe.parser">
+<code class="descclassname">datapunt_processing.extract.write_csv_to_dataframe.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_csv_to_dataframe.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from the command line and to add description to sphinx.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_csv_to_dataframe.read_crow_file">
+<code class="descclassname">datapunt_processing.extract.write_csv_to_dataframe.</code><code class="descname">read_crow_file</code><span class="sig-paren">(</span><em>file</em>, <em>datecol</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_csv_to_dataframe.read_crow_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>parses the CROW afvaldata
+Args:</p>
+<blockquote>
+<div>file (xls/xlsx): containing at least a date column
+datecol: ‘datum’ format %Y-m-%d %H:%M:%S</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>pd.DataFrame: cleaned data frame with datum and time column added</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_csv_to_dataframe.read_mora_file">
+<code class="descclassname">datapunt_processing.extract.write_csv_to_dataframe.</code><code class="descname">read_mora_file</code><span class="sig-paren">(</span><em>file</em>, <em>datecol</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_csv_to_dataframe.read_mora_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>parses the MORA csv and transforms into clean Pandas Dataframe
+Args:</p>
+<blockquote>
+<div>file (csv/xls/xlsx): containing at least a date column
+datecol: ‘aa_adwh_datum_melding’ format %Y-m-%d %H:%M:%S</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>pd.DataFrame: cleaned data frame with datum and time column added</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_csv_to_dataframe.strip_cols">
+<code class="descclassname">datapunt_processing.extract.write_csv_to_dataframe.</code><code class="descname">strip_cols</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_csv_to_dataframe.strip_cols" title="Permalink to this definition">¶</a></dt>
+<dd><p>simple utility function to clean dataframe columns</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_csv_to_dataframe.valid_date">
+<code class="descclassname">datapunt_processing.extract.write_csv_to_dataframe.</code><code class="descname">valid_date</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_csv_to_dataframe.valid_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.extract.write_mdb_to_csv">
+<span id="datapunt-processing-extract-write-mdb-to-csv-module"></span><h2>datapunt_processing.extract.write_mdb_to_csv module<a class="headerlink" href="#module-datapunt_processing.extract.write_mdb_to_csv" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.extract.write_mdb_to_csv.dump_mdb_tables_to_csv">
+<code class="descclassname">datapunt_processing.extract.write_mdb_to_csv.</code><code class="descname">dump_mdb_tables_to_csv</code><span class="sig-paren">(</span><em>mdb_file</em>, <em>output_folder</em>, <em>table_names</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_mdb_to_csv.dump_mdb_tables_to_csv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dump each table as a CSV file using “mdb-export”
 and converting ” ” in table names to “_” for the CSV filenames.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="datapunt_processing.extract.mdb_to_csv.get_tables_mdb">
-<code class="descclassname">datapunt_processing.extract.mdb_to_csv.</code><code class="descname">get_tables_mdb</code><span class="sig-paren">(</span><em>mdb_file</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.mdb_to_csv.get_tables_mdb" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.write_mdb_to_csv.get_tables_mdb">
+<code class="descclassname">datapunt_processing.extract.write_mdb_to_csv.</code><code class="descname">get_tables_mdb</code><span class="sig-paren">(</span><em>mdb_file</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_mdb_to_csv.get_tables_mdb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of table names with “mdb-tables” for a <a href="#id1"><span class="problematic" id="id2">*</span></a>.mdb file using latin1 as encoding.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="datapunt_processing.extract.mdb_to_csv.main">
-<code class="descclassname">datapunt_processing.extract.mdb_to_csv.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.mdb_to_csv.main" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.write_mdb_to_csv.main">
+<code class="descclassname">datapunt_processing.extract.write_mdb_to_csv.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_mdb_to_csv.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="datapunt_processing.extract.mdb_to_csv.parser">
-<code class="descclassname">datapunt_processing.extract.mdb_to_csv.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.mdb_to_csv.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.write_mdb_to_csv.parser">
+<code class="descclassname">datapunt_processing.extract.write_mdb_to_csv.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_mdb_to_csv.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
 To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
 </dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.extract.write_table_to_csv">
+<span id="datapunt-processing-extract-write-table-to-csv-module"></span><h2>datapunt_processing.extract.write_table_to_csv module<a class="headerlink" href="#module-datapunt_processing.extract.write_table_to_csv" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.extract.write_table_to_csv.export_table_to_csv">
+<code class="descclassname">datapunt_processing.extract.write_table_to_csv.</code><code class="descname">export_table_to_csv</code><span class="sig-paren">(</span><em>config_path</em>, <em>db_config</em>, <em>table_name</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_table_to_csv.export_table_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export table to CSV file.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>pg_str: psycopg2 connection string, for example:
+host=localhost port=5432 user=your_username dbname=your_database_name password=very_secret</li>
+<li>table_name: for example my_tablename</li>
+<li>output_folder: define output folder, for example: /app/data</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Exported csv file to output_folder/table_name_2018-12-31.csv</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_table_to_csv.main">
+<code class="descclassname">datapunt_processing.extract.write_table_to_csv.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_table_to_csv.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_table_to_csv.parser">
+<code class="descclassname">datapunt_processing.extract.write_table_to_csv.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_table_to_csv.parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-datapunt_processing.extract">

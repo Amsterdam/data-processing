@@ -253,8 +253,6 @@
 </li>
       <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract">datapunt_processing.extract (module)</a>
 </li>
-      <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.csv_dataframe">datapunt_processing.extract.csv_dataframe (module)</a>
-</li>
       <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.download_bbga_by_variable__area_year">datapunt_processing.extract.download_bbga_by_variable__area_year (module)</a>
 </li>
       <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.download_from_api_brk">datapunt_processing.extract.download_from_api_brk (module)</a>, <a href="extract/download_from_api_brk.html#module-datapunt_processing.extract.download_from_api_brk">[1]</a>
@@ -271,7 +269,11 @@
 </li>
       <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.download_from_wfs">datapunt_processing.extract.download_from_wfs (module)</a>, <a href="extract/download_from_wfs.html#module-datapunt_processing.extract.download_from_wfs">[1]</a>
 </li>
-      <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.mdb_to_csv">datapunt_processing.extract.mdb_to_csv (module)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.write_csv_to_dataframe">datapunt_processing.extract.write_csv_to_dataframe (module)</a>, <a href="extract/write_csv_to_dataframe.html#module-datapunt_processing.extract.write_csv_to_dataframe">[1]</a>
+</li>
+      <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.write_mdb_to_csv">datapunt_processing.extract.write_mdb_to_csv (module)</a>, <a href="extract/write_mdb_to_csv.html#module-datapunt_processing.extract.write_mdb_to_csv">[1]</a>
+</li>
+      <li><a href="_modules/datapunt_processing.extract.html#module-datapunt_processing.extract.write_table_to_csv">datapunt_processing.extract.write_table_to_csv (module)</a>, <a href="extract/write_table_to_csv.html#module-datapunt_processing.extract.write_table_to_csv">[1]</a>
 </li>
       <li><a href="_modules/datapunt_processing.helpers.html#module-datapunt_processing.helpers">datapunt_processing.helpers (module)</a>
 </li>
@@ -297,10 +299,10 @@
 </li>
       <li><a href="_modules/datapunt_processing.load.html#module-datapunt_processing.load.load_xls_to_postgres">datapunt_processing.load.load_xls_to_postgres (module)</a>, <a href="load/load_xls_into_postgres.html#module-datapunt_processing.load.load_xls_to_postgres">[1]</a>
 </li>
-      <li><a href="_modules/datapunt_processing.transform.html#module-datapunt_processing.transform">datapunt_processing.transform (module)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_modules/datapunt_processing.transform.html#module-datapunt_processing.transform">datapunt_processing.transform (module)</a>
+</li>
       <li><a href="_modules/datapunt_processing.transform.enrichment.html#module-datapunt_processing.transform.enrichment">datapunt_processing.transform.enrichment (module)</a>
 </li>
       <li><a href="_modules/datapunt_processing.transform.enrichment.html#module-datapunt_processing.transform.enrichment.add_knmi_data">datapunt_processing.transform.enrichment.add_knmi_data (module)</a>, <a href="transform/enrichment/add_knmi_data.html#module-datapunt_processing.transform.enrichment.add_knmi_data">[1]</a>
@@ -351,7 +353,7 @@
 </li>
       <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_from_catalog.download_metadata">download_metadata() (in module datapunt_processing.extract.download_from_catalog)</a>, <a href="extract/download_from_catalog.html#datapunt_processing.extract.download_from_catalog.download_metadata">[1]</a>
 </li>
-      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.mdb_to_csv.dump_mdb_tables_to_csv">dump_mdb_tables_to_csv() (in module datapunt_processing.extract.mdb_to_csv)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_mdb_to_csv.dump_mdb_tables_to_csv">dump_mdb_tables_to_csv() (in module datapunt_processing.extract.write_mdb_to_csv)</a>, <a href="extract/write_mdb_to_csv.html#datapunt_processing.extract.write_mdb_to_csv.dump_mdb_tables_to_csv">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -368,6 +370,8 @@
       <li><a href="_modules/datapunt_processing.helpers.html#datapunt_processing.helpers.connections.execute_sql">execute_sql() (in module datapunt_processing.helpers.connections)</a>
 </li>
       <li><a href="_modules/datapunt_processing.transform.geospatial.html#datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.executeScriptsFromFile">executeScriptsFromFile() (in module datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates)</a>, <a href="transform/geospatial/postgres_add_areas_from_coordinates.html#datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates.executeScriptsFromFile">[1]</a>
+</li>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_table_to_csv.export_table_to_csv">export_table_to_csv() (in module datapunt_processing.extract.write_table_to_csv)</a>, <a href="extract/write_table_to_csv.html#datapunt_processing.extract.write_table_to_csv.export_table_to_csv">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -431,7 +435,7 @@
 </li>
       <li><a href="_modules/datapunt_processing.transform.preprocessing.html#datapunt_processing.transform.preprocessing.utilities.get_script_dir">get_script_dir() (in module datapunt_processing.transform.preprocessing.utilities)</a>
 </li>
-      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.mdb_to_csv.get_tables_mdb">get_tables_mdb() (in module datapunt_processing.extract.mdb_to_csv)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_mdb_to_csv.get_tables_mdb">get_tables_mdb() (in module datapunt_processing.extract.write_mdb_to_csv)</a>, <a href="extract/write_mdb_to_csv.html#datapunt_processing.extract.write_mdb_to_csv.get_tables_mdb">[1]</a>
 </li>
       <li><a href="_modules/datapunt_processing.transform.enrichment.html#datapunt_processing.transform.enrichment.official_dutch_traffic_signs.get_traffic_signs">get_traffic_signs() (in module datapunt_processing.transform.enrichment.official_dutch_traffic_signs)</a>
 </li>
@@ -465,7 +469,7 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.csv_dataframe.is_valid_file">is_valid_file() (in module datapunt_processing.extract.csv_dataframe)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_csv_to_dataframe.is_valid_file">is_valid_file() (in module datapunt_processing.extract.write_csv_to_dataframe)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -518,8 +522,6 @@
       <li><a href="_modules/datapunt_processing.html#datapunt_processing.boilerplate_function.main">main() (in module datapunt_processing.boilerplate_function)</a>
 
       <ul>
-        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.csv_dataframe.main">(in module datapunt_processing.extract.csv_dataframe)</a>
-</li>
         <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_bbga_by_variable__area_year.main">(in module datapunt_processing.extract.download_bbga_by_variable__area_year)</a>
 </li>
         <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_from_api_brk.main">(in module datapunt_processing.extract.download_from_api_brk)</a>
@@ -536,7 +538,11 @@
 </li>
         <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_from_wfs.main">(in module datapunt_processing.extract.download_from_wfs)</a>
 </li>
-        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.mdb_to_csv.main">(in module datapunt_processing.extract.mdb_to_csv)</a>
+        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_csv_to_dataframe.main">(in module datapunt_processing.extract.write_csv_to_dataframe)</a>
+</li>
+        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_mdb_to_csv.main">(in module datapunt_processing.extract.write_mdb_to_csv)</a>
+</li>
+        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_table_to_csv.main">(in module datapunt_processing.extract.write_table_to_csv)</a>
 </li>
         <li><a href="_modules/datapunt_processing.load.html#datapunt_processing.load.load_file_to_ckan.main">(in module datapunt_processing.load.load_file_to_ckan)</a>
 </li>
@@ -616,8 +622,6 @@
       <li><a href="_modules/datapunt_processing.html#datapunt_processing.boilerplate_function.parser">parser() (in module datapunt_processing.boilerplate_function)</a>
 
       <ul>
-        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.csv_dataframe.parser">(in module datapunt_processing.extract.csv_dataframe)</a>
-</li>
         <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_from_api_brk.parser">(in module datapunt_processing.extract.download_from_api_brk)</a>, <a href="extract/download_from_api_brk.html#datapunt_processing.extract.download_from_api_brk.parser">[1]</a>
 </li>
         <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_from_api_kvk.parser">(in module datapunt_processing.extract.download_from_api_kvk)</a>, <a href="extract/download_from_api_kvk.html#datapunt_processing.extract.download_from_api_kvk.parser">[1]</a>
@@ -632,7 +636,11 @@
 </li>
         <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_from_wfs.parser">(in module datapunt_processing.extract.download_from_wfs)</a>, <a href="extract/download_from_wfs.html#datapunt_processing.extract.download_from_wfs.parser">[1]</a>
 </li>
-        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.mdb_to_csv.parser">(in module datapunt_processing.extract.mdb_to_csv)</a>
+        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_csv_to_dataframe.parser">(in module datapunt_processing.extract.write_csv_to_dataframe)</a>, <a href="extract/write_csv_to_dataframe.html#datapunt_processing.extract.write_csv_to_dataframe.parser">[1]</a>
+</li>
+        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_mdb_to_csv.parser">(in module datapunt_processing.extract.write_mdb_to_csv)</a>, <a href="extract/write_mdb_to_csv.html#datapunt_processing.extract.write_mdb_to_csv.parser">[1]</a>
+</li>
+        <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_table_to_csv.parser">(in module datapunt_processing.extract.write_table_to_csv)</a>
 </li>
         <li><a href="_modules/datapunt_processing.helpers.html#datapunt_processing.helpers.getaccesstoken.parser">(in module datapunt_processing.helpers.getaccesstoken)</a>
 </li>
@@ -677,9 +685,9 @@
 </li>
       <li><a href="_modules/datapunt_processing.transform.preprocessing.html#datapunt_processing.transform.preprocessing.utilities.BigFile.read">read() (datapunt_processing.transform.preprocessing.utilities.BigFile method)</a>
 </li>
-      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.csv_dataframe.read_crow_file">read_crow_file() (in module datapunt_processing.extract.csv_dataframe)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_csv_to_dataframe.read_crow_file">read_crow_file() (in module datapunt_processing.extract.write_csv_to_dataframe)</a>, <a href="extract/write_csv_to_dataframe.html#datapunt_processing.extract.write_csv_to_dataframe.read_crow_file">[1]</a>
 </li>
-      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.csv_dataframe.read_mora_file">read_mora_file() (in module datapunt_processing.extract.csv_dataframe)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_csv_to_dataframe.read_mora_file">read_mora_file() (in module datapunt_processing.extract.write_csv_to_dataframe)</a>, <a href="extract/write_csv_to_dataframe.html#datapunt_processing.extract.write_csv_to_dataframe.read_mora_file">[1]</a>
 </li>
       <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_from_api_tellus.reformatData">reformatData() (in module datapunt_processing.extract.download_from_api_tellus)</a>, <a href="extract/download_from_api_tellus.html#datapunt_processing.extract.download_from_api_tellus.reformatData">[1]</a>
 </li>
@@ -719,7 +727,7 @@
       </ul></li>
       <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.download_bbga_by_variable__area_year.statisticsByAreaByYear">statisticsByAreaByYear() (in module datapunt_processing.extract.download_bbga_by_variable__area_year)</a>
 </li>
-      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.csv_dataframe.strip_cols">strip_cols() (in module datapunt_processing.extract.csv_dataframe)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_csv_to_dataframe.strip_cols">strip_cols() (in module datapunt_processing.extract.write_csv_to_dataframe)</a>, <a href="extract/write_csv_to_dataframe.html#datapunt_processing.extract.write_csv_to_dataframe.strip_cols">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -741,7 +749,7 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.csv_dataframe.valid_date">valid_date() (in module datapunt_processing.extract.csv_dataframe)</a>
+      <li><a href="_modules/datapunt_processing.extract.html#datapunt_processing.extract.write_csv_to_dataframe.valid_date">valid_date() (in module datapunt_processing.extract.write_csv_to_dataframe)</a>
 </li>
   </ul></td>
 </tr></table>
