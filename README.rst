@@ -17,8 +17,10 @@ For more information about the how we use these functions in our workflow, read 
 How to use
 ==========
 
+Full documentation can be found here:
 `amsterdam.github.io/data-processing <https://amsterdam.github.io/data-processing/>`_ 
 
+Quickstart:
 To use a function in python you can use::
 
     from datapunt_processing.extract import download_from_catalog

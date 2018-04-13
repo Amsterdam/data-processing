@@ -16,17 +16,25 @@ def parser():
     To see possible styling options: https://pythonhosted.org/an_example_pypi_project/sphinx.html
     """
     description = """
-    Use PDOK API to clean addresses in Amsterdam. and returns the CSV.
+    Use PDOK API to clean addresses. and returns the CSV.
 
     Example command line:
         ``api_clean_BAG_address_NED ../../tests/transform/testdata/amsterdam_hotspots.csv``
+
+    Args:
+
+        1. filename: some_folder/your_file.xls
+        2. --city: Amsterdam, is optional, it will search for a column named: 'stad', 'city', 'woonplaats', 'plaats'
+
+    Returns:
+        A CSV file of the XLS with BAG id, coordinates and naming.
     """
 
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('filename',
                         type=str,
                         help='Add filename')
-    parser.add_argument('--city', type=str, help='Add city name')
+    parser.add_argument('--city', type=str, help='Add city name if there is no column provided')
     return parser
 
 
@@ -118,24 +126,44 @@ def main():
                     item["Straatnaam BAG"] = resultBAG["straatnaam"]
                     item["Huisnummer BAG"] = resultBAG["huis_nlt"]
                     item["Woonplaats BAG"] = resultBAG["woonplaatsnaam"]
+                    item["wkt_ll"] = resultBAG["centroide_ll"]
+                    item["wkt_rd"] = resultBAG["centroide_rd"]
+                    item["nummeraanduiding_id"] = resultBAG["nummeraanduiding_id"]
                     item["Matching"]= 'Match gevonden, mogelijk wel verkeerd adresmatch'
                 else:
                     item["Straatnaam BAG"] = resultBAG["straatnaam"]
                     item["Huisnummer BAG"] = resultBAG["huis_nlt"]
                     item["Woonplaats BAG"] = resultBAG["woonplaatsnaam"]
+                    item["wkt_ll"] = resultBAG["centroide_ll"]
+                    item["wkt_rd"] = resultBAG["centroide_rd"]
+                    item["nummeraanduiding_id"] = resultBAG["nummeraanduiding_id"]
                     item["Matching"]= 'Match gevonden, in andere woonplaats'
             except:
                 item["Straatnaam BAG"] = resultBAG["straatnaam"]
                 item["Huisnummer BAG"] = ''
                 item["Woonplaats BAG"] = resultBAG["woonplaatsnaam"]
+                item["wkt_ll"] = resultBAG["centroide_ll"]
+                item["wkt_rd"] = resultBAG["centroide_rd"]
+                item["nummeraanduiding_id"] = resultBAG["nummeraanduiding_id"]    
                 item["Matching"] = 'Geen huisnummer bekend'
                 continue
         except:
-            item["Straatnaam BAG"] = '' 
+            item["Straatnaam BAG"] = ''
             item["Huisnummer BAG"] = ''
             item["Woonplaats BAG"] = ''
+            item["wkt_ll"] = ''
+            item["wkt_rd"] = ''
+            item["nummeraanduiding_id"] = ''
             item["Matching"] = 'Geen match gevonden'
-
+        if item["wkt_ll"] != '':
+            xy = re.search(r'(\d+.\d+)\s(\d+.\d+)', item["wkt_ll"])
+            item['lat'] = float(xy.group(1))
+            item['lon'] = float(xy.group(2))
+            print("%s" % item['lat'])
+            print("%s" % item['lon'])
+        else:
+            item['lat'] = ''
+            item['lon'] = ''
     #print(data2)
 
     with open('outputRIS.csv', 'w') as f:
