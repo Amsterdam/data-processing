@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/> 
+    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Modules" href="../../modules.html"/>
+        <link rel="next" title="api_get_nearest_address_from_latlon" href="api_get_nearest_address_from_coordinate.html"/>
+        <link rel="prev" title="postgres_add_areas_from_coordinates" href="postgres_add_areas_from_coordinates.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -88,13 +91,35 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Data-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#getting-started">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#notebooks">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html#how-to-contribute">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../modules.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules.html#extract">Extract</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../modules.html#transform-geospatial">Transform Geospatial</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="postgres_add_areas_from_coordinates.html">postgres_add_areas_from_coordinates</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">api_clean_BAG_address_NED</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Named Arguments">Named Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.transform.geospatial.api_clean_BAG_address_NED">functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api_get_nearest_address_from_coordinate.html">api_get_nearest_address_from_latlon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_get_area_codes_from_latlon.html">api_get_areacodes_from_latlon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geocode_xls_to_csv.html">geocode_xls_to_csv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="divide_bbox_amsterdam_in_quadrants.html">divide_bbox_amsterdam_in_quadrants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rd_to_wgs84.html">rd_to_wgs84</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules.html#transform-enrichment">Transform Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules.html#load">Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules.html#helpers">Helpers</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
@@ -142,6 +167,8 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../../modules.html">Modules</a> &raquo;</li>
+        
       <li>api_clean_BAG_address_NED</li>
     
     
@@ -164,10 +191,21 @@
   <div class="section" id="api-clean-bag-address-ned">
 <h1>api_clean_BAG_address_NED<a class="headerlink" href="#api-clean-bag-address-ned" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div><p>Use PDOK API to clean addresses in Amsterdam. and returns the CSV.</p>
+<div><p>Use PDOK API to clean addresses. and returns the CSV.</p>
 <dl class="docutils">
 <dt>Example command line:</dt>
 <dd><code class="docutils literal notranslate"><span class="pre">api_clean_BAG_address_NED</span> <span class="pre">../../tests/transform/testdata/amsterdam_hotspots.csv</span></code></dd>
+</dl>
+<p>Args:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>filename: some_folder/your_file.xls</li>
+<li>–city: Amsterdam, is optional, it will search for a column named: ‘stad’, ‘city’, ‘woonplaats’, ‘plaats’</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>A CSV file of the XLS with BAG id, coordinates and naming.</dd>
 </dl>
 </div></blockquote>
 </p>
@@ -194,7 +232,7 @@
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd>--city</kbd></td>
-<td>Add city name</td></tr>
+<td>Add city name if there is no column provided</td></tr>
 </tbody>
 </table>
 </div>
@@ -217,6 +255,15 @@ To see possible styling options: <a class="reference external" href="https://pyt
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api_get_nearest_address_from_coordinate.html" class="btn btn-neutral float-right" title="api_get_nearest_address_from_latlon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="postgres_add_areas_from_coordinates.html" class="btn btn-neutral" title="postgres_add_areas_from_coordinates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

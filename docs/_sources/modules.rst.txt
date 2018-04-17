@@ -52,6 +52,7 @@ Transform Geospatial
     transform/geospatial/api_clean_BAG_address_NED
     transform/geospatial/api_get_nearest_address_from_coordinate
     transform/geospatial/api_get_area_codes_from_latlon
+    transform/geospatial/geocode_xls_to_csv
     transform/geospatial/divide_bbox_amsterdam_in_quadrants
     transform/geospatial/rd_to_wgs84
     

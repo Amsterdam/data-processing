@@ -79,6 +79,7 @@ setup(
             #transform
             'api_clean_BAG_address_NED = datapunt_processing.transform.geospatial.api_clean_BAG_address_NED:main',
             'get_geojson_from_wfs = datapunt_processing.transform.geospatial.get_geojson_from_wfs:main',
+            'geocode_xls_to_csv = datapunt_processing.transform.geospatial.geocode_xls_to_csv:main',
             'postgres_add_areas_from_coordinates = datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates:main',
             'add_public_events = datapunt_processing.transform.enrichment.add_public_events:main',
             'add_knmi_data = datapunt_processing.transform.enrichment.add_knmi_data:main',

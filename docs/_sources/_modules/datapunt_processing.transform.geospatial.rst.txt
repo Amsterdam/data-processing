@@ -52,6 +52,14 @@ datapunt\_processing.transform.geospatial.divide\_bbox\_amsterdam\_in\_quadrants
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.transform.geospatial.geocode\_xls\_to\_csv module
+----------------------------------------------------------------------
+
+.. automodule:: datapunt_processing.transform.geospatial.geocode_xls_to_csv
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 datapunt\_processing.transform.geospatial.postgres\_add\_areas\_from\_coordinates module
 ----------------------------------------------------------------------------------------
 
