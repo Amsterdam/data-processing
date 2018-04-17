@@ -19,7 +19,7 @@ def parser():
     Use PDOK API to clean addresses. and returns the CSV.
 
     Example command line:
-        ``api_clean_BAG_address_NED ../../tests/transform/testdata/amsterdam_hotspots.csv``
+        ``geocode_xls_to_csv tests/transform/testdata/bag_geocoding.xlsx --city Amsterdam``
 
     Args:
 
@@ -144,7 +144,7 @@ def main():
                 item["Woonplaats BAG"] = resultBAG["woonplaatsnaam"]
                 item["wkt_ll"] = resultBAG["centroide_ll"]
                 item["wkt_rd"] = resultBAG["centroide_rd"]
-                item["nummeraanduiding_id"] = resultBAG["nummeraanduiding_id"]    
+                item["nummeraanduiding_id"] = resultBAG["nummeraanduiding_id"]
                 item["Matching"] = 'Geen huisnummer bekend'
                 continue
         except:
@@ -166,7 +166,7 @@ def main():
             item['lon'] = ''
     #print(data2)
 
-    with open(filename+'_geocoded.csv', 'w') as f:
+    with open(args.filename+'_geocoded.csv', 'w') as f:
         w = csv.DictWriter(f, data[0].keys())
         w.writeheader()
         for item in data:
