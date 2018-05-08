@@ -70,6 +70,7 @@ setup(
             'download_from_objectstore = datapunt_processing.extract.download_from_objectstore:main',
             'write_csv_to_dataframe = datapunt_processing.extract.csv_dataframe:main',
             'write_table_to_csv = datapunt_processing.extract.write_table_to_csv:main',
+            'write_table_to_geojson = datapunt_processing.extract.write_table_to_geojson:main',
             'write_mdb_to_csv = datapunt_processing.extract.write_mdb_to_csv:main',
             # load
             'load_wfs_to_postgres = datapunt_processing.load.load_wfs_to_postgres:main',
