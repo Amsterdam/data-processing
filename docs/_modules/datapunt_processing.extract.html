@@ -715,6 +715,37 @@ host=localhost port=5432 user=your_username dbname=your_database_name password=v
 <dd></dd></dl>
 
 </div>
+<div class="section" id="module-datapunt_processing.extract.write_table_to_geojson">
+<span id="datapunt-processing-extract-write-table-to-geojson-module"></span><h2>datapunt_processing.extract.write_table_to_geojson module<a class="headerlink" href="#module-datapunt_processing.extract.write_table_to_geojson" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.extract.write_table_to_geojson.main">
+<code class="descclassname">datapunt_processing.extract.write_table_to_geojson.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_table_to_geojson.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_table_to_geojson.parser">
+<code class="descclassname">datapunt_processing.extract.write_table_to_geojson.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_table_to_geojson.parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_table_to_geojson.write_table_to_geojson">
+<code class="descclassname">datapunt_processing.extract.write_table_to_geojson.</code><code class="descname">write_table_to_geojson</code><span class="sig-paren">(</span><em>config_path</em>, <em>db_config</em>, <em>table_name</em>, <em>output_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_table_to_geojson.write_table_to_geojson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export table to a GeoJson file.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>pg_str: psycopg2 connection string, for example:
+host=localhost port=5432 user=your_username dbname=your_database_name password=very_secret</li>
+<li>table_name: for example my_tablename</li>
+<li>output_folder: define output folder, for example: /app/data</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Exported file to output_folder/table_name_2018-12-31.geojson</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-datapunt_processing.extract">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datapunt_processing.extract" title="Permalink to this headline">¶</a></h2>
 </div>

@@ -92,6 +92,14 @@ datapunt\_processing.extract.write\_table\_to\_csv module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.extract.write\_table\_to\_geojson module
+-------------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.write_table_to_geojson
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
