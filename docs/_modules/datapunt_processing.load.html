@@ -166,6 +166,32 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-datapunt_processing.load.load_csv_to_postgres">
+<span id="datapunt-processing-load-load-csv-to-postgres-module"></span><h2>datapunt_processing.load.load_csv_to_postgres module<a class="headerlink" href="#module-datapunt_processing.load.load_csv_to_postgres" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.load.load_csv_to_postgres.load_csv_to_postgres">
+<code class="descclassname">datapunt_processing.load.load_csv_to_postgres.</code><code class="descname">load_csv_to_postgres</code><span class="sig-paren">(</span><em>datadir</em>, <em>filename</em>, <em>table_name</em>, <em>schema</em>, <em>config_path</em>, <em>config_name</em>, <em>all_csv=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_csv_to_postgres.load_csv_to_postgres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load csv into postgres for single &amp; multiple files
+Args:</p>
+<blockquote>
+<div><p>datadir: data directory where file to be uploaded is stored. f.i. data/
+filename: name of the csv
+table_name: name of the tbale in postgresql
+schema: the schema in postgreSQL where data file should land
+config_path: path to the config file. f.i. auth/config.ini
+config_name: name of the databse config. f.i. ‘postgresql’
+all_csv = default false. If True will upload all the csv files in the datadir.</p>
+<dl class="docutils">
+<dt>example: load_csv_to_postgres(datadir=PATH, filename=’afvalcontainers_munged.csv’, </dt>
+<dd>table_name = ‘afvalcontainers_munged’,
+schema = ‘service_afvalcontainers’, 
+config_path= ‘../config.ini’, 
+config_name=’postgresql’)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</div>
 <div class="section" id="module-datapunt_processing.load.load_file_to_ckan">
 <span id="datapunt-processing-load-load-file-to-ckan-module"></span><h2>datapunt_processing.load.load_file_to_ckan module<a class="headerlink" href="#module-datapunt_processing.load.load_file_to_ckan" title="Permalink to this headline">¶</a></h2>
 <dl class="function">

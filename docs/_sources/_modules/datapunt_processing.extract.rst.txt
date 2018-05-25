@@ -52,6 +52,14 @@ datapunt\_processing.extract.download\_from\_catalog module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.extract.download\_from\_ckan module
+--------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.download_from_ckan
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 datapunt\_processing.extract.download\_from\_objectstore module
 ---------------------------------------------------------------
 

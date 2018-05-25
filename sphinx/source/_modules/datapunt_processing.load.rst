@@ -4,6 +4,14 @@ datapunt\_processing.load package
 Submodules
 ----------
 
+datapunt\_processing.load.load\_csv\_to\_postgres module
+--------------------------------------------------------
+
+.. automodule:: datapunt_processing.load.load_csv_to_postgres
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 datapunt\_processing.load.load\_file\_to\_ckan module
 -----------------------------------------------------
 

@@ -1,8 +1,7 @@
-from src.datapunt_processing.extract.download_from_catalog import download_all_files, download_metadata
+from src.datapunt_processing.extract import download_from_catalog
+from types import ModuleType
 
 
-def test_download_from_catalog():
-    url ='https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D42e270c2-c19d-45c7-a8c7-061633b6bc38&dtfs=T&dsf=groups::verkeer-infrastructuur&mpb=topografie&mpz=11&mpv=52.3731081:4.8932945'
-    metadata = download_metadata(url)
-    download_all_files(metadata, 'data')
-    #assert('data)
+def test_import_download_from_catalog():
+
+    assert isinstance(download_from_catalog, ModuleType)

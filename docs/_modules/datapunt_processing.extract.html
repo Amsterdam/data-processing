@@ -408,10 +408,10 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_catalog.download_metadata">
 <code class="descclassname">datapunt_processing.extract.download_from_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download files from data catalog response id.</p>
+<dd><p>Download files from data catalog using the dcatd identifier.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=dcatd%2Fdatasets%2Finzameldagen-grofvuil-huisvuil&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</dd>
 <dt>Result:</dt>
 <dd>All the Metadata from this dataset as a json dictonary, with the owner, refresh data, resource url’s to the desired files, etc.</dd>
 </dl>
@@ -420,10 +420,10 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_catalog.get_catalog_package_id">
 <code class="descclassname">datapunt_processing.extract.download_from_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
+<dd><p>Retrieve dcatd URI from full url from data.amsterdam.nl, for example: dcatd/datasets/inzameldagen-grofvuil-huisvuil</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=dcatd%2Fdatasets%2Finzameldagen-grofvuil-huisvuil&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</dd>
 <dt>Result:</dt>
 <dd>Unique id number of package.</dd>
 </dl>
@@ -437,6 +437,65 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_catalog.parser">
 <code class="descclassname">datapunt_processing.extract.download_from_catalog.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_catalog.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.extract.download_from_ckan">
+<span id="datapunt-processing-extract-download-from-ckan-module"></span><h2>datapunt_processing.extract.download_from_ckan module<a class="headerlink" href="#module-datapunt_processing.extract.download_from_ckan" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_ckan.download_all_files">
+<code class="descclassname">datapunt_processing.extract.download_from_ckan.</code><code class="descname">download_all_files</code><span class="sig-paren">(</span><em>metadata</em>, <em>download_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_ckan.download_all_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download all files from metadata resources list.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>metadata: json dictonary from ckan with all the metadata including the resources list of all files.</li>
+<li>download_directory: path where to store the files from the files, for example data.</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Unzipped and created dir filled with all data in the download_directory, if this does not yet exists.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_ckan.download_file">
+<code class="descclassname">datapunt_processing.extract.download_from_ckan.</code><code class="descname">download_file</code><span class="sig-paren">(</span><em>file_location</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_ckan.download_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_ckan.download_metadata">
+<code class="descclassname">datapunt_processing.extract.download_from_ckan.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_ckan.download_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download files from data catalog response id.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dt>Result:</dt>
+<dd>All the Metadata from this dataset as a json dictonary, with the owner, refresh data, resource url’s to the desired files, etc.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_ckan.get_catalog_package_id">
+<code class="descclassname">datapunt_processing.extract.download_from_ckan.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_ckan.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dt>Result:</dt>
+<dd>Unique id number of package.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_ckan.main">
+<code class="descclassname">datapunt_processing.extract.download_from_ckan.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_ckan.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_ckan.parser">
+<code class="descclassname">datapunt_processing.extract.download_from_ckan.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_ckan.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx.</p>
 </dd></dl>
 

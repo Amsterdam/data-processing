@@ -111,6 +111,11 @@
 <li class="toctree-l3"><a class="reference internal" href="download_from_api_brk.html">download_from_api_brk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_ckan.html">download_from_ckan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_table_to_csv.html">write_table_to_csv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_table_to_geojson.html">write_table_to_geojson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_mdb_to_csv.html">write_mdb_to_csv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_csv_to_dataframe.html">write_csv_to_dataframe</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../modules.html#transform-geospatial">Transform Geospatial</a></li>
@@ -193,7 +198,7 @@
 <div>Get data and metadata from data.amsterdam.nl,
 unzip if needed and put the file in a local directory.
 To test run this command line:
-<code class="docutils literal notranslate"><span class="pre">download_from_catalog</span> <span class="pre">https://data.amsterdam.nl/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</span> <span class="pre">data</span></code></div></blockquote>
+<code class="docutils literal notranslate"><span class="pre">download_from_catalog</span> <span class="pre">https://data.amsterdam.nl/#?dte=dcatd%2Fdatasets%2Finzameldagen-grofvuil-huisvuil&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</span> <span class="pre">data</span></code></div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_data_amsterdam_catalog</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">output_folder</span>
 </pre></div>
@@ -206,10 +211,9 @@ To test run this command line:
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd>url</kbd></td>
-<td><blockquote class="first">
+<td><blockquote class="first last">
 <div>Insert full url from main result page of dataset, for example:
-“<a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c”</div></blockquote>
-<p class="last">Default: “<a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c”</p>
+<a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=dcatd%2Fdatasets%2Finzameldagen-grofvuil-huisvuil&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</div></blockquote>
 </td></tr>
 <tr><td class="option-group">
 <kbd>output_folder</kbd></td>
@@ -240,10 +244,10 @@ To test run this command line:
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_catalog.download_metadata">
 <code class="descclassname">datapunt_processing.extract.download_from_catalog.</code><code class="descname">download_metadata</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_catalog.download_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download files from data catalog response id.</p>
+<dd><p>Download files from data catalog using the dcatd identifier.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=dcatd%2Fdatasets%2Finzameldagen-grofvuil-huisvuil&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</dd>
 <dt>Result:</dt>
 <dd>All the Metadata from this dataset as a json dictonary, with the owner, refresh data, resource url’s to the desired files, etc.</dd>
 </dl>
@@ -252,10 +256,10 @@ To test run this command line:
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_catalog.get_catalog_package_id">
 <code class="descclassname">datapunt_processing.extract.download_from_catalog.</code><code class="descname">get_catalog_package_id</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_catalog.get_catalog_package_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve package id from full url from data.amsterdam.nl, for example: catalogus/api/3/action/package_show?id=c1f04a62-8b69-4775-ad83-ce2647a076ef</p>
+<dd><p>Retrieve dcatd URI from full url from data.amsterdam.nl, for example: dcatd/datasets/inzameldagen-grofvuil-huisvuil</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=catalogus%2Fapi%2F3%2Faction%2Fpackage_show%3Fid%3D5d84c216-b826-4406-8297-292678dee13c</dd>
+<dd>url: full data.amsterdam.nl url of the desired dataset, for example: <a class="reference external" href="https://data.amsterdam.nl">https://data.amsterdam.nl</a>/#?dte=dcatd%2Fdatasets%2Finzameldagen-grofvuil-huisvuil&amp;dtfs=T&amp;mpb=topografie&amp;mpz=11&amp;mpv=52.3731081:4.8932945</dd>
 <dt>Result:</dt>
 <dd>Unique id number of package.</dd>
 </dl>
