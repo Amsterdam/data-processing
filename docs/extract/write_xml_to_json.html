@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>write_xml_to_df_to_csv &mdash; Datapunt processing 0.0.1 documentation</title>
+  <title>write_xml_to_json &mdash; Datapunt processing 0.0.1 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="write_xml_to_json" href="write_xml_to_json.html"/>
-        <link rel="prev" title="write_table_to_geojson" href="write_table_to_geojson.html"/> 
+        <link rel="next" title="write_mdb_to_csv" href="write_mdb_to_csv.html"/>
+        <link rel="prev" title="write_xml_to_df_to_csv" href="write_xml_to_df_to_csv.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -110,12 +110,12 @@
 <li class="toctree-l3"><a class="reference internal" href="download_from_ckan.html">download_from_ckan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_csv.html">write_table_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_geojson.html">write_table_to_geojson</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">write_xml_to_df_to_csv</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="write_xml_to_df_to_csv.html">write_xml_to_df_to_csv</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">write_xml_to_json</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.write_xml_to_df_to_csv">functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.write_xml_to_json">functions</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="write_xml_to_json.html">write_xml_to_json</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_mdb_to_csv.html">write_mdb_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_csv_to_dataframe.html">write_csv_to_dataframe</a></li>
 </ul>
@@ -175,13 +175,13 @@
         
           <li><a href="../modules.html">Modules</a> &raquo;</li>
         
-      <li>write_xml_to_df_to_csv</li>
+      <li>write_xml_to_json</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/extract/write_xml_to_df_to_csv.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/extract/write_xml_to_json.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -194,17 +194,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="write-xml-to-df-to-csv">
-<h1>write_xml_to_df_to_csv<a class="headerlink" href="#write-xml-to-df-to-csv" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="write-xml-to-json">
+<h1>write_xml_to_json<a class="headerlink" href="#write-xml-to-json" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div><p>Converts an XML file to CSV, using the first element in the root as a list of elements.</p>
+<div><p>Converts an XML file to JSON, keeping the nested structure.</p>
 <dl class="docutils">
 <dt>Example command line:</dt>
-<dd><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">write_xml_to_df_to_csv.py</span> <span class="pre">Aanbestedingen_2017-01-01_tot_2018-05-02.xml</span> <span class="pre">data</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">write_xml_to_json.py</span> <span class="pre">Aanbestedingen_2017-01-01_tot_2018-05-02.xml</span> <span class="pre">data</span></code></dd>
 </dl>
 </div></blockquote>
 </p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">write_xml_to_df_to_csv</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">full_path</span> <span class="n">output_folder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">write_xml_to_json</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">full_path</span> <span class="n">output_folder</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -222,45 +222,21 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="module-datapunt_processing.extract.write_xml_to_df_to_csv">
-<span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.extract.write_xml_to_df_to_csv" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame">
-<em class="property">class </em><code class="descclassname">datapunt_processing.extract.write_xml_to_df_to_csv.</code><code class="descname">XML2DataFrame</code><span class="sig-paren">(</span><em>xml_data</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for parsing and XML to a Dataframe</p>
-<dl class="method">
-<dt id="datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.normalize">
-<code class="descname">normalize</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.normalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove the schemaname from keys/values.
-input:</p>
-<blockquote>
-<div>{<a class="reference external" href="https://www.tenderned.nl/schema/tenderned-export">https://www.tenderned.nl/schema/tenderned-export</a>}percelen</div></blockquote>
-<dl class="docutils">
-<dt>returns:</dt>
-<dd>percelen</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="module-datapunt_processing.extract.write_xml_to_json">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-datapunt_processing.extract.write_xml_to_json" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="datapunt_processing.extract.write_xml_to_df_to_csv.parser">
-<code class="descclassname">datapunt_processing.extract.write_xml_to_df_to_csv.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.parser" title="Permalink to this definition">¶</a></dt>
+<dt id="datapunt_processing.extract.write_xml_to_json.parser">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_json.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_json.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
 To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
 </dd></dl>
 
 <dl class="function">
-<dt id="datapunt_processing.extract.write_xml_to_df_to_csv.xml_to_df">
-<code class="descclassname">datapunt_processing.extract.write_xml_to_df_to_csv.</code><code class="descname">xml_to_df</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.xml_to_df" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to parse an XML file to a Pandas dataframe.
-Args:</p>
-<blockquote>
-<div>file = filename of the XML</div></blockquote>
-<dl class="docutils">
-<dt>Result:</dt>
-<dd>df of the xml</dd>
-</dl>
+<dt id="datapunt_processing.extract.write_xml_to_json.xml2json">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_json.</code><code class="descname">xml2json</code><span class="sig-paren">(</span><em>file_input</em>, <em>output_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_json.xml2json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Args:
+- full path name
+- full output file name</p>
 </dd></dl>
 
 </div>
@@ -276,10 +252,10 @@ Args:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="write_xml_to_json.html" class="btn btn-neutral float-right" title="write_xml_to_json" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="write_mdb_to_csv.html" class="btn btn-neutral float-right" title="write_mdb_to_csv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="write_table_to_geojson.html" class="btn btn-neutral" title="write_table_to_geojson" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="write_xml_to_df_to_csv.html" class="btn btn-neutral" title="write_xml_to_df_to_csv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

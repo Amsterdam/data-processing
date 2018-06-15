@@ -827,7 +827,7 @@ input:</p>
 
 <dl class="method">
 <dt id="datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.parse_element">
-<code class="descname">parse_element</code><span class="sig-paren">(</span><em>element</em>, <em>parsed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.parse_element" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parse_element</code><span class="sig-paren">(</span><em>element</em>, <em>key_name=None</em>, <em>parsed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.parse_element" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -866,6 +866,112 @@ Args:</p>
 <dd>df of the xml</dd>
 </dl>
 </dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.extract.write_xml_to_df_to_csv_fout">
+<span id="datapunt-processing-extract-write-xml-to-df-to-csv-fout-module"></span><h2>datapunt_processing.extract.write_xml_to_df_to_csv_fout module<a class="headerlink" href="#module-datapunt_processing.extract.write_xml_to_df_to_csv_fout" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame">
+<em class="property">class </em><code class="descclassname">datapunt_processing.extract.write_xml_to_df_to_csv_fout.</code><code class="descname">XML2DataFrame</code><span class="sig-paren">(</span><em>xml_data</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for parsing and XML to a Dataframe</p>
+<dl class="method">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.normalize">
+<code class="descname">normalize</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the schemaname from keys/values.
+input:</p>
+<blockquote>
+<div>{<a class="reference external" href="https://www.tenderned.nl/schema/tenderned-export">https://www.tenderned.nl/schema/tenderned-export</a>}percelen</div></blockquote>
+<dl class="docutils">
+<dt>returns:</dt>
+<dd>percelen</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.parse_element">
+<code class="descname">parse_element</code><span class="sig-paren">(</span><em>element</em>, <em>key_name=None</em>, <em>parsed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.parse_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.parse_root">
+<code class="descname">parse_root</code><span class="sig-paren">(</span><em>root</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.parse_root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.process_data">
+<code class="descname">process_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.XML2DataFrame.process_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.main">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_df_to_csv_fout.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.parser">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_df_to_csv_fout.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_xml_to_df_to_csv_fout.xml_to_df">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_df_to_csv_fout.</code><code class="descname">xml_to_df</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv_fout.xml_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to parse an XML file to a Pandas dataframe.
+Args:</p>
+<blockquote>
+<div>file = filename of the XML</div></blockquote>
+<dl class="docutils">
+<dt>Result:</dt>
+<dd>df of the xml</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.extract.write_xml_to_json">
+<span id="datapunt-processing-extract-write-xml-to-json-module"></span><h2>datapunt_processing.extract.write_xml_to_json module<a class="headerlink" href="#module-datapunt_processing.extract.write_xml_to_json" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.extract.write_xml_to_json.main">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_json.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_json.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_xml_to_json.parser">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_json.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_json.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.write_xml_to_json.xml2json">
+<code class="descclassname">datapunt_processing.extract.write_xml_to_json.</code><code class="descname">xml2json</code><span class="sig-paren">(</span><em>file_input</em>, <em>output_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_json.xml2json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Args:
+- full path name
+- full output file name</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.extract.xml_to_dict">
+<span id="datapunt-processing-extract-xml-to-dict-module"></span><h2>datapunt_processing.extract.xml_to_dict module<a class="headerlink" href="#module-datapunt_processing.extract.xml_to_dict" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.extract.xml_to_dict.main">
+<code class="descclassname">datapunt_processing.extract.xml_to_dict.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.xml_to_dict.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.xml_to_dict.parser">
+<code class="descclassname">datapunt_processing.extract.xml_to_dict.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.xml_to_dict.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.xml_to_dict.xml2json">
+<code class="descclassname">datapunt_processing.extract.xml_to_dict.</code><code class="descname">xml2json</code><span class="sig-paren">(</span><em>file_input</em>, <em>output_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.xml_to_dict.xml2json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-datapunt_processing.extract">

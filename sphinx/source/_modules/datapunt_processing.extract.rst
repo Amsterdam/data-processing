@@ -116,6 +116,30 @@ datapunt\_processing.extract.write\_xml\_to\_df\_to\_csv module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.extract.write\_xml\_to\_df\_to\_csv\_fout module
+---------------------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.write_xml_to_df_to_csv_fout
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+datapunt\_processing.extract.write\_xml\_to\_json module
+--------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.write_xml_to_json
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+datapunt\_processing.extract.xml\_to\_dict module
+-------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.xml_to_dict
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
