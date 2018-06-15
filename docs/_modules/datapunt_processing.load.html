@@ -243,6 +243,57 @@ To see possible styling options: <a class="reference external" href="https://pyt
 </dd></dl>
 
 </div>
+<div class="section" id="module-datapunt_processing.load.load_file_to_dcatd">
+<span id="datapunt-processing-load-load-file-to-dcatd-module"></span><h2>datapunt_processing.load.load_file_to_dcatd module<a class="headerlink" href="#module-datapunt_processing.load.load_file_to_dcatd" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.load.load_file_to_dcatd.find_resource_id_if_exists">
+<code class="descclassname">datapunt_processing.load.load_file_to_dcatd.</code><code class="descname">find_resource_id_if_exists</code><span class="sig-paren">(</span><em>url</em>, <em>dataset_name</em>, <em>file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_file_to_dcatd.find_resource_id_if_exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.load.load_file_to_dcatd.main">
+<code class="descclassname">datapunt_processing.load.load_file_to_dcatd.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_file_to_dcatd.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.load.load_file_to_dcatd.parser">
+<code class="descclassname">datapunt_processing.load.load_file_to_dcatd.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_file_to_dcatd.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.load.load_file_to_dcatd.upload_file_to_ckan">
+<code class="descclassname">datapunt_processing.load.load_file_to_dcatd.</code><code class="descname">upload_file_to_ckan</code><span class="sig-paren">(</span><em>url</em>, <em>dataset_name</em>, <em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.load.load_file_to_dcatd.upload_file_to_ckan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload a file to the CKAN datastore.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">url: url of the catalog:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">catalogus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_name: name of the dataset, which can be found on the ckan page url:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">catalogus</span><span class="o">/</span><span class="n">dataset</span><span class="o">/</span><span class="n">afvalcontainers</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">api_key: your private user key, which can be found on the user profile page.</p>
+</li>
+<li><p class="first">file_path: location of the file including filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">upload</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>An uploaded file to the CKAN datastore.</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-datapunt_processing.load.load_file_to_objectstore">
 <span id="datapunt-processing-load-load-file-to-objectstore-module"></span><h2>datapunt_processing.load.load_file_to_objectstore module<a class="headerlink" href="#module-datapunt_processing.load.load_file_to_objectstore" title="Permalink to this headline">¶</a></h2>
 <dl class="function">

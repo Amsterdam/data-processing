@@ -352,6 +352,79 @@ To see possible styling options: <a class="reference external" href="https://pyt
 </dd></dl>
 
 </div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points">
+<span id="datapunt-processing-transform-geospatial-get-bag-address-from-geojson-points-module"></span><h2>datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.add_location_data">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">add_location_data</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.add_location_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.cleanup_properties">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">cleanup_properties</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.cleanup_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_address_near_point">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">get_address_near_point</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em>, <em>radius</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_address_near_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get nearest addres and housenumber based on location.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_address_near_point(52.3729378,</span> <span class="pre">4.8937806,</span> <span class="pre">50)</span></code></p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>lat: 52.3729378</li>
+<li>lon:  4.8937806</li>
+<li>radius: 50</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Dictionary of the first found address with openbareruimte, huisnummer, postcode, etc…</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_elements">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">get_elements</code><span class="sig-paren">(</span><em>div_content</em>, <em>element_type</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_filename">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">get_filename</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_filename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_location_information">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">get_location_information</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_location_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get html page, find the header and values by h4 and p and return as a list with 2 values</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_pand">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">get_pand</code><span class="sig-paren">(</span><em>lat</em>, <em>lon</em>, <em>radius</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.get_pand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name the street location where it coordinate resides on.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>lat: 52.3729378</li>
+<li>lon:  4.8937806</li>
+</ol>
+</dd>
+<dt>Result:</dt>
+<dd>Returns dictionary of the pand object</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.main">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.remove_html_elements">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.</code><code class="descname">remove_html_elements</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points.remove_html_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="module-datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates">
 <span id="datapunt-processing-transform-geospatial-postgres-add-areas-from-coordinates-module"></span><h2>datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.postgres_add_areas_from_coordinates" title="Permalink to this headline">¶</a></h2>
 <dl class="function">

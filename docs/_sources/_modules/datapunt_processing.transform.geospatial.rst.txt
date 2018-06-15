@@ -60,6 +60,14 @@ datapunt\_processing.transform.geospatial.geocode\_xls\_to\_csv module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.transform.geospatial.get\_bag\_address\_from\_geojson\_points module
+-----------------------------------------------------------------------------------------
+
+.. automodule:: datapunt_processing.transform.geospatial.get_bag_address_from_geojson_points
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 datapunt\_processing.transform.geospatial.postgres\_add\_areas\_from\_coordinates module
 ----------------------------------------------------------------------------------------
 

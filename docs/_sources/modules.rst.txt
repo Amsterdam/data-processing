@@ -39,6 +39,7 @@ stored, from API’s or from the data catalog.**
     extract/download_from_ckan
     extract/write_table_to_csv
     extract/write_table_to_geojson
+    extract/write_xml_to_df_to_csv
     extract/write_mdb_to_csv
     extract/write_csv_to_dataframe
     

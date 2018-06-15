@@ -108,6 +108,14 @@ datapunt\_processing.extract.write\_table\_to\_geojson module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.extract.write\_xml\_to\_df\_to\_csv module
+---------------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.write_xml_to_df_to_csv
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

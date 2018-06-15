@@ -20,6 +20,14 @@ datapunt\_processing.load.load\_file\_to\_ckan module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.load.load\_file\_to\_dcatd module
+------------------------------------------------------
+
+.. automodule:: datapunt_processing.load.load_file_to_dcatd
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 datapunt\_processing.load.load\_file\_to\_objectstore module
 ------------------------------------------------------------
 
