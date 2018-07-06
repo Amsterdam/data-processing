@@ -126,7 +126,7 @@ This package is build by using `setuptools <http://setuptools.readthedocs.io>`_ 
 ---------------
 We try to use command line functions as much as possible to ensure we create functions to work easily with different environments and to force yourself creating more generic functions with input variables.
 
-If possible, convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/boilerplate_function.py>`_ 
+If possible, convert your function into a `python-package command line script <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_ using the `boilerplate_function.py <https://github.com/Amsterdam/data-processing/blob/master/src/datapunt_processing/boilerplate_function.py>`_ 
 
 Add your function to the appropriate `folder <https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing>`_:
     - `extract <https://github.com/Amsterdam/data-processing/tree/master/src/datapunt_processing/extract>`_
