@@ -91,10 +91,10 @@ def fill_empty_value(x):
     # Handle dictionaries, lits & tuples. Scrub all values
     if isinstance(x, dict):
         for k, v in ret.items():
-            ret[k] = scrub(v)
+            ret[k] = fill_empty_value(v)
     if isinstance(x, (list, tuple)):
         for k, v in enumerate(ret):
-            ret[k] = scrub(v)
+            ret[k] = fill_empty_value(v)
     if x is None:
         ret = 'empty'
     return ret
