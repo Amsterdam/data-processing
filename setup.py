@@ -37,7 +37,7 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.1a11',
+    version='0.0.1a12',
     name='datapunt_processing',
     description="Datapunt generic ETL command line scripts and functions for shell scripting in Docker.",
     long_description=read('README.rst'),
@@ -67,11 +67,13 @@ setup(
             'download_from_api_tellus = datapunt_processing.extract.download_from_api_tellus:main',
             'download_from_api_kvk = datapunt_processing.extract.download_from_api_kvk:main',
             'download_from_wfs = datapunt_processing.extract.download_from_wfs:main',
+            'download_tables_from_dokuwiki_to_json = datapunt_processing.extract.download_tables_from_dokuwiki_to_json:main',
             'download_from_objectstore = datapunt_processing.extract.download_from_objectstore:main',
             'download_from_ckan = datapunt_processing.extract.download_from_ckan:main',
             'write_csv_to_dataframe = datapunt_processing.extract.csv_dataframe:main',
             'write_table_to_csv = datapunt_processing.extract.write_table_to_csv:main',
-            'write_xml_to_csv = datapunt_processing.extract.write_xml_to_csv:main',
+            'write_xml_to_csv = datapunt_processing.extract.write_xml_to_df_to_csv.py:main',
+            'write_xml_to_json = datapunt_processing.extract.write_xml_to_json.py:main',
             'write_table_to_geojson = datapunt_processing.extract.write_table_to_geojson:main',
             'write_mdb_to_csv = datapunt_processing.extract.write_mdb_to_csv:main',
             # load
@@ -107,6 +109,7 @@ setup(
         'lxml==4.2.1',
         'python-swiftclient==3.4.0',
         'python-keystoneclient',
+        'bs4'
 
         # Config providers
         'datapunt-config-loader',
