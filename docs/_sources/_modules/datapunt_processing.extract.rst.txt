@@ -68,10 +68,26 @@ datapunt\_processing.extract.download\_from\_objectstore module
     :undoc-members:
     :show-inheritance:
 
+datapunt\_processing.extract.download\_from\_signals\_api module
+----------------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.download_from_signals_api
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 datapunt\_processing.extract.download\_from\_wfs module
 -------------------------------------------------------
 
 .. automodule:: datapunt_processing.extract.download_from_wfs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+datapunt\_processing.extract.download\_tables\_from\_dokuwiki\_to\_json module
+------------------------------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.download_tables_from_dokuwiki_to_json
     :members:
     :undoc-members:
     :show-inheritance:
