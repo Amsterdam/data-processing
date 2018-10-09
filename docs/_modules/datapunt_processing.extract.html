@@ -703,16 +703,32 @@ and to add description to sphinx.</p>
 <div class="section" id="module-datapunt_processing.extract.download_tables_from_dokuwiki_to_json">
 <span id="datapunt-processing-extract-download-tables-from-dokuwiki-to-json-module"></span><h2>datapunt_processing.extract.download_tables_from_dokuwiki_to_json module<a class="headerlink" href="#module-datapunt_processing.extract.download_tables_from_dokuwiki_to_json" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.create_dir_if_not_exists">
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">create_dir_if_not_exists</code><span class="sig-paren">(</span><em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.create_dir_if_not_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create directory if it does not yet exists.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>Specify the name of directory, for example: <cite>dir/anotherdir</cite></dd>
+<dt>Returns:</dt>
+<dd>Creates the directory if it does not exists, of return the error message.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationHTMLPages">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getApplicationHTMLPages</code><span class="sig-paren">(</span><em>application_urls</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationHTMLPages" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getApplicationHTMLPages</code><span class="sig-paren">(</span><em>url</em>, <em>application_urls</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationHTMLPages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Input: a list of {name: , url: } to iterate over.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationURLs">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getApplicationURLs</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationURLs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all url’s of application urls from the cluster page.
-result: list of name of the application and the page url</p>
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getApplicationURLs</code><span class="sig-paren">(</span><em>filename</em>, <em>header_name_urls</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationURLs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all url’s of application urls from the cluster page.</p>
+<p>Args:
+- filename: name of the json file where the result is output to.
+- header_name_urls: insert the name of the column header where the wiki urls are listed in.</p>
+<p>Result:
+- list of name of the application and the page url.</p>
 </dd></dl>
 
 <dl class="function">
@@ -723,12 +739,16 @@ result: list of name of the application and the page url</p>
 <dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getPage">
 <code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getPage</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getPage" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get parsed text data from url’s.
+Wait for 1 second for slow networks.
+Retry 5 times.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getRows">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getRows</code><span class="sig-paren">(</span><em>headers</em>, <em>row</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getRows" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getRows</code><span class="sig-paren">(</span><em>url</em>, <em>headers</em>, <em>row</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all rows from tables, add them into a dict and add host url to wiki urls.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.main">
@@ -737,7 +757,7 @@ result: list of name of the application and the page url</p>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">parseHtmlTable</code><span class="sig-paren">(</span><em>html_doc</em>, <em>name=''</em>, <em>headertype='h3'</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">parseHtmlTable</code><span class="sig-paren">(</span><em>url</em>, <em>html_doc</em>, <em>name=''</em>, <em>headertype='h3'</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve one html page to parse tables and H3 names from.
 Args:</p>
 <blockquote>
