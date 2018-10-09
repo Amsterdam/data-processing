@@ -109,6 +109,7 @@ setup(
         'lxml==4.2.1',
         'python-swiftclient==3.4.0',
         'python-keystoneclient',
+        'bs4'
 
         # Config providers
         'datapunt-config-loader',
