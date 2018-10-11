@@ -715,23 +715,6 @@ and to add description to sphinx.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationHTMLPages">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getApplicationHTMLPages</code><span class="sig-paren">(</span><em>url</em>, <em>application_urls</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationHTMLPages" title="Permalink to this definition">¶</a></dt>
-<dd><p>Input: a list of {name: , url: } to iterate over.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationURLs">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getApplicationURLs</code><span class="sig-paren">(</span><em>filename</em>, <em>header_name_urls</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getApplicationURLs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all url’s of application urls from the cluster page.</p>
-<p>Args:
-- filename: name of the json file where the result is output to.
-- header_name_urls: insert the name of the column header where the wiki urls are listed in.</p>
-<p>Result:
-- list of name of the application and the page url.</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getHeaders">
 <code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getHeaders</code><span class="sig-paren">(</span><em>row</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getHeaders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -751,13 +734,18 @@ Retry 5 times.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getTableValues">
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">getTableValues</code><span class="sig-paren">(</span><em>url</em>, <em>table</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.getTableValues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.main">
 <code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">parseHtmlTable</code><span class="sig-paren">(</span><em>url</em>, <em>html_doc</em>, <em>name=''</em>, <em>headertype='h3'</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">parseHtmlTable</code><span class="sig-paren">(</span><em>url</em>, <em>html_doc</em>, <em>header_name_urls</em>, <em>headertype='h3'</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve one html page to parse tables and H3 names from.
 Args:</p>
 <blockquote>
