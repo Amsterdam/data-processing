@@ -74,7 +74,20 @@ def getHeaders(row):
     return headers
 
 
-def parseHtmlTable(url, html_doc, name='', headertype='h3'):
+def getTableValues(url, table):
+    new_table =[]
+    item = {}
+    rows = table.find_all('tr')
+    for row in rows:
+        if row['class'][0] == 'row0':
+            headers = getHeaders(row)
+        else:
+            item = getRows(url, headers, row)
+            new_table.append(item)
+    return new_table
+
+
+def parseHtmlTable(url, html_doc, header_name_urls, headertype='h3'):
     """
     Retrieve one html page to parse tables and H3 names from.
     Args:
@@ -88,76 +101,40 @@ def parseHtmlTable(url, html_doc, name='', headertype='h3'):
     """
     data = []
     soup = BeautifulSoup(html_doc, 'html.parser')
-    tables = soup.find_all([headertype, 'table'])
-    if name == '':
-        cluster_names = [title.text.strip() for title in soup.find_all('h2')]
-    tablecount = 0
+    tables = soup.find_all(['h2','table'])
+
+    #cluster_names = [title.text.strip() for title in soup.find_all('h2')]
+    #i = 0
     for table in tables:
-        if table.name == headertype:
-            table_title = table.text
+        if table.name == 'h2':
+            cluster_title = table.text
+            item = {'cluster': cluster_title, 'applicaties': []}
         if table.name == 'table':
-            new_table = []
-            rows = table.find_all('tr')
-            for row in rows:
-                if row['class'][0] == 'row0':
-                    headers = getHeaders(row)
-                else:
-                    item = getRows(url, headers, row)
-                    if name == '':
-                        item['Cluster'] = cluster_names[tablecount]
-                    else:
-                        item['Applicatie'] = name
-                    # print(item)
-                    new_table.append(item)
-            if name:
-                data.append({table_title: new_table})
-                print('Parsed table: ', table_title)
-            else:
-                data.append(new_table)
-                print('Parsed table')
-            tablecount += 1
-    return data
-
-
-def getApplicationURLs(filename, header_name_urls):
-    """
-    Get all url's of application urls from the cluster page.
-
-    Args:
-    - filename: name of the json file where the result is output to.
-    - header_name_urls: insert the name of the column header where the wiki urls are listed in.
-
-    Result:
-    - list of name of the application and the page url.
-    """
-    with open(filename, 'r') as infile:
-        data = json.load(infile)
-        list_of_wikilinks = []
-        for cluster in data:
-            for i in range(len(cluster)):
+            cluster_data = getTableValues(url, table)
+            #print(cluster_data)
+            for row in cluster_data:
+                print(row)
                 try:
-                    if cluster[i][header_name_urls]['url']:
-                        list_of_wikilinks.append(cluster[i][header_name_urls])
+                    applicatie = row
+                    applicatie['results'] = []
+                    application_html_doc = getPage(row[header_name_urls]["url"])
+                    print('Loaded wiki page: ', row[header_name_urls]["naam"])
+                    sub_soup = BeautifulSoup(application_html_doc, 'html.parser')
+                    sub_tables = sub_soup.find_all([headertype, 'table'])
+                    for sub_table in sub_tables:
+                        if sub_table.name == headertype:
+                            table_title = sub_table.text
+                        if sub_table.name == 'table':
+                            sub_item = getTableValues(url, sub_table)
+                            print('Parse table: ', table_title)
+                            sub_table_data = {table_title: sub_item}
+                            applicatie['results'].append(sub_table_data)
+                    item['applicaties'].append(applicatie)
                 except:
                     continue
-        print('Found: %d wiki urls'.format(len(list_of_wikilinks)))
-        return list_of_wikilinks
-
-
-def getApplicationHTMLPages(url, application_urls):
-    """
-    Input: a list of {name: , url: } to iterate over.
-    """
-    total_applications = []
-    for application in application_urls:
-        application_html_doc = getPage(application["url"])
-        print('Loaded wiki page: ', application["naam"])
-        data = parseHtmlTable(url, application_html_doc, application["naam"])
-        total_applications.append(
-            {"applicatie": application["naam"],
-             "gegevens": data}
-        )
-    return total_applications
+                data.append(item)
+            print('Parsed table')
+    return data
 
 
 def saveFile(data, folder, name):
@@ -184,7 +161,7 @@ def parser():
     The script needs to be able to access dokuwiki.datapunt.amsterdam.nl.
 
     Example command line:
-        ``python download_tables_from_dokuwiki_to_json.py "https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:systeem" output informatievoorziening clusters applications``
+        ``python download_tables_from_dokuwiki_to_json.py "https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:systeem" output informatievoorziening applicatie_gegevens``
     """
 
     parser = argparse.ArgumentParser(
@@ -205,12 +182,9 @@ def parser():
                         Specify the name of the field where the wiki urls are defined.
                         For example: "informatievoorziening"
                         """)
-    parser.add_argument('main_page_name',
+    parser.add_argument('filename',
                         type=str,
                         help='Specify the desired filename, for example: clusters.json')
-    parser.add_argument('sub_pages_name',
-                        type=str,
-                        help='Specify the desired filename for all retreived tables, for example: applications.json')
     return parser
 
 
@@ -218,13 +192,8 @@ def main():
     args = parser().parse_args()
 
     html_doc = getPage(args.url)
-    tables_main_page = parseHtmlTable(args.url, html_doc)
-    main_page_path = saveFile(tables_main_page, args.output_folder, args.main_page_name)
-
-    list_sub_pages_urls = getApplicationURLs(main_page_path, args.header_name_urls)
-
-    tables_sub_pages = getApplicationHTMLPages(args.url, list_sub_pages_urls)
-    saveFile(tables_sub_pages, args.output_folder, args.sub_pages_name)
+    tables_main_page = parseHtmlTable(args.url, html_doc,  args.header_name_urls)
+    saveFile(tables_main_page, args.output_folder, args.filename)
 
 
 if __name__ == '__main__':
