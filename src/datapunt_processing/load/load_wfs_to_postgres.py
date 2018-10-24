@@ -82,7 +82,23 @@ def load_wfs_layer_into_postgres(pg_str, url_wfs, layer_name, srs, retry_count=3
         url_wfs, layer_name))
     url = url_wfs + '?' + urlencode(parameters)
     srs = "EPSG:{}".format(srs)
-    cmd = ['ogr2ogr', '-overwrite', '-t_srs', srs, '-nln', layer_name, '-F', 'PostgreSQL', 'PG:'+pg_str, url]
+
+    cmd = [
+        'ogr2ogr',
+        # replace exiting table.
+        '-overwrite',
+        # srs to use  4326, 28992
+        '-t_srs', srs,
+        # layer name
+        '-nln', layer_name,
+        # geometry target column name
+        # new versions of ogr2ogr use diferent clumns
+        # force it here. (todo make option?)
+        '-lco', 'GEOMETRY_NAME=wkb_geometry',
+        '-F', 'PostgreSQL', 'PG:' + pg_str,
+        url
+    ]
+
     run_command_sync(cmd)
 
 
@@ -118,7 +134,7 @@ def parser():
         ``export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH``
 
     Example command line:
-        ``load_wfs_to_postgres config.ini dev https://map.data.amsterdam.nl/maps/gebieden 
+        ``load_wfs_to_postgres config.ini dev https://map.data.amsterdam.nl/maps/gebieden
           stadsdeel,buurtcombinatie,gebiedsgerichtwerken,buurt 28992``
     """
     parser = argparse.ArgumentParser(description=desc)
