@@ -1,8 +1,8 @@
 import requests
 import pandas as pd
+import numpy as np
 pd.set_option('display.max_columns', 100)
 from datetime import timedelta
-import requests
 import os
 import random
 import string
@@ -12,6 +12,11 @@ import time
 import datetime
 from datapunt_processing import logger
 import copy
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
+import pprint
+
 
 logger = logger()
 
@@ -82,24 +87,47 @@ class GetAccessToken(object):
 # bearer_token = GetAccessToken().getAccessToken(email, password, acceptance)
 
 
-url = "https://api.data.amsterdam.nl/signals/auth/signal/?&page_size=1000"
+URL = "https://api.data.amsterdam.nl/signals/auth/signal/?&page_size=1000"
 
 
-def fill_empty_value(x):
-    # Converts None to empty string
-    ret = copy.deepcopy(x)
-    # Handle dictionaries, lits & tuples. Scrub all values
-    if isinstance(x, dict):
-        for k, v in ret.items():
-            ret[k] = fill_empty_value(v)
-    if isinstance(x, (list, tuple)):
-        for k, v in enumerate(ret):
-            ret[k] = fill_empty_value(v)
-    if x is None:
-        ret = 'empty'
-    return ret
+       
+# zie https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 
-        
+EMPTY = np.nan
+
+def _get_session_with_retries():
+    """
+    Get a requests Session that will retry some set number of times.
+    """
+    session = requests.Session()
+
+    retries = Retry(
+        total=5,
+        backoff_factor=0.1,
+        status_forcelist=[500, 502, 503, 504],
+        raise_on_status=True
+    )
+    adapter = HTTPAdapter(max_retries=retries)
+    session.mount('https://', adapter)
+    session.mount('http://', adapter)
+
+    return session
+
+
+def process_address(location):
+    """Extract """
+    fields = ('openbare_ruimte', 'postcode', 'woonplaats', 'huisnummer')
+    
+    out = {}
+    if location['address'] and isinstance(location['address'], dict):
+        for field in fields:
+            out[field] = location['address'].get(field, EMPTY)
+    else:
+        out = {field: EMPTY for field in fields}
+
+    return out
+
+
 def get_sia_json(url, params, bearer_token):
     """
     first: put SIGNALS_USER en SIGNALS_PASSWORD to env variables (!)
@@ -111,32 +139,24 @@ def get_sia_json(url, params, bearer_token):
     Returns:
         parsed json or error message
     """
+    session = _get_session_with_retries()
+    next_page = url
     
-    response= requests.get(url, params, headers = {"Authorization":"Bearer " + bearer_token})
-    
-    try:
-        response.raise_for_status() # Raises 'HTTPError', if one occurred
-    except requests.exceptions.HTTPError as e:
-        raise errors.InvalidResponse(response) from e
-        
-    result = response.json()
-    next_page = result['_links']['next']['href']
-    logger.info("received data from {} ".format(url))
-        
-    
-    # start looping though pages, store in result_list
+    # start looping thorugh pages,store in result_list
     result_list = []
 
-    while 'http' in str(next_page):
+    # while next_page is not None:
+    while next_page:
+        logger.debug('Grabbing %s', next_page)
+        response = session.get(next_page, params=params, headers={"Authorization" : "Bearer " + bearer_token})
+        
+        result = response.json()
 
-        r = requests.get(next_page, params, headers = {"Authorization":"Bearer " + bearer_token})
-        result = r.json()
 
         next_page = result['_links']['next']['href']
-        for item in result['results']:
-            
-            item = fill_empty_value(item)
-
+        logger.debug('Next page %s', next_page)
+        for i, item in enumerate(result['results']):
+                       
             result_dict = {}
 
             # indicate what to extract   
@@ -144,15 +164,13 @@ def get_sia_json(url, params, bearer_token):
             result_dict['main_cat'] = item['category']['main']
             result_dict['sub_cat'] = item['category']['sub']
             result_dict['text'] = item['text']
-            result_dict['address'] = item['location']['address_text']
-            #result_dict['address'] = item['location']['address']['openbare_ruimte']
-            result_dict['bc'] = item['location']['buurt_code']
-            result_dict['sd'] = item['location']['stadsdeel']
+            result_dict.update(process_address(item['location']))
+            result_dict['bc'] = item['location'].get('buurt_code', EMPTY)
+            result_dict['sd'] = item['location'].get('stadsdeel', EMPTY)
             result_dict['geometry'] = item['location']['geometrie']['coordinates']
             result_dict['status'] = item['status']['state']
 
             result_list.append(result_dict)
-
-            print(len(result_list))
+        ## break (if you want only one page)
 
     return result_list
