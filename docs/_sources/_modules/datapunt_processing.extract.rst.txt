@@ -4,6 +4,14 @@ datapunt\_processing.extract package
 Submodules
 ----------
 
+datapunt\_processing.extract.download\_all\_resources\_from\_dcatd\_to\_csv module
+----------------------------------------------------------------------------------
+
+.. automodule:: datapunt_processing.extract.download_all_resources_from_dcatd_to_csv
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 datapunt\_processing.extract.download\_bbga\_by\_variable\_\_area\_year module
 ------------------------------------------------------------------------------
 
