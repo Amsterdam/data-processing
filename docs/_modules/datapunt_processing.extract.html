@@ -166,6 +166,66 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-datapunt_processing.extract.download_all_resources_from_dcatd_to_csv">
+<span id="datapunt-processing-extract-download-all-resources-from-dcatd-to-csv-module"></span><h2>datapunt_processing.extract.download_all_resources_from_dcatd_to_csv module<a class="headerlink" href="#module-datapunt_processing.extract.download_all_resources_from_dcatd_to_csv" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.create_dir_if_not_exists">
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">create_dir_if_not_exists</code><span class="sig-paren">(</span><em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.create_dir_if_not_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create directory if it does not yet exists.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>Specify the name of directory, for example: <cite>dir/anotherdir</cite></dd>
+<dt>Returns:</dt>
+<dd>Creates the directory if it does not exists, of return the error message.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getDatasets">
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">getDatasets</code><span class="sig-paren">(</span><em>url</em>, <em>dcatd_url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getDatasets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getPage">
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">getPage</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getPage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getResource">
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">getResource</code><span class="sig-paren">(</span><em>purl</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.main">
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.parser">
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.save_file">
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>data</em>, <em>output_folder</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.save_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>save_file currently works with: csv, txt, geojson and json as suffixes.
+It reads the filename suffix and saves the file as the appropriate type.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><ol class="first last arabic simple">
+<li>data: list of flattened dictionary objects for example: [{id:1, attr:value, attr2:value}, {id:2, attr:value, attr2:value}]</li>
+<li>filename: data_output.csv or data_output.json</li>
+<li>output_folder: dir/anotherdir</li>
+</ol>
+</dd>
+<dt>Returns:</dt>
+<dd>Saved the list of objects to the given geojson or csv type.</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-datapunt_processing.extract.download_bbga_by_variable__area_year">
 <span id="datapunt-processing-extract-download-bbga-by-variable-area-year-module"></span><h2>datapunt_processing.extract.download_bbga_by_variable__area_year module<a class="headerlink" href="#module-datapunt_processing.extract.download_bbga_by_variable__area_year" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -950,7 +1010,7 @@ input:</p>
 
 <dl class="method">
 <dt id="datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.parse_element">
-<code class="descname">parse_element</code><span class="sig-paren">(</span><em>element</em>, <em>key_name=None</em>, <em>parsed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.parse_element" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parse_element</code><span class="sig-paren">(</span><em>element</em>, <em>parsed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.write_xml_to_df_to_csv.XML2DataFrame.parse_element" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
