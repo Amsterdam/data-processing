@@ -165,9 +165,10 @@ def parser():
     The script needs to be able to access dokuwiki.datapunt.amsterdam.nl.
 
     Example command line:
-        `python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-informatievoorzining h2 output informatievoorziening applicatie_gegevens`
-        or
-        `python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties h3 output Directie gebruik_basisregistraties`
+    For applicaties on our internal dokuwiki:
+        ``python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-informatievoorzining h2 output informatievoorziening applicatie_gegevens``
+    For gebruik on our internal dokuwiki:
+        ``python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties h3 output Directie gebruik_basisregistraties``
     """
 
     parser = argparse.ArgumentParser(

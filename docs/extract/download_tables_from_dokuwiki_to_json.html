@@ -200,15 +200,20 @@
 <p><blockquote>
 <div><p>Get main wiki page containing all links to related pages to parse this into 2 json files with all the table data.</p>
 <p>The script needs to be able to access dokuwiki.datapunt.amsterdam.nl.</p>
+<p>Example command line:
+For applicaties on our internal dokuwiki:</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">download_tables_from_dokuwiki_to_json.py</span> <span class="pre">https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-informatievoorzining</span> <span class="pre">h2</span> <span class="pre">output</span> <span class="pre">informatievoorziening</span> <span class="pre">applicatie_gegevens</span></code></div></blockquote>
 <dl class="docutils">
-<dt>Example command line:</dt>
-<dd><a href="#id2"><span class="problematic" id="id3">``</span></a>python download_tables_from_dokuwiki_to_json.py “<a class="reference external" href="https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:overzicht-informatievoorzining">https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:overzicht-informatievoorzining</a>” output informatievoorziening applicatie_gegevens ``</dd>
+<dt>For gebruik on our internal dokuwiki:</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">download_tables_from_dokuwiki_to_json.py</span> <span class="pre">https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties</span> <span class="pre">h3</span> <span class="pre">output</span> <span class="pre">Directie</span> <span class="pre">gebruik_basisregistraties</span></code></dd>
 </dl>
 </div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_tables_from_dokuwiki_to_json</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
-                                             <span class="n">url</span> <span class="n">output_folder</span>
-                                             <span class="n">header_name_urls</span> <span class="n">filename</span>
+                                             <span class="n">url</span> <span class="n">cluster_headertype</span>
+                                             <span class="n">output_folder</span> <span class="n">header_name_urls</span>
+                                             <span class="n">filename</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -224,6 +229,10 @@
 For example:
 “<a class="reference external" href="https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:systeem">https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:systeem</a>”</div></blockquote>
 </td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd>cluster_headertype</kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Specify the header css style to select the cluster titles: h2 for applicaties, h3 for gebruik</td></tr>
 <tr><td class="option-group">
 <kbd>output_folder</kbd></td>
 <td>Specify the desired output folder path, for example: output</td></tr>
@@ -232,7 +241,7 @@ For example:
 </tr>
 <tr><td>&#160;</td><td><blockquote class="first last">
 <div>Specify the name of the field where the wiki urls are defined.
-For example: “informatievoorziening”</div></blockquote>
+For example: “informatievoorziening, directie”</div></blockquote>
 </td></tr>
 <tr><td class="option-group">
 <kbd>filename</kbd></td>
@@ -270,7 +279,7 @@ Retry 5 times.</p>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable">
-<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">parseHtmlTable</code><span class="sig-paren">(</span><em>url</em>, <em>html_doc</em>, <em>header_name_urls</em>, <em>headertype='h3'</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">datapunt_processing.extract.download_tables_from_dokuwiki_to_json.</code><code class="descname">parseHtmlTable</code><span class="sig-paren">(</span><em>url</em>, <em>html_doc</em>, <em>header_name_urls</em>, <em>cluster_headertype</em>, <em>table_headertype='h3'</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_tables_from_dokuwiki_to_json.parseHtmlTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve one html page to parse tables and H3 names from.
 Args:</p>
 <blockquote>
