@@ -61,6 +61,8 @@ def getRows(url, headers, row):
             value = {"naam": value, "url": url_name}
         item.append(value)
     items = dict(zip(headers, item))
+    # Quick fix to delete empty generated key names
+    items = {k: v for k, v in items.items() if k is not ''}
     return items
 
 
@@ -87,7 +89,7 @@ def getTableValues(url, table):
     return new_table
 
 
-def parseHtmlTable(url, html_doc, header_name_urls, headertype='h3'):
+def parseHtmlTable(url, html_doc, header_name_urls, cluster_headertype, table_headertype='h3'):
     """
     Retrieve one html page to parse tables and H3 names from.
     Args:
@@ -101,38 +103,40 @@ def parseHtmlTable(url, html_doc, header_name_urls, headertype='h3'):
     """
     data = []
     soup = BeautifulSoup(html_doc, 'html.parser')
-    tables = soup.find_all(['h2','table'])
+    tables = soup.find_all([cluster_headertype,'table'])
 
     #cluster_names = [title.text.strip() for title in soup.find_all('h2')]
-    #i = 0
+
     for table in tables:
-        if table.name == 'h2':
+        if table.name == cluster_headertype:
             cluster_title = table.text
             item = {'cluster': cluster_title, 'applicaties': []}
         if table.name == 'table':
             cluster_data = getTableValues(url, table)
-            #print(cluster_data)
+            print(cluster_data)
             for row in cluster_data:
                 print(row)
-                try:
+                if row.get(header_name_urls):
                     applicatie = row
                     applicatie['results'] = []
-                    application_html_doc = getPage(row[header_name_urls]["url"])
-                    print('Loaded wiki page: ', row[header_name_urls]["naam"])
-                    sub_soup = BeautifulSoup(application_html_doc, 'html.parser')
-                    sub_tables = sub_soup.find_all([headertype, 'table'])
-                    for sub_table in sub_tables:
-                        if sub_table.name == headertype:
-                            table_title = sub_table.text
-                        if sub_table.name == 'table':
-                            sub_item = getTableValues(url, sub_table)
-                            print('Parse table: ', table_title)
-                            sub_table_data = {table_title: sub_item}
-                            applicatie['results'].append(sub_table_data)
-                    item['applicaties'].append(applicatie)
-                except:
-                    continue
-                data.append(item)
+                    if type(row[header_name_urls]) == dict:  # skip string values
+                        application_html_doc = getPage(row[header_name_urls]["url"])
+                        print('Loaded wiki page: ', row[header_name_urls]["naam"])
+                        sub_soup = BeautifulSoup(application_html_doc, 'html.parser')
+                        sub_tables = sub_soup.find_all([table_headertype, 'table'])
+                        for sub_table in sub_tables:
+                            if sub_table.name == table_headertype:
+                                table_title = sub_table.text
+                            if sub_table.name == 'table' and table_title:
+                                sub_item = getTableValues(url, sub_table)
+                                print(sub_item)
+                                print('Parse table: ', table_title)
+                                sub_table_data = {table_title: sub_item}
+                                applicatie['results'].append(sub_table_data)
+                        item['applicaties'].append(applicatie)
+                if row.get(header_name_urls):
+                    data.append(item)
+                    print(data)
             print('Parsed table')
     return data
 
@@ -161,7 +165,10 @@ def parser():
     The script needs to be able to access dokuwiki.datapunt.amsterdam.nl.
 
     Example command line:
-        ``python download_tables_from_dokuwiki_to_json.py "https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:overzicht-informatievoorzining" output informatievoorziening applicatie_gegevens ``
+    For applicaties on our internal dokuwiki:
+        ``python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-informatievoorzining h2 output informatievoorziening applicatie_gegevens``
+    For gebruik on our internal dokuwiki:
+        ``python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties h3 output Directie gebruik_basisregistraties``
     """
 
     parser = argparse.ArgumentParser(
@@ -173,6 +180,9 @@ def parser():
                         For example:
                         "https://dokuwiki.datapunt.amsterdam.nl/doku.php?id=start:gebruik:systeem"
                         """)
+    parser.add_argument('cluster_headertype',
+                        type=str,
+                        help='Specify the header css style to select the cluster titles: h2 for applicaties, h3 for gebruik')
     parser.add_argument('output_folder',
                         type=str,
                         help='Specify the desired output folder path, for example: output')
@@ -180,7 +190,7 @@ def parser():
                         type=str,
                         help="""
                         Specify the name of the field where the wiki urls are defined.
-                        For example: "informatievoorziening"
+                        For example: "informatievoorziening, directie"
                         """)
     parser.add_argument('filename',
                         type=str,
@@ -192,7 +202,8 @@ def main():
     args = parser().parse_args()
 
     html_doc = getPage(args.url)
-    tables_main_page = parseHtmlTable(args.url, html_doc,  args.header_name_urls)
+    # tables_main_page = parseApplicatiesHtmlTable(args.url, html_doc,  args.header_name_urls)
+    tables_main_page = parseHtmlTable(args.url, html_doc,  args.header_name_urls, args.cluster_headertype)
     saveFile(tables_main_page, args.output_folder, args.filename)
 
 
