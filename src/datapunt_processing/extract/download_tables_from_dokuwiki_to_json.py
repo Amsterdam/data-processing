@@ -115,28 +115,33 @@ def parseHtmlTable(url, html_doc, header_name_urls, cluster_headertype, table_he
             cluster_data = getTableValues(url, table)
             print(cluster_data)
             for row in cluster_data:
-                print(row)
-                if row.get(header_name_urls):
-                    applicatie = row
-                    applicatie['results'] = []
-                    if type(row[header_name_urls]) == dict:  # skip string values
-                        application_html_doc = getPage(row[header_name_urls]["url"])
-                        print('Loaded wiki page: ', row[header_name_urls]["naam"])
-                        sub_soup = BeautifulSoup(application_html_doc, 'html.parser')
-                        sub_tables = sub_soup.find_all([table_headertype, 'table'])
-                        for sub_table in sub_tables:
-                            if sub_table.name == table_headertype:
-                                table_title = sub_table.text
-                            if sub_table.name == 'table' and table_title:
-                                sub_item = getTableValues(url, sub_table)
-                                print(sub_item)
-                                print('Parse table: ', table_title)
-                                sub_table_data = {table_title: sub_item}
-                                applicatie['results'].append(sub_table_data)
-                        item['applicaties'].append(applicatie)
-                if row.get(header_name_urls):
-                    data.append(item)
-                    print(data)
+                for header_name_url in header_name_urls[0].split(','):
+                    print(header_name_url)
+                    print(row)
+                    if row.get(header_name_url):
+                        print('test')
+                        applicatie = row
+                        applicatie['results'] = []
+                        if type(row[header_name_url]) == dict:  # skip string values
+                            application_html_doc = getPage(row[header_name_url]["url"])
+                            print('Loaded wiki page: ', row[header_name_url]["naam"])
+                            sub_soup = BeautifulSoup(application_html_doc, 'html.parser')
+                            sub_tables = sub_soup.find_all([table_headertype, 'table'])
+                            for sub_table in sub_tables:
+                                if sub_table.name == table_headertype:
+                                    table_title = sub_table.text
+                                if sub_table.name == 'table' and table_title:
+                                    sub_item = getTableValues(url, sub_table)
+                                    print(sub_item)
+                                    print('Parse table: ', table_title)
+                                    sub_table_data = {table_title: sub_item}
+                                    applicatie['results'].append(sub_table_data)
+                            item['applicaties'].append(applicatie)
+                        else: 
+                            item['applicaties'].append({table_title: row[header_name_urls]["naam"]})
+                    if row.get(header_name_url):
+                        data.append(item)
+                        print(data)
             print('Parsed table')
     return data
 
@@ -168,7 +173,7 @@ def parser():
     For applicaties on our internal dokuwiki:
         ``python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-informatievoorzining h2 output informatievoorziening applicatie_gegevens``
     For gebruik on our internal dokuwiki:
-        ``python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties h3 output Directie gebruik_basisregistraties``
+        ``python download_tables_from_dokuwiki_to_json.py https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties h3 output Directie,Organisatie,Stadsdeel gebruik_basisregistraties``
     """
 
     parser = argparse.ArgumentParser(
@@ -188,8 +193,9 @@ def parser():
                         help='Specify the desired output folder path, for example: output')
     parser.add_argument('header_name_urls',
                         type=str,
+                        nargs="+",
                         help="""
-                        Specify the name of the field where the wiki urls are defined.
+                        Specify the names of the field where the wiki urls are defined. You can also use multiple field if different column names are used on one page.
                         For example: "informatievoorziening, directie"
                         """)
     parser.add_argument('filename',
@@ -202,7 +208,6 @@ def main():
     args = parser().parse_args()
 
     html_doc = getPage(args.url)
-    # tables_main_page = parseApplicatiesHtmlTable(args.url, html_doc,  args.header_name_urls)
     tables_main_page = parseHtmlTable(args.url, html_doc,  args.header_name_urls, args.cluster_headertype)
     saveFile(tables_main_page, args.output_folder, args.filename)
 
