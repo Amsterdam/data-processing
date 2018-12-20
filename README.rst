@@ -159,7 +159,11 @@ Regenerate the documentation to test the docs output using this command line fun
 .. code-block:: bash
 
     sphinx/make docs
-    and test if the readme is not broken:
+
+and test if the readme is not broken:
+
+.. code-block:: bash
+
     open docs/index.html
 
 4. Add a Pull Request
