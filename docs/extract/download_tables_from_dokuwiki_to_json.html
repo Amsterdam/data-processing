@@ -206,14 +206,14 @@ For applicaties on our internal dokuwiki:</p>
 <div><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">download_tables_from_dokuwiki_to_json.py</span> <span class="pre">https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-informatievoorzining</span> <span class="pre">h2</span> <span class="pre">output</span> <span class="pre">informatievoorziening</span> <span class="pre">applicatie_gegevens</span></code></div></blockquote>
 <dl class="docutils">
 <dt>For gebruik on our internal dokuwiki:</dt>
-<dd><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">download_tables_from_dokuwiki_to_json.py</span> <span class="pre">https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties</span> <span class="pre">h3</span> <span class="pre">output</span> <span class="pre">Directie</span> <span class="pre">gebruik_basisregistraties</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">download_tables_from_dokuwiki_to_json.py</span> <span class="pre">https://dokuwiki.datapunt.amsterdam.nl/doku.php\?id\=start:gebruik:overzicht-organsiaties</span> <span class="pre">h3</span> <span class="pre">output</span> <span class="pre">Directie,Organisatie,Stadsdeel</span> <span class="pre">gebruik_basisregistraties</span></code></dd>
 </dl>
 </div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_tables_from_dokuwiki_to_json</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
                                              <span class="n">url</span> <span class="n">cluster_headertype</span>
                                              <span class="n">output_folder</span> <span class="n">header_name_urls</span>
-                                             <span class="n">filename</span>
+                                             <span class="p">[</span><span class="n">header_name_urls</span> <span class="o">...</span><span class="p">]</span> <span class="n">filename</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -240,7 +240,7 @@ For example:
 <kbd>header_name_urls</kbd></td>
 </tr>
 <tr><td>&#160;</td><td><blockquote class="first last">
-<div>Specify the name of the field where the wiki urls are defined.
+<div>Specify the names of the field where the wiki urls are defined. You can also use multiple field if different column names are used on one page.
 For example: “informatievoorziening, directie”</div></blockquote>
 </td></tr>
 <tr><td class="option-group">
