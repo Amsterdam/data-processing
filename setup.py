@@ -104,7 +104,7 @@ setup(
     install_requires=[
 
         # Getters
-        'requests==2.18.4',
+        'requests==2.20.0',
         'xlrd==1.1.0',
         'lxml==4.2.1',
         'python-swiftclient==3.4.0',
