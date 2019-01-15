@@ -37,7 +37,7 @@ def read(fname):
 
 setup(
     # Publication Metadata:
-    version='0.0.1a12',
+    version='0.0.1a13',
     name='datapunt_processing',
     description="Datapunt generic ETL command line scripts and functions for shell scripting in Docker.",
     long_description=read('README.rst'),
@@ -107,9 +107,10 @@ setup(
         'requests==2.20.0',
         'xlrd==1.1.0',
         'lxml==4.2.1',
+        'xmltodict==0.11.0',
         'python-swiftclient==3.4.0',
         'python-keystoneclient',
-        'bs4'
+        'bs4',
 
         # Config providers
         'datapunt-config-loader',
@@ -123,12 +124,14 @@ setup(
         # Transformers
         'pandas==0.22.0',
         'scikit-learn==0.19.1',
+
         # Utilities
         'docutils',
         'pprint>=0.1',
         'requests_cache==0.4.13',
         'logger==1.4',
         'ipython==5.5.0',
+
         # Data visualization
         'pillow==5.1.0'
 
