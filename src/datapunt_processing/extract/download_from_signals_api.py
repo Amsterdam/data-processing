@@ -1,35 +1,28 @@
 import requests
 import pandas as pd
 import numpy as np
-pd.set_option('display.max_columns', 100)
-from datetime import timedelta
 import os
 import random
 import string
 from urllib.parse import urlparse, parse_qsl
-from random import randint
-import time
-import datetime
 from datapunt_processing import logger
-import copy
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
-import pprint
-
-
+# config
+pd.set_option('display.max_columns', 100)
 logger = logger()
+
 
 class GetAccessToken(object):
     """
-        Get a header authentication item for access token
-        for using the internal API's
-        by logging in as type = 'employee'
-        Usage:
-            from accesstoken import AccessToken
-            getToken = AccessToken()
-            accessToken = getToken.getAccessToken()
-            requests.get(url, headers= accessToken)
+    Get a header authentication item for access token for using
+    the internal API's by logging in as type = 'employee'
+    Usage:
+     from accesstoken import AccessToken
+     getToken = AccessToken()
+     accessToken = getToken.getAccessToken()
+     requests.get(url, headers= accessToken)
     """
     def getAccessToken(self, email, password, acceptance):
 
@@ -40,24 +33,24 @@ class GetAccessToken(object):
         state = randomword(10)
         scopes = ['SIG/ALL']
         acc_prefix = 'acc.' if acceptance else ''
-        authzUrl = f'https://{acc_prefix}api.data.amsterdam.nl/oauth2/authorize'
+        authUrl = f'https://{acc_prefix}api.data.amsterdam.nl/oauth2/authorize'
         params = {
             'idp_id': 'datapunt',
             'response_type': 'token',
             'client_id': 'citydata',
             'scope': ' '.join(scopes),
             'state': state,
-            'redirect_uri' : f'https://{acc_prefix}data.amsterdam.nl/'
+            'redirect_uri': f'https://{acc_prefix}data.amsterdam.nl/'
         }
-        print('url', authzUrl)
-        response = requests.get(authzUrl, params, allow_redirects=False)
+        print('url', authUrl)
+        response = requests.get(authUrl, params, allow_redirects=False)
         if response.status_code == 303:
             location = response.headers["Location"]
         else:
             return {}
 
         data = {
-            'type':'employee_plus',
+            'type': 'employee_plus',
             'email': email,
             'password': password,
         }
@@ -89,11 +82,10 @@ class GetAccessToken(object):
 
 URL = "https://api.data.amsterdam.nl/signals/auth/signal/?&page_size=1000"
 
-
-       
 # zie https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 
 EMPTY = np.nan
+
 
 def _get_session_with_retries():
     """
@@ -117,7 +109,6 @@ def _get_session_with_retries():
 def process_address(location):
     """Extract """
     fields = ('openbare_ruimte', 'postcode', 'woonplaats', 'huisnummer')
-    
     out = {}
     if location['address'] and isinstance(location['address'], dict):
         for field in fields:
@@ -141,25 +132,22 @@ def get_sia_json(url, params, bearer_token):
     """
     session = _get_session_with_retries()
     next_page = url
-    
     # start looping thorugh pages,store in result_list
     result_list = []
 
     # while next_page is not None:
     while next_page:
         logger.debug('Grabbing %s', next_page)
-        response = session.get(next_page, params=params, headers={"Authorization" : "Bearer " + bearer_token})
-        
+        response = session.get(next_page, params=params,
+                               headers={"Authorization": "Bearer " + bearer_token})
         result = response.json()
-
 
         next_page = result['_links']['next']['href']
         logger.debug('Next page %s', next_page)
         for i, item in enumerate(result['results']):
-                       
             result_dict = {}
 
-            # indicate what to extract   
+            # indicate what to extract
             result_dict['created_at'] = item['created_at']
             result_dict['main_cat'] = item['category']['main']
             result_dict['sub_cat'] = item['category']['sub']
@@ -171,6 +159,6 @@ def get_sia_json(url, params, bearer_token):
             result_dict['status'] = item['status']['state']
 
             result_list.append(result_dict)
-        ## break (if you want only one page)
+        # break (if you want only one page)
 
     return result_list
