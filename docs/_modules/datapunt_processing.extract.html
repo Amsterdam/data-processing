@@ -24,25 +24,17 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -109,7 +101,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Datapunt processing</a>
@@ -117,9 +109,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -258,15 +251,10 @@ variableNames can be found here: <a class="reference external" href="https://api
 <dd><p>Get a json response from a url with accesstoken.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd><ol class="first last arabic">
-<li><p class="first">url: api endpoint</p>
-</li>
-<li><p class="first">accessToken: acces token generated using the auth helper:
-GetAccessToken().getAccessToken(usertype=’employee_plus’,</p>
-<blockquote>
-<div><p>scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</p>
-</div></blockquote>
-</li>
+<dd><ol class="first last arabic simple">
+<li>url: api endpoint</li>
+<li>accessToken: acces token generated using the auth helper:
+GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</li>
 </ol>
 </dd>
 <dt>Returns:</dt>
@@ -291,16 +279,12 @@ GetAccessToken().getAccessToken(usertype=’employee_plus’,</p>
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_api_kvk.get_kvk_json">
 <code class="descclassname">datapunt_processing.extract.download_from_api_kvk.</code><code class="descname">get_kvk_json</code><span class="sig-paren">(</span><em>url</em>, <em>params</em>, <em>api_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_kvk.get_kvk_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a json response from a url, provided params + api_key.
-Args:</p>
-<blockquote>
-<div><p>url: api endpoint
-params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
-<blockquote>
-<div>city, tradeName, or provide lists/dicts of values</div></blockquote>
-<p>api_key: kvk api_key. add KVK_API_KEY to your ENV variables</p>
-</div></blockquote>
+<dd><p>Get a json response from a url, provided params + api_key.</p>
 <dl class="docutils">
+<dt>Args:</dt>
+<dd>url: api endpoint
+params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode, city, tradeName, or provide lists/dicts of values
+api_key: kvk api_key. add KVK_API_KEY to your ENV variables</dd>
 <dt>Returns:</dt>
 <dd>parsed json or error message</dd>
 </dl>
@@ -353,24 +337,12 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 <dd><p>Get and flatten all the data from the api.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd><ol class="first last arabic">
-<li><p class="first">url_api: get the main api url:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">get one endpoint:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tellus</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.</p>
-</li>
-<li><p class="first">accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</p>
-</li>
-<li><p class="first">limit: set the number of pages you want to retrieve, ideal for testing first:</p>
-<p>10</p>
-</li>
+<dd><ol class="first last arabic simple">
+<li>url_api: get the main api url: <a class="reference external" href="https://api.data.amsterdam.nl/tellus">https://api.data.amsterdam.nl/tellus</a></li>
+<li>get one endpoint: tellus</li>
+<li>get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.</li>
+<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</li>
+<li>limit: set the number of pages you want to retrieve, ideal for testing first:10</li>
 </ol>
 </dd>
 <dt>Returns:</dt>
@@ -626,47 +598,36 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 </div>
 <div class="section" id="module-datapunt_processing.extract.download_from_signals_api">
 <span id="datapunt-processing-extract-download-from-signals-api-module"></span><h2>datapunt_processing.extract.download_from_signals_api module<a class="headerlink" href="#module-datapunt_processing.extract.download_from_signals_api" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="datapunt_processing.extract.download_from_signals_api.GetAccessToken">
-<em class="property">class </em><code class="descclassname">datapunt_processing.extract.download_from_signals_api.</code><code class="descname">GetAccessToken</code><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.GetAccessToken" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Get a header authentication item for access token
-for using the internal API’s
-by logging in as type = ‘employee’
-Usage:</p>
-<blockquote>
-<div>from accesstoken import AccessToken
-getToken = AccessToken()
-accessToken = getToken.getAccessToken()
-requests.get(url, headers= accessToken)</div></blockquote>
-<dl class="method">
-<dt id="datapunt_processing.extract.download_from_signals_api.GetAccessToken.getAccessToken">
-<code class="descname">getAccessToken</code><span class="sig-paren">(</span><em>email</em>, <em>password</em>, <em>acceptance</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.GetAccessToken.getAccessToken" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.download_from_signals_api.fill_empty_value">
-<code class="descclassname">datapunt_processing.extract.download_from_signals_api.</code><code class="descname">fill_empty_value</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.fill_empty_value" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_signals_api.get_sia_json">
-<code class="descclassname">datapunt_processing.extract.download_from_signals_api.</code><code class="descname">get_sia_json</code><span class="sig-paren">(</span><em>url</em>, <em>params</em>, <em>bearer_token</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.get_sia_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>first: put SIGNALS_USER en SIGNALS_PASSWORD to env variables (!)
-Args:</p>
-<blockquote>
-<div><p>url: sia api endpoint
-params: created_at, main_cat, sub_cat, text, address, pc,</p>
-<blockquote>
-<div>bc, sd, geometry, status or provide lists/dicts of values</div></blockquote>
-<p>bearer_token: bearer_token</p>
-</div></blockquote>
+<code class="descclassname">datapunt_processing.extract.download_from_signals_api.</code><code class="descname">get_sia_json</code><span class="sig-paren">(</span><em>url</em>, <em>scope</em>, <em>params</em>, <em>acc=False</em>, <em>page_limit=0</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.get_sia_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>first: put SIGNALS_USER en SIGNALS_PASSWORD to env variables (!)</p>
 <dl class="docutils">
+<dt>Args:</dt>
+<dd>url: sia api endpoint
+params: created_at, main_cat, sub_cat, text, address, pc, bc, sd, geometry, status or provide lists/dicts of values
+bearer_token: bearer_token</dd>
 <dt>Returns:</dt>
 <dd>parsed json or error message</dd>
 </dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_signals_api.main">
+<code class="descclassname">datapunt_processing.extract.download_from_signals_api.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_signals_api.parser">
+<code class="descclassname">datapunt_processing.extract.download_from_signals_api.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.extract.download_from_signals_api.process_address">
+<code class="descclassname">datapunt_processing.extract.download_from_signals_api.</code><code class="descname">process_address</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_signals_api.process_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract</p>
 </dd></dl>
 
 </div>
@@ -1164,9 +1125,7 @@ To see possible styling options: <a class="reference external" href="https://pyt
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1175,11 +1134,11 @@ To see possible styling options: <a class="reference external" href="https://pyt
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Gemeente Amsterdam.
+        &copy; Copyright 2018, Gemeente Amsterdam
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1194,35 +1153,24 @@ To see possible styling options: <a class="reference external" href="https://pyt
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

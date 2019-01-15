@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="Mozilla Public License Version 2.0" href="../license.html"/>
-        <link rel="prev" title="load_wfs_to_postgres" href="../load/load_wfs_into_postgres.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mozilla Public License Version 2.0" href="../license.html" />
+    <link rel="prev" title="load_wfs_to_postgres" href="../load/load_wfs_into_postgres.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -107,10 +98,12 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">datapunt_processing.helpers package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.connections">datapunt_processing.helpers.connections module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.demo_asyncio">datapunt_processing.helpers.demo_asyncio module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.files">datapunt_processing.helpers.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.getaccesstoken">datapunt_processing.helpers.getaccesstoken module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.json_dict_handlers">datapunt_processing.helpers.json_dict_handlers module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.logging">datapunt_processing.helpers.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.split_file_by_date">datapunt_processing.helpers.split_file_by_date module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers.xml_handlers">datapunt_processing.helpers.xml_handlers module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.helpers">Module contents</a></li>
 </ul>
@@ -133,7 +126,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Datapunt processing</a>
@@ -141,9 +134,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -275,6 +269,19 @@
 <dd>Returns the psycopg required connection string: ‘PG:host= port= user= dbname= password=’</dd>
 </dl>
 </dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.helpers.demo_asyncio">
+<span id="datapunt-processing-helpers-demo-asyncio-module"></span><h2>datapunt_processing.helpers.demo_asyncio module<a class="headerlink" href="#module-datapunt_processing.helpers.demo_asyncio" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.helpers.demo_asyncio.custom_sleep">
+<code class="descclassname">datapunt_processing.helpers.demo_asyncio.</code><code class="descname">custom_sleep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.demo_asyncio.custom_sleep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.demo_asyncio.factorial">
+<code class="descclassname">datapunt_processing.helpers.demo_asyncio.</code><code class="descname">factorial</code><span class="sig-paren">(</span><em>name</em>, <em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.demo_asyncio.factorial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-datapunt_processing.helpers.files">
@@ -439,6 +446,39 @@ For example: [{‘container’:{…}}, {‘container’:{…}}] returns now as [
 </dd></dl>
 
 </div>
+<div class="section" id="module-datapunt_processing.helpers.split_file_by_date">
+<span id="datapunt-processing-helpers-split-file-by-date-module"></span><h2>datapunt_processing.helpers.split_file_by_date module<a class="headerlink" href="#module-datapunt_processing.helpers.split_file_by_date" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.helpers.split_file_by_date.load_csv">
+<code class="descclassname">datapunt_processing.helpers.split_file_by_date.</code><code class="descname">load_csv</code><span class="sig-paren">(</span><em>csvfile</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.split_file_by_date.load_csv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.split_file_by_date.main">
+<code class="descclassname">datapunt_processing.helpers.split_file_by_date.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.split_file_by_date.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.split_file_by_date.parser">
+<code class="descclassname">datapunt_processing.helpers.split_file_by_date.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.split_file_by_date.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
+To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.helpers.split_file_by_date.split_file_by_date">
+<code class="descclassname">datapunt_processing.helpers.split_file_by_date.</code><code class="descname">split_file_by_date</code><span class="sig-paren">(</span><em>data</em>, <em>column_name</em>, <em>date_splitter</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.helpers.split_file_by_date.split_file_by_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split file into time series.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>filename: full path to of file
+date_splitter: year, month, day</dd>
+<dt>Returns:</dt>
+<dd>A multiple files split by year/day/month</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-datapunt_processing.helpers.xml_handlers">
 <span id="datapunt-processing-helpers-xml-handlers-module"></span><h2>datapunt_processing.helpers.xml_handlers module<a class="headerlink" href="#module-datapunt_processing.helpers.xml_handlers" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -450,7 +490,7 @@ Args:</p>
 <div>filename: xml file name
 path: path to xml file</div></blockquote>
 <dl class="docutils">
-<dt>source: </dt>
+<dt>source:</dt>
 <dd><a class="reference external" href="https://github.com/dabeaz/python-cookbook/blob/master/src/6/incremental_parsing_of_huge_xml_files/example.py">https://github.com/dabeaz/python-cookbook/blob/master/src/6/incremental_parsing_of_huge_xml_files/example.py</a></dd>
 </dl>
 </dd></dl>
@@ -463,9 +503,7 @@ path: path to xml file</div></blockquote>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -483,11 +521,11 @@ path: path to xml file</div></blockquote>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Gemeente Amsterdam.
+        &copy; Copyright 2018, Gemeente Amsterdam
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -502,35 +540,24 @@ path: path to xml file</div></blockquote>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -1,86 +1,24 @@
 import requests
+import argparse
 import pandas as pd
 import numpy as np
 import os
 import random
 import string
 from urllib.parse import urlparse, parse_qsl
+
 from datapunt_processing import logger
+from datapunt_processing.helpers.getaccesstoken import GetAccessToken
+from datapunt_processing.helpers.files import create_dir_if_not_exists, save_file
+
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
+
 
 # config
 pd.set_option('display.max_columns', 100)
 logger = logger()
 
-
-class GetAccessToken(object):
-    """
-    Get a header authentication item for access token for using
-    the internal API's by logging in as type = 'employee'
-    Usage:
-     from accesstoken import AccessToken
-     getToken = AccessToken()
-     accessToken = getToken.getAccessToken()
-     requests.get(url, headers= accessToken)
-    """
-    def getAccessToken(self, email, password, acceptance):
-
-        def randomword(length):
-            letters = string.ascii_lowercase
-            return ''.join(random.choice(letters) for i in range(length))
-
-        state = randomword(10)
-        scopes = ['SIG/ALL']
-        acc_prefix = 'acc.' if acceptance else ''
-        authUrl = f'https://{acc_prefix}api.data.amsterdam.nl/oauth2/authorize'
-        params = {
-            'idp_id': 'datapunt',
-            'response_type': 'token',
-            'client_id': 'citydata',
-            'scope': ' '.join(scopes),
-            'state': state,
-            'redirect_uri': f'https://{acc_prefix}data.amsterdam.nl/'
-        }
-        print('url', authUrl)
-        response = requests.get(authUrl, params, allow_redirects=False)
-        if response.status_code == 303:
-            location = response.headers["Location"]
-        else:
-            return {}
-
-        data = {
-            'type': 'employee_plus',
-            'email': email,
-            'password': password,
-        }
-
-        response = requests.post(location, data=data, allow_redirects=False)
-        if response.status_code == 303:
-            location = response.headers["Location"]
-        else:
-            return {}
-
-        response = requests.get(location, allow_redirects=False)
-        if response.status_code == 303:
-            returnedUrl = response.headers["Location"]
-        else:
-            return {}
-
-        # Get grantToken from parameter aselect_credentials in session URL
-        parsed = urlparse(returnedUrl)
-        fragment = parse_qsl(parsed.fragment)
-        access_token = fragment[0][1]
-        os.environ["ACCESS_TOKEN"] = access_token
-        return access_token
-
-# acceptance = False
-# email = os.getenv('SIGNALS_USER', '')
-# password = os.getenv('SIGNALS_PASSWORD', '')
-# bearer_token = GetAccessToken().getAccessToken(email, password, acceptance)
-
-
-URL = "https://api.data.amsterdam.nl/signals/auth/signal/?&page_size=1000"
 
 # zie https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 
@@ -119,27 +57,28 @@ def process_address(location):
     return out
 
 
-def get_sia_json(url, params, bearer_token):
+def get_sia_json(url, scope, params, acc=False, page_limit=0):
     """
     first: put SIGNALS_USER en SIGNALS_PASSWORD to env variables (!)
+
     Args:
         url: sia api endpoint
-        params: created_at, main_cat, sub_cat, text, address, pc,
-                bc, sd, geometry, status or provide lists/dicts of values
+        params: created_at, main_cat, sub_cat, text, address, pc, bc, sd, geometry, status or provide lists/dicts of values
         bearer_token: bearer_token
+
     Returns:
         parsed json or error message
     """
+    access_token = GetAccessToken().getAccessToken(usertype='employee_plus', scopes=scope, acc=acc)
+    # print(access_token)
     session = _get_session_with_retries()
     next_page = url
-    # start looping thorugh pages,store in result_list
+    # start looping through pages,store in result_list
     result_list = []
-
-    # while next_page is not None:
-    while next_page:
+    page = 0
+    while next_page and int(page) != int(page_limit) + 1 :
         logger.debug('Grabbing %s', next_page)
-        response = session.get(next_page, params=params,
-                               headers={"Authorization": "Bearer " + bearer_token})
+        response = session.get(next_page, params=params, headers=access_token)
         result = response.json()
 
         next_page = result['_links']['next']['href']
@@ -157,8 +96,59 @@ def get_sia_json(url, params, bearer_token):
             result_dict['sd'] = item['location'].get('stadsdeel', EMPTY)
             result_dict['geometry'] = item['location']['geometrie']['coordinates']
             result_dict['status'] = item['status']['state']
-
+            # print(result_dict)
             result_list.append(result_dict)
         # break (if you want only one page)
+        page += 1
+        logger.info("{} signals retrieved".format(page*1000))
 
     return result_list
+
+
+def parser():
+    """
+    Parser function to run arguments from commandline and to add description to sphinx docs.
+    To see possible styling options: https://pythonhosted.org/an_example_pypi_project/sphinx.html
+    """
+    description = """
+    Download all signals from https://api.data.amsterdam.nl/signals
+
+    Use ENV for login credentials to use the API:
+        ``export DATAPUNT_EMAIL=xxxx``
+        ``export DATAPUNT_PASSWORD=xxxxx``
+
+    Example command line:
+        ``python download_from_signals_api.py https://api.data.amsterdam.nl/signals/auth/signal/?&page_size=1000 SIG/ALL created_at,main_cat,sub_cat,text,address,pc,bc,sd,geometry 1 data sia.json``
+    """
+
+    parser = argparse.ArgumentParser(
+                        description=description)
+    parser.add_argument('url',
+                        type=str,
+                        help='Url of endpoint, for example: https://api.data.amsterdam.nl/signals/auth/signal')
+    parser.add_argument('scope',
+                        type=str,
+                        help='Specify which scope you have access to as list with no spaces, for example: SIG/ALL,TLLS/R')
+    parser.add_argument('params',
+                        type=str,
+                        help='Add which fields to extract as a list: created_at,main_cat,sub_cat,text,address,pc,bc,sd,geometry')
+    parser.add_argument('page_limit',
+                        type=int,
+                        help='number of pages to get, standard 1000 records per page, default all')
+    parser.add_argument('output_folder',
+                        type=str,
+                        help='Output folder, for example: data')
+    parser.add_argument('filename',
+                        type=str,
+                        help='name the file with .json')
+
+    return parser
+
+
+def main():
+    args = parser().parse_args()
+    data = get_sia_json(args.url, args.scope, args.params, args.page_limit)
+    save_file(data, args.output_folder, args.filename)
+
+if __name__ == "__main__":
+    main()
