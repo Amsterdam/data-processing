@@ -39,6 +39,7 @@ stored, from API’s or from the data catalog.**
     extract/download_from_ckan
     extract/download_tables_from_dokuwiki_to_json
     extract/download_from_signals_api
+    extract/download_all_resources_from_dcatd_to_csv
     extract/write_table_to_csv
     extract/write_table_to_geojson
     extract/write_xml_to_df_to_csv

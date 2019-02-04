@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="write_table_to_csv" href="write_table_to_csv.html" />
+    <link rel="next" title="download_all_resources_from_dcatd_to_csv" href="download_all_resources_from_dcatd_to_csv.html" />
     <link rel="prev" title="download_tables_from_dokuwiki_to_json" href="download_tables_from_dokuwiki_to_json.html" /> 
 
   
@@ -105,6 +105,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.download_from_signals_api">functions</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="download_all_resources_from_dcatd_to_csv.html">download_all_resources_from_dcatd_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_csv.html">write_table_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_geojson.html">write_table_to_geojson</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_xml_to_df_to_csv.html">write_xml_to_df_to_csv</a></li>
@@ -194,11 +195,8 @@
 <div><p>Download all signals from <a class="reference external" href="https://api.data.amsterdam.nl/signals">https://api.data.amsterdam.nl/signals</a></p>
 <dl class="docutils">
 <dt>Use ENV for login credentials to use the API:</dt>
-<dd><dl class="first last docutils">
-<dt><a href="#id2"><span class="problematic" id="id3">``</span></a>export DATAPUNT_EMAIL=xxxx</dt>
-<dd>export DATAPUNT_PASSWORD=xxxxx``</dd>
-</dl>
-</dd>
+<dd><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">DATAPUNT_EMAIL=xxxx</span></code>
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">DATAPUNT_PASSWORD=xxxxx</span></code></dd>
 <dt>Example command line:</dt>
 <dd><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">download_from_signals_api.py</span> <span class="pre">https://api.data.amsterdam.nl/signals/auth/signal/?&amp;page_size=1000</span> <span class="pre">SIG/ALL</span> <span class="pre">created_at,main_cat,sub_cat,text,address,pc,bc,sd,geometry</span> <span class="pre">1</span> <span class="pre">data</span> <span class="pre">sia.json</span></code></dd>
 </dl>
@@ -276,7 +274,7 @@ To see possible styling options: <a class="reference external" href="https://pyt
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="write_table_to_csv.html" class="btn btn-neutral float-right" title="write_table_to_csv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="download_all_resources_from_dcatd_to_csv.html" class="btn btn-neutral float-right" title="download_all_resources_from_dcatd_to_csv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="download_tables_from_dokuwiki_to_json.html" class="btn btn-neutral" title="download_tables_from_dokuwiki_to_json" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

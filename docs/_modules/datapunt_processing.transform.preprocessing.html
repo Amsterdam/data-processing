@@ -165,15 +165,21 @@
 <dt id="datapunt_processing.transform.preprocessing.data_selection.DateRange">
 <em class="property">class </em><code class="descclassname">datapunt_processing.transform.preprocessing.data_selection.</code><code class="descname">DateRange</code><span class="sig-paren">(</span><em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.DateRange" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class representing a range of dates.
-Can be used to select data in data frames if the data frame contains a column ‘date’ and is populated with datetime.date values.</p>
+<p>Class representing a range of dates</p>
+<p>Can be used to select data in data frames if the data frame contains a
+column ‘date’ and is populated with datetime.date values.</p>
 <dl class="staticmethod">
 <dt id="datapunt_processing.transform.preprocessing.data_selection.DateRange.from_dataframe">
 <em class="property">static </em><code class="descname">from_dataframe</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.DateRange.from_dataframe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create date range from a data frame</p>
+<dd><p>Create date range from a data frame
+Args:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>df (pd.DataFrame): a data frame  having a date column populated</dt>
+<dd>with dt.datetime values.</dd>
+</dl>
+</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>df (pd.DataFrame): a data frame  having a date column populated with dt.datetime values.</dd>
 <dt>Returns:</dt>
 <dd>DateRange object</dd>
 </dl>
@@ -192,10 +198,11 @@ Can be used to select data in data frames if the data frame contains a column �
 <dl class="method">
 <dt id="datapunt_processing.transform.preprocessing.data_selection.DateRange.select">
 <code class="descname">select</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.DateRange.select" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply the data range selection on a data frame</p>
+<dd><p>Apply the data range selection on a data frame
+Args:</p>
+<blockquote>
+<div>df (pd.DataFrame): input data frame</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>df (pd.DataFrame): input data frame</dd>
 <dt>Returns:</dt>
 <dd>pd.DataFrame</dd>
 </dl>
@@ -206,11 +213,12 @@ Can be used to select data in data frames if the data frame contains a column �
 <dl class="function">
 <dt id="datapunt_processing.transform.preprocessing.data_selection.remove_nan_targets">
 <code class="descclassname">datapunt_processing.transform.preprocessing.data_selection.</code><code class="descname">remove_nan_targets</code><span class="sig-paren">(</span><em>df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.remove_nan_targets" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove NaNs in the target list.</p>
+<dd><p>Remove NaNs in the target list.
+Args:</p>
+<blockquote>
+<div>df(pd.DataFrame): data frame on which to operate
+run (Run): run parameters</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>df(pd.DataFrame): data frame on which to operate
-run (Run): run parameters</dd>
 <dt>Returns:</dt>
 <dd>pd.DataFrame</dd>
 </dl>
@@ -219,13 +227,14 @@ run (Run): run parameters</dd>
 <dl class="function">
 <dt id="datapunt_processing.transform.preprocessing.data_selection.select_and_report">
 <code class="descclassname">datapunt_processing.transform.preprocessing.data_selection.</code><code class="descname">select_and_report</code><span class="sig-paren">(</span><em>df</em>, <em>selection</em>, <em>description</em>, <em>max_drop_rate=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.data_selection.select_and_report" title="Permalink to this definition">¶</a></dt>
-<dd><p>Select data from a data frame and report how many rows were dropped.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>df(pd.DataFrame): apply selection on this data frame
+<dd><p>Select data from a data frame and report how many rows were dropped.
+Args:</p>
+<blockquote>
+<div>df(pd.DataFrame): apply selection on this data frame
 selection(pd.Series): boolean selection
 description(str): description in log message
-max_drop_rate(float, optional): max fraction of dropped rows</dd>
+max_drop_rate(float, optional): max fraction of dropped rows</div></blockquote>
+<dl class="docutils">
 <dt>Returns:</dt>
 <dd>pd.DataFrame</dd>
 </dl>
@@ -237,10 +246,11 @@ max_drop_rate(float, optional): max fraction of dropped rows</dd>
 <dl class="function">
 <dt id="datapunt_processing.transform.preprocessing.enrichment.enrich_datetime">
 <code class="descclassname">datapunt_processing.transform.preprocessing.enrichment.</code><code class="descname">enrich_datetime</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.enrichment.enrich_datetime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add datetime features (i.e. year, day of week, etc., also for ML feature generation)</p>
+<dd><p>Add datetime features (i.e. year, day of week, etc., also for ML feature generation)
+Args:</p>
+<blockquote>
+<div>df (pd.DataFrame): schedule or historical data</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>df (pd.DataFrame): schedule or historical data</dd>
 <dt>Returns:</dt>
 <dd>pd.DataFrame</dd>
 </dl>
@@ -301,10 +311,11 @@ See pickle_big_dump and pickle_big_load functions.</p>
 <dt id="datapunt_processing.transform.preprocessing.utilities.BigFile.read">
 <code class="descname">read</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.BigFile.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read n bytes
-Reads a big file in batch of almost ~ 1 GB</p>
+Reads a big file in batch of almost ~ 1 GB
+Args:</p>
+<blockquote>
+<div>n (int): number of bytes</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>n (int): number of bytes</dd>
 <dt>Returns:</dt>
 <dd>bytearray: buffer</dd>
 </dl>
@@ -314,11 +325,10 @@ Reads a big file in batch of almost ~ 1 GB</p>
 <dt id="datapunt_processing.transform.preprocessing.utilities.BigFile.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.BigFile.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write buffer
-Writes in batches of ~ 1GB</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>buffer (bytearray): buffer</dd>
-</dl>
+Writes in batches of ~ 1GB
+Args:</p>
+<blockquote>
+<div>buffer (bytearray): buffer</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -357,10 +367,11 @@ Error (truth - prediction)</td>
 <dt id="datapunt_processing.transform.preprocessing.utilities.get_last_full_year">
 <code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">get_last_full_year</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.get_last_full_year" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the last full year in data frame
-E.g. will return 2016 if you are in 2017.</p>
+E.g. will return 2016 if you are in 2017.
+Args:</p>
+<blockquote>
+<div>df (pd.DataFrame): input data, has column dayofyear</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>df (pd.DataFrame): input data, has column dayofyear</dd>
 <dt>Returns:</dt>
 <dd>int: last full year</dd>
 </dl>
@@ -394,14 +405,18 @@ True when is a numeric type.</td>
 <dd><p>Performs a merge between two data frame and reports stats on matches
 Only left merges are supported for now. If a column is present in both the
 left and right data frame, the left column has priority and the right
-column is ignored.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>left (pd.DataFrame): lhs
+column is ignored.
+Args:</p>
+<blockquote>
+<div><p>left (pd.DataFrame): lhs
 right (pd.DataFrame): rhs
 on (list[str]): columns to match on.
 description (str or None): description of what merge is done
-n_unmatched_limit (int): throw error when number of rows not found in left side is larger than this number</dd>
+n_unmatched_limit (int): throw error when number of rows not found in</p>
+<blockquote>
+<div>left side is larger than this number</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
 <dt>Returns:</dt>
 <dd>pd.DataFrame</dd>
 </dl>
@@ -410,11 +425,10 @@ n_unmatched_limit (int): throw error when number of rows not found in left side 
 <dl class="function">
 <dt id="datapunt_processing.transform.preprocessing.utilities.optional_make_dir">
 <code class="descclassname">datapunt_processing.transform.preprocessing.utilities.</code><code class="descname">optional_make_dir</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.preprocessing.utilities.optional_make_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates directory at if it does not exist yet</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>path (str): path to create directory in</dd>
-</dl>
+<dd><p>Creates directory at if it does not exist yet
+Args:</p>
+<blockquote>
+<div>path (str): path to create directory in</div></blockquote>
 </dd></dl>
 
 <dl class="function">
