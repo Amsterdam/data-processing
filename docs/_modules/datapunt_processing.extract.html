@@ -176,17 +176,25 @@
 <dl class="function">
 <dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getDatasets">
 <code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">getDatasets</code><span class="sig-paren">(</span><em>url</em>, <em>dcatd_url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getDatasets" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Parse each dataset json response into a non-nested dict structure.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getPage">
-<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">getPage</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getPage" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getResource">
-<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">getResource</code><span class="sig-paren">(</span><em>purl</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getResource" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.</code><code class="descname">getPage</code><span class="sig-paren">(</span><em>url</em>, <em>access_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.getPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from url.
+Evaluate if employee credentials are present in environment variables.
+export DATAPUNT_EMAIL=*******
+export DATAPUNT_PASSWORD=******</p>
+<p>If present, get an accesstoken.
+Args:</p>
+<blockquote>
+<div>url</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>response data</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="datapunt_processing.extract.download_all_resources_from_dcatd_to_csv.main">
@@ -251,10 +259,15 @@ variableNames can be found here: <a class="reference external" href="https://api
 <dd><p>Get a json response from a url with accesstoken.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd><ol class="first last arabic simple">
-<li>url: api endpoint</li>
-<li>accessToken: acces token generated using the auth helper:
-GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</li>
+<dd><ol class="first last arabic">
+<li><p class="first">url: api endpoint</p>
+</li>
+<li><p class="first">accessToken: acces token generated using the auth helper:
+GetAccessToken().getAccessToken(usertype=’employee_plus’,</p>
+<blockquote>
+<div><p>scopes=’BRK/RS,BRK/RSN/,BRK/RO’)</p>
+</div></blockquote>
+</li>
 </ol>
 </dd>
 <dt>Returns:</dt>
@@ -279,12 +292,16 @@ GetAccessToken().getAccessToken(usertype=’employee_plus’, scopes=’BRK/RS,B
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_api_kvk.get_kvk_json">
 <code class="descclassname">datapunt_processing.extract.download_from_api_kvk.</code><code class="descname">get_kvk_json</code><span class="sig-paren">(</span><em>url</em>, <em>params</em>, <em>api_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_kvk.get_kvk_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a json response from a url, provided params + api_key.</p>
+<dd><p>Get a json response from a url, provided params + api_key.
+Args:</p>
+<blockquote>
+<div><p>url: api endpoint
+params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
+<blockquote>
+<div>city, tradeName, or provide lists/dicts of values</div></blockquote>
+<p>api_key: kvk api_key. add KVK_API_KEY to your ENV variables</p>
+</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>url: api endpoint
-params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode, city, tradeName, or provide lists/dicts of values
-api_key: kvk api_key. add KVK_API_KEY to your ENV variables</dd>
 <dt>Returns:</dt>
 <dd>parsed json or error message</dd>
 </dl>
@@ -337,12 +354,24 @@ api_key: kvk api_key. add KVK_API_KEY to your ENV variables</dd>
 <dd><p>Get and flatten all the data from the api.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd><ol class="first last arabic simple">
-<li>url_api: get the main api url: <a class="reference external" href="https://api.data.amsterdam.nl/tellus">https://api.data.amsterdam.nl/tellus</a></li>
-<li>get one endpoint: tellus</li>
-<li>get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.</li>
-<li>accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</li>
-<li>limit: set the number of pages you want to retrieve, ideal for testing first:10</li>
+<dd><ol class="first last arabic">
+<li><p class="first">url_api: get the main api url:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">amsterdam</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get one endpoint:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tellus</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">get a list of dictionaries from other endpoints, in this case: for tellus location, speed and length.</p>
+</li>
+<li><p class="first">accessToken: acces token generated using the auth helper: GetAccessToken().getAccessToken()</p>
+</li>
+<li><p class="first">limit: set the number of pages you want to retrieve, ideal for testing first:</p>
+<p>10</p>
+</li>
 </ol>
 </dd>
 <dt>Returns:</dt>

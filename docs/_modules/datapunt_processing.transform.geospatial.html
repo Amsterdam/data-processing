@@ -164,13 +164,23 @@
 <dl class="function">
 <dt id="datapunt_processing.transform.geospatial.addres_to_latlon_in_df.adress_to_latlon">
 <code class="descclassname">datapunt_processing.transform.geospatial.addres_to_latlon_in_df.</code><code class="descname">adress_to_latlon</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.addres_to_latlon_in_df.adress_to_latlon" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function adds the lattitude and longtitude to a pandas df based on an address.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>df: containing string with name of street and house number</dd>
-<dt>Result:</dt>
-<dd>df with:lat, lon</dd>
-</dl>
+<dd><p>This function adds the lattitude and longtitude to a pandas df based on an adress.</p>
+<p>input:
+pandas df met tenminste de volgende variabelen:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Straat: String met de naam van de straat</li>
+<li>Huisnr: String met huisnummer</li>
+</ul>
+</div></blockquote>
+<p>output:
+pandas df waaraan de volgende variabelen zijn toegevoegd:</p>
+<blockquote>
+<div><ul class="simple">
+<li>lon: longtitude behorend bij adres</li>
+<li>lat: lattitude behorend bij adres</li>
+</ul>
+</div></blockquote>
 </dd></dl>
 
 </div>
@@ -332,6 +342,37 @@ item, which is “buurt”, “buurtcombinatie” or “stadsdeel”</div></bloc
 <code class="descclassname">datapunt_processing.transform.geospatial.geocode_xls_to_csv.</code><code class="descname">parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.geocode_xls_to_csv.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser function to run arguments from commandline and to add description to sphinx docs.
 To see possible styling options: <a class="reference external" href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datapunt_processing.transform.geospatial.get_area_wfs_by_point">
+<span id="datapunt-processing-transform-geospatial-get-area-wfs-by-point-module"></span><h2>datapunt_processing.transform.geospatial.get_area_wfs_by_point module<a class="headerlink" href="#module-datapunt_processing.transform.geospatial.get_area_wfs_by_point" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_area_wfs_by_point.getPointInPolygon">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_area_wfs_by_point.</code><code class="descname">getPointInPolygon</code><span class="sig-paren">(</span><em>wfs_url</em>, <em>layer_name</em>, <em>epsg</em>, <em>output_format</em>, <em>xy</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_area_wfs_by_point.getPointInPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to generate an url like this:
+‘’<a class="reference external" href="https://map.data.amsterdam.nl/maps/gebieden?request=getfeature&amp;typename=gebiedsgerichtwerkenpraktijkgebieden&amp;service=wfs&amp;version=2.0">https://map.data.amsterdam.nl/maps/gebieden?request=getfeature&amp;typename=gebiedsgerichtwerkenpraktijkgebieden&amp;service=wfs&amp;version=2.0</a>.0&amp;filter=&lt;ogc:Filter&gt;&lt;ogc:Contains&gt;&lt;ogc:PropertyName&gt;Request&lt;/ogc:PropertyName&gt;&lt;gml:Point srsName=”urn:x-ogc:def:crs:EPSG:28992”&gt;&lt;gml:pos srsName=”urn:x-ogc:def:crs:EPSG:28992”&gt;121343.00,487441.00&lt;/gml:pos&gt;&lt;/gml:Point&gt;&lt;/ogc:Contains&gt;&lt;/ogc:Filter&gt;’‘</p>
+<p>Args:</p>
+<blockquote>
+<div><ul class="simple">
+<li>wfs_url: main url of wfs, for example: <a class="reference external" href="https://map.data.amsterdam.nl/maps/gebieden">https://map.data.amsterdam.nl/maps/gebieden</a></li>
+<li>layer_name: name of layer, for example gebiedsgerichtwerkenpraktijkgebieden</li>
+<li>output_format: geojson, txt, shapezip, json</li>
+<li>epsg: 28992 or 4326</li>
+<li>xy: X_RD,Y_RD with no spaces, for example: 121343.00,487441.00 or 52.3738107,4.8929629</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Results:</dt>
+<dd>json with the data</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="datapunt_processing.transform.geospatial.get_area_wfs_by_point.getWFSFeaturesWithinPolygonByID">
+<code class="descclassname">datapunt_processing.transform.geospatial.get_area_wfs_by_point.</code><code class="descname">getWFSFeaturesWithinPolygonByID</code><span class="sig-paren">(</span><em>wfsURL</em>, <em>layerName</em>, <em>GML</em>, <em>spid</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.transform.geospatial.get_area_wfs_by_point.getWFSFeaturesWithinPolygonByID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example:</p>
+<p>‘’<a class="reference external" href="https://map.data.amsterdam.nl/maps/bgtobjecten?REQUEST=GetFeature&amp;SERVICE=wfs&amp;Version=1.0.0&amp;typeName=ms:BGT_BTRN_groenvoorziening&amp;srsNAME=urn:ogc:def:crs:EPSG">https://map.data.amsterdam.nl/maps/bgtobjecten?REQUEST=GetFeature&amp;SERVICE=wfs&amp;Version=1.0.0&amp;typeName=ms:BGT_BTRN_groenvoorziening&amp;srsNAME=urn:ogc:def:crs:EPSG</a>::4326&amp;FILTER=&lt;ogc:Filter&gt;&lt;ogc:Within&gt;&lt;gml:MultiPolygon srsName=”EPSG:4326”&gt;&lt;gml:polygonMember&gt;&lt;gml:Polygon&gt;&lt;gml:outerBoundaryIs&gt;&lt;gml:LinearRing&gt;&lt;gml:coordinates&gt;4.89566592,52.41515348 4.89574274,52.41519665 4.8957942,52.41520363 4.89585313,52.41519937 4.89590495,52.41517364 4.89595676,52.41514792 4.89618611,52.41504513 4.89635251,52.41497816 4.89669975,52.41486458 4.89685122,52.41481559 4.89727973,52.41467753 4.89761594,52.41456389 4.897823,52.41447905 4.89796369,52.41440521 4.89800256,52.41437784 4.898279,52.41418323 4.89846075,52.41405769 4.89855719,52.41399042 4.89858328,52.41396121 4.89858385,52.41390934 4.89855228,52.41388318 4.89834311,52.41370987 4.89814967,52.41356022 4.89801535,52.4134544 4.89761767,52.41313702 4.8974024,52.41296473 4.89668365,52.41239116 4.8964442,52.41220059 4.89599261,52.41184341 4.89575992,52.4116577 4.89558351,52.41150642 4.89546762,52.41147237 4.89539635,52.41147987 4.89493112,52.41170211 4.894841,52.41177971 4.89478877,52.41187939 4.89472055,52.41317238 4.89472698,52.41325585 4.89474481,52.41330779 4.89479185,52.41338016 4.89482653,52.4134396 4.89481866,52.41346708 4.89478415,52.4134918 4.89470032,52.41352547 4.89463595,52.41354221 4.89463128,52.41365456 4.89462594,52.41378302 4.89461958,52.41393576 4.89462659,52.41393939 4.89466149,52.41395746 4.89465453,52.4140708 4.89466117,52.41431945 4.89467052,52.41436099 4.89467987,52.41440253 4.89471689,52.41443461 4.89477448,52.41447689 4.89491769,52.41458203 4.89521691,52.41481783 4.89555275,52.41506957 4.89566592,52.41515348&lt;/gml:coordinates&gt;&lt;/gml:LinearRing&gt;&lt;/gml:outerBoundaryIs&gt;&lt;/gml:Polygon&gt;&lt;/gml:polygonMember&gt;&lt;/gml:MultiPolygon&gt;&lt;/ogc:Within&gt;&lt;/ogc:Filter&gt;’‘</p>
 </dd></dl>
 
 </div>

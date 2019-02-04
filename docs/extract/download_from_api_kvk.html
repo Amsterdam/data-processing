@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="download_from_ckan.html">download_from_ckan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="download_tables_from_dokuwiki_to_json.html">download_tables_from_dokuwiki_to_json</a></li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_signals_api.html">download_from_signals_api</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_all_resources_from_dcatd_to_csv.html">download_all_resources_from_dcatd_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_csv.html">write_table_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_geojson.html">write_table_to_geojson</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_xml_to_df_to_csv.html">write_xml_to_df_to_csv</a></li>
@@ -191,12 +192,9 @@
   <div class="section" id="download-from-api-kvk">
 <span id="id1"></span><h1>download_from_api_kvk<a class="headerlink" href="#download-from-api-kvk" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div><p>call the kvk api for the nationwide ‘handelsregister’
-using the nationwide kvk api: <a class="reference external" href="https://developers.kvk.nl/">https://developers.kvk.nl/</a></p>
-<p>EXAMPLE::
-get_kvk_json(url = BASE_URL, params={‘kvkNumber’: ‘58474447’}, api_key=API_KEY)</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">API_KEY=**********</span></code> to add the API_KEY to your environment before running this command script.</p>
-</div></blockquote>
+<div>call the kvk api for the nationwide ‘ handelsregister’:
+‘’EXAMPLE: get_kvk_json(url = BASE_URL, params={‘kvkNumber’: ‘58474447’}, api_key=API_KEY)’’
+Use <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">API_KEY=**********</span></code> to add the API_KEY to your environment before running this command script.</div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_api_kvk</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">params</span> <span class="n">api_key</span>
 </pre></div>
@@ -224,12 +222,16 @@ get_kvk_json(url = BASE_URL, params={‘kvkNumber’: ‘58474447’}, api_key=A
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_api_kvk.get_kvk_json">
 <code class="descclassname">datapunt_processing.extract.download_from_api_kvk.</code><code class="descname">get_kvk_json</code><span class="sig-paren">(</span><em>url</em>, <em>params</em>, <em>api_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_kvk.get_kvk_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a json response from a url, provided params + api_key.</p>
+<dd><p>Get a json response from a url, provided params + api_key.
+Args:</p>
+<blockquote>
+<div><p>url: api endpoint
+params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
+<blockquote>
+<div>city, tradeName, or provide lists/dicts of values</div></blockquote>
+<p>api_key: kvk api_key. add KVK_API_KEY to your ENV variables</p>
+</div></blockquote>
 <dl class="docutils">
-<dt>Args:</dt>
-<dd>url: api endpoint
-params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode, city, tradeName, or provide lists/dicts of values
-api_key: kvk api_key. add KVK_API_KEY to your ENV variables</dd>
 <dt>Returns:</dt>
 <dd>parsed json or error message</dd>
 </dl>
