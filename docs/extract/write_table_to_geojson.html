@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="write_mdb_to_csv" href="write_mdb_to_csv.html"/>
-        <link rel="prev" title="write_table_to_csv" href="write_table_to_csv.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="write_xml_to_df_to_csv" href="write_xml_to_df_to_csv.html" />
+    <link rel="prev" title="write_table_to_csv" href="write_table_to_csv.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -108,12 +99,16 @@
 <li class="toctree-l3"><a class="reference internal" href="download_from_api_tellus.html">download_from_api_tellus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_api_kvk.html">download_from_api_kvk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_ckan.html">download_from_ckan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_tables_from_dokuwiki_to_json.html">download_tables_from_dokuwiki_to_json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_signals_api.html">download_from_signals_api</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_csv.html">write_table_to_csv</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">write_table_to_geojson</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Positional Arguments">Positional Arguments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datapunt_processing.extract.write_table_to_geojson">functions</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="write_xml_to_df_to_csv.html">write_xml_to_df_to_csv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_xml_to_json.html">write_xml_to_json</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_mdb_to_csv.html">write_mdb_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_csv_to_dataframe.html">write_csv_to_dataframe</a></li>
 </ul>
@@ -138,7 +133,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Datapunt processing</a>
@@ -146,9 +141,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -244,15 +240,13 @@ host=localhost port=5432 user=your_username dbname=your_database_name password=v
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="write_mdb_to_csv.html" class="btn btn-neutral float-right" title="write_mdb_to_csv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="write_xml_to_df_to_csv.html" class="btn btn-neutral float-right" title="write_xml_to_df_to_csv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="write_table_to_csv.html" class="btn btn-neutral" title="write_table_to_csv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -264,11 +258,11 @@ host=localhost port=5432 user=your_username dbname=your_database_name password=v
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Gemeente Amsterdam.
+        &copy; Copyright 2018, Gemeente Amsterdam
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -283,35 +277,24 @@ host=localhost port=5432 user=your_username dbname=your_database_name password=v
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Datapunt processing 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="../modules.html"/>
-        <link rel="next" title="download_from_ckan" href="download_from_ckan.html"/>
-        <link rel="prev" title="download_from_api_tellus" href="download_from_api_tellus.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="download_from_ckan" href="download_from_ckan.html" />
+    <link rel="prev" title="download_from_api_tellus" href="download_from_api_tellus.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -112,8 +103,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="download_from_ckan.html">download_from_ckan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_tables_from_dokuwiki_to_json.html">download_tables_from_dokuwiki_to_json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_from_signals_api.html">download_from_signals_api</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_csv.html">write_table_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_table_to_geojson.html">write_table_to_geojson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_xml_to_df_to_csv.html">write_xml_to_df_to_csv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_xml_to_json.html">write_xml_to_json</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_mdb_to_csv.html">write_mdb_to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="write_csv_to_dataframe.html">write_csv_to_dataframe</a></li>
 </ul>
@@ -138,7 +133,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Datapunt processing</a>
@@ -146,9 +141,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -195,9 +191,12 @@
   <div class="section" id="download-from-api-kvk">
 <span id="id1"></span><h1>download_from_api_kvk<a class="headerlink" href="#download-from-api-kvk" title="Permalink to this headline">¶</a></h1>
 <p><blockquote>
-<div>call the kvk api for the nationwide ‘ handelsregister’:
-‘’EXAMPLE: get_kvk_json(url = BASE_URL, params={‘kvkNumber’: ‘58474447’}, api_key=API_KEY)’’
-Use <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">API_KEY=**********</span></code> to add the API_KEY to your environment before running this command script.</div></blockquote>
+<div><p>call the kvk api for the nationwide ‘handelsregister’
+using the nationwide kvk api: <a class="reference external" href="https://developers.kvk.nl/">https://developers.kvk.nl/</a></p>
+<p>EXAMPLE::
+get_kvk_json(url = BASE_URL, params={‘kvkNumber’: ‘58474447’}, api_key=API_KEY)</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">API_KEY=**********</span></code> to add the API_KEY to your environment before running this command script.</p>
+</div></blockquote>
 </p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">download_from_api_kvk</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">url</span> <span class="n">params</span> <span class="n">api_key</span>
 </pre></div>
@@ -225,16 +224,12 @@ Use <code class="docutils literal notranslate"><span class="pre">export</span> <
 <dl class="function">
 <dt id="datapunt_processing.extract.download_from_api_kvk.get_kvk_json">
 <code class="descclassname">datapunt_processing.extract.download_from_api_kvk.</code><code class="descname">get_kvk_json</code><span class="sig-paren">(</span><em>url</em>, <em>params</em>, <em>api_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#datapunt_processing.extract.download_from_api_kvk.get_kvk_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a json response from a url, provided params + api_key.
-Args:</p>
-<blockquote>
-<div><p>url: api endpoint
-params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
-<blockquote>
-<div>city, tradeName, or provide lists/dicts of values</div></blockquote>
-<p>api_key: kvk api_key. add KVK_API_KEY to your ENV variables</p>
-</div></blockquote>
+<dd><p>Get a json response from a url, provided params + api_key.</p>
 <dl class="docutils">
+<dt>Args:</dt>
+<dd>url: api endpoint
+params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode, city, tradeName, or provide lists/dicts of values
+api_key: kvk api_key. add KVK_API_KEY to your ENV variables</dd>
 <dt>Returns:</dt>
 <dd>parsed json or error message</dd>
 </dl>
@@ -251,9 +246,7 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -271,11 +264,11 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Gemeente Amsterdam.
+        &copy; Copyright 2018, Gemeente Amsterdam
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -290,35 +283,24 @@ params: kvkNumber, branchNumber, rsin, street, houseNumber, postalCode,</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

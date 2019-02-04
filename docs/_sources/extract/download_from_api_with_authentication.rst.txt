@@ -2,7 +2,7 @@
 .. _download_from_api_with_authentication:
 
 download_from_api_with_authentication
-=====================
+=====================================
 
 .. argparse::
     :filename: ../src/datapunt_processing/extract/download_from_api_with_authentication.py
