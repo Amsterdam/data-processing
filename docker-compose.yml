@@ -9,7 +9,5 @@ services:
       POSTGRES_PASSWORD: insecure
       POSTGRES_DB: projectname
       POSTGRES_USER: projectname
-  data-processing:
+  dcatd:
     build: .
-    links:
-      - database
