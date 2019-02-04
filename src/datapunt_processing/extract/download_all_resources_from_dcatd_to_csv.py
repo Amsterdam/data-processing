@@ -6,6 +6,7 @@ import csv
 import time
 import argparse
 import logging
+from datapunt_processing.helpers.getaccesstoken import GetAccessToken
 
 
 def logger():
@@ -31,6 +32,8 @@ logger = logger()
 # ------------------
 #: File System stuff
 # ------------------
+
+
 def create_dir_if_not_exists(directory):
     """
     Create directory if it does not yet exists.
@@ -75,38 +78,74 @@ def save_file(data, output_folder, filename):
             csvWriter.writerow(header)
             for row in data:
                 csvWriter.writerow(row.values())
+        with open(full_path, 'r') as rows:
+            print('# --------------------------------------------------- ')
+            print('# Copy rows below and paste in document. Save as .csv ')
+            print('# --------------------------------------------------- ')
+            for l in rows:
+                line = l.rstrip()
+                if line:
+                    print(line)
 
 # ----------------------
 #: Main script functions
 # ----------------------
 
-def getPage(url):
-    data = requests.get(url)
-    #pprint(, indent=4)
+
+def getPage(url, access_token=None):
+    """
+    Get data from url.
+    Evaluate if employee credentials are present in environment variables.
+    export DATAPUNT_EMAIL=*******
+    export DATAPUNT_PASSWORD=******
+
+    If present, get an accesstoken.
+    Args:
+        url
+    Returns:
+        response data
+    """
+    if access_token:
+        data = requests.get(url, headers=access_token)
+        # pprint('Show json results')
+        # pprint(data.json(), indent=4)
+    else:
+        data = requests.get(url)
+
     return data.json()
 
 
-def getResource(purl):
-    data = getPage(purl)
-    print(data)
-    return data
-
-
 def getDatasets(url, dcatd_url):
+    """
+    Parse each dataset json response into a non-nested dict structure.
+    """
     data = []
-    catalog_data = getPage(url)
+    if "DATAPUNT_EMAIL" in os.environ:
+        access_token = GetAccessToken().getAccessToken(usertype='employee_plus', scopes='CAT/W')
+        catalog_data = getPage(url, access_token)
+        # pprint('Show json results')
+        # pprint(data.json(), indent=4)
+    else:
+        catalog_data = getPage(url)
 
     for dataset in catalog_data['dcat:dataset']:
         dataset_url = '{}/{}'.format(url, dataset['dct:identifier'])
         dataset_data = getPage(dataset_url)
-
-        dataset_meta ={}
+        # pprint(dataset_data, indent=4)
+        dataset_meta = {}
+        dataset_meta['status'] = dataset['ams:status']
         dataset_meta['dataset'] = dataset_data['dct:title']
         dataset_meta['eigenaar'] = dataset_data['ams:owner']
+        dataset_meta['licentie'] = dataset_data['ams:license']
         dataset_meta['thema'] = dataset_data['dcat:theme'][0].split(':')[1]
-        dataset_meta['dataset aanmaakdatum'] = dataset_data['foaf:isPrimaryTopicOf']['dct:issued']
-        dataset_meta['dataset wijziging'] = dataset_data['foaf:isPrimaryTopicOf']['dct:modified']
+        dataset_meta['dataset publicatiedatum'] = dataset_data['foaf:isPrimaryTopicOf']['dct:issued']
+        dataset_meta['dataset wijzigingsdatum'] = dataset_data['foaf:isPrimaryTopicOf']['dct:modified']
+        dataset_meta['dataset frequentie'] = dataset_data['dct:accrualPeriodicity']
         dataset_meta['dataset url'] = '{}{}'.format(dcatd_url, dataset_data['dct:identifier'])
+        dataset_meta['inhoudelijk contactpersoon'] = dataset_data['dcat:contactPoint']['vcard:fn']
+        dataset_meta['inhoudelijk email'] = dataset_data['dcat:contactPoint']['vcard:hasEmail']
+        dataset_meta['technisch contactpersoon'] = dataset_data['dct:publisher']['foaf:name']
+        dataset_meta['technisch email'] = dataset_data.get('dct:publisher',{}).get('foaf:mbox', '')
         for resource in dataset_data['dcat:distribution']:
             row = {}
             row['resource'] = resource['dct:title']
@@ -132,6 +171,10 @@ def parser():
 
     Example command line:
         ``python dcatd2table.py output catalog.csv``
+
+    To get a list of disabled datasets, you need an upload account and set these to the environment variables:
+    export DATAPUNT_EMAIL=*******
+    export DATAPUNT_PASSWORD=******
     """
 
     parser = argparse.ArgumentParser(
@@ -148,7 +191,7 @@ def parser():
 def main():
     args = parser().parse_args()
     url = 'https://api.data.amsterdam.nl/dcatd/datasets'
-    dcatd_url = 'https://data.amsterdam.nl/#?dte='
+    dcatd_url = 'https://data.amsterdam.nl/#?dte=dcatd/datasets/'
 
     data = getDatasets(url, dcatd_url)
 
