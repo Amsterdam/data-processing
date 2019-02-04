@@ -70,6 +70,7 @@ setup(
             'download_tables_from_dokuwiki_to_json = datapunt_processing.extract.download_tables_from_dokuwiki_to_json:main',
             'download_from_objectstore = datapunt_processing.extract.download_from_objectstore:main',
             'download_from_ckan = datapunt_processing.extract.download_from_ckan:main',
+            'download_all_resources_from_dcatd_to_csv = datapunt_processing.extract.download_all_resources_from_dcatd_to_csv:main',
             'write_csv_to_dataframe = datapunt_processing.extract.csv_dataframe:main',
             'write_table_to_csv = datapunt_processing.extract.write_table_to_csv:main',
             'write_xml_to_csv = datapunt_processing.extract.write_xml_to_df_to_csv.py:main',
