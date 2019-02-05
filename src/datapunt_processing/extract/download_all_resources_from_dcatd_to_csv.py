@@ -82,7 +82,7 @@ def save_file(data, output_folder, filename):
             print('# --------------------------------------------------- ')
             print('# Copy rows below and paste in document. Save as .csv ')
             print('# --------------------------------------------------- ')
-            print(rows)
+            print(rows.read())
 
 
 # ----------------------
@@ -127,7 +127,7 @@ def getDatasets(url, dcatd_url):
     else:
         catalog_data = getPage(url)
 
-    for dataset in catalog_data['dcat:dataset']:
+    for i, dataset in enumerate(catalog_data['dcat:dataset']):
         dataset_url = '{}/{}'.format(url, dataset['dct:identifier'])
         dataset_data = getPage(dataset_url)
         # pprint(dataset_data, indent=4)
@@ -153,7 +153,8 @@ def getDatasets(url, dcatd_url):
             row['resource purl'] = resource['ams:purl']
             row.update(dataset_meta)
             data.append(row)
-            print('{}, {} added'.format(dataset_data['dct:title'], resource['dct:title']))
+            # print('{}, {} added'.format(dataset_data['dct:title'], resource['dct:title']))
+        print('{} of {} added'.format(i, len(catalog_data['dcat:dataset'])))
     return data
 
 
