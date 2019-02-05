@@ -20,8 +20,7 @@ def logger():
     TODO: add log file export
     """
     logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s %(levelname)-8s %(message)s',
-                        datefmt='%a, %d %b %Y %H:%M:%S')
+                        format='%(message)s')
     logger = logging.getLogger(__name__)
     return logger
 
@@ -79,10 +78,10 @@ def save_file(data, output_folder, filename):
             for row in data:
                 csvWriter.writerow(row.values())
         with open(full_path, 'r') as rows:
-            print('# --------------------------------------------------- ')
-            print('# Copy rows below and paste in document. Save as .csv ')
-            print('# --------------------------------------------------- ')
-            print(rows.read())
+            logger.info('# --------------------------------------------------- ')
+            logger.info('# Copy rows below and paste in document. Save as .csv ')
+            logger.info('# --------------------------------------------------- ')
+            logger.info(rows.read())
 
 
 # ----------------------
