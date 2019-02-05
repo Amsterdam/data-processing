@@ -120,6 +120,7 @@ def getDatasets(url, dcatd_url):
     Parse each dataset json response into a non-nested dict structure.
     """
     data = []
+    print(os.environ)
     if "DATAPUNT_EMAIL" in os.environ:
         access_token = GetAccessToken().getAccessToken(usertype='employee_plus', scopes='CAT/W')
         catalog_data = getPage(url, access_token)
@@ -170,11 +171,12 @@ def parser():
     https://api.data.amsterdam.nl/api/swagger/?url=/dcatd/openapi
 
     Example command line:
-        ``python dcatd2table.py output catalog.csv``
+        ``python download_all_resources_from_dcatd_to_csv.py output catalog``
 
     To get a list of disabled datasets, you need an upload account and set these to the environment variables:
-    export DATAPUNT_EMAIL=*******
-    export DATAPUNT_PASSWORD=******
+
+    - export DATAPUNT_EMAIL=*******
+    - export DATAPUNT_PASSWORD=******
     """
 
     parser = argparse.ArgumentParser(
