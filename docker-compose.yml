@@ -11,3 +11,6 @@ services:
       POSTGRES_USER: projectname
   dcatd:
     build: .
+    environment:
+      DATAPUNT_EMAIL:
+      DATAPUNT_PASSWORD:
