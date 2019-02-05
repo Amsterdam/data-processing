@@ -82,10 +82,8 @@ def save_file(data, output_folder, filename):
             print('# --------------------------------------------------- ')
             print('# Copy rows below and paste in document. Save as .csv ')
             print('# --------------------------------------------------- ')
-            for l in rows:
-                line = l.rstrip()
-                if line:
-                    print(line)
+            print(rows)
+
 
 # ----------------------
 #: Main script functions
