@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import sys
 import errno
 import csv
 import time
@@ -20,7 +21,8 @@ def logger():
     TODO: add log file export
     """
     logging.basicConfig(level=logging.INFO,
-                        format='%(message)s')
+                        format='%(asctime)s %(levelname)-8s %(message)s',
+                        datefmt='%a, %d %b %Y %H:%M:%S')
     logger = logging.getLogger(__name__)
     return logger
 
@@ -81,7 +83,7 @@ def save_file(data, output_folder, filename):
             logger.info('# --------------------------------------------------- ')
             logger.info('# Copy rows below and paste in document. Save as .csv ')
             logger.info('# --------------------------------------------------- ')
-            logger.info(rows.read())
+            sys.stdout.write(rows.read())
 
 
 # ----------------------
