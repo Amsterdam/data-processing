@@ -7,6 +7,9 @@ import csv
 import time
 import argparse
 import logging
+import collections
+
+from pprint import pprint
 from datapunt_processing.helpers.getaccesstoken import GetAccessToken
 
 
@@ -120,6 +123,7 @@ def getDatasets(url, dcatd_url):
     """
     data = []
     print(os.environ)
+
     if "DATAPUNT_EMAIL" in os.environ:
         access_token = GetAccessToken().getAccessToken(usertype='employee_plus', scopes='CAT/W')
         catalog_data = getPage(url, access_token)
@@ -131,28 +135,32 @@ def getDatasets(url, dcatd_url):
     for i, dataset in enumerate(catalog_data['dcat:dataset']):
         dataset_url = '{}/{}'.format(url, dataset['dct:identifier'])
         dataset_data = getPage(dataset_url)
-        # pprint(dataset_data, indent=4)
-        dataset_meta = {}
-        dataset_meta['status'] = dataset['ams:status']
-        dataset_meta['dataset'] = dataset_data['dct:title']
+        pprint(dataset_data, indent=4)
+
+        dataset_meta = collections.OrderedDict()
         dataset_meta['eigenaar'] = dataset_data['ams:owner']
-        dataset_meta['licentie'] = dataset_data['ams:license']
+        dataset_meta['dataset'] = dataset_data['dct:title']
         dataset_meta['thema'] = dataset_data['dcat:theme'][0].split(':')[1]
         dataset_meta['dataset publicatiedatum'] = dataset_data['foaf:isPrimaryTopicOf']['dct:issued']
         dataset_meta['dataset wijzigingsdatum'] = dataset_data['foaf:isPrimaryTopicOf']['dct:modified']
-        dataset_meta['dataset frequentie'] = dataset_data['dct:accrualPeriodicity']
+        dataset_meta['dataset wijzigingsfrequentie'] = dataset_data['dct:accrualPeriodicity']
         dataset_meta['dataset url'] = '{}{}'.format(dcatd_url, dataset_data['dct:identifier'])
+        if "DATAPUNT_EMAIL" in os.environ:
+            dataset_meta['status'] = dataset_data['ams:status']
+        dataset_meta['licentie'] = dataset_data['ams:license']
+        dataset_meta['dataset gebiedseenheid'] = dataset_data.get('ams:spatialUnit','')
         dataset_meta['inhoudelijk contactpersoon'] = dataset_data['dcat:contactPoint']['vcard:fn']
         dataset_meta['inhoudelijk email'] = dataset_data['dcat:contactPoint']['vcard:hasEmail']
         dataset_meta['technisch contactpersoon'] = dataset_data['dct:publisher']['foaf:name']
-        dataset_meta['technisch email'] = dataset_data.get('dct:publisher',{}).get('foaf:mbox', '')
+        dataset_meta['technisch email'] = dataset_data.get('dct:publisher', {}).get('foaf:mbox', '')
+
         for resource in dataset_data['dcat:distribution']:
             row = {}
+            row.update(dataset_meta)
             row['resource'] = resource['dct:title']
             row['resource type'] = resource['ams:resourceType']
             row['resource wijziging'] = resource.get('dct:modified', '')
             row['resource purl'] = resource['ams:purl']
-            row.update(dataset_meta)
             data.append(row)
             # print('{}, {} added'.format(dataset_data['dct:title'], resource['dct:title']))
         print('{} of {} added'.format(i, len(catalog_data['dcat:dataset'])))
