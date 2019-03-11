@@ -124,7 +124,7 @@ setup(
 
         # Transformers
         'pandas==0.24.1',
-        'scikit-learn==0.19.1',
+        'scikit-learn==0.20.3',
 
         # Utilities
         'docutils',
