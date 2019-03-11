@@ -105,13 +105,13 @@ setup(
     install_requires=[
 
         # Getters
-        'requests==2.20.0',
-        'xlrd==1.1.0',
-        'lxml==4.2.1',
-        'xmltodict==0.11.0',
-        'python-swiftclient==3.4.0',
-        'python-keystoneclient',
-        'bs4',
+        'requests==2.21.0',
+        'xlrd==1.2.0',
+        'lxml==4.3.2',
+        'xmltodict==0.12.0',
+        'python-swiftclient==3.7.0',
+        'python-keystoneclient==3.19.0',
+        'beautifulsoup4==4.7.1',
 
         # Config providers
         'datapunt-config-loader',
@@ -119,11 +119,11 @@ setup(
 
         # db connectors
         'sqlalchemy==1.2.2',
-        'psycopg2==2.7.3.2',
+        'psycopg2==2.7.7',
         #'pygdal>=1.8.1.0',
 
         # Transformers
-        'pandas==0.22.0',
+        'pandas==0.24.1',
         'scikit-learn==0.19.1',
 
         # Utilities
