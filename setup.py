@@ -118,7 +118,7 @@ setup(
         'configparser==3.5.0',
 
         # db connectors
-        'sqlalchemy==1.2.2',
+        'SQLAlchemy>=1.3.0',
         'psycopg2==2.7.7',
         #'pygdal>=1.8.1.0',
 
