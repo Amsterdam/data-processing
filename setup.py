@@ -107,7 +107,7 @@ setup(
         # Getters
         'requests==2.21.0',
         'xlrd==1.2.0',
-        'lxml==4.3.2',
+        'lxml==4.6.2',
         'xmltodict==0.12.0',
         'python-swiftclient==3.7.0',
         'python-keystoneclient==3.19.0',
