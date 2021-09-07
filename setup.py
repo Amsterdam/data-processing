@@ -134,7 +134,7 @@ setup(
         'ipython==5.5.0',
 
         # Data visualization
-        'pillow==6.2.0'
+        'pillow==8.3.2'
 
     ],
     extras_require={
